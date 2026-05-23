@@ -20,7 +20,7 @@ export async function onRequestGet(context) {
 
     return new Response(JSON.stringify({
       signatures: total ? total.c : 0,
-      goal: 1000,
+      goal: 550,
       legalMinimum: 500,
       meetingCommits: meeting ? meeting.c : 0,
       circulators: circulators ? circulators.c : 0,
@@ -34,7 +34,7 @@ export async function onRequestGet(context) {
       }
     });
   } catch (err) {
-    return new Response(JSON.stringify({ signatures: 0, goal: 1000 }), {
+    return new Response(JSON.stringify({ signatures: 0, goal: 550 }), {
       headers: { 'Content-Type': 'application/json' }
     });
   }
