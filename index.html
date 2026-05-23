@@ -20,9 +20,15 @@
     --navy-dark: #061A2E;
     --navy-mid: #173E64;
     --navy-light: #2D5A84;
-    --gold: #D9A23E;
-    --gold-warm: #E8B94D;
-    --gold-deep: #A8780E;
+    /* Primary accent — handout's "Open Seats" green. Legacy --gold-* names
+       kept so existing references work without find/replace churn. */
+    --gold: #2A6B4F;
+    --gold-warm: #3D9670;
+    --gold-deep: #1A4E3A;
+    --orange: #C66833;
+    --orange-warm: #DE7E48;
+    --orange-deep: #9A4F23;
+    --orange-soft: #FBEFE6;
     --cream: #FBF8F2;
     --cream-warm: #F4EEDE;
     --cream-deep: #ECE3CB;
@@ -41,7 +47,7 @@
     --shadow-sm: 0 1px 2px rgba(13, 42, 71, 0.06);
     --shadow-md: 0 4px 16px rgba(13, 42, 71, 0.08), 0 1px 3px rgba(13, 42, 71, 0.04);
     --shadow-lg: 0 18px 48px -12px rgba(13, 42, 71, 0.18), 0 4px 12px rgba(13, 42, 71, 0.06);
-    --shadow-gold: 0 12px 32px -8px rgba(168, 120, 14, 0.35);
+    --shadow-gold: 0 12px 32px -8px rgba(26, 78, 58, 0.35);
 
     --serif: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
     --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -131,7 +137,7 @@
   /* ─── Hero ───────────────────────────────────────────────────────── */
   .hero {
     background:
-      radial-gradient(ellipse 80% 60% at 88% 0%, rgba(232, 185, 77, 0.22), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 88% 0%, rgba(61, 150, 112, 0.22), transparent 60%),
       radial-gradient(ellipse 60% 80% at 0% 100%, rgba(45, 90, 132, 0.30), transparent 55%),
       linear-gradient(180deg, var(--navy) 0%, var(--navy-dark) 100%);
     color: white;
@@ -162,10 +168,10 @@
 
   .eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(232, 185, 77, 0.12);
+    background: rgba(61, 150, 112, 0.12);
     color: var(--gold-warm);
     padding: 7px 14px 7px 12px;
-    border: 1px solid rgba(232, 185, 77, 0.28);
+    border: 1px solid rgba(61, 150, 112, 0.28);
     border-radius: 100px;
     font-size: 12px;
     font-weight: 600;
@@ -176,10 +182,10 @@
   .eyebrow::before {
     content: ""; width: 6px; height: 6px; border-radius: 50%;
     background: var(--gold-warm);
-    box-shadow: 0 0 0 4px rgba(232, 185, 77, 0.2);
+    box-shadow: 0 0 0 4px rgba(61, 150, 112, 0.2);
     animation: pulse 2.4s ease-in-out infinite;
   }
-  @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(232, 185, 77, 0.2); } 50% { box-shadow: 0 0 0 7px rgba(232, 185, 77, 0); } }
+  @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(61, 150, 112, 0.2); } 50% { box-shadow: 0 0 0 7px rgba(61, 150, 112, 0); } }
 
   .hero h1 {
     font-family: var(--serif);
@@ -223,9 +229,9 @@
   .btn-primary {
     background: var(--gold);
     color: var(--navy-dark);
-    box-shadow: 0 3px 0 var(--gold-deep), 0 8px 24px -8px rgba(168, 120, 14, 0.5);
+    box-shadow: 0 3px 0 var(--gold-deep), 0 8px 24px -8px rgba(26, 78, 58, 0.5);
   }
-  .btn-primary:hover { background: var(--gold-warm); box-shadow: 0 5px 0 var(--gold-deep), 0 12px 28px -8px rgba(168, 120, 14, 0.6); }
+  .btn-primary:hover { background: var(--gold-warm); box-shadow: 0 5px 0 var(--gold-deep), 0 12px 28px -8px rgba(26, 78, 58, 0.6); }
   .btn-primary:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--gold-deep); }
   .btn-outline {
     background: rgba(255,255,255,0.05);
@@ -287,7 +293,7 @@
     border-radius: 100px;
     width: 0%;
     transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 0 16px rgba(232, 185, 77, 0.5);
+    box-shadow: 0 0 16px rgba(61, 150, 112, 0.5);
   }
   .sig-bar-fill::after {
     content: "";
@@ -656,7 +662,7 @@
   input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(232, 185, 77, 0.18);
+    box-shadow: 0 0 0 4px rgba(61, 150, 112, 0.18);
     background: #FFFEFB;
   }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -759,7 +765,7 @@
   /* ─── Pull quote ─────────────────────────────────────────────────── */
   .pullquote {
     background:
-      radial-gradient(ellipse 50% 80% at 50% 0%, rgba(232, 185, 77, 0.10), transparent 70%),
+      radial-gradient(ellipse 50% 80% at 50% 0%, rgba(61, 150, 112, 0.10), transparent 70%),
       var(--navy);
     color: white;
     padding: 110px 0;
@@ -773,7 +779,7 @@
     font-family: var(--serif);
     font-size: 280px;
     font-weight: 900;
-    color: rgba(232, 185, 77, 0.06);
+    color: rgba(61, 150, 112, 0.06);
     line-height: 0.8;
     pointer-events: none;
     font-variation-settings: 'opsz' 144;
@@ -809,7 +815,7 @@
   /* ─── Final CTA ──────────────────────────────────────────────────── */
   .final-cta {
     background:
-      radial-gradient(ellipse 70% 80% at 50% 0%, rgba(232, 185, 77, 0.16), transparent 60%),
+      radial-gradient(ellipse 70% 80% at 50% 0%, rgba(61, 150, 112, 0.16), transparent 60%),
       var(--navy);
     color: white;
     padding: 100px 0;
@@ -904,6 +910,153 @@
     .eyebrow::before { animation: none; }
     .sig-bar-fill::after { animation: none; }
   }
+
+  /* ─── Two-column responsive grid ─────────────────────────────────── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+  @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; gap: 24px; } }
+
+  /* ─── Why-it-matters stat strip ──────────────────────────────────── */
+  .duties-list { list-style: none; padding: 0; margin: 8px 0 0; }
+  .duties-list li {
+    padding: 12px 0 12px 32px; position: relative;
+    border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);
+  }
+  .duties-list li:last-child { border-bottom: none; }
+  .duties-list li::before {
+    content: "✓"; position: absolute; left: 6px; top: 12px;
+    color: var(--gold); font-weight: 700;
+  }
+  .matters-quote {
+    background: var(--paper); border-left: 4px solid var(--gold);
+    padding: 22px 26px; border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .matters-quote p { margin: 0; color: var(--ink); font-size: 17px; line-height: 1.55; }
+  .matters-quote strong { color: var(--gold-deep); }
+
+  /* ─── Transition step cards ──────────────────────────────────────── */
+  .transition-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    margin: 32px 0 44px;
+  }
+  @media (max-width: 880px) { .transition-grid { grid-template-columns: 1fr; gap: 14px; } }
+  .transition-step {
+    background: var(--paper); border: 1px solid var(--line);
+    border-top: 4px solid var(--gold); border-radius: var(--radius-md);
+    padding: 24px 24px 22px; box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .transition-step.converting { border-top-color: var(--orange); }
+  .transition-step .step-year {
+    font-family: var(--serif); font-weight: 700; font-size: 38px;
+    color: var(--navy); line-height: 1; margin-bottom: 4px;
+    font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  }
+  .transition-step .step-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .transition-step.converting .step-label { color: var(--orange-deep); }
+  .transition-step p { font-size: 15px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+  .transition-step strong { color: var(--navy); }
+
+  /* ─── Handout download card ──────────────────────────────────────── */
+  .handout-card {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-top: 12px;
+  }
+  @media (max-width: 880px) { .handout-card { grid-template-columns: 1fr; } }
+  .handout-thumb {
+    background: var(--cream-warm);
+    display: flex; align-items: center; justify-content: center;
+    border-right: 1px solid var(--line);
+    overflow: hidden;
+  }
+  @media (max-width: 880px) {
+    .handout-thumb { border-right: none; border-bottom: 1px solid var(--line); }
+  }
+  .handout-thumb img {
+    width: 100%; height: auto; display: block;
+    transition: transform 0.4s ease;
+  }
+  .handout-thumb:hover img { transform: scale(1.02); }
+  .handout-meta { padding: 36px 36px; display: flex; flex-direction: column; justify-content: center; }
+  .handout-meta h3 {
+    font-family: var(--serif); font-size: 26px;
+    color: var(--navy); margin-bottom: 12px;
+    font-variation-settings: 'opsz' 144, 'SOFT' 40;
+    font-weight: 600; line-height: 1.15;
+  }
+  .handout-meta p { color: var(--ink-soft); margin-bottom: 22px; font-size: 15.5px; }
+
+  /* ─── Wisconsin districts comparison table ───────────────────────── */
+  .comparison-wrap {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); padding: 6px 6px 14px;
+    box-shadow: var(--shadow-sm); margin-top: 28px;
+    overflow: hidden;
+  }
+  .comparison-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 15px;
+  }
+  .comparison-table thead th {
+    text-align: left; padding: 16px 18px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.7px;
+    text-transform: uppercase; color: var(--muted);
+    background: var(--cream-warm);
+    border-bottom: 1px solid var(--line);
+  }
+  .comparison-table thead th:first-child { border-top-left-radius: var(--radius-md); }
+  .comparison-table thead th:last-child  { border-top-right-radius: var(--radius-md); }
+  .comparison-table th.num, .comparison-table td.num { text-align: right; }
+  .comparison-table tbody td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink-soft); vertical-align: top;
+  }
+  .comparison-table tbody tr:last-child td { border-bottom: none; }
+  .comparison-table tbody tr.us td { background: var(--navy); color: white; }
+  .comparison-table tbody tr.us td strong { color: white; }
+  .comparison-table tbody tr.model td { background: var(--green-soft); color: var(--navy-dark); }
+  .comparison-table tbody tr.model td em { color: var(--gold-deep); font-style: normal; font-weight: 600; }
+  .table-source {
+    font-size: 12px; color: var(--muted); margin: 12px 18px 4px;
+    font-style: italic;
+  }
+
+  /* ─── Stakes bar (board-budget context) ──────────────────────────── */
+  .stakes-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-top: 32px;
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  @media (max-width: 720px) { .stakes-bar { grid-template-columns: 1fr 1fr; } }
+  .stake {
+    padding: 22px 20px;
+    border-right: 1px solid var(--line-soft);
+    text-align: center;
+  }
+  .stake:last-child { border-right: none; }
+  @media (max-width: 720px) {
+    .stake:nth-child(2) { border-right: none; }
+    .stake:nth-child(1), .stake:nth-child(2) { border-bottom: 1px solid var(--line-soft); }
+  }
+  .stake-num {
+    font-family: var(--serif); font-size: 34px; font-weight: 700;
+    color: var(--gold); line-height: 1; margin-bottom: 6px;
+    font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  }
+  .stake-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.6px;
+    text-transform: uppercase; color: var(--muted);
+  }
 </style>
 </head>
 <body>
@@ -915,7 +1068,8 @@
       <ul>
         <li><a href="#problem">The problem</a></li>
         <li><a href="#fix">The fix</a></li>
-        <li><a href="#events">Events</a></li>
+        <li><a href="#transition">The plan</a></li>
+        <li><a href="#comparison">Other districts</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#sign" class="nav-cta">Sign now</a></li>
       </ul>
@@ -963,6 +1117,41 @@
     <div class="ts-item"><span class="ts-icon">🗳️</span><div><div class="ts-label">Annual Meeting vote</div><div class="ts-value">Tue · Sept 22 · 7 PM</div></div></div>
   </div>
 </div>
+
+<section class="tinted" id="why-it-matters">
+  <div class="container">
+    <div class="section-eyebrow">Why this matters</div>
+    <h2 class="reveal">The board your kids inherit <em>depends on who's allowed to run</em></h2>
+    <p class="section-lead reveal">The MCPASD School Board sets the budget, picks the superintendent, and decides the policies that shape every classroom in the district — from advanced learning placement to facilities planning to the school calendar. These are not symbolic seats. When the people in charge of those decisions face <strong>no challenger on the ballot</strong>, the district loses the basic accountability of an actual election.</p>
+
+    <div class="grid-2 reveal" style="margin-top: 36px;">
+      <div>
+        <h3 style="margin-bottom: 4px;">What the board actually decides</h3>
+        <ul class="duties-list">
+          <li>The annual operating budget and the tax levy</li>
+          <li>Curriculum and policy — including advanced learning, special education, discipline, and grading</li>
+          <li>Hiring and reviewing the superintendent</li>
+          <li>Facilities, referenda, and capital projects</li>
+          <li>Staff contracts and collective bargaining outcomes</li>
+          <li>Boundary changes and growth planning as MCPASD expands</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom: 12px;">Best candidates, no artificial gates</h3>
+        <div class="matters-quote">
+          <p>Every family in the district deserves to be governed by the best people willing to serve — not just the people who happen to live on the right side of an Area line. Right now, an excellent candidate one street over from an open seat can't run for it. That's an <strong>artificial restriction</strong>, and it's the reason uncontested races have become routine here.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stakes-bar reveal" aria-label="District context">
+      <div class="stake"><div class="stake-num">9</div><div class="stake-label">Board seats today</div></div>
+      <div class="stake"><div class="stake-num">~7,000</div><div class="stake-label">Students in MCPASD</div></div>
+      <div class="stake"><div class="stake-num">5</div><div class="stake-label">Attendance areas</div></div>
+      <div class="stake"><div class="stake-num">0</div><div class="stake-label">Seats any resident can run for</div></div>
+    </div>
+  </div>
+</section>
 
 <section id="problem">
   <div class="container">
@@ -1094,6 +1283,115 @@
   </div>
 </section>
 
+<section id="transition">
+  <div class="container">
+    <div class="section-eyebrow">The plan</div>
+    <h2 class="reveal">A phased rollout, <em>not a board overhaul</em></h2>
+    <p class="section-lead reveal">The board stays at 9 seats. Each "extra" geographic seat — every Area beyond its one-per-zone anchor — converts to an open district-wide seat <em>only</em> as it comes up for re-election. No incumbent is forced out. No area loses its anchor.</p>
+
+    <div class="transition-grid reveal">
+      <div class="transition-step converting">
+        <div class="step-year">2027</div>
+        <div class="step-label">First open seats</div>
+        <p>The Area II and Area IV seats on the ballot convert. Two open seats live. Area II already has Kells as its anchor; Area IV has three other members. <strong>2 of 4 open seats in place.</strong></p>
+      </div>
+      <div class="transition-step converting">
+        <div class="step-year">2028</div>
+        <div class="step-label">+1 more open</div>
+        <p>The next Area IV "extra" converts. Area I and Area III seats stay as their permanent anchors. <strong>3 of 4 open seats in place.</strong></p>
+      </div>
+      <div class="transition-step">
+        <div class="step-year">2030</div>
+        <div class="step-label">Full hybrid in place</div>
+        <p>The final Area IV "extra" converts; one Area IV seat is preserved as the permanent anchor. <strong>5 area seats + 4 open = 9 total.</strong></p>
+      </div>
+    </div>
+
+    <div class="handout-card reveal">
+      <a class="handout-thumb" href="handout.pdf" download aria-label="Download the full transition handout (PDF)">
+        <img src="handout-preview.jpg" alt="MCPASD School Board — From Area Seats to Open Seats: a year-by-year phased transition diagram showing every seat's status from 2025 through 2031+, and a comparison to how other large Wisconsin districts structure their boards." loading="lazy">
+      </a>
+      <div class="handout-meta">
+        <h3>The year-by-year transition, on one page</h3>
+        <p>Download the full handout — a one-page visual showing every seat by name, when each comes up for re-election, and exactly when it converts. Same handout we hand out at meetings; share it with neighbors who want to see the mechanics.</p>
+        <a href="handout.pdf" download class="btn btn-primary" style="align-self: flex-start;">Download handout (PDF, 50 KB)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tinted" id="comparison">
+  <div class="container">
+    <div class="section-eyebrow">Wisconsin context</div>
+    <h2 class="reveal">MCPASD is the <em>only</em> large Wisconsin district with all-geographic seats</h2>
+    <p class="section-lead reveal">Every other large Wisconsin school district has either moved to fully at-large seats — where any qualified resident can run for any seat — or uses a hybrid model where candidates live in an area but the whole district votes. We're an outlier. The proposed model mirrors Verona's: a small number of geographic anchors plus open seats any resident can run for.</p>
+
+    <div class="comparison-wrap reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>District</th>
+            <th class="num">Enrollment</th>
+            <th class="num">Seats</th>
+            <th>Structure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="us">
+            <td><strong>MCPASD (Middleton)</strong></td>
+            <td class="num">~7,000</td>
+            <td class="num">9</td>
+            <td><strong>All geographic areas — proposed for reform</strong></td>
+          </tr>
+          <tr class="model">
+            <td>Verona Area SD</td>
+            <td class="num">~5,800</td>
+            <td class="num">7</td>
+            <td>3 geographic + 4 at-large &nbsp;<em>← proposed model</em></td>
+          </tr>
+          <tr>
+            <td>Oregon School District</td>
+            <td class="num">~4,100</td>
+            <td class="num">7</td>
+            <td>Geographic (candidates must reside in area), elected at-large</td>
+          </tr>
+          <tr>
+            <td>Madison MMSD</td>
+            <td class="num">~25,000</td>
+            <td class="num">7</td>
+            <td>All at-large, numbered seats (state statute required)</td>
+          </tr>
+          <tr>
+            <td>Appleton Area SD</td>
+            <td class="num">~15,000</td>
+            <td class="num">7</td>
+            <td>All at-large</td>
+          </tr>
+          <tr>
+            <td>Sun Prairie Area SD</td>
+            <td class="num">~8,400</td>
+            <td class="num">7</td>
+            <td>All at-large</td>
+          </tr>
+          <tr>
+            <td>Waukesha SD</td>
+            <td class="num">~11,800</td>
+            <td class="num">9</td>
+            <td>All at-large</td>
+          </tr>
+          <tr>
+            <td>Kenosha Unified SD</td>
+            <td class="num">~21,000</td>
+            <td class="num">9</td>
+            <td>All at-large</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="table-source">Sources: Ballotpedia, district websites. Enrollment figures approximate. Milwaukee Public Schools excluded — first-class city districts operate under different governance rules.</p>
+    </div>
+  </div>
+</section>
+
 <section class="tinted">
   <div class="container">
     <div class="reveal">
@@ -1114,7 +1412,7 @@
         <h3>Show up Sept 22, 7 PM</h3>
         <div class="phase-date">Phase 2 · the actual vote</div>
         <p>MCPASD is a common school district, so the vote happens <strong>at the Annual Meeting</strong> — only electors physically present can vote. About 30 people came in 2025. We need hundreds.</p>
-        <p style="font-size: 14.5px; margin-bottom: 0; padding: 12px 14px; background: rgba(232, 185, 77, 0.18); border-radius: 8px; margin-top: 10px;"><strong>Tue Sept 22, 2026 · 7:00 PM</strong><br>District Services Center<br>7106 South Avenue, Middleton</p>
+        <p style="font-size: 14.5px; margin-bottom: 0; padding: 12px 14px; background: rgba(61, 150, 112, 0.18); border-radius: 8px; margin-top: 10px;"><strong>Tue Sept 22, 2026 · 7:00 PM</strong><br>District Services Center<br>7106 South Avenue, Middleton</p>
       </div>
     </div>
   </div>
@@ -1191,9 +1489,7 @@
     <div class="card reveal" style="margin-top: 20px;">
       <h3>Where to return signed sheets</h3>
       <ul class="plain">
-        <li>[Host address 1] — anytime, mailbox labeled "Petition"</li>
-        <li>[Host address 2] — anytime</li>
-        <li>Or mail to: [PO Box or host address]</li>
+        <li><strong>3795 Swoboda Road, Verona, WI</strong> — drop off anytime (mailbox labeled "Petition"), or mail to the same address.</li>
       </ul>
       <p style="margin: 16px 0 0;">Questions? <a href="mailto:petition@openseatsmcpasd.org">petition@openseatsmcpasd.org</a></p>
     </div>
@@ -1209,19 +1505,14 @@
     </div>
     <div class="events reveal">
       <div class="event">
-        <div class="event-date"><div class="month">May</div><div class="day">25</div><div class="dow">Mon</div></div>
-        <div class="event-info"><h4>Cross Plains Memorial Day Parade</h4><div class="where">Park St → American Legion Post 245 · 11am parade, games to 3pm</div></div>
-        <span class="event-tag flagship">Flagship</span>
-      </div>
-      <div class="event">
         <div class="event-date"><div class="month">Tue</div><div class="day">★</div><div class="dow">Weekly</div></div>
-        <div class="event-info"><h4>Downtown Middleton Farmers Market</h4><div class="where">Capital Brewery TAP · 2–7pm · Every Tuesday</div></div>
-        <span class="event-tag">Recurring</span>
+        <div class="event-info"><h4>Downtown Middleton Farmers Market</h4><div class="where">Capital Brewery TAP · 2–7pm · when a volunteer is staffing</div></div>
+        <span class="event-tag">If staffed</span>
       </div>
       <div class="event">
         <div class="event-date"><div class="month">Thu</div><div class="day">★</div><div class="dow">Weekly</div></div>
-        <div class="event-info"><h4>Greenway Station Farmers Market</h4><div class="where">Greenway Station · 8am–1pm · Every Thursday</div></div>
-        <span class="event-tag">Recurring</span>
+        <div class="event-info"><h4>Greenway Station Farmers Market</h4><div class="where">Greenway Station · 8am–1pm · when a volunteer is staffing</div></div>
+        <span class="event-tag">If staffed</span>
       </div>
       <div class="event">
         <div class="event-date"><div class="month">Jul</div><div class="day">4</div><div class="dow">Sat</div></div>
@@ -1242,6 +1533,24 @@
         <div class="event-date" style="background: var(--red);"><div class="month">Sep</div><div class="day">22</div><div class="dow">Tue</div></div>
         <div class="event-info"><h4>🗳️ MCPASD Annual Meeting — THE VOTE</h4><div class="where">District Services Center, 7106 South Ave · 7:00 PM</div></div>
         <span class="event-tag vote">The Vote</span>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 44px;">
+      <div class="card" style="background: var(--paper); max-width: 760px;">
+        <span class="section-eyebrow" style="margin-bottom: 14px;">Suggest an event</span>
+        <h3 style="margin-bottom: 8px;">Where else should we be?</h3>
+        <p style="color: var(--ink-soft); margin-bottom: 20px;">No event near you? Tell us where neighbors gather — a coffee shop, soccer field, block party, church coffee hour — and we'll get a circulator and sheets there. Anonymous is fine; leave email if you want a heads-up when it's scheduled.</p>
+        <div id="suggestMsg" class="form-msg"></div>
+        <form id="suggestForm">
+          <label for="suggestWhere">Where? <span style="color: var(--muted); font-weight: 400;">(required)</span></label>
+          <input type="text" id="suggestWhere" name="where" placeholder="e.g. Pope Farm Park, Saturday mornings" required maxlength="500">
+          <div class="form-row" style="margin-top: 14px;">
+            <div><label for="suggestName">Your name <span style="color: var(--muted); font-weight: 400;">(optional)</span></label><input type="text" id="suggestName" name="name"></div>
+            <div><label for="suggestEmail">Your email <span style="color: var(--muted); font-weight: 400;">(optional)</span></label><input type="email" id="suggestEmail" name="email"></div>
+          </div>
+          <button type="submit" id="suggestSubmit" class="btn btn-primary" style="margin-top: 18px;">Send suggestion</button>
+        </form>
       </div>
     </div>
   </div>
@@ -1484,6 +1793,9 @@
     handle('volForm', 'volMsg', 'volSubmit', '/api/volunteer',
       "Thank you! A campaign coordinator will reach out within 48 hours.",
       'Count me in');
+    handle('suggestForm', 'suggestMsg', 'suggestSubmit', '/api/suggest-event',
+      "Thanks — suggestion received. We'll line up a circulator and a sheet.",
+      'Send suggestion');
 
     // ─── Reveal on scroll ───────────────────────────────────────────
     if ('IntersectionObserver' in window) {
