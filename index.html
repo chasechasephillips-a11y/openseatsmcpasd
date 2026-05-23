@@ -1251,7 +1251,6 @@
           <div class="countdown">
             <div class="countdown-item"><div class="countdown-num" id="cd-days">—</div><div class="countdown-sub">Days</div></div>
             <div class="countdown-item"><div class="countdown-num" id="cd-hours">—</div><div class="countdown-sub">Hours</div></div>
-            <div class="countdown-item"><div class="countdown-num" id="cd-commits">—</div><div class="countdown-sub">Coming Sept 22</div></div>
           </div>
         </div>
       </aside>
@@ -1917,16 +1916,13 @@
       fetch('/api/stats').then(function (r) { return r.json(); }).then(function (data) {
         var n = (data && typeof data.signatures === 'number') ? data.signatures : 0;
         var goal = (data && data.goal) ? data.goal : 550;
-        var commits = (data && typeof data.meetingCommits === 'number') ? data.meetingCommits : 0;
         animateNumber(document.getElementById('sigNow'), n);
-        animateNumber(document.getElementById('cd-commits'), commits);
         setTimeout(function () {
           var bar = document.getElementById('sigBar');
           if (bar) bar.style.width = Math.min(100, (n / goal) * 100) + '%';
         }, 200);
       }).catch(function () {
         var s = document.getElementById('sigNow'); if (s) s.textContent = '0';
-        var c = document.getElementById('cd-commits'); if (c) c.textContent = '0';
       });
     }
     loadStats();
