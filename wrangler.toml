@@ -1,0 +1,17 @@
+name = "openseatsmcpasd"
+compatibility_date = "2026-05-01"
+pages_build_output_dir = "."
+
+# D1 database binding. After running `wrangler d1 create openseats`,
+# paste the database_id it prints below. The binding name DB is what
+# the functions in /functions/api/ read as context.env.DB.
+[[d1_databases]]
+binding = "DB"
+database_name = "openseats"
+database_id = "ba9ac70a-3f9a-45ee-b780-3eaa51f6b11f"
+
+# Optional: a secret token gates the CSV export endpoint.
+# Set the real value in the Cloudflare dashboard (Settings > Environment variables)
+# or with: wrangler pages secret put EXPORT_TOKEN
+[vars]
+EXPORT_TOKEN = "change-me-in-the-cloudflare-dashboard"

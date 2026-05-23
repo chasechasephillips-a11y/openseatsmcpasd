@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Open Seats MCPASD — a parent-led petition to open 4 school board seats so any district resident can run, regardless of address. Sign by Aug 23, 2026.">
+<title>Open Seats MCPASD — 4 school board seats. Any resident can run.</title>
+<meta property="og:title" content="Open Seats MCPASD — 4 school board seats any resident can run for">
+<meta property="og:description" content="Right now every MCPASD board seat is locked to a geographic Area. This petition opens 4 seats to any district resident — ending artificial barriers and uncontested elections.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root {
+    --navy: #1F4E78;
+    --navy-dark: #14385A;
+    --navy-light: #2B6BA0;
+    --gold: #E8B94D;
+    --gold-dark: #C99A2C;
+    --cream: #FAF7F2;
+    --cream-dark: #F2EDE2;
+    --ink: #1A1A1A;
+    --muted: #5A5A5A;
+    --line: #E5E0D5;
+    --red: #C9342C;
+    --green: #2E7D5B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink); line-height: 1.6; background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: var(--navy-dark); }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .narrow { max-width: 720px; }
+
+  header.nav {
+    background: var(--navy); color: white; padding: 14px 0;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .brand { color: white; text-decoration: none; font-weight: 800; font-size: 18px; letter-spacing: 0.2px; display: flex; align-items: center; gap: 10px; }
+  .brand .mark {
+    background: var(--gold); color: var(--navy-dark);
+    width: 34px; height: 34px; border-radius: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 19px; font-weight: 900;
+  }
+  nav ul { display: flex; list-style: none; gap: 22px; flex-wrap: wrap; align-items: center; }
+  nav a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; }
+  nav a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy-dark) !important; padding: 8px 16px; border-radius: 6px; font-weight: 700; }
+  .nav-cta:hover { background: white; }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color: white; padding: 78px 0 62px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: -60px; right: -60px;
+    width: 320px; height: 320px; background: var(--gold); opacity: 0.08; border-radius: 50%;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-block; background: rgba(232, 185, 77, 0.15); color: var(--gold);
+    padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.5px; margin-bottom: 18px; text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5.5vw, 54px); font-weight: 800; line-height: 1.1;
+    margin-bottom: 20px; max-width: 880px; letter-spacing: -0.5px;
+  }
+  .hero h1 .accent { color: var(--gold); }
+  .hero p.lead { font-size: clamp(17px, 2vw, 20px); max-width: 720px; opacity: 0.96; margin-bottom: 30px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 15px 28px;
+    border-radius: 8px; font-weight: 700; font-size: 16px; text-decoration: none;
+    border: 2px solid transparent; cursor: pointer;
+    transition: transform 0.08s, box-shadow 0.15s, background 0.15s; font-family: inherit;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+  .btn-primary { background: var(--gold); color: var(--navy-dark); }
+  .btn-primary:hover { background: #f0c668; }
+  .btn-outline { background: transparent; color: white; border-color: rgba(255,255,255,0.6); }
+  .btn-outline:hover { background: white; color: var(--navy); border-color: white; }
+  .btn-block { width: 100%; justify-content: center; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .counter-wrap { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-end; }
+  .counter-block { }
+  .counter-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; opacity: 0.85; margin-bottom: 8px; }
+  .sig-count { font-size: 40px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .sig-count span { font-size: 20px; color: white; opacity: 0.8; font-weight: 600; }
+  .sig-bar { width: 260px; max-width: 100%; height: 10px; background: rgba(255,255,255,0.18); border-radius: 100px; margin-top: 10px; overflow: hidden; }
+  .sig-bar-fill { height: 100%; background: var(--gold); border-radius: 100px; width: 0%; transition: width 0.8s; }
+  .countdown { display: flex; gap: 10px; }
+  .countdown-item {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; padding: 12px 14px; text-align: center; min-width: 64px;
+  }
+  .countdown-num { font-size: 26px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .countdown-sub { font-size: 11px; opacity: 0.85; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .timeline-strip { background: var(--gold); padding: 22px 0; color: var(--navy-dark); border-bottom: 4px solid var(--gold-dark); }
+  .timeline-strip-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: center; }
+  @media (max-width: 720px) { .timeline-strip-inner { grid-template-columns: 1fr; gap: 14px; text-align: center; } }
+  .ts-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; opacity: 0.75; }
+  .ts-value { font-size: 18px; font-weight: 900; }
+
+  section { padding: 70px 0; }
+  section.alt { background: white; }
+  section.tinted { background: var(--cream-dark); }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 14px; color: var(--navy); font-weight: 800; letter-spacing: -0.3px; line-height: 1.15; }
+  .section-lead { font-size: 18px; color: var(--muted); max-width: 700px; margin-bottom: 34px; }
+  h3 { font-size: 21px; margin-bottom: 12px; color: var(--navy-dark); font-weight: 700; }
+  p { margin-bottom: 14px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  @media (max-width: 820px) { .two-col { grid-template-columns: 1fr; gap: 32px; } }
+
+  .card { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+
+  .barrier-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 8px; }
+  @media (max-width: 720px) { .barrier-grid { grid-template-columns: 1fr; } }
+  .barrier { background: white; border-radius: 12px; border: 1px solid var(--line); padding: 24px; }
+  .barrier .big { font-size: 38px; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 8px; }
+  .barrier h3 { font-size: 17px; margin-bottom: 6px; }
+  .barrier p { font-size: 14px; color: var(--muted); margin: 0; }
+
+  .areas-table { width: 100%; border-collapse: collapse; margin-top: 8px; background: white; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+  .areas-table th, .areas-table td { padding: 12px 16px; text-align: left; font-size: 15px; border-bottom: 1px solid var(--line); }
+  .areas-table th { background: var(--navy); color: white; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .areas-table tr:last-child td { border-bottom: none; }
+  .areas-table .now { font-weight: 700; }
+  .areas-table .lopsided { color: var(--red); font-weight: 900; }
+  .areas-table .fixed { color: var(--green); font-weight: 800; }
+
+  ul.plain { list-style: none; padding-left: 0; }
+  ul.plain li { padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; align-items: flex-start; gap: 10px; }
+  ul.plain li:last-child { border-bottom: none; }
+  ul.plain li::before { content: "✓"; color: var(--green); font-weight: 800; font-size: 18px; line-height: 1.4; flex-shrink: 0; }
+  ul.x-list li::before { content: "✗"; color: var(--red); }
+
+  .phase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 720px) { .phase-grid { grid-template-columns: 1fr; } }
+  .phase-card { background: white; border: 2px solid var(--navy); border-radius: 14px; padding: 28px; position: relative; }
+  .phase-card.urgent { border-color: var(--gold); background: linear-gradient(135deg, white 0%, #FFFBF0 100%); }
+  .phase-num { position: absolute; top: -16px; left: 24px; background: var(--navy); color: white; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; }
+  .phase-card.urgent .phase-num { background: var(--gold); color: var(--navy-dark); }
+  .phase-card h3 { margin-top: 10px; }
+  .phase-date { font-size: 14px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+
+  .events { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .event { background: white; border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; display: grid; grid-template-columns: 90px 1fr auto; gap: 18px; align-items: center; }
+  @media (max-width: 620px) { .event { grid-template-columns: 80px 1fr; } .event .event-tag { grid-column: 2; justify-self: start; margin-top: 4px; } }
+  .event-date { background: var(--navy); color: white; border-radius: 8px; text-align: center; padding: 8px 4px; }
+  .event-date .month { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .event-date .day { font-size: 22px; font-weight: 900; line-height: 1; }
+  .event-date .dow { font-size: 11px; opacity: 0.8; }
+  .event-info h4 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .event-info .where { font-size: 14px; color: var(--muted); }
+  .event-tag { background: var(--cream-dark); color: var(--navy-dark); font-size: 12px; font-weight: 700; padding: 5px 11px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; }
+  .event-tag.flagship { background: var(--gold); color: var(--navy-dark); }
+  .event-tag.vote { background: var(--red); color: white; }
+
+  .signup-box { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 36px; box-shadow: 0 2px 14px rgba(0,0,0,0.05); }
+  label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  input, select, textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 15px; font-family: inherit; margin-bottom: 14px; background: white; }
+  input:focus, select:focus { outline: 3px solid rgba(232, 185, 77, 0.3); border-color: var(--gold); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 620px) { .form-row { grid-template-columns: 1fr; } }
+  .consent { font-size: 13px; color: var(--muted); margin: 6px 0 16px; display: flex; gap: 10px; align-items: flex-start; }
+  .consent input { width: auto; margin: 4px 0 0 0; flex-shrink: 0; }
+  .disclaimer { background: #FFF7E6; border: 1px solid #F5D89B; border-radius: 8px; padding: 12px 14px; font-size: 13px; color: #7A5A00; margin-top: 14px; }
+  .form-msg { display: none; padding: 14px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+  .form-msg.ok { display: block; background: #E8F5E9; border: 1px solid #81C784; color: #1B5E20; }
+  .form-msg.err { display: block; background: #FDECEA; border: 1px solid #E59B95; color: #8A2A22; }
+
+  details { background: white; border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; margin-bottom: 10px; }
+  details[open] { border-color: var(--navy); }
+  details summary { font-weight: 700; font-size: 16px; list-style: none; color: var(--navy-dark); display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after { content: "+"; font-size: 24px; font-weight: 300; color: var(--gold-dark); flex-shrink: 0; }
+  details[open] summary::after { content: "−"; }
+  details p { margin-top: 12px; }
+  details p:last-child { margin-bottom: 0; }
+
+  .share-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .share-btn { background: white; border: 1px solid var(--line); color: var(--ink); padding: 11px 18px; border-radius: 8px; font-size: 14px; cursor: pointer; text-decoration: none; font-weight: 600; }
+  .share-btn:hover { background: var(--cream); border-color: var(--navy); }
+
+  footer { background: var(--navy-dark); color: white; padding: 48px 0 32px; font-size: 14px; }
+  footer a { color: var(--gold); }
+  footer h4 { color: white; margin-bottom: 10px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 36px; margin-bottom: 32px; }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .footer-small { opacity: 0.7; font-size: 12px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); }
+</style>
+</head>
+<body>
+
+<header class="nav" id="top">
+  <div class="container nav-inner">
+    <a href="#top" class="brand"><span class="mark">OS</span> Open Seats MCPASD</a>
+    <nav>
+      <ul>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#fix">The fix</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#sign" class="nav-cta">Sign now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+    <span class="eyebrow">A parent-led petition · Wis. Stat. § 120.02(2)(a)</span>
+    <h1>4 school board seats. <span class="accent">Any MCPASD resident can run.</span></h1>
+    <p class="lead">Right now, every one of MCPASD's 9 school board seats is locked to a geographic Area. Good candidates get shut out because their house sits a few blocks across an Area line — and elections go uncontested. This petition opens 4 of the 9 seats to any district resident, while keeping 5 geographic so every Area still has a guaranteed voice.</p>
+    <div class="cta-row">
+      <a href="#sign" class="btn btn-primary">Sign the petition →</a>
+      <a href="#meeting" class="btn btn-outline">Show up Sept 22</a>
+    </div>
+    <div class="counter-wrap">
+      <div class="counter-block">
+        <div class="counter-label">Supporters signed up</div>
+        <div class="sig-count"><span id="sigNow">—</span> <span>/ 1,000 goal</span></div>
+        <div class="sig-bar"><div class="sig-bar-fill" id="sigBar"></div></div>
+      </div>
+      <div class="counter-block">
+        <div class="counter-label">Until the vote</div>
+        <div class="countdown">
+          <div class="countdown-item"><div class="countdown-num" id="cd-days">—</div><div class="countdown-sub">Days</div></div>
+          <div class="countdown-item"><div class="countdown-num" id="cd-hours">—</div><div class="countdown-sub">Hours</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="timeline-strip">
+  <div class="container timeline-strip-inner">
+    <div><div class="ts-label">📝 Sign by</div><div class="ts-value">Sun · Aug 23, 2026</div></div>
+    <div><div class="ts-label">📬 Petition filed by</div><div class="ts-value">Mon · Aug 24, 2026</div></div>
+    <div><div class="ts-label">🗳️ Annual Meeting vote</div><div class="ts-value">Tue · Sept 22 · 7 PM</div></div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="container">
+    <h2>The problem: every seat is locked to an address</h2>
+    <p class="section-lead">MCPASD already has a 9-member board. Every seat is tied to one of five geographic Areas — and a candidate must live inside that Area to run for that seat. It sounds fair. In practice, it builds walls around who can serve.</p>
+
+    <div class="barrier-grid">
+      <div class="barrier">
+        <div class="big">3 of 3</div>
+        <h3>Uncontested in 2025</h3>
+        <p>In the April 2025 election, all three open board seats had a single candidate. No race. No choice.</p>
+      </div>
+      <div class="barrier">
+        <div class="big">4 of 9</div>
+        <h3>One Area, nearly half the board</h3>
+        <p>Area IV (Middleton + Westport) holds 4 of the 9 seats. Areas I, III, and V hold just 1 each.</p>
+      </div>
+      <div class="barrier">
+        <div class="big">0</div>
+        <h3>Seats you can run for</h3>
+        <p>If the seat in your Area isn't up — or an incumbent has it locked — you can't run at all, even blocks from an open seat.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 28px; font-size: 17px;">A neighbor four houses on the wrong side of an Area line is barred from running for a seat they're perfectly qualified to hold. That's an artificial barrier — and it's why so many of our elections have no race at all.</p>
+  </div>
+</section>
+
+<section class="alt" id="fix">
+  <div class="container">
+    <h2>The fix: open 4 of the 9 seats</h2>
+    <p class="section-lead">We're not adding seats or removing anyone. The board stays at 9. We're changing how the 9 are allocated — keeping geographic representation while opening the door for more people to run.</p>
+
+    <table class="areas-table">
+      <thead>
+        <tr><th>Area</th><th>Region</th><th>Seats today</th><th>Under the petition</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="now">Area I</td><td>Springfield</td><td>1</td><td class="fixed">1 geographic</td></tr>
+        <tr><td class="now">Area II</td><td>Cross Plains</td><td>2</td><td class="fixed">1 geographic</td></tr>
+        <tr><td class="now">Area III</td><td>West Middleton</td><td>1</td><td class="fixed">1 geographic</td></tr>
+        <tr><td class="now">Area IV</td><td>Middleton + Westport</td><td class="lopsided">4</td><td class="fixed">1 geographic</td></tr>
+        <tr><td class="now">Area V</td><td>Central</td><td>1</td><td class="fixed">1 geographic</td></tr>
+        <tr><td class="now">At-large</td><td>Anywhere in the district</td><td>0</td><td class="fixed">4 open seats</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two-col" style="margin-top: 36px;">
+      <div>
+        <h3>What it does</h3>
+        <ul class="plain">
+          <li>Keeps 5 geographic seats — one per Area, so every Area still has a guaranteed voice</li>
+          <li>Opens 4 at-large seats any district resident can run for, regardless of address</li>
+          <li>Gives voters real choices — more candidates, fewer uncontested races</li>
+          <li>Follows Wisconsin statute step-by-step — attorney-reviewed (Wis. Stat. § 120.02(2)(a))</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What it doesn't do</h3>
+        <ul class="plain x-list">
+          <li>Add or remove any seats — the board stays at 9</li>
+          <li>Displace any currently serving board member or shorten a term</li>
+          <li>Change who votes — all district electors still vote on every seat</li>
+          <li>Take effect overnight — gradual conversion at natural re-election, starting Spring 2027</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="container">
+    <h2>How this works — two things we need from you</h2>
+    <p class="section-lead">Wisconsin's petition process has two steps. Both matter.</p>
+    <div class="phase-grid">
+      <div class="phase-card">
+        <div class="phase-num">1</div>
+        <h3>Sign the petition by Aug 23</h3>
+        <div class="phase-date">Phase 1 · now → Aug 23, 2026</div>
+        <p>We need at least 500 signatures from qualified MCPASD electors (Wis. Stat. § 120.02(2)(a)). We're aiming for 1,000 to cushion invalid signatures and show overwhelming support.</p>
+        <a href="#sign" class="btn btn-primary btn-block" style="margin-top: 14px;">Sign now</a>
+      </div>
+      <div class="phase-card urgent">
+        <div class="phase-num">2</div>
+        <h3>Show up Sept 22, 7 PM</h3>
+        <div class="phase-date">Phase 2 · the actual vote</div>
+        <p>MCPASD is a common school district, so the vote happens <strong>at the Annual Meeting</strong> — only electors physically present can vote. About 30 people came in 2025. We need hundreds.</p>
+        <p style="font-size: 14px; margin-bottom: 0;"><strong>Tue Sept 22, 2026 · 7:00 PM</strong><br>District Services Center<br>7106 South Avenue, Middleton</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sign">
+  <div class="container narrow">
+    <h2>Request your petition sheet</h2>
+    <p class="section-lead">Wisconsin law only counts a <strong>pen-and-paper signature</strong> on an official petition sheet with a circulator's certification — there is no legal online signature. Sign up here and we'll get a paper sheet into your hands fast, or point you to the nearest signing location.</p>
+
+    <div class="signup-box">
+      <div id="signMsg" class="form-msg"></div>
+      <form id="signForm">
+        <div class="form-row">
+          <div><label for="firstName">First name</label><input type="text" id="firstName" name="firstName" required></div>
+          <div><label for="lastName">Last name</label><input type="text" id="lastName" name="lastName" required></div>
+        </div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <div class="form-row">
+          <div><label for="phone">Phone (for signature follow-up)</label><input type="tel" id="phone" name="phone"></div>
+          <div><label for="area">Your Area (optional)</label>
+            <select id="area" name="area">
+              <option value="">Not sure</option>
+              <option>Area I — Springfield</option>
+              <option>Area II — Cross Plains</option>
+              <option>Area III — West Middleton</option>
+              <option>Area IV — Middleton/Westport</option>
+              <option>Area V — Central</option>
+            </select>
+          </div>
+        </div>
+        <label for="address">Home address (must be inside MCPASD)</label>
+        <input type="text" id="address" name="address" placeholder="Street, City, ZIP" required>
+        <label class="consent">
+          <input type="checkbox" name="elector" required>
+          <span>I confirm I am a registered voter residing in the Middleton-Cross Plains Area School District.</span>
+        </label>
+        <label class="consent">
+          <input type="checkbox" name="meeting">
+          <span><strong>I commit to attending the MCPASD Annual Meeting on Tue Sept 22, 2026 at 7:00 PM.</strong></span>
+        </label>
+        <label class="consent">
+          <input type="checkbox" name="circulator">
+          <span>I'd be willing to collect signatures from my neighbors (optional).</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block" id="signSubmit">Send me a petition sheet</button>
+        <div class="disclaimer">We'll never share your info. Used only to get you a paper sheet, coordinate signing, and send reminders about the Sept 22 Annual Meeting.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="download">
+  <div class="container">
+    <h2>Get a petition sheet</h2>
+    <p class="section-lead">Download, print, sign with a pen, have your circulator complete the certification at the bottom, and return to a drop-off location. One sheet holds 7 signatures.</p>
+    <div class="two-col">
+      <a href="petition-sheet.pdf" download class="card">
+        <h3>📄 Official petition sheet</h3>
+        <p style="margin:0;">PDF · Counsel-reviewed · Circulator certification per Wis. Stat. § 8.40 included.</p>
+      </a>
+      <a href="#volunteer" class="card">
+        <h3>✍️ Become a circulator</h3>
+        <p style="margin:0;">Collect signatures from your own neighbors — a 10-minute training and we hand you a packet of sheets.</p>
+      </a>
+    </div>
+    <div class="card" style="margin-top: 18px;">
+      <h3>Where to return signed sheets</h3>
+      <ul class="plain">
+        <li>[Host address 1] — anytime, mailbox labeled "Petition"</li>
+        <li>[Host address 2] — anytime</li>
+        <li>Or mail to: [PO Box or host address]</li>
+      </ul>
+      <p style="margin: 14px 0 0;">Questions? <a href="mailto:petition@openseatsmcpasd.org">petition@openseatsmcpasd.org</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="tinted" id="events">
+  <div class="container">
+    <h2>Find us in person</h2>
+    <p class="section-lead">It's easier to sign a paper sheet at an event than to wait for one in the mail. Come say hi.</p>
+    <div class="events">
+      <div class="event">
+        <div class="event-date"><div class="month">May</div><div class="day">25</div><div class="dow">Mon</div></div>
+        <div class="event-info"><h4>Cross Plains Memorial Day Parade</h4><div class="where">Park St → American Legion Post 245 · 11am parade, games to 3pm</div></div>
+        <span class="event-tag flagship">Flagship</span>
+      </div>
+      <div class="event">
+        <div class="event-date"><div class="month">Tue</div><div class="day">★</div><div class="dow">Weekly</div></div>
+        <div class="event-info"><h4>Downtown Middleton Farmers Market</h4><div class="where">Capital Brewery TAP · 2–7pm · Every Tuesday</div></div>
+        <span class="event-tag">Recurring</span>
+      </div>
+      <div class="event">
+        <div class="event-date"><div class="month">Thu</div><div class="day">★</div><div class="dow">Weekly</div></div>
+        <div class="event-info"><h4>Greenway Station Farmers Market</h4><div class="where">Greenway Station · 8am–1pm · Every Thursday</div></div>
+        <span class="event-tag">Recurring</span>
+      </div>
+      <div class="event">
+        <div class="event-date"><div class="month">Jul</div><div class="day">4</div><div class="dow">Sat</div></div>
+        <div class="event-info"><h4>Middleton 4th of July Celebration</h4><div class="where">Breakfast → fireworks at dusk</div></div>
+        <span class="event-tag flagship">Flagship</span>
+      </div>
+      <div class="event">
+        <div class="event-date"><div class="month">Aug</div><div class="day">23</div><div class="dow">Sun</div></div>
+        <div class="event-info"><h4>🎯 Signature deadline — last day to sign</h4><div class="where">Petition filed Mon Aug 24 at District Services Center</div></div>
+        <span class="event-tag flagship">Deadline</span>
+      </div>
+      <div class="event">
+        <div class="event-date"><div class="month">Aug</div><div class="day">29</div><div class="dow">Sat</div></div>
+        <div class="event-info"><h4>Good Neighbor Festival + Parade</h4><div class="where">Aug 28–30 · pre-vote rally for the Sept 22 meeting</div></div>
+        <span class="event-tag flagship">Flagship</span>
+      </div>
+      <div class="event" id="meeting">
+        <div class="event-date" style="background: var(--red);"><div class="month">Sep</div><div class="day">22</div><div class="dow">Tue</div></div>
+        <div class="event-info"><h4>🗳️ MCPASD Annual Meeting — THE VOTE</h4><div class="where">District Services Center, 7106 South Ave · 7:00 PM</div></div>
+        <span class="event-tag vote">The Vote</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="volunteer">
+  <div class="container narrow">
+    <h2>Volunteer with us</h2>
+    <p class="section-lead">Circulators are neighbors who collect signatures from other neighbors — the single highest-leverage thing you can do. We train you in 10 minutes.</p>
+    <div class="signup-box">
+      <div id="volMsg" class="form-msg"></div>
+      <form id="volForm">
+        <div class="form-row">
+          <div><label for="vname">Name</label><input type="text" id="vname" name="name" required></div>
+          <div><label for="vphone">Phone</label><input type="tel" id="vphone" name="phone" required></div>
+        </div>
+        <label for="vemail">Email</label>
+        <input type="email" id="vemail" name="email" required>
+        <label>How can you help? (check all that apply)</label>
+        <div style="margin-bottom: 14px;">
+          <label class="consent"><input type="checkbox" name="how" value="collect"><span>Collect signatures from neighbors / school community</span></label>
+          <label class="consent"><input type="checkbox" name="how" value="host"><span>Host a signature party at my house</span></label>
+          <label class="consent"><input type="checkbox" name="how" value="event"><span>Staff a table at one of our events</span></label>
+          <label class="consent"><input type="checkbox" name="how" value="meeting"><span>Help turn people out for the Sept 22 Annual Meeting</span></label>
+          <label class="consent"><input type="checkbox" name="how" value="childcare"><span>Provide childcare on Sept 22 so parents can attend</span></label>
+          <label class="consent"><input type="checkbox" name="how" value="press"><span>Help with press / social media</span></label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="volSubmit">Count me in</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="share">
+  <div class="container narrow">
+    <h2>Share with your network</h2>
+    <p class="section-lead">The fastest way to 1,000 signatures is for every signer to text 3 neighbors. Click to share:</p>
+    <div class="share-row">
+      <a class="share-btn" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https://openseatsmcpasd.org">📘 Facebook</a>
+      <a class="share-btn" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=MCPASD%20parents%20are%20petitioning%20to%20open%204%20school%20board%20seats%20so%20any%20resident%20can%20run.%20Sign%20by%20Aug%2023.%20%23OpenSeatsMCPASD&url=https://openseatsmcpasd.org">🐦 X / Twitter</a>
+      <a class="share-btn" href="mailto:?subject=2%20minutes%20to%20help%20open%20up%20MCPASD%20school%20board%20elections&body=I%20signed%20this%20petition%20to%20open%204%20school%20board%20seats%20to%20any%20district%20resident.%20Worth%20a%20look%3A%20openseatsmcpasd.org">✉️ Email</a>
+      <a class="share-btn" href="sms:?&body=Just%20signed%20the%20Open%20Seats%20MCPASD%20petition%20%E2%80%94%20opens%204%20school%20board%20seats%20to%20any%20resident.%20openseatsmcpasd.org">📱 Text</a>
+    </div>
+  </div>
+</section>
+
+<section class="tinted" id="faq">
+  <div class="container">
+    <h2>Frequently asked questions</h2>
+    <div style="margin-top: 24px;">
+      <details open>
+        <summary>Does this add seats to the board?</summary>
+        <p>No. The board has 9 seats today and will still have 9. The petition changes how the seats are <em>allocated</em> — keeping 5 tied to geographic Areas and converting 4 into open at-large seats any district resident can run for.</p>
+      </details>
+      <details>
+        <summary>Why open the seats — what's wrong with all-geographic?</summary>
+        <p>When every seat is locked to an Area, most residents can't run in most years. A qualified neighbor whose home is just outside the Area with an open seat is barred from running. The result is too many uncontested elections — in April 2025, all three open seats had only one candidate. Four open seats give voters real choices.</p>
+      </details>
+      <details>
+        <summary>Wait — the vote is at a meeting, not on a ballot?</summary>
+        <p>Correct. MCPASD is a common school district, and under Wis. Stat. § 120.02(2)(a) apportionment changes are voted on at the district's Annual Meeting. Only electors physically present vote. It's <strong>Tue Sept 22, 2026 at 7:00 PM</strong> at the District Services Center, 7106 South Ave, Middleton.</p>
+      </details>
+      <details>
+        <summary>How many signatures do you need, and why 500?</summary>
+        <p>500 elector signatures, per Wis. Stat. § 120.02(2)(a). The 500 threshold applies because MCPASD contains territory in Madison, a 2nd-class city. The petition must be filed at least 30 days before the Annual Meeting — deadline <strong>Sun Aug 23, 2026</strong>. We aim for 1,000 to cushion invalid signatures.</p>
+      </details>
+      <details>
+        <summary>Does any current board member lose their seat?</summary>
+        <p>No. Conversion happens gradually at each seat's natural re-election point, starting with the Spring 2027 election. Every current member serves out their full term.</p>
+      </details>
+      <details>
+        <summary>Will my Area lose its representation?</summary>
+        <p>No. Every Area keeps one guaranteed geographic seat. Today some Areas have one seat and Area IV has four — the petition makes geographic representation equal (one per Area) and adds four seats open to everyone.</p>
+      </details>
+      <details>
+        <summary>Is this partisan? Who funds it?</summary>
+        <p>Neither partisan nor funded. It's a structural governance change — no PAC, no organization, no outside money. Parents fund printing and the domain themselves. Any contribution will be disclosed publicly.</p>
+      </details>
+      <details>
+        <summary>I don't live in MCPASD — how can I help?</summary>
+        <p>You can't sign, but you can share with friends who do, help with press/social media, or chip in for printing. Use the volunteer form above.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--navy); color: white;">
+  <div class="container narrow" style="text-align: center;">
+    <h2 style="color: white;">Two things from you. That's it.</h2>
+    <p style="font-size: 18px; opacity: 0.95; margin-bottom: 32px;">Sign by Aug 23. Show up Sept 22.<br>That's how we open the ballot.</p>
+    <div class="cta-row" style="justify-content: center;">
+      <a href="#sign" class="btn btn-primary">Sign now →</a>
+      <a href="mailto:petition@openseatsmcpasd.org" class="btn btn-outline">Email us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Open Seats MCPASD</h4>
+        <p style="opacity: 0.85; margin-bottom: 10px;">A parent-led petition to open 4 Middleton-Cross Plains school board seats to any district resident — ending artificial barriers and uncontested elections.</p>
+        <p style="opacity: 0.85;">Petition authorized under Wis. Stat. § 120.02(2)(a). Counsel-reviewed.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p style="opacity: 0.85;"><a href="mailto:petition@openseatsmcpasd.org">petition@openseatsmcpasd.org</a></p>
+        <p style="opacity: 0.85;">Lead organizer: Chase</p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <p style="opacity: 0.85;"><a href="https://facebook.com/OpenSeatsMCPASD" target="_blank" rel="noopener">Facebook</a></p>
+        <p style="opacity: 0.85;"><a href="https://instagram.com/openseatsmcpasd" target="_blank" rel="noopener">Instagram</a></p>
+        <p style="opacity: 0.85;">#OpenSeatsMCPASD</p>
+      </div>
+    </div>
+    <div class="footer-small">
+      Not affiliated with Middleton-Cross Plains Area School District, any political party, or any PAC. Paid for by volunteer contributions.
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var target = new Date('2026-09-22T19:00:00-05:00').getTime();
+    function tick() {
+      var diff = Math.max(0, target - Date.now());
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var dd = document.getElementById('cd-days'), hh = document.getElementById('cd-hours');
+      if (dd) dd.textContent = d;
+      if (hh) hh.textContent = h;
+    }
+    tick();
+    setInterval(tick, 60000);
+
+    function loadStats() {
+      fetch('/api/stats').then(function (r) { return r.json(); }).then(function (data) {
+        var n = (data && typeof data.signatures === 'number') ? data.signatures : 0;
+        var goal = (data && data.goal) ? data.goal : 1000;
+        document.getElementById('sigNow').textContent = n.toLocaleString();
+        document.getElementById('sigBar').style.width = Math.min(100, (n / goal) * 100) + '%';
+      }).catch(function () {
+        document.getElementById('sigNow').textContent = '0';
+      });
+    }
+    loadStats();
+
+    function handle(formId, msgId, btnId, endpoint, okText) {
+      var form = document.getElementById(formId);
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var msg = document.getElementById(msgId);
+        var btn = document.getElementById(btnId);
+        var data = {};
+        var fd = new FormData(form);
+        fd.forEach(function (v, k) {
+          if (data[k]) { data[k] = [].concat(data[k], v); } else { data[k] = v; }
+        });
+        form.querySelectorAll('input[type=checkbox]').forEach(function (c) {
+          if (!c.name) return;
+          if (c.name === 'how') return;
+          data[c.name] = c.checked;
+        });
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(function (r) {
+          if (!r.ok) throw new Error('bad');
+          return r.json();
+        }).then(function () {
+          msg.className = 'form-msg ok';
+          msg.textContent = okText;
+          form.reset();
+          btn.textContent = 'Done ✓';
+          if (formId === 'signForm') loadStats();
+        }).catch(function () {
+          msg.className = 'form-msg err';
+          msg.textContent = 'Something went wrong — please try again, or email petition@openseatsmcpasd.org.';
+          btn.disabled = false;
+          btn.textContent = (formId === 'signForm') ? 'Send me a petition sheet' : 'Count me in';
+        });
+      });
+    }
+    handle('signForm', 'signMsg', 'signSubmit', '/api/sign', "Thanks! We'll follow up within 48 hours with a paper sheet to sign and Sept 22 meeting details.");
+    handle('volForm', 'volMsg', 'volSubmit', '/api/volunteer', "Thank you! A campaign coordinator will reach out within 48 hours.");
+  })();
+</script>
+
+</body>
+</html>
