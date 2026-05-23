@@ -18,8 +18,16 @@ export async function onRequestGet(context) {
       "SELECT COUNT(*) AS c FROM signatures WHERE created_at >= datetime('now','-7 days')"
     ).first();
 
+    // PAPER_SIGNATURES is a wrangler.toml [vars] entry — paper signatures
+    // Chase has physically received. The public counter shows paper +
+    // online interest signups so it reflects real campaign momentum.
+    const paper = parseInt(context.env.PAPER_SIGNATURES || '0', 10) || 0;
+    const onlineSigs = total ? total.c : 0;
+
     return new Response(JSON.stringify({
-      signatures: total ? total.c : 0,
+      signatures: paper + onlineSigs,
+      paperSignatures: paper,
+      onlineSignups: onlineSigs,
       goal: 550,
       legalMinimum: 500,
       meetingCommits: meeting ? meeting.c : 0,

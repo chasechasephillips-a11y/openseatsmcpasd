@@ -12,3 +12,11 @@ database_id = "ba9ac70a-3f9a-45ee-b780-3eaa51f6b11f"
 
 # EXPORT_TOKEN is set as a Pages secret, not a plaintext var.
 # Rotate with: echo "<new-token>" | wrangler pages secret put EXPORT_TOKEN --project-name=openseatsmcpasd
+
+# Paper-signature count shown on the public counter. This is the count of
+# physical signatures CHASE HAS RECEIVED IN HIS MAILBOX so far — separate
+# from online interest signups in the D1 'signatures' table.
+# To update: change this number, then run:
+#   wrangler pages deploy . --project-name=openseatsmcpasd --branch=main
+[vars]
+PAPER_SIGNATURES = "2"
