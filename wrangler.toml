@@ -10,8 +10,5 @@ binding = "DB"
 database_name = "openseats"
 database_id = "ba9ac70a-3f9a-45ee-b780-3eaa51f6b11f"
 
-# Optional: a secret token gates the CSV export endpoint.
-# Set the real value in the Cloudflare dashboard (Settings > Environment variables)
-# or with: wrangler pages secret put EXPORT_TOKEN
-[vars]
-EXPORT_TOKEN = "change-me-in-the-cloudflare-dashboard"
+# EXPORT_TOKEN is set as a Pages secret, not a plaintext var.
+# Rotate with: echo "<new-token>" | wrangler pages secret put EXPORT_TOKEN --project-name=openseatsmcpasd
