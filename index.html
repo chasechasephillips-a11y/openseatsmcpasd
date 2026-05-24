@@ -1312,18 +1312,6 @@
   </div>
 </div>
 
-<section class="alt" id="by-area">
-  <div class="container">
-    <div class="section-eyebrow">Live tally · by Area</div>
-    <h2>Spreading across <em>every neighborhood</em>.</h2>
-    <p class="section-lead">Signatures by attendance Area — we aim for ~110 from each so the petition shows broad geographic strength. Anywhere we're thin is exactly where a new circulator would help most.</p>
-    <div class="area-grid" id="publicAreaBars" aria-live="polite">
-      <div style="grid-column: 1/-1; color: var(--ink-muted); font-family: var(--italic); font-style: italic; padding: 12px 0;">Loading…</div>
-    </div>
-    <p style="font-family: var(--italic); font-style: italic; font-size: 13.5px; color: var(--ink-muted); margin-top: 16px; line-height: 1.5;">Counts include validated &amp; unverified paper signatures plus online interest signups. Earlier paper signatures (received before this ledger went live) appear in the total counter at top but not yet here by Area.</p>
-  </div>
-</section>
-
 <section class="tinted" id="why-it-matters">
   <div class="container">
     <div class="section-eyebrow">Why this matters</div>
@@ -1988,34 +1976,9 @@
           var bar = document.getElementById('sigBar');
           if (bar) bar.style.width = Math.min(100, (n / goal) * 100) + '%';
         }, 200);
-        renderAreaGauge(data);
       }).catch(function () {
         var s = document.getElementById('sigNow'); if (s) s.textContent = '0';
       });
-    }
-
-    function renderAreaGauge(data) {
-      var container = document.getElementById('publicAreaBars');
-      if (!container || !data || !data.byArea) return;
-      var areas = [
-        { key: 'Area I — Springfield',         short: 'Area I',   sub: 'Springfield' },
-        { key: 'Area II — Cross Plains',       short: 'Area II',  sub: 'Cross Plains' },
-        { key: 'Area III — West Middleton',    short: 'Area III', sub: 'West Middleton' },
-        { key: 'Area IV — Middleton/Westport', short: 'Area IV',  sub: 'Middleton/Westport' },
-        { key: 'Area V — Central',             short: 'Area V',   sub: 'Central' }
-      ];
-      var perTarget = 110;
-      container.innerHTML = areas.map(function (a) {
-        var match = (data.byArea || []).find(function (x) { return x.area === a.key; }) || { total: 0 };
-        var pct = Math.min(100, (match.total / perTarget) * 100);
-        var thin = match.total < 10 ? ' thin' : '';
-        return '<div class="area-card' + thin + '">' +
-          '<div class="ac-name">' + a.short + '</div>' +
-          '<div class="ac-sub">' + a.sub + '</div>' +
-          '<div class="ac-count">' + match.total + '<span class="of">/ ~' + perTarget + '</span></div>' +
-          '<div class="ac-bar"><div class="ac-bar-fill" style="width:' + pct + '%"></div></div>' +
-        '</div>';
-      }).join('');
     }
     loadStats();
 
