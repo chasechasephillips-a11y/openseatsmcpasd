@@ -645,6 +645,52 @@
   .matters-quote p { margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.6; }
   .matters-quote strong { color: var(--red-dark); font-weight: 700; }
 
+  /* ─── Per-Area public gauge ────────────────────────────────────── */
+  .area-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 24px; }
+  @media (max-width: 880px) { .area-grid { grid-template-columns: 1fr 1fr; gap: 12px; } }
+  @media (max-width: 480px) { .area-grid { grid-template-columns: 1fr; } }
+  .area-card {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--red);
+    padding: 20px 18px 18px;
+    box-shadow: 3px 3px 0 var(--rule);
+    display: flex; flex-direction: column;
+  }
+  .area-card .ac-name {
+    font-family: var(--display); font-weight: 700;
+    font-size: 16px; color: var(--ink); line-height: 1.05;
+    margin-bottom: 2px;
+  }
+  .area-card .ac-sub {
+    font-family: var(--body); font-size: 10.5px;
+    color: var(--ink-muted); letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .area-card .ac-count {
+    font-family: var(--display); font-weight: 700;
+    font-size: 34px; color: var(--red); line-height: 1;
+    margin-bottom: 10px; letter-spacing: -0.02em;
+  }
+  .area-card .ac-count .of {
+    font-family: var(--body); font-size: 12.5px;
+    color: var(--ink-muted); font-weight: 500;
+    margin-left: 4px; letter-spacing: 0;
+  }
+  .area-card .ac-bar {
+    height: 7px; background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .area-card .ac-bar-fill {
+    height: 100%; background: var(--red);
+    transition: width 0.8s ease;
+  }
+  .area-card.thin { border-top-color: var(--rule-deep); }
+  .area-card.thin .ac-count { color: var(--ink-soft); }
+  .area-card.thin .ac-bar-fill { background: var(--rule-deep); }
+
   /* ─── Stakes bar ───────────────────────────────────────────────── */
   .stakes-bar {
     display: grid; grid-template-columns: repeat(4, 1fr);
@@ -1266,6 +1312,18 @@
   </div>
 </div>
 
+<section class="alt" id="by-area">
+  <div class="container">
+    <div class="section-eyebrow">Live tally · by Area</div>
+    <h2>Spreading across <em>every neighborhood</em>.</h2>
+    <p class="section-lead">Signatures by attendance Area — we aim for ~110 from each so the petition shows broad geographic strength. Anywhere we're thin is exactly where a new circulator would help most.</p>
+    <div class="area-grid" id="publicAreaBars" aria-live="polite">
+      <div style="grid-column: 1/-1; color: var(--ink-muted); font-family: var(--italic); font-style: italic; padding: 12px 0;">Loading…</div>
+    </div>
+    <p style="font-family: var(--italic); font-style: italic; font-size: 13.5px; color: var(--ink-muted); margin-top: 16px; line-height: 1.5;">Counts include validated &amp; unverified paper signatures plus online interest signups. Earlier paper signatures (received before this ledger went live) appear in the total counter at top but not yet here by Area.</p>
+  </div>
+</section>
+
 <section class="tinted" id="why-it-matters">
   <div class="container">
     <div class="section-eyebrow">Why this matters</div>
@@ -1871,8 +1929,10 @@
       <div>
         <h4>Spread the word</h4>
         <p><a href="/toolkit/">Campaign toolkit</a></p>
-        <p><a href="/toolkit/cards.html">Business cards (print)</a></p>
-        <p><a href="/toolkit/flyer.html">Half-sheet flyer (print)</a></p>
+        <p><a href="/toolkit/cards.html">Business cards</a></p>
+        <p><a href="/toolkit/flyer.html">Half-sheet flyer</a></p>
+        <p><a href="/toolkit/hangers.html">Door hangers</a></p>
+        <p><a href="/toolkit/script.html">Placard + script</a></p>
         <p><a href="/toolkit/share.html">Social copy &amp; graphics</a></p>
       </div>
     </div>
@@ -1928,9 +1988,34 @@
           var bar = document.getElementById('sigBar');
           if (bar) bar.style.width = Math.min(100, (n / goal) * 100) + '%';
         }, 200);
+        renderAreaGauge(data);
       }).catch(function () {
         var s = document.getElementById('sigNow'); if (s) s.textContent = '0';
       });
+    }
+
+    function renderAreaGauge(data) {
+      var container = document.getElementById('publicAreaBars');
+      if (!container || !data || !data.byArea) return;
+      var areas = [
+        { key: 'Area I — Springfield',         short: 'Area I',   sub: 'Springfield' },
+        { key: 'Area II — Cross Plains',       short: 'Area II',  sub: 'Cross Plains' },
+        { key: 'Area III — West Middleton',    short: 'Area III', sub: 'West Middleton' },
+        { key: 'Area IV — Middleton/Westport', short: 'Area IV',  sub: 'Middleton/Westport' },
+        { key: 'Area V — Central',             short: 'Area V',   sub: 'Central' }
+      ];
+      var perTarget = 110;
+      container.innerHTML = areas.map(function (a) {
+        var match = (data.byArea || []).find(function (x) { return x.area === a.key; }) || { total: 0 };
+        var pct = Math.min(100, (match.total / perTarget) * 100);
+        var thin = match.total < 10 ? ' thin' : '';
+        return '<div class="area-card' + thin + '">' +
+          '<div class="ac-name">' + a.short + '</div>' +
+          '<div class="ac-sub">' + a.sub + '</div>' +
+          '<div class="ac-count">' + match.total + '<span class="of">/ ~' + perTarget + '</span></div>' +
+          '<div class="ac-bar"><div class="ac-bar-fill" style="width:' + pct + '%"></div></div>' +
+        '</div>';
+      }).join('');
     }
     loadStats();
 

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature ledger — Open Seats MCPASD</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5EFE0; --paper-warm: #FBF8EF; --paper-card: #FCF9F0;
+    --ink: #1A1614; --ink-soft: #3D332B; --ink-muted: #6B5B4F;
+    --rule: #C9B8A0; --rule-deep: #9C8B73; --line-soft: #E3D9C3;
+    --red: #9A3B2C; --red-dark: #6F2A1F; --red-bright: #B84D3C; --red-soft: #F5E0DA;
+    --green: #355E3B; --green-soft: #E2EAE0; --green-bright: #4A7E55;
+    --amber: #B98521;
+    --display: 'Old Standard TT', serif;
+    --body: 'Lora', Georgia, serif;
+    --italic: 'IM Fell DW Pica', 'Lora', Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--body); color: var(--ink); line-height: 1.6;
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  .topbar {
+    border-bottom: 1px solid var(--rule-deep);
+    padding: 14px 24px;
+    background: var(--paper);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topbar .brand {
+    font-family: var(--display); font-weight: 700;
+    font-size: 18px; color: var(--ink);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .topbar .brand .mark {
+    background: var(--ink); color: var(--paper);
+    width: 28px; height: 28px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    box-shadow: 2px 2px 0 var(--red);
+  }
+  .topbar nav { display: flex; gap: 18px; }
+  .topbar nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  .topbar nav a:hover { color: var(--red-dark); }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 28px 24px 80px; }
+
+  /* ─── Token gate ─── */
+  .gate {
+    max-width: 480px; margin: 80px auto;
+    background: var(--paper-card);
+    border: 1px solid var(--rule-deep);
+    padding: 36px 32px;
+    box-shadow: 5px 5px 0 var(--rule-deep);
+  }
+  .gate h1 {
+    font-family: var(--display);
+    font-size: 28px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .gate p { color: var(--ink-soft); font-size: 15px; margin-bottom: 18px; }
+  .gate input {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid var(--rule-deep);
+    background: var(--paper);
+    font-family: var(--body); font-size: 14px;
+    border-radius: 0;
+  }
+  .gate input:focus { outline: none; border-color: var(--red); }
+  .gate button {
+    width: 100%; margin-top: 12px;
+    padding: 12px 18px;
+    background: var(--red); color: var(--paper);
+    border: 1px solid var(--red-dark);
+    font-family: var(--body); font-weight: 700;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer;
+  }
+  .gate button:hover { background: var(--red-bright); }
+  .gate .err { color: var(--red-dark); font-size: 13px; margin-top: 12px; }
+
+  /* ─── Header strip ─── */
+  .page-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 18px; padding-bottom: 16px;
+    border-bottom: 2px solid var(--red);
+  }
+  .page-head h1 {
+    font-family: var(--display); font-size: 32px; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.01em;
+  }
+  .page-head h1 em { font-family: var(--italic); color: var(--red); font-style: italic; }
+  .page-head .actions { display: flex; gap: 10px; align-items: center; }
+  .signout-btn {
+    background: none; border: 1px solid var(--rule-deep);
+    color: var(--ink-soft); padding: 6px 12px;
+    font-family: var(--body); font-size: 11px;
+    font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer;
+  }
+  .signout-btn:hover { color: var(--red-dark); border-color: var(--red); }
+
+  /* ─── Stats row ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+    background: var(--paper-card);
+    border: 1px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--rule-deep);
+    margin-bottom: 24px;
+  }
+  .stat {
+    padding: 18px 16px;
+    border-right: 1px solid var(--rule);
+    text-align: center;
+  }
+  .stat:last-child { border-right: none; }
+  .stat .num {
+    font-family: var(--display); font-weight: 700;
+    font-size: 30px; line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .stat .num.red    { color: var(--red); }
+  .stat .num.green  { color: var(--green); }
+  .stat .num.amber  { color: var(--amber); }
+  .stat .lbl {
+    font-family: var(--body); font-size: 9.5px;
+    font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-muted);
+    line-height: 1.3;
+  }
+
+  /* ─── Cards / panels ─── */
+  .panel {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    padding: 24px 26px;
+    box-shadow: 4px 4px 0 var(--rule);
+    margin-bottom: 24px;
+  }
+  .panel-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .panel-head h2 {
+    font-family: var(--display); font-size: 18px; font-weight: 700;
+    color: var(--ink);
+  }
+  .panel-head .panel-hint {
+    font-family: var(--italic); font-style: italic;
+    font-size: 12.5px; color: var(--ink-muted);
+  }
+
+  /* ─── Add form ─── */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    align-items: end;
+  }
+  @media (max-width: 800px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .form-grid { grid-template-columns: 1fr; } }
+  .form-grid label {
+    display: block;
+    font-family: var(--body); font-size: 10px;
+    font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .form-grid input, .form-grid select {
+    width: 100%; padding: 8px 10px;
+    border: 1.5px solid var(--rule-deep);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body); font-size: 14px;
+    border-radius: 0;
+  }
+  .form-grid input:focus, .form-grid select:focus { outline: none; border-color: var(--red); }
+  .form-grid .submit-cell {
+    grid-column: 1 / -1;
+    display: flex; gap: 10px; align-items: center;
+    padding-top: 10px;
+  }
+  .add-btn {
+    background: var(--red); color: var(--paper);
+    border: 1px solid var(--red-dark);
+    padding: 10px 22px;
+    font-family: var(--body); font-weight: 700;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer;
+  }
+  .add-btn:hover { background: var(--red-bright); }
+  .feedback {
+    font-family: var(--italic); font-style: italic;
+    font-size: 13px; color: var(--green);
+  }
+  .feedback.err { color: var(--red-dark); }
+
+  /* ─── Per-Area gauge ─── */
+  .area-bars { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .area-bar {
+    display: grid; grid-template-columns: 200px 1fr 80px; gap: 14px;
+    align-items: center;
+  }
+  @media (max-width: 600px) {
+    .area-bar { grid-template-columns: 1fr; gap: 4px; }
+  }
+  .area-bar .area-name {
+    font-family: var(--display); font-weight: 700;
+    font-size: 14px; color: var(--ink);
+  }
+  .area-bar .bar-track {
+    height: 14px; background: var(--paper-deep);
+    border: 1px solid var(--rule); position: relative;
+  }
+  .area-bar .bar-fill {
+    height: 100%; background: var(--red);
+    transition: width 0.5s ease;
+  }
+  .area-bar .bar-fill.online { background: var(--green); }
+  .area-bar .count {
+    font-family: var(--display); font-weight: 700;
+    font-size: 16px; color: var(--ink-soft); text-align: right;
+  }
+  .area-bar .count .sub {
+    font-family: var(--body); font-size: 11px; color: var(--ink-muted);
+    font-weight: 500; display: block; letter-spacing: 0;
+  }
+
+  /* ─── Table ─── */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-family: var(--body); font-size: 13.5px;
+    min-width: 800px;
+  }
+  th {
+    text-align: left; padding: 10px 12px;
+    font-family: var(--body); font-size: 10px;
+    font-weight: 700; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--ink-muted);
+    background: var(--paper-deep);
+    border-bottom: 2px solid var(--ink);
+  }
+  td {
+    padding: 12px;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  td.name { font-family: var(--display); font-weight: 700; color: var(--ink); }
+  tr.invalid td { opacity: 0.5; }
+  select.validity {
+    padding: 4px 6px; font-family: var(--body);
+    border: 1px solid var(--rule-deep);
+    background: var(--paper);
+    font-size: 12px;
+    border-radius: 0;
+  }
+  select.validity.valid     { border-color: var(--green); color: var(--green); }
+  select.validity.invalid   { border-color: var(--red-dark); color: var(--red-dark); }
+  select.validity.unverified { border-color: var(--amber); color: var(--amber); }
+  .del-btn {
+    background: none; border: 1px solid var(--rule-deep);
+    color: var(--ink-muted); padding: 4px 8px;
+    font-family: var(--body); font-size: 10px;
+    font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; cursor: pointer;
+  }
+  .del-btn:hover { color: var(--red-dark); border-color: var(--red); }
+  .empty {
+    padding: 36px 16px; text-align: center;
+    font-family: var(--italic); font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  .filter-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .filter-row input, .filter-row select {
+    padding: 7px 10px;
+    border: 1px solid var(--rule-deep);
+    background: var(--paper);
+    font-family: var(--body); font-size: 13px;
+    border-radius: 0;
+  }
+  .filter-row input { flex: 1; min-width: 200px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="brand"><span class="mark">OS</span> Signature ledger</span>
+  <nav>
+    <a href="/" target="_blank">← Public site</a>
+    <a href="/toolkit/" target="_blank">Toolkit</a>
+  </nav>
+</div>
+
+<div id="gate" class="gate" style="display:none;">
+  <h1>Sign in</h1>
+  <p>Enter the EXPORT_TOKEN from your Cloudflare secret to access the ledger. Stored locally on this device only.</p>
+  <input type="password" id="tokenInput" placeholder="EXPORT_TOKEN" autocomplete="off">
+  <button onclick="signIn()">Unlock ledger</button>
+  <div id="gateErr" class="err" style="display:none;"></div>
+</div>
+
+<div id="app" class="container" style="display:none;">
+
+  <div class="page-head">
+    <h1>Signature <em>ledger</em></h1>
+    <div class="actions">
+      <button class="signout-btn" onclick="signOut()">Sign out</button>
+    </div>
+  </div>
+
+  <div class="stats-row" id="statsRow">
+    <div class="stat"><div class="num red"  id="s-total">—</div><div class="lbl">Public total</div></div>
+    <div class="stat"><div class="num"      id="s-legacy">—</div><div class="lbl">Legacy paper</div></div>
+    <div class="stat"><div class="num"      id="s-tracked">—</div><div class="lbl">Tracked paper</div></div>
+    <div class="stat"><div class="num green" id="s-valid">—</div><div class="lbl">Validated</div></div>
+    <div class="stat"><div class="num amber" id="s-unverified">—</div><div class="lbl">Unverified</div></div>
+    <div class="stat"><div class="num"      id="s-invalid">—</div><div class="lbl">Invalid</div></div>
+    <div class="stat"><div class="num green" id="s-online">—</div><div class="lbl">Online signups</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Add a paper signature</h2>
+      <div class="panel-hint">From the mailbox · drop-off · event</div>
+    </div>
+    <form id="addForm">
+      <div class="form-grid">
+        <div><label>First name *</label><input name="first_name" required></div>
+        <div><label>Last name *</label><input name="last_name" required></div>
+        <div><label>Street address</label><input name="street_address" placeholder="123 Main St"></div>
+        <div><label>City</label><input name="city" placeholder="Middleton"></div>
+        <div><label>Area</label>
+          <select name="area">
+            <option value="">— pick Area —</option>
+            <option>Area I — Springfield</option>
+            <option>Area II — Cross Plains</option>
+            <option>Area III — West Middleton</option>
+            <option>Area IV — Middleton/Westport</option>
+            <option>Area V — Central</option>
+            <option value="Unspecified">Unspecified</option>
+          </select>
+        </div>
+        <div><label>Source</label>
+          <select name="source">
+            <option value="">— pick source —</option>
+            <option value="mail">Mail</option>
+            <option value="dropoff">Drop-off</option>
+            <option value="event">Event</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div><label>Circulator</label><input name="circulator_name" placeholder="Who collected it"></div>
+        <div><label>Date received</label><input name="date_received" type="date"></div>
+        <div style="grid-column: 1 / -1;"><label>Notes (optional)</label><input name="notes" placeholder="Anything worth remembering"></div>
+        <div class="submit-cell">
+          <button type="submit" class="add-btn">Add signature</button>
+          <span id="addFeedback" class="feedback"></span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>By Area</h2>
+      <div class="panel-hint">Paper (red) + Online (green) · only validated + unverified count toward 550</div>
+    </div>
+    <div id="areaBars" class="area-bars"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>All tracked signatures</h2>
+      <div class="panel-hint">Most recent first · click validity to change · — = empty</div>
+    </div>
+    <div class="filter-row">
+      <input type="text" id="searchInput" placeholder="Filter by name / address / circulator…">
+      <select id="filterValidity">
+        <option value="">All validity</option>
+        <option value="valid">Validated</option>
+        <option value="unverified">Unverified</option>
+        <option value="invalid">Invalid</option>
+      </select>
+      <select id="filterArea">
+        <option value="">All Areas</option>
+        <option>Area I — Springfield</option>
+        <option>Area II — Cross Plains</option>
+        <option>Area III — West Middleton</option>
+        <option>Area IV — Middleton/Westport</option>
+        <option>Area V — Central</option>
+        <option>Unspecified</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Area</th>
+            <th>Source</th>
+            <th>Circulator</th>
+            <th>Received</th>
+            <th>Validity</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ─── Auth ─────────────────────────────────────────────────────────
+  var TOKEN_KEY = 'openseats_admin_token';
+  function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
+  function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+  function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+  function showGate() {
+    document.getElementById('gate').style.display = 'block';
+    document.getElementById('app').style.display = 'none';
+  }
+  function showApp() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadData();
+  }
+  function signIn() {
+    var t = document.getElementById('tokenInput').value.trim();
+    if (!t) return;
+    // verify by hitting the list endpoint
+    fetch('/api/admin/list?token=' + encodeURIComponent(t)).then(function (r) {
+      if (r.status === 401) {
+        document.getElementById('gateErr').textContent = 'Wrong token. Try again.';
+        document.getElementById('gateErr').style.display = 'block';
+        return;
+      }
+      if (r.ok) {
+        setToken(t);
+        showApp();
+      } else {
+        document.getElementById('gateErr').textContent = 'Server error. Try again.';
+        document.getElementById('gateErr').style.display = 'block';
+      }
+    });
+  }
+  function signOut() {
+    clearToken();
+    location.reload();
+  }
+  document.getElementById('tokenInput')?.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') signIn();
+  });
+
+  // ─── Data loading ────────────────────────────────────────────────
+  var ALL_ROWS = [];
+  function loadData() {
+    var t = getToken();
+    fetch('/api/admin/list?token=' + encodeURIComponent(t)).then(function (r) {
+      if (r.status === 401) { clearToken(); showGate(); return; }
+      return r.json();
+    }).then(function (d) {
+      if (!d) return;
+      ALL_ROWS = d.rows || [];
+      renderRows();
+      renderArea(d.byArea || []);
+    });
+    // Also pull /api/stats for the public-total view
+    fetch('/api/stats').then(r => r.json()).then(function (s) {
+      document.getElementById('s-total').textContent      = s.signatures;
+      document.getElementById('s-legacy').textContent     = s.paperLegacy;
+      document.getElementById('s-tracked').textContent    = s.paperTracked;
+      document.getElementById('s-valid').textContent      = s.paperValid;
+      document.getElementById('s-online').textContent     = s.onlineSignups;
+    });
+    // Pull our own totals for unverified/invalid breakdown
+    fetch('/api/admin/list?token=' + encodeURIComponent(t)).then(r => r.json()).then(function (d) {
+      var t = (d && d.totals) || {};
+      document.getElementById('s-unverified').textContent = t.unverified || 0;
+      document.getElementById('s-invalid').textContent    = t.invalid || 0;
+    });
+  }
+
+  function renderRows() {
+    var q = (document.getElementById('searchInput').value || '').toLowerCase();
+    var fv = document.getElementById('filterValidity').value;
+    var fa = document.getElementById('filterArea').value;
+    var tbody = document.getElementById('rows');
+    var visible = ALL_ROWS.filter(function (r) {
+      if (fv && r.validity !== fv) return false;
+      if (fa && r.area !== fa) return false;
+      if (q) {
+        var hay = [r.first_name, r.last_name, r.street_address, r.city, r.circulator_name].join(' ').toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+    if (visible.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="8" class="empty">No matching signatures yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = visible.map(function (r) {
+      return '<tr class="' + (r.validity === 'invalid' ? 'invalid' : '') + '">' +
+        '<td class="name">' + esc(r.first_name) + ' ' + esc(r.last_name) + '</td>' +
+        '<td>' + esc(r.street_address || '—') + (r.city ? ', ' + esc(r.city) : '') + '</td>' +
+        '<td>' + esc(r.area || '—') + '</td>' +
+        '<td>' + esc(r.source || '—') + '</td>' +
+        '<td>' + esc(r.circulator_name || '—') + '</td>' +
+        '<td>' + esc(r.date_received || '—') + '</td>' +
+        '<td><select class="validity ' + r.validity + '" data-id="' + r.id + '" onchange="updateValidity(this)">' +
+          '<option value="unverified"' + (r.validity === 'unverified' ? ' selected' : '') + '>Unverified</option>' +
+          '<option value="valid"'      + (r.validity === 'valid'      ? ' selected' : '') + '>Valid</option>' +
+          '<option value="invalid"'    + (r.validity === 'invalid'    ? ' selected' : '') + '>Invalid</option>' +
+        '</select></td>' +
+        '<td><button class="del-btn" onclick="deleteRow(' + r.id + ')">Delete</button></td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  function renderArea(byArea) {
+    var areas = ['Area I — Springfield', 'Area II — Cross Plains', 'Area III — West Middleton', 'Area IV — Middleton/Westport', 'Area V — Central'];
+    var perAreaTarget = 110;
+    var html = '';
+    areas.forEach(function (name) {
+      var match = byArea.find(function (a) { return a.area === name; }) || { paper: 0, online: 0, total: 0 };
+      var paperPct = Math.min(100, (match.paper / perAreaTarget) * 100);
+      var totalPct = Math.min(100, (match.total / perAreaTarget) * 100);
+      html += '<div class="area-bar">' +
+        '<div class="area-name">' + esc(name) + '</div>' +
+        '<div class="bar-track"><div class="bar-fill" style="width:' + totalPct + '%"></div></div>' +
+        '<div class="count">' + match.total + '<span class="sub">of ~' + perAreaTarget + '</span></div>' +
+      '</div>';
+    });
+    // Plus any 'Unspecified'
+    var unspec = byArea.find(function (a) { return a.area === 'Unspecified' || a.area === ''; });
+    if (unspec && unspec.total > 0) {
+      html += '<div class="area-bar"><div class="area-name" style="color: var(--ink-muted); font-style: italic;">Unspecified</div>' +
+        '<div class="bar-track"><div class="bar-fill" style="width: ' + Math.min(100, (unspec.total / perAreaTarget) * 100) + '%; background: var(--ink-muted);"></div></div>' +
+        '<div class="count">' + unspec.total + '<span class="sub">of ~' + perAreaTarget + '</span></div></div>';
+    }
+    document.getElementById('areaBars').innerHTML = html;
+  }
+
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // ─── Mutations ───────────────────────────────────────────────────
+  document.getElementById('addForm')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var fd = new FormData(e.target);
+    var data = { token: getToken() };
+    fd.forEach(function (v, k) { data[k] = v; });
+    fetch('/api/admin/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(r => r.json()).then(function (d) {
+      var fb = document.getElementById('addFeedback');
+      if (d.ok) {
+        fb.className = 'feedback';
+        fb.textContent = 'Added (#' + d.id + '). Counter will update within 60s.';
+        e.target.reset();
+        loadData();
+        setTimeout(function () { fb.textContent = ''; }, 6000);
+      } else {
+        fb.className = 'feedback err';
+        fb.textContent = 'Error: ' + (d.error || 'unknown');
+      }
+    });
+  });
+
+  function updateValidity(select) {
+    var id = select.getAttribute('data-id');
+    var v = select.value;
+    select.className = 'validity ' + v;
+    fetch('/api/admin/update', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: getToken(), id: id, validity: v })
+    }).then(r => r.json()).then(function (d) {
+      if (d.ok) {
+        loadData();
+      } else {
+        alert('Update failed: ' + (d.error || 'unknown'));
+      }
+    });
+  }
+
+  function deleteRow(id) {
+    if (!confirm('Delete signature #' + id + '? This cannot be undone.')) return;
+    fetch('/api/admin/delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: getToken(), id: id })
+    }).then(r => r.json()).then(function (d) {
+      if (d.ok) loadData();
+      else alert('Delete failed: ' + (d.error || 'unknown'));
+    });
+  }
+
+  document.getElementById('searchInput')?.addEventListener('input', renderRows);
+  document.getElementById('filterValidity')?.addEventListener('change', renderRows);
+  document.getElementById('filterArea')?.addEventListener('change', renderRows);
+
+  // ─── Boot ───────────────────────────────────────────────────────
+  (function () {
+    var t = getToken();
+    if (t) {
+      // Verify token still works
+      fetch('/api/admin/list?token=' + encodeURIComponent(t)).then(function (r) {
+        if (r.status === 401) { clearToken(); showGate(); }
+        else if (r.ok) showApp();
+        else showGate();
+      }).catch(function () { showGate(); });
+    } else {
+      showGate();
+    }
+  })();
+</script>
+
+</body>
+</html>
