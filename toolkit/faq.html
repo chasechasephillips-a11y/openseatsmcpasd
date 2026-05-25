@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Open Seats MCPASD — frequently asked questions. The elevator pitch, the legal background, why it matters, and how to sign.">
+<title>FAQ — Open Seats MCPASD</title>
+<meta name="theme-color" content="#F5EFE0">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5EFE0; --paper-warm: #FBF8EF; --paper-card: #FCF9F0;
+    --ink: #1A1614; --ink-soft: #3D332B; --ink-muted: #6B5B4F;
+    --rule: #C9B8A0; --rule-deep: #9C8B73; --line-soft: #E3D9C3;
+    --red: #9A3B2C; --red-dark: #6F2A1F; --red-bright: #B84D3C;
+    --green: #355E3B; --green-soft: #E2EAE0;
+    --display: 'Old Standard TT', serif;
+    --body: 'Lora', Georgia, serif;
+    --italic: 'IM Fell DW Pica', 'Lora', Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--body); color: var(--ink); line-height: 1.65;
+    background: var(--paper);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--red-dark); text-decoration: underline; text-underline-offset: 3px; }
+  a:hover { color: var(--red); }
+  .topbar {
+    border-bottom: 1px solid var(--rule-deep);
+    padding: 14px 28px; background: var(--paper);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .topbar a {
+    font-family: var(--body); font-weight: 600;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--ink-soft);
+  }
+  .topbar a:hover { color: var(--red-dark); }
+  .print-btn {
+    background: var(--red); color: var(--paper);
+    border: 1px solid var(--red-dark);
+    padding: 9px 16px;
+    font-family: var(--body); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+  }
+  .print-btn:hover { background: var(--red-bright); }
+
+  .container { max-width: 820px; margin: 0 auto; padding: 64px 32px 96px; }
+
+  .masthead {
+    text-align: center;
+    padding-bottom: 28px;
+    border-bottom: 4px double var(--rule-deep);
+    margin-bottom: 44px;
+  }
+  .masthead .eb {
+    display: inline-flex; align-items: center; gap: 14px;
+    color: var(--red-dark);
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.4em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .masthead .eb::before, .masthead .eb::after {
+    content: ""; height: 1.5px; width: 36px; background: var(--red);
+  }
+  .masthead h1 {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 700; line-height: 1.02;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .masthead h1 em {
+    font-family: var(--italic);
+    color: var(--red); font-style: italic;
+  }
+  .masthead .sub {
+    font-family: var(--italic);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── Elevator pitch callout ──────────────────────────────────── */
+  .pitch {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 32px 36px;
+    border-top: 5px solid var(--red);
+    border-bottom: 5px solid var(--red);
+    margin: 0 0 56px;
+    position: relative;
+  }
+  .pitch::before {
+    content: "❖ THE ELEVATOR PITCH ❖";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    color: var(--red-dark);
+    padding: 0 14px;
+    font-family: var(--body); font-size: 10px;
+    font-weight: 700; letter-spacing: 0.36em;
+  }
+  .pitch p {
+    font-family: var(--display);
+    font-size: clamp(18px, 2.2vw, 23px);
+    line-height: 1.45;
+    color: var(--paper);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  .pitch p + p { margin-top: 14px; }
+  .pitch strong { color: var(--paper); font-weight: 700; }
+  .pitch em { font-family: var(--italic); color: var(--red-bright); font-style: italic; }
+  .pitch .url {
+    display: inline-block;
+    margin-top: 18px;
+    font-family: var(--display); font-weight: 700;
+    font-size: 18px;
+    color: var(--red-bright);
+    border-bottom: 1px solid var(--red-bright);
+    padding-bottom: 1px;
+    text-decoration: none;
+  }
+  .pitch .url:hover { color: var(--paper); border-color: var(--paper); }
+
+  /* ─── Section + Q&A ───────────────────────────────────────────── */
+  .section-label {
+    font-family: var(--body);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.36em; text-transform: uppercase;
+    color: var(--red-dark);
+    border-bottom: 2px solid var(--red);
+    padding-bottom: 8px;
+    margin: 56px 0 28px;
+    display: block;
+  }
+  .qa {
+    margin-bottom: 36px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .qa:last-child { border-bottom: none; }
+  .qa .q {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 24px);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .qa .q::before {
+    content: "Q. ";
+    color: var(--red);
+    font-family: var(--display);
+  }
+  .qa .a {
+    font-family: var(--body);
+    font-size: 16.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .qa .a::first-letter {
+    /* a subtle drop-cap-ish first character */
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .qa .a p { margin-bottom: 12px; font-size: inherit; color: inherit; }
+  .qa .a p:last-child { margin-bottom: 0; }
+  .qa .a strong { color: var(--ink); font-weight: 700; }
+  .qa .a em { font-family: var(--italic); font-style: italic; color: var(--red-dark); }
+
+  /* ─── Footer / final CTA ──────────────────────────────────────── */
+  .end-note {
+    background: var(--paper-card);
+    border: 1px solid var(--rule-deep);
+    border-left: 5px solid var(--red);
+    padding: 28px 30px;
+    margin-top: 56px;
+    box-shadow: 5px 5px 0 var(--rule-deep);
+  }
+  .end-note h2 {
+    font-family: var(--display);
+    font-size: 24px; font-weight: 700;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .end-note h2 em { font-family: var(--italic); color: var(--red); font-style: italic; }
+  .end-note p { font-size: 15.5px; color: var(--ink-soft); margin-bottom: 14px; line-height: 1.55; }
+  .end-note .url-block {
+    font-family: var(--display); font-weight: 700;
+    font-size: 22px; color: var(--ink);
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    text-align: center;
+    letter-spacing: -0.005em;
+  }
+  .end-note .url-block a { color: var(--ink); text-decoration: none; }
+  .end-note .small {
+    font-family: var(--italic); font-style: italic;
+    font-size: 13px; color: var(--ink-muted);
+    margin-top: 12px; line-height: 1.5;
+  }
+
+  /* ─── Print ───────────────────────────────────────────────────── */
+  @media print {
+    body { background: white; padding: 0; background-image: none; }
+    .topbar { display: none; }
+    .container { max-width: none; padding: 0.6in 0.75in; }
+    .pitch { background: white; color: var(--ink); border-top-color: var(--red); border-bottom-color: var(--red); box-shadow: none; page-break-inside: avoid; }
+    .pitch p { color: var(--ink); }
+    .pitch strong { color: var(--ink); }
+    .pitch .url { color: var(--red-dark); border-color: var(--red-dark); }
+    .pitch::before { background: white; }
+    .qa { page-break-inside: avoid; }
+    .end-note { box-shadow: none; page-break-inside: avoid; }
+    a[href]::after { content: ""; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span><a href="/toolkit/">← Back to toolkit</a> &nbsp;·&nbsp; <a href="/">openseatsmcpasd.org</a></span>
+  <a class="print-btn" href="#" onclick="window.print(); return false;">Print or save as PDF</a>
+</div>
+
+<div class="container">
+
+  <header class="masthead">
+    <div class="eb">Open Seats MCPASD · 2026</div>
+    <h1>Frequently asked <em>questions.</em></h1>
+    <div class="sub">A petition to open 4 of 9 MCPASD school board seats to any district resident. Same board size. Voters still decide.</div>
+  </header>
+
+  <div class="pitch">
+    <p>Every one of MCPASD's 9 school board seats is locked to a specific Area — you have to <em>live in that Area</em> to run for that seat. It's a structure from the 1990s, when neighborhoods felt more distinct.</p>
+    <p>Today we're the <strong>only large school district in Wisconsin</strong> still doing it this way. A parent petition would open <strong>4 of the 9 seats</strong> to any qualified district resident. The board stays the same size. Voters still pick every seat — we're just widening who's allowed on the ballot.</p>
+    <p>With a referendum coming and big budget decisions ahead, the district needs the <em>deepest possible bench</em>. Sign by <strong>Aug 23</strong> — the vote happens at the MCPASD Annual Meeting on <strong>Sept 22</strong>.</p>
+    <a href="https://openseatsmcpasd.org" class="url">openseatsmcpasd.org</a>
+  </div>
+
+  <!-- ─── About the proposal ─────────────────────────────── -->
+  <span class="section-label">About the proposal</span>
+
+  <div class="qa">
+    <div class="q">What exactly does the petition do?</div>
+    <div class="a">
+      <p>It opens <strong>4 of MCPASD's 9 school board seats</strong> to any qualified district resident, while keeping <strong>5 tied to geographic Areas</strong> — one anchor seat per Area. The board size stays at 9. Voters still elect every single seat. The change phases in gradually as current terms naturally expire, starting with the April 2027 election.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">When would I actually see different kinds of candidates on the ballot?</div>
+    <div class="a">
+      <p><strong>April 2027</strong> is the first cycle: two Area seats up for re-election convert to open. A few neighbors who couldn't have run before will be eligible for the first time.</p>
+      <p><strong>April 2028</strong>: a third seat converts. <strong>April 2030</strong>: the fourth and final one converts, completing the transition. By the 2030 election, you'd be voting for 4 board members district-wide plus 1 from your own Area anchor.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">More candidates — why is that good?</div>
+    <div class="a">
+      <p>More candidates means voters have a real choice instead of just rubber-stamping the only name on the ballot. It means qualified people who happen to live in the wrong cul-de-sac can step up when their community needs them. It means the district can draw from the deepest possible bench when big decisions arrive — referendums, contracts, growth planning. <em>More candidates is good for everyone</em>, including current board members who deserve thoughtful colleagues alongside them.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Why hasn't this been changed before?</div>
+    <div class="a">
+      <p>It's never been put to a vote. Under Wisconsin school law (Wis. Stat. § 120.02(2)(a)) the <em>only</em> way to change a common school district's apportionment is a citizen petition signed by at least 500 qualified electors, followed by a vote at the district Annual Meeting. No school board, no superintendent, no PAC, no outside group can do it. The structure has been in place since at least the 1990s simply because no one had organized a petition until now.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Why now?</div>
+    <div class="a">
+      <p>The district is growing — we've added thousands of students since the current structure was set. Bigger decisions are ahead: a likely referendum, ongoing budget pressure under state revenue caps, continued growth planning, superintendent reviews. It's important work, and we want the broadest possible community of capable people available to take it on.</p>
+      <p>We're also the outlier. Every other large school district in Wisconsin — Verona, Madison, Sun Prairie, Appleton, Oregon, Waukesha, Kenosha — has moved to hybrid or fully at-large representation. Catching up is overdue.</p>
+    </div>
+  </div>
+
+  <!-- ─── Common concerns ────────────────────────────────── -->
+  <span class="section-label">Common concerns</span>
+
+  <div class="qa">
+    <div class="q">Will my Area lose its voice on the board?</div>
+    <div class="a">
+      <p>No. Every Area keeps a <strong>permanent anchor seat</strong>. Today some Areas have multiple seats (Area IV has 4) and others have just one; the petition makes geographic representation equal — one anchor per Area, plus four seats elected by the district as a whole. Each Area's interests are still represented, and now the district as a whole has more ways to elect members focused on district-wide issues.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Will any current board member be forced out?</div>
+    <div class="a">
+      <p>No. Every current member finishes their full term. Conversion happens only at each seat's natural re-election point. Current members are free to run for either an Area anchor seat or one of the new open seats — their path forward stays intact. Their supporters get more ways to back them, not fewer.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Is this partisan? Who's funding it?</div>
+    <div class="a">
+      <p>Neither partisan nor funded. No PAC, no political party, no outside organization. Parents pay for printing and the domain themselves. Any contribution will be disclosed publicly. The proposal is about democratic structure — not policy direction or candidate preference. Current board members of any political background can still run, and so can their challengers.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Will this cost the district anything?</div>
+    <div class="a">
+      <p>No. The board stays at 9 seats. Same number of elections, same election costs, same governance structure. The change is to <em>who can run</em>, not how many seats exist or what they do.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Is this even legal?</div>
+    <div class="a">
+      <p>Yes. Wisconsin Statute § 120.02(2)(a) explicitly authorizes apportionment changes for common school districts via citizen petition + Annual Meeting vote. The 500-signature threshold applies because MCPASD contains territory in Madison (a second-class city). The petition is counsel-reviewed.</p>
+    </div>
+  </div>
+
+  <!-- ─── Areas + identity ────────────────────────────────── -->
+  <span class="section-label">About Areas + representation</span>
+
+  <div class="qa">
+    <div class="q">I don't know what Area I live in.</div>
+    <div class="a">
+      <p>You're not alone — most parents don't know off the top of their heads. MCPASD has a school-boundary lookup on their website if you want to find out.</p>
+      <p>But honestly: <em>the fact that this isn't common knowledge is part of the point.</em> The Area lines were drawn decades ago, when neighborhoods felt geographically distinct. Today, with families moving more often, new subdivisions cutting across old boundaries, and most decisions affecting the whole district, the Area you happen to live in shouldn't determine whether your qualified neighbor can serve on the board.</p>
+      <p>The whole purpose of this petition is to make that information matter less — to remove an artificial restriction that nobody is actively defending. You shouldn't need to know your Area to know who you want representing your kids' schools.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Why do you care about the school board?</div>
+    <div class="a">
+      <p>Honestly — because the work is important, and it's hard. The board picks the superintendent (the person who actually runs the district), approves the budget, decides whether to put a referendum on the ballot, sets long-term direction, and represents families to the administration.</p>
+      <p>The district is going through real challenges — growth, state revenue caps, a likely upcoming referendum, contract cycles. That's a lot to ask of nine volunteers. The deeper the bench of capable, willing people available to step up, the better we govern our schools. Every parent has a stake in that.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Is this about a specific board member or specific policy?</div>
+    <div class="a">
+      <p>No. It's a structural reform — how we choose people, not who. It doesn't target any current member or push any particular policy agenda. Current board members work hard at difficult work and deserve our gratitude. This is about making sure the next great trustee can come from anywhere in our district, not just specific blocks.</p>
+    </div>
+  </div>
+
+  <!-- ─── How to participate ──────────────────────────────── -->
+  <span class="section-label">How to participate</span>
+
+  <div class="qa">
+    <div class="q">How do I sign?</div>
+    <div class="a">
+      <p>Wisconsin law requires a <strong>pen-and-paper signature on an official sheet</strong> with a circulator's certification (Wis. Stat. § 8.40). There is no legal online signature. Three steps:</p>
+      <p>1. Download the petition sheet from <a href="https://openseatsmcpasd.org">openseatsmcpasd.org</a><br>
+      2. Print, sign with a pen — you can have up to six neighbors sign the same sheet<br>
+      3. Mail or drop it off to <strong>3795 Swoboda Road, Verona, WI</strong></p>
+      <p>Sign by Aug 23 so the petition can be filed in time.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Who can sign?</div>
+    <div class="a">
+      <p>Anyone who lives inside MCPASD, is at least 18 years old, and is a registered voter. One signature per resident. You don't need to have kids in the district. If you live here and you vote here, you can sign.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">Wait — the vote is at a meeting, not on a regular ballot?</div>
+    <div class="a">
+      <p>Correct. MCPASD is a "common school district," and under § 120.02(2)(a) apportionment changes are decided at the district's <strong>Annual Meeting</strong>. Only electors physically present can vote.</p>
+      <p>The meeting is <strong>Tuesday, Sept 22, 2026 at 7:00 PM</strong> at the District Services Center, 7106 South Avenue, Middleton. About 30 people came in 2025. We need hundreds. Bring photo ID; plan on roughly 30 minutes.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">What if we don't get 500 signatures by Aug 23?</div>
+    <div class="a">
+      <p>The petition fails for this cycle and the structure stays as-is for another year. The earliest we could try again is next year's Annual Meeting. Every cycle we wait is another year of seats locked to addresses, qualified neighbors locked out, and uncontested races as the default. That's why we're aiming for <strong>550</strong> — to give ourselves a cushion against any signatures that get challenged.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">I don't live in MCPASD — how can I help?</div>
+    <div class="a">
+      <p>You can't sign, but you can:</p>
+      <p>• Share the petition with friends, family, and coworkers who do live in the district<br>
+      • Post about it on social media (the toolkit has copy ready to paste)<br>
+      • Volunteer to help with logistics, press, design, or event hosting<br>
+      • Print the flyer and put it on a community board you visit</p>
+      <p>It all starts at <a href="https://openseatsmcpasd.org">openseatsmcpasd.org</a>.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q">How do I help beyond just signing?</div>
+    <div class="a">
+      <p>Several ways, all on <a href="https://openseatsmcpasd.org">openseatsmcpasd.org</a>:</p>
+      <p>• <strong>Become a circulator</strong> — collect signatures from your own neighbors. Quick training; we hand you a packet of sheets.<br>
+      • <strong>Suggest an event</strong> — tell us where to bring sheets (coffee shop, soccer field, block party).<br>
+      • <strong>Spread the word</strong> — the toolkit has business cards, flyers, door hangers, a tabletop placard, a circulator cheat sheet, and copy-paste social media posts.<br>
+      • <strong>Show up Sept 22</strong> — only people in the room can vote. This is where the petition lives or dies.</p>
+    </div>
+  </div>
+
+  <div class="end-note">
+    <h2>Sign by Aug 23. <em>Show up Sept 22.</em></h2>
+    <p>Two dates. That's the whole campaign. Download the sheet, sign it with a pen, mail it to 3795 Swoboda Road, Verona, WI. Then mark your calendar for the Annual Meeting on Tuesday, September 22 at 7 PM.</p>
+    <div class="url-block"><a href="https://openseatsmcpasd.org">openseatsmcpasd.org</a></div>
+    <div class="small">Questions? <a href="mailto:chase.chasephillips@gmail.com">chase.chasephillips@gmail.com</a>. Not affiliated with MCPASD, any party, or any PAC. Petition authorized under Wis. Stat. § 120.02(2)(a). Counsel-reviewed.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

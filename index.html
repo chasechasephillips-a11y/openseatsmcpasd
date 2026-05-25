@@ -645,6 +645,81 @@
   .matters-quote p { margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.6; }
   .matters-quote strong { color: var(--red-dark); font-weight: 700; }
 
+  /* ─── FAQ elevator-pitch callout ───────────────────────────────── */
+  .faq-pitch {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 30px 34px;
+    border-top: 5px solid var(--red);
+    border-bottom: 5px solid var(--red);
+    box-shadow: 6px 6px 0 var(--rule-deep);
+    position: relative;
+  }
+  .faq-pitch::before {
+    content: "❖ ELEVATOR PITCH ❖";
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper-deep);
+    color: var(--red-dark);
+    padding: 0 14px;
+    font-family: var(--body);
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.36em;
+  }
+  .faq-pitch p {
+    font-family: var(--display);
+    font-size: clamp(17px, 1.9vw, 21px);
+    line-height: 1.45;
+    color: var(--paper);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+  .faq-pitch p + p { margin-top: 12px; }
+  .faq-pitch strong { color: var(--paper); font-weight: 700; }
+  .faq-pitch em { font-family: var(--italic); color: var(--red-bright); font-style: italic; }
+  .faq-pitch strong em { color: var(--red-bright); }
+
+  /* ─── FAQ accordion ────────────────────────────────────────────── */
+  #faq details {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--red);
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 0 var(--rule);
+  }
+  #faq details[open] { box-shadow: 3px 3px 0 var(--rule-deep); }
+  #faq summary {
+    padding: 16px 22px;
+    font-family: var(--display);
+    font-size: 18px; font-weight: 700;
+    color: var(--ink);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    line-height: 1.3;
+  }
+  #faq summary::-webkit-details-marker { display: none; }
+  #faq summary::after {
+    content: "+";
+    position: absolute;
+    right: 22px; top: 14px;
+    font-family: var(--display);
+    font-size: 24px; font-weight: 700;
+    color: var(--red);
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  #faq details[open] summary::after { transform: rotate(45deg); }
+  #faq summary:hover { color: var(--red-dark); }
+  #faq details > p {
+    padding: 0 22px 18px;
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  #faq details > p + p { padding-top: 0; }
+
   /* ─── Per-Area public gauge ────────────────────────────────────── */
   .area-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 24px; }
   @media (max-width: 880px) { .area-grid { grid-template-columns: 1fr 1fr; gap: 12px; } }
@@ -1844,42 +1919,62 @@
 <section class="tinted" id="faq">
   <div class="container">
     <div class="reveal">
-      <span class="section-eyebrow">FAQ</span>
-      <h2>Frequently asked <em>questions</em></h2>
+      <span class="section-eyebrow">FAQ &amp; elevator pitch</span>
+      <h2>The whole case, in <em>30 seconds</em>.</h2>
     </div>
-    <div style="margin-top: 28px;" class="reveal">
+
+    <div class="reveal faq-pitch" style="margin-top: 28px;">
+      <p>Every one of MCPASD's 9 school board seats is locked to a specific Area — you have to <em>live in that Area</em> to run for that seat. It's a structure from the 1990s, when neighborhoods felt more distinct. Today we're the only large school district in Wisconsin still doing it this way.</p>
+      <p>A parent petition would open <strong>4 of the 9 seats</strong> to any qualified district resident. The board stays the same size. <strong>Voters still pick every seat</strong> — we're just widening who's allowed on the ballot. With a referendum coming and big budget decisions ahead, we need the deepest possible bench.</p>
+      <p style="margin-top: 14px; font-family: var(--display); font-size: 17px; color: var(--ink);"><strong>Sign by Aug 23 → openseatsmcpasd.org · Vote at the Annual Meeting Sept 22.</strong></p>
+    </div>
+
+    <div style="margin-top: 44px;" class="reveal">
       <details open>
-        <summary>Does this add seats to the board?</summary>
-        <p>No. The board has 9 seats today and will still have 9. The petition changes how the seats are <em>allocated</em> — keeping 5 tied to geographic Areas and converting 4 into open at-large seats any district resident can run for.</p>
+        <summary>What exactly does the petition do?</summary>
+        <p>It opens <strong>4 of the 9 seats</strong> to any qualified MCPASD resident, while keeping 5 tied to geographic Areas — one anchor seat per Area. Board size stays at 9. Voters still elect every seat. The change phases in as current terms naturally expire, starting April 2027.</p>
       </details>
       <details>
-        <summary>Why open the seats — what's wrong with all-geographic?</summary>
-        <p>When every seat is locked to an Area, most residents can't run in most years. A qualified neighbor whose home is just outside the Area with an open seat is barred from running. The result is too many uncontested elections — in April 2025, all three open seats had only one candidate. Four open seats give voters real choices.</p>
+        <summary>When would I actually see different kinds of candidates on the ballot?</summary>
+        <p><strong>April 2027</strong>: two Area seats convert to open. Some neighbors who couldn't have run will be eligible for the first time.<br><strong>April 2028</strong>: a third converts. <strong>April 2030</strong>: the fourth completes the transition. By the 2030 election you'd be voting for 4 board members district-wide plus 1 from your own Area anchor.</p>
       </details>
       <details>
-        <summary>Wait — the vote is at a meeting, not on a ballot?</summary>
-        <p>Correct. MCPASD is a common school district, and under Wis. Stat. § 120.02(2)(a) apportionment changes are voted on at the district's Annual Meeting. Only electors physically present vote. It's <strong>Tue Sept 22, 2026 at 7:00 PM</strong> at the District Services Center, 7106 South Ave, Middleton.</p>
+        <summary>Why hasn't this been changed before?</summary>
+        <p>It's never been put to a vote. Under Wisconsin school law (Wis. Stat. § 120.02(2)(a)) the <em>only</em> way to change apportionment in a common school district is a citizen petition signed by 500+ electors, followed by a vote at the district Annual Meeting. No board, no superintendent, no PAC can do it. The 1990s structure has held simply because no one had organized a petition until now.</p>
       </details>
       <details>
-        <summary>How many signatures do you need, and why 500?</summary>
-        <p>500 elector signatures, per Wis. Stat. § 120.02(2)(a). The 500 threshold applies because MCPASD contains territory in Madison, a 2nd-class city. The petition must be filed at least 30 days before the Annual Meeting — deadline <strong>Sun Aug 23, 2026</strong>. We aim for 550 to cushion against invalid signatures.</p>
+        <summary>I don't know what Area I live in.</summary>
+        <p>You're not alone — most parents don't know off the top of their heads. MCPASD has a school-boundary lookup on their site if you want to find out.</p>
+        <p style="margin-top: 10px;">But honestly: <em>that's part of the point</em>. The Area lines were drawn decades ago when neighborhoods felt more distinct. Today, with families moving more often and decisions touching the whole district, the Area you happen to live in shouldn't decide whether your qualified neighbor can serve on the board. The whole purpose of this petition is to make that information matter less — to remove an artificial restriction nobody is actively defending.</p>
+      </details>
+      <details>
+        <summary>Why do you care about the school board?</summary>
+        <p>The work is important and it's hard. The board picks the superintendent, approves the budget, decides whether to put a referendum on the ballot, and represents families to the district. With a likely upcoming referendum, state revenue-cap pressure, and ongoing growth, that's a lot to ask of nine volunteers. The deeper the bench of capable people available to step up, the better our schools are governed. Every parent has a stake in that.</p>
+      </details>
+      <details>
+        <summary>Will my Area lose representation?</summary>
+        <p>No. Every Area keeps a permanent anchor seat. Today some Areas have one seat and Area IV has four; the petition makes geographic representation equal (one anchor per Area) and adds four district-wide seats. Each Area's voice is still represented, plus the district as a whole has more ways to elect members focused on district-wide issues.</p>
       </details>
       <details>
         <summary>Does any current board member lose their seat?</summary>
-        <p>No. Conversion happens gradually at each seat's natural re-election point, starting with the Spring 2027 election. Every current member serves out their full term.</p>
-      </details>
-      <details>
-        <summary>Will my Area lose its representation?</summary>
-        <p>No. Every Area keeps one guaranteed geographic seat. Today some Areas have one seat and Area IV has four — the petition makes geographic representation equal (one per Area) and adds four seats open to everyone.</p>
+        <p>No. Every current member finishes their full term. Conversion happens only at each seat's natural re-election point. Current members can run for either an Area anchor seat or an open seat — their path forward stays intact.</p>
       </details>
       <details>
         <summary>Is this partisan? Who funds it?</summary>
-        <p>Neither partisan nor funded. It's a structural governance change — no PAC, no organization, no outside money. Parents fund printing and the domain themselves. Any contribution will be disclosed publicly.</p>
+        <p>Neither. No PAC, no party, no outside organization. Parents fund printing and the domain themselves. Any contribution will be disclosed publicly. The proposal is about democratic structure — not policy direction or candidate preference.</p>
       </details>
       <details>
-        <summary>I don't live in MCPASD — how can I help?</summary>
-        <p>You can't sign, but you can share with friends who do, help with press/social media, or chip in for printing. Use the volunteer form above.</p>
+        <summary>How do I sign?</summary>
+        <p>Download the petition sheet from the <a href="#sign">sign section above</a>, print it, sign with a pen, and mail or drop off at <strong>3795 Swoboda Road, Verona, WI</strong>. Wisconsin law requires a pen-and-paper signature with a circulator's certification — no legal online signature exists. One sheet holds 7 signatures.</p>
       </details>
+      <details>
+        <summary>What if we don't get 500 signatures by Aug 23?</summary>
+        <p>The petition fails for this cycle and the structure stays as-is for another year. Earliest retry is next year's Annual Meeting. Every cycle we wait is another year of locked seats and uncontested races. That's why we aim for <strong>550</strong> — to cushion against any signatures that get challenged.</p>
+      </details>
+    </div>
+
+    <div class="reveal" style="margin-top: 36px; text-align: center;">
+      <a href="/toolkit/faq.html" class="btn btn-outline">Read the full FAQ → printable / shareable</a>
     </div>
   </div>
 </section>
@@ -1917,6 +2012,7 @@
       <div>
         <h4>Spread the word</h4>
         <p><a href="/toolkit/">Campaign toolkit</a></p>
+        <p><a href="/toolkit/faq.html">FAQ + elevator pitch</a></p>
         <p><a href="/toolkit/cards.html">Business cards</a></p>
         <p><a href="/toolkit/flyer.html">Half-sheet flyer</a></p>
         <p><a href="/toolkit/hangers.html">Door hangers</a></p>
