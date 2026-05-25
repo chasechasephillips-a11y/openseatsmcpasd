@@ -5,10 +5,10 @@ export async function onRequestPost(context) {
 
     const name = (d.name || '').toString().trim();
     const email = (d.email || '').toString().trim().toLowerCase();
-    const phone = (d.phone || '').toString().trim();
+    const phone = (d.phone || '').toString().trim();   // optional now
 
-    if (!name || !email || !phone) {
-      return json({ error: 'Missing required fields.' }, 400);
+    if (!name || !email) {
+      return json({ error: 'Name and email are required.' }, 400);
     }
 
     // "how" arrives as a string or an array of checkbox values.
