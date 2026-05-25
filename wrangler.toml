@@ -19,4 +19,4 @@ database_id = "ba9ac70a-3f9a-45ee-b780-3eaa51f6b11f"
 # To update: change this number, then run:
 #   wrangler pages deploy . --project-name=openseatsmcpasd --branch=main
 [vars]
-PAPER_SIGNATURES = "41"
+PAPER_SIGNATURES = "55"
