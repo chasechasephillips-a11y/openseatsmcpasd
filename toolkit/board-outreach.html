@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Templates for emailing the MCPASD school board about the Open Seats petition. One generic version plus two personalization patterns — warm-connection and specific-thanks.">
+<title>Board outreach email templates — Open Seats MCPASD</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5EFE0; --paper-warm: #FBF8EF; --paper-card: #FCF9F0;
+    --ink: #1A1614; --ink-soft: #3D332B; --ink-muted: #6B5B4F;
+    --rule: #C9B8A0; --rule-deep: #9C8B73; --line-soft: #E3D9C3;
+    --red: #9A3B2C; --red-dark: #6F2A1F; --red-bright: #B84D3C;
+    --green: #355E3B; --green-soft: #E2EAE0;
+    --display: 'Old Standard TT', serif;
+    --body: 'Lora', Georgia, serif;
+    --italic: 'IM Fell DW Pica', 'Lora', Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--body); color: var(--ink); line-height: 1.65;
+    background: var(--paper);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--red-dark); }
+  .topbar {
+    border-bottom: 1px solid var(--rule-deep);
+    padding: 16px 28px; background: var(--paper);
+  }
+  .topbar a {
+    font-family: var(--body); font-weight: 600;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--ink-soft);
+  }
+  .topbar a:hover { color: var(--red-dark); }
+  .container { max-width: 920px; margin: 0 auto; padding: 56px 28px 96px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 14px;
+    color: var(--red-dark);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.34em; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: ""; height: 1.5px; width: 32px; background: var(--red);
+    display: inline-block;
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(40px, 5vw, 56px);
+    font-weight: 700; line-height: 1.02;
+    color: var(--ink); letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+  h1 em { font-family: var(--italic); color: var(--red); font-style: italic; }
+  p.lead {
+    font-size: 17.5px; color: var(--ink-soft);
+    max-width: 640px; line-height: 1.55;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 26px; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.01em;
+    margin: 56px 0 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--red);
+  }
+  h2 em { font-family: var(--italic); color: var(--red); font-style: italic; }
+
+  /* ─── Email template card ───────────────────────────────────── */
+  .tmpl {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--red);
+    padding: 28px 30px;
+    box-shadow: 5px 5px 0 var(--rule);
+    margin-bottom: 24px;
+  }
+  .tmpl-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 4px;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .tmpl-name {
+    font-family: var(--display); font-weight: 700;
+    font-size: 22px; color: var(--ink); letter-spacing: -0.005em;
+  }
+  .tmpl-when {
+    font-family: var(--italic); font-style: italic;
+    font-size: 13.5px; color: var(--ink-muted);
+  }
+  .tmpl-desc {
+    font-family: var(--body); font-size: 14.5px;
+    color: var(--ink-soft); line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .field-row {
+    display: grid; grid-template-columns: 88px 1fr;
+    gap: 12px; align-items: baseline;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 540px) { .field-row { grid-template-columns: 1fr; gap: 2px; } }
+  .field-row .lbl {
+    font-family: var(--body); font-size: 10px;
+    font-weight: 700; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--red-dark);
+  }
+  .field-row .val {
+    font-family: var(--body); font-size: 14.5px;
+    color: var(--ink); line-height: 1.45;
+  }
+  .body-block {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    padding: 18px 22px;
+    font-family: var(--body); font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    white-space: pre-wrap;
+    margin: 8px 0 14px;
+  }
+  .body-block strong { font-weight: 700; }
+  .body-block em { font-style: italic; color: var(--ink); }
+  .actions {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .btn {
+    background: var(--red); color: var(--paper);
+    border: 1px solid var(--red-dark);
+    padding: 10px 20px;
+    font-family: var(--body); font-weight: 700;
+    font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer; text-decoration: none;
+    transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
+  }
+  .btn:hover { background: var(--red-bright); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  .btn.copied { background: var(--green); border-color: var(--green); }
+  .btn-ghost {
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--rule-deep);
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); box-shadow: 4px 4px 0 var(--rule-deep); }
+
+  .hint {
+    background: var(--green-soft);
+    border-left: 4px solid var(--green);
+    padding: 18px 22px;
+    margin: 28px 0 16px;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .hint strong { color: var(--green); font-weight: 700; }
+
+  .tips {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    padding: 26px 30px;
+    box-shadow: 4px 4px 0 var(--rule);
+    margin-top: 32px;
+  }
+  .tips h3 {
+    font-family: var(--display); font-size: 18px; font-weight: 700;
+    margin-bottom: 14px; color: var(--ink);
+  }
+  .tips ul { list-style: none; padding: 0; }
+  .tips li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+  .tips li:last-child { border-bottom: none; }
+  .tips li::before {
+    content: "❖"; position: absolute;
+    left: 4px; top: 8px;
+    color: var(--red);
+  }
+  .tips li strong { color: var(--ink); }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink); color: var(--paper);
+    padding: 14px 22px;
+    font-family: var(--body); font-weight: 700;
+    font-size: 12px; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 var(--red);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/toolkit/">← Toolkit</a> &nbsp;·&nbsp; <a href="/">openseatsmcpasd.org</a>
+</div>
+
+<div class="container">
+  <span class="eyebrow">Board outreach</span>
+  <h1>Email the <em>board</em>, with respect.</h1>
+  <p class="lead">A direct, transparent email to the MCPASD board is one of the single highest-leverage moves you can make. It defangs the "this is being done behind their back" attack, models the additive tone of the whole campaign, and gives current members a chance to ask questions before September 22. Below are three patterns — pick the one that fits your relationship to each member.</p>
+
+  <div class="hint">
+    <strong>Send all 9 board members in one email</strong> (everyone on the To: line, in alphabetical order). Don't BCC. Don't send 9 separate emails — that reads like a campaign mailer, not a constituent letter. The exception is when you have a real personal connection to one or two members; in that case, send them their own personalized version separately on the same day.
+  </div>
+
+  <!-- ─── Template 1: Generic ───────────────────────────────── -->
+  <h2>1 &middot; The default template</h2>
+  <p style="font-size: 15.5px; color: var(--ink-soft); max-width: 640px; margin-bottom: 18px; line-height: 1.55;">Use this as the base for any board member you don't have a specific personal connection to. Replace the bracketed bits.</p>
+
+  <div class="tmpl">
+    <div class="tmpl-head">
+      <div class="tmpl-name">Default · all-board version</div>
+      <div class="tmpl-when">For: any member · Send to all 9 in one email</div>
+    </div>
+    <div class="tmpl-desc">Friendly, transparent, structural-not-political. Acknowledges the work the board does up front.</div>
+
+    <div class="field-row">
+      <div class="lbl">To</div>
+      <div class="val" id="t1-to">[All 9 board members, alphabetical by last name]</div>
+    </div>
+    <div class="field-row">
+      <div class="lbl">Subject</div>
+      <div class="val" id="t1-subj">Citizen petition on board apportionment — wanted to reach out directly</div>
+    </div>
+    <div class="body-block" id="t1-body">Dear Members of the MCPASD Board,
+
+I'm Elizabeth Chase Olson, a parent in the district. I'm writing to let you know about a citizen petition I'm circulating, and to invite any questions before it reaches the September 22 Annual Meeting.
+
+The petition would convert 4 of our 9 board seats from area-restricted to open, while keeping 5 anchor seats — one per Area, guaranteed. The board stays at 9. Voters still elect every member. Any current member can still run for either an Area anchor seat or an open seat as terms expire, starting April 2027. No incumbent is removed; conversion happens only at each seat's natural term end.
+
+I want to be direct about two things up front.
+
+First, this is not a critique of the work this board does. Balancing the budget under state revenue caps, planning the next referendum, supporting teachers, hiring and reviewing the superintendent — that work is hard and often thankless, and I'm grateful for the hours each of you puts in. Whatever the outcome of this petition, I plan to vote for the next referendum and stand with you on the other big asks ahead.
+
+Second, this is a structural reform, not a political one. MCPASD has had the same area-restricted apportionment since the district was formed in 1963. In the 60+ years since, every other large Wisconsin district — Verona right next door, plus Elmbrook, Madison, Sun Prairie, Stevens Point, Eau Claire, Appleton, Waukesha, and Kenosha — has evolved to a hybrid or fully at-large model. Six consecutive spring primaries (2021–2026) have been cancelled for lack of opposition in MCPASD. I personally know capable neighbors who would have run had they been eligible. Opening four seats district-wide lets more qualified residents serve alongside the current board, and gives voters real choices on more ballots.
+
+Everything about the proposal — the phased timeline, the legal basis (Wis. Stat. § 120.02(2)(a)), the comparison to peer districts, the full FAQ — is at openseatsmcpasd.org. The one-page handout is linked on the homepage.
+
+I'd genuinely welcome a conversation about any aspect of this. If there's a concern I haven't thought through, or a question about how the rollout would interact with a current commitment of the board, I'd rather hear it now than learn about it on September 22. I can meet in person, by phone, by email — whatever works for you, and individually or as a group.
+
+Thank you for your time, and for the work you do.
+
+— Elizabeth Chase Olson
+   chase.chasephillips@gmail.com
+   3795 Swoboda Road, Verona, WI
+   openseatsmcpasd.org</div>
+
+    <div class="actions">
+      <button class="btn" data-copy="t1-body">Copy email body</button>
+      <button class="btn btn-ghost" data-copy="t1-subj">Copy subject</button>
+    </div>
+  </div>
+
+  <!-- ─── Template 2: Warm personal connection ────────────── -->
+  <h2>2 &middot; When you have a <em>personal connection</em></h2>
+  <p style="font-size: 15.5px; color: var(--ink-soft); max-width: 640px; margin-bottom: 18px; line-height: 1.55;">Use this when you know the recipient outside the school-board context — from the barn, the sideline, your kids' friendship, a shared community. Open warmly with the human stuff, then keep the petition section separate so it doesn't feel transactional. Below is the version going to <strong>Katie Frank</strong> as an example — adapt the opening for your own connection.</p>
+
+  <div class="tmpl">
+    <div class="tmpl-head">
+      <div class="tmpl-name">Personalized · Katie Frank (Area IV)</div>
+      <div class="tmpl-when">Sent separately from the all-board email · same day</div>
+    </div>
+    <div class="tmpl-desc">Opens with personal warmth (acknowledging her health journey + shared barn / lacrosse connection) before any campaign content. Keep these two parts visibly separate so the warmth doesn't feel like a setup.</div>
+
+    <div class="field-row">
+      <div class="lbl">To</div>
+      <div class="val" id="t2-to">[Katie Frank's email]</div>
+    </div>
+    <div class="field-row">
+      <div class="lbl">Subject</div>
+      <div class="val" id="t2-subj">Thinking of you — and a heads-up on something I'm working on</div>
+    </div>
+    <div class="body-block" id="t2-body">Katie,
+
+This first part is just me writing to you — not the petition stuff. I saw your post on Facebook and I've been thinking about you and your family. Breast cancer is brutal, and the road through it and out the other side is its own kind of hard. Sending you strength, and please know our whole crew is rooting for you. If there's anything I can do — a meal, a ride to or from anything, kids' pickup, a quiet ear — please let me know. I mean that.
+
+I'll see you when lacrosse picks back up. Hope your kid is having a good season.
+
+— — — — —
+
+Separately, and only because I'd rather you hear this from me than anywhere else: I'm circulating a citizen petition to change MCPASD's board apportionment, and it'll come up at the September 22 Annual Meeting. I'm sending the full overview to the whole board today as a group — you'll see it in your inbox. I'm sharing it with you here too so it doesn't feel like you got it second-hand.
+
+The short version: convert 4 of our 9 board seats from area-restricted to open while keeping 5 anchor seats (one per Area). The board stays at 9. Voters still elect everyone. Current members can run for either an Area anchor seat or an open seat as terms expire, starting April 2027 — no one is removed. The full case is at openseatsmcpasd.org.
+
+Take all the time you need — there is zero pressure to respond on this while you're focused on what matters. If at some point you have a question or want to talk through any piece of it, you have my number from the barn or you can email me back here. If not, I'll just see you out there.
+
+With love and respect,
+
+— Elizabeth Chase Olson
+   chase.chasephillips@gmail.com</div>
+
+    <div class="actions">
+      <button class="btn" data-copy="t2-body">Copy email body</button>
+      <button class="btn btn-ghost" data-copy="t2-subj">Copy subject</button>
+    </div>
+  </div>
+
+  <!-- ─── Template 3: Specific thanks ─────────────────────── -->
+  <h2>3 &middot; When you can thank them for <em>specific work</em></h2>
+  <p style="font-size: 15.5px; color: var(--ink-soft); max-width: 640px; margin-bottom: 18px; line-height: 1.55;">Use this when you have a real, specific reason to be grateful to the recipient — they pushed for something you cared about, voted the right way on something, showed up for a constituent issue. Lead with the gratitude in concrete terms. Below is the version going to <strong>Emily Evans</strong> as an example — thanks for her advocacy on advanced learning.</p>
+
+  <div class="tmpl">
+    <div class="tmpl-head">
+      <div class="tmpl-name">Personalized · Emily Evans (Area I)</div>
+      <div class="tmpl-when">Sent separately from the all-board email · same day</div>
+    </div>
+    <div class="tmpl-desc">Opens with genuine gratitude for her advanced-learning advocacy, then transitions to the petition info. The thanks is sincere on its own and shouldn't read as a setup for the ask.</div>
+
+    <div class="field-row">
+      <div class="lbl">To</div>
+      <div class="val" id="t3-to">[Emily Evans's email]</div>
+    </div>
+    <div class="field-row">
+      <div class="lbl">Subject</div>
+      <div class="val" id="t3-subj">Thank you — and a heads-up on something coming to the Annual Meeting</div>
+    </div>
+    <div class="body-block" id="t3-body">Emily,
+
+Before I get to the reason I'm writing — I want to thank you for the advocacy you've done on advanced learning. As a parent who's been engaged with that issue from the parent side, your willingness to take it seriously, push the district on it, and not let it sit on a back burner has made a real difference. That kind of work often happens in committee meetings nobody's watching, and it's easy to assume it goes unnoticed. It doesn't. I see it, and I'm grateful.
+
+Now the heads-up: I'm circulating a citizen petition to change MCPASD's board apportionment, and it'll come up at the September 22 Annual Meeting. I'm sending the full overview to the whole board today as a group — you'll see it. I just wanted to make sure you also got a note from me directly.
+
+The short version: convert 4 of our 9 board seats from area-restricted to open while keeping 5 anchor seats (one per Area). Board stays at 9. Voters still elect everyone. Current members can run for either an Area anchor seat or an open seat as terms expire. Full case + handout at openseatsmcpasd.org.
+
+I'd genuinely welcome a conversation about it — and selfishly I'd love your read on whether the proposal would make it easier or harder for the district to recruit candidates who care about advanced learning specifically. My intuition is that a wider candidate pool helps issue-area champions, but you've seen the recruiting dynamics up close in a way I haven't. Coffee, phone, email — whatever works.
+
+Thanks again for what you do.
+
+— Elizabeth Chase Olson
+   chase.chasephillips@gmail.com
+   3795 Swoboda Road, Verona, WI</div>
+
+    <div class="actions">
+      <button class="btn" data-copy="t3-body">Copy email body</button>
+      <button class="btn btn-ghost" data-copy="t3-subj">Copy subject</button>
+    </div>
+  </div>
+
+  <!-- ─── Tips ────────────────────────────────────────────── -->
+  <div class="tips">
+    <h3>Before you hit send</h3>
+    <ul>
+      <li><strong>Send Tuesday–Thursday morning.</strong> Avoid Friday (sits over the weekend), avoid Monday morning (inbox-zero refresh, less attention). Mid-morning is read; mid-afternoon is skimmed.</li>
+      <li><strong>Use your personal email,</strong> not anything that looks like an org. You're a constituent, not a PR shop.</li>
+      <li><strong>If you have personal connections to specific members,</strong> send them their own personalized email separately the same day, in addition to the all-board email. They'll be on the To: line of the group email too — that's fine and expected.</li>
+      <li><strong>Don't follow up if no one responds.</strong> If you don't hear back in 2 weeks, the right move is silence. They got the email. Following up reads as pressuring.</li>
+      <li><strong>If someone responds with concerns,</strong> answer substantively in writing first, then offer a 20-min call. Keep the paper trail — it may matter publicly later.</li>
+      <li><strong>If someone responds with support</strong> (even quiet), ask if they'd be OK being quoted generally that "they appreciate the respectful outreach." Don't push for an endorsement. Even neutrality is helpful.</li>
+      <li><strong>Save your sent emails.</strong> If anyone ever claims this was done sneakily, your "I emailed all of you on [date]" with the To: line preserves the record.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+  document.querySelectorAll('.btn[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-copy');
+      var el = document.getElementById(id);
+      var text = el.innerText;
+      navigator.clipboard.writeText(text).then(function () {
+        var original = btn.textContent;
+        btn.classList.add('copied');
+        btn.textContent = 'Copied ✓';
+        var t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(function () {
+          btn.classList.remove('copied');
+          btn.textContent = original;
+          t.classList.remove('show');
+        }, 2000);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
