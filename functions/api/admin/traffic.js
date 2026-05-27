@@ -69,6 +69,23 @@ export async function onRequestGet(context) {
         LIMIT 10`
     ).bind(days).all();
 
+    // Today, hour-by-hour (UTC). Pads missing hours to 0 in the UI.
+    const byHour = await db.prepare(
+      `SELECT strftime('%H', ts) AS hour, COUNT(*) AS views, COUNT(DISTINCT ip_hash) AS uniques
+         FROM pageviews
+        WHERE ts >= datetime('now','start of day')
+        GROUP BY hour
+        ORDER BY hour`
+    ).all();
+
+    // Most recent 25 visits — for the live feed
+    const recent = await db.prepare(
+      `SELECT ts, path, country, referrer
+         FROM pageviews
+        ORDER BY ts DESC
+        LIMIT 25`
+    ).all();
+
     return json({
       ok: true,
       window_days: days,
@@ -77,7 +94,9 @@ export async function onRequestGet(context) {
       by_path: byPath.results || [],
       by_day: byDay.results || [],
       by_referrer: byReferrer.results || [],
-      by_country: byCountry.results || []
+      by_country: byCountry.results || [],
+      by_hour: byHour.results || [],
+      recent: recent.results || []
     });
   } catch (err) {
     return json({ error: 'Server error: ' + err.message }, 500);

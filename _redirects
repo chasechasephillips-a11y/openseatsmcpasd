@@ -1,0 +1,8 @@
+# Short-URL redirects (Cloudflare Pages, Netlify-style).
+# Friendly shortcuts you can text or write on a business card.
+
+/faq        /toolkit/faq.html        301
+/share      /toolkit/share.html      301
+/print      /toolkit/                301
+/sign       /#sign                   302
+/explain    /toolkit/faq.html        301

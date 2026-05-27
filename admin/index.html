@@ -345,6 +345,78 @@
     margin-bottom: 10px; padding-bottom: 6px;
     border-bottom: 1px solid var(--rule);
   }
+
+  /* Hourly bar chart for today */
+  .hour-grid {
+    display: grid; grid-template-columns: repeat(24, 1fr);
+    gap: 2px; align-items: end;
+    height: 96px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 8px;
+  }
+  .hour-grid .h-col {
+    background: var(--paper-deep);
+    position: relative;
+    min-height: 4px;
+    border-bottom: 2px solid transparent;
+    transition: background 0.15s;
+  }
+  .hour-grid .h-col.has { background: var(--red); }
+  .hour-grid .h-col.has:hover { background: var(--red-bright); }
+  .hour-grid .h-col .tip {
+    position: absolute; bottom: 100%; left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink); color: var(--paper);
+    font-family: var(--body); font-size: 10px;
+    font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 3px 6px; white-space: nowrap;
+    margin-bottom: 4px;
+    display: none; pointer-events: none;
+    z-index: 5;
+  }
+  .hour-grid .h-col:hover .tip { display: block; }
+  .hour-axis {
+    display: grid; grid-template-columns: repeat(24, 1fr);
+    gap: 2px; padding: 0 8px;
+    font-family: var(--body); font-size: 9px;
+    color: var(--ink-muted); margin-top: 4px;
+  }
+  .hour-axis span { text-align: center; }
+
+  /* Recent visits feed */
+  .recent-feed {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    max-height: 320px; overflow-y: auto;
+    font-family: var(--body); font-size: 13px;
+  }
+  .recent-feed .v {
+    display: grid;
+    grid-template-columns: 120px 1fr 36px;
+    gap: 12px;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: baseline;
+  }
+  .recent-feed .v:last-child { border-bottom: none; }
+  .recent-feed .v.bot { background: rgba(154, 59, 44, 0.04); color: var(--ink-muted); }
+  .recent-feed .v .t {
+    font-family: 'Courier New', monospace; font-size: 11.5px;
+    color: var(--ink-muted);
+  }
+  .recent-feed .v .p {
+    font-family: var(--display); font-weight: 700;
+    color: var(--ink); font-size: 13.5px;
+    word-break: break-all;
+  }
+  .recent-feed .v.bot .p { color: var(--ink-muted); font-weight: 400; }
+  .recent-feed .v.bot .p::after { content: " · bot"; font-family: var(--italic); font-style: italic; color: var(--red-dark); font-size: 11px; font-weight: 400; }
+  .recent-feed .v .c {
+    font-family: var(--body); font-weight: 700;
+    font-size: 10.5px; letter-spacing: 0.16em;
+    color: var(--ink-muted); text-align: right;
+  }
   .mini-tbl {
     width: 100%; border-collapse: collapse;
     font-family: var(--body); font-size: 12.5px;
@@ -518,6 +590,12 @@
         <table class="mini-tbl"><tbody id="t-countries"></tbody></table>
       </div>
     </div>
+
+    <h4 style="font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--ink); margin: 22px 0 8px;">Today · hour by hour <span style="font-family: var(--italic); font-weight: 400; color: var(--ink-muted); font-style: italic; font-size: 12.5px;">(UTC, all 24 hours · bars are real visits)</span></h4>
+    <div class="hour-grid" id="t-hours"></div>
+
+    <h4 style="font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--ink); margin: 22px 0 8px;">Latest 25 visits <span style="font-family: var(--italic); font-weight: 400; color: var(--ink-muted); font-style: italic; font-size: 12.5px;">(includes bots — useful for spotting probes)</span></h4>
+    <div class="recent-feed" id="t-recent"></div>
   </div>
 
   <div class="panel">
@@ -712,6 +790,44 @@
         : cc.map(function (r) {
             return '<tr><td class="path">' + esc(r.country) + '</td>' +
                    '<td class="n">' + fmtN(r.c) + '</td></tr>';
+          }).join('');
+
+      // ─── Today, hour-by-hour ───
+      var hoursMap = {};
+      (d.by_hour || []).forEach(function (r) { hoursMap[r.hour] = r; });
+      var hoursMax = Math.max(1, Math.max.apply(null, (d.by_hour || []).map(function (r) { return r.views; }).concat([0])));
+      var hoursEl = document.getElementById('t-hours');
+      var hHtml = '';
+      for (var h = 0; h < 24; h++) {
+        var key = String(h).padStart(2, '0');
+        var row = hoursMap[key];
+        var views = row ? row.views : 0;
+        var pct = views ? Math.max(8, Math.round((views / hoursMax) * 100)) : 0;
+        var cls = views > 0 ? ' has' : '';
+        hHtml += '<div class="h-col' + cls + '" style="height:' + pct + '%">';
+        if (views > 0) {
+          hHtml += '<div class="tip">' + key + ':00 UTC · ' + views + ' view' + (views === 1 ? '' : 's') + '</div>';
+        }
+        hHtml += '</div>';
+      }
+      hoursEl.innerHTML = hHtml;
+
+      // ─── Latest visits feed ───
+      var bots = /^(\/cmd_|\/wp-|\/wordpress|\/phpmyadmin|\/\.env|\/xmlrpc|\/server-status|\/aws\.yml|\/config|\/_profiler|\/\.)/i;
+      var recent = d.recent || [];
+      var recEl = document.getElementById('t-recent');
+      recEl.innerHTML = recent.length === 0
+        ? '<div class="v"><span class="p">No visits yet.</span></div>'
+        : recent.map(function (r) {
+            // Convert UTC ts to local time string
+            var t = new Date(r.ts.replace(' ', 'T') + 'Z');
+            var local = t.toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+            var isBot = bots.test(r.path || '');
+            return '<div class="v' + (isBot ? ' bot' : '') + '">' +
+              '<span class="t">' + esc(local) + '</span>' +
+              '<span class="p">' + esc(r.path || '/') + '</span>' +
+              '<span class="c">' + esc(r.country || '—') + '</span>' +
+            '</div>';
           }).join('');
     }).catch(function () {
       document.getElementById('t-paths').innerHTML =
