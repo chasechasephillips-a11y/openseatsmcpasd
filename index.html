@@ -281,6 +281,23 @@
   .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: 2px 2px 0 var(--rule); }
   .btn-arrow { font-size: 14px; }
 
+  /* ─── Hero fast-path (peak-intent download) ───────────────────── */
+  .hero-fastpath {
+    margin-top: 16px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 540px;
+  }
+  .hero-fastpath a {
+    font-weight: 700;
+    color: var(--red-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hero-fastpath a:hover { color: var(--red); }
+  .hero-fastpath strong { color: var(--ink); }
+
   /* ─── Hero stats sidebar ───────────────────────────────────────── */
   .hero-stats {
     background: var(--paper-warm);
@@ -1359,6 +1376,7 @@
           <a href="#sign" class="btn btn-primary">Sign the petition <span class="btn-arrow">→</span></a>
           <a href="#meeting" class="btn btn-outline">Show up Sept 22</a>
         </div>
+        <p class="hero-fastpath">Ready right now? <a href="petition-sheet.pdf" download>Download the official sheet (PDF)</a> — print it, sign with a pen, mail to 3795 Swoboda Rd. <strong>That paper signature is the one that legally counts.</strong></p>
       </div>
 
       <aside class="hero-stats" aria-label="Campaign momentum">
