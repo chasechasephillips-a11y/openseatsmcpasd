@@ -86,6 +86,40 @@ export async function onRequestGet(context) {
         LIMIT 25`
     ).all();
 
+    // ─── Engagement (homepage funnel) ───
+    // Denominator: unique homepage visitors in the window.
+    const homeVisitors = await db.prepare(
+      `SELECT COUNT(DISTINCT ip_hash) AS c
+         FROM pageviews
+        WHERE path = '/' AND ts >= datetime('now','-' || ?1 || ' days')`
+    ).bind(days).first();
+
+    // Scroll depth: unique visitors reaching each milestone.
+    const scroll = await db.prepare(
+      `SELECT label, COUNT(DISTINCT ip_hash) AS uniques
+         FROM events
+        WHERE kind = 'scroll' AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY label`
+    ).bind(days).all();
+
+    // Section reach: unique visitors who saw each conversion-critical section.
+    const sections = await db.prepare(
+      `SELECT label, COUNT(DISTINCT ip_hash) AS uniques
+         FROM events
+        WHERE kind = 'section' AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY label
+        ORDER BY uniques DESC`
+    ).bind(days).all();
+
+    // CTA clicks: total + unique per action.
+    const ctas = await db.prepare(
+      `SELECT label, COUNT(*) AS clicks, COUNT(DISTINCT ip_hash) AS uniques
+         FROM events
+        WHERE kind = 'cta' AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY label
+        ORDER BY clicks DESC`
+    ).bind(days).all();
+
     return json({
       ok: true,
       window_days: days,
@@ -96,7 +130,13 @@ export async function onRequestGet(context) {
       by_referrer: byReferrer.results || [],
       by_country: byCountry.results || [],
       by_hour: byHour.results || [],
-      recent: recent.results || []
+      recent: recent.results || [],
+      engagement: {
+        home_visitors: homeVisitors ? homeVisitors.c : 0,
+        scroll: scroll.results || [],
+        sections: sections.results || [],
+        ctas: ctas.results || []
+      }
     });
   } catch (err) {
     return json({ error: 'Server error: ' + err.message }, 500);

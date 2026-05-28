@@ -468,6 +468,29 @@
     font-size: 10.5px; color: var(--ink-muted);
     padding: 0 2px;
   }
+  /* ─── Funnel (scroll depth) ─── */
+  .funnel { display: flex; flex-direction: column; gap: 7px; }
+  .funnel .step {
+    display: grid; grid-template-columns: 64px 1fr 96px;
+    align-items: center; gap: 12px;
+  }
+  .funnel .step .lab {
+    font-family: var(--display); font-weight: 700;
+    font-size: 14px; color: var(--ink-soft); text-align: right;
+  }
+  .funnel .step .track {
+    height: 22px; background: var(--paper);
+    border: 1px solid var(--rule); position: relative;
+  }
+  .funnel .step .fill {
+    height: 100%; background: var(--red);
+    transition: width 0.5s ease; min-width: 1px;
+  }
+  .funnel .step .fill.deep { background: var(--green); }
+  .funnel .step .val {
+    font-family: var(--body); font-size: 12px; color: var(--ink-soft);
+  }
+  .funnel .step .val strong { font-family: var(--display); font-size: 15px; color: var(--ink); }
 </style>
 <script src="/assets/beacon.js" defer></script>
 </head>
@@ -596,6 +619,27 @@
 
     <h4 style="font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--ink); margin: 22px 0 8px;">Latest 25 visits <span style="font-family: var(--italic); font-weight: 400; color: var(--ink-muted); font-style: italic; font-size: 12.5px;">(includes bots — useful for spotting probes)</span></h4>
     <div class="recent-feed" id="t-recent"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>Homepage funnel</h2>
+      <div class="panel-hint">How far visitors read &amp; whether they try to convert · last <span id="e-window">14</span>d · <span id="e-base">—</span> homepage visitors</div>
+    </div>
+
+    <h4 style="font-family: var(--body); font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px;">Scroll depth — % of visitors who scrolled this far</h4>
+    <div id="e-funnel" class="funnel"></div>
+
+    <div class="traffic-grid" style="margin-top: 22px;">
+      <div>
+        <h4>Reached key section (uniques)</h4>
+        <table class="mini-tbl"><tbody id="e-sections"></tbody></table>
+      </div>
+      <div style="grid-column: span 2;">
+        <h4>CTA clicks (clicks · uniques)</h4>
+        <table class="mini-tbl"><tbody id="e-ctas"></tbody></table>
+      </div>
+    </div>
   </div>
 
   <div class="panel">
@@ -829,10 +873,76 @@
               '<span class="c">' + esc(r.country || '—') + '</span>' +
             '</div>';
           }).join('');
+
+      // ─── Homepage funnel ───
+      renderFunnel(d.engagement || {}, d.window_days || 14);
     }).catch(function () {
       document.getElementById('t-paths').innerHTML =
         '<tr><td colspan="3" class="empty">Traffic endpoint unreachable. Did /api/admin/traffic deploy?</td></tr>';
     });
+  }
+
+  var SECTION_LABELS = {
+    sign: 'Sign form (online)',
+    download: 'Download / print sheet',
+    volunteer: 'Volunteer / circulate',
+    events: 'In-person events',
+    faq: 'FAQ'
+  };
+  var CTA_LABELS = {
+    'click-sign-nav': 'Clicked a "Sign" link',
+    'click-sign-btn': 'Clicked a Sign button',
+    'click-show-up': 'Clicked "Show up Sept 22"',
+    'download-pdf': 'Downloaded a PDF (sheet/handout)',
+    'open-circulators': 'Opened circulator kit',
+    'open-toolkit': 'Opened toolkit',
+    'submit-signForm': 'SUBMITTED online sign form',
+    'submit-volForm': 'SUBMITTED volunteer form',
+    'submit-suggestForm': 'SUBMITTED event suggestion'
+  };
+
+  function renderFunnel(e, win) {
+    document.getElementById('e-window').textContent = win;
+    var base = e.home_visitors || 0;
+    document.getElementById('e-base').textContent = fmtN(base);
+
+    // Scroll depth funnel
+    var sc = {};
+    (e.scroll || []).forEach(function (r) { sc[r.label] = r.uniques; });
+    var marks = ['25', '50', '75', '100'];
+    document.getElementById('e-funnel').innerHTML = marks.map(function (m) {
+      var u = sc[m] || 0;
+      var pct = base ? Math.round((u / base) * 100) : 0;
+      var deep = (m === '75' || m === '100') ? ' deep' : '';
+      return '<div class="step">' +
+        '<div class="lab">' + m + '%</div>' +
+        '<div class="track"><div class="fill' + deep + '" style="width:' + pct + '%"></div></div>' +
+        '<div class="val"><strong>' + pct + '%</strong> · ' + fmtN(u) + ' ppl</div>' +
+      '</div>';
+    }).join('');
+
+    // Sections reached
+    var secEl = document.getElementById('e-sections');
+    var secs = e.sections || [];
+    secEl.innerHTML = secs.length === 0
+      ? '<tr><td colspan="2" class="empty">No section data yet.</td></tr>'
+      : secs.map(function (r) {
+          return '<tr><td class="path">' + esc(SECTION_LABELS[r.label] || r.label) + '</td>' +
+                 '<td class="n">' + fmtN(r.uniques) + '</td></tr>';
+        }).join('');
+
+    // CTA clicks
+    var ctaEl = document.getElementById('e-ctas');
+    var ctas = e.ctas || [];
+    ctaEl.innerHTML = ctas.length === 0
+      ? '<tr><td colspan="3" class="empty">No CTA clicks yet — nobody has tried to convert in this window.</td></tr>'
+      : ctas.map(function (r) {
+          var isConv = (r.label || '').indexOf('submit-') === 0 || r.label === 'download-pdf';
+          return '<tr><td class="path"' + (isConv ? ' style="color: var(--green); font-weight: 700;"' : '') + '>' +
+                   esc(CTA_LABELS[r.label] || r.label) + '</td>' +
+                 '<td class="n">' + fmtN(r.clicks) + '</td>' +
+                 '<td class="u">' + fmtN(r.uniques) + '</td></tr>';
+        }).join('');
   }
 
   function renderRows() {
