@@ -5,17 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Templates for emailing the MCPASD school board about the Open Seats petition. One generic version plus two personalization patterns — warm-connection and specific-thanks.">
 <title>Board outreach email templates — Open Seats MCPASD</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F5EFE0; --paper-warm: #FBF8EF; --paper-card: #FCF9F0;
-    --ink: #1A1614; --ink-soft: #3D332B; --ink-muted: #6B5B4F;
-    --rule: #C9B8A0; --rule-deep: #9C8B73; --line-soft: #E3D9C3;
-    --red: #9A3B2C; --red-dark: #6F2A1F; --red-bright: #B84D3C;
-    --green: #355E3B; --green-soft: #E2EAE0;
+    --paper: #FBF8EF; --paper-warm: #FCF8E8; --paper-card: #FFFBF1;
+    --ink: #14223E; --ink-soft: #2A3756; --ink-muted: #6E4F2F;
+    --rule: #D5C8A9; --rule-deep: #A89572; --line-soft: #E9DDC0;
+    --red: #B98521; --red-dark: #8C6112; --red-bright: #D29D2E;
+    --green: #6B7A4F; --green-soft: #E2E6D4;
     --display: 'Old Standard TT', serif;
     --body: 'Lora', Georgia, serif;
     --italic: 'IM Fell DW Pica', 'Lora', Georgia, serif;
@@ -205,6 +206,18 @@
     z-index: 100;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ─── New logo: Five Anchors, Four Open ─────────────────────── */
+  .mark, .topbar .brand .mark, .footer-brand .mark {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"> <rect width="32" height="32" fill="none"/> <rect x="4" y="4" width="6" height="6" fill="none" stroke="%23FBF8EF" stroke-width="1.4"/> <rect x="13" y="4" width="6" height="6" fill="%23FBF8EF"/> <rect x="22" y="4" width="6" height="6" fill="none" stroke="%23FBF8EF" stroke-width="1.4"/> <rect x="4" y="13" width="6" height="6" fill="%23FBF8EF"/> <rect x="13" y="13" width="6" height="6" fill="%23FBF8EF"/> <rect x="22" y="13" width="6" height="6" fill="%23FBF8EF"/> <rect x="4" y="22" width="6" height="6" fill="none" stroke="%23FBF8EF" stroke-width="1.4"/> <rect x="13" y="22" width="6" height="6" fill="%23FBF8EF"/> <rect x="22" y="22" width="6" height="6" fill="none" stroke="%23FBF8EF" stroke-width="1.4"/> </svg>") !important;
+    background-position: center !important;
+    background-size: 78% 78% !important;
+    background-repeat: no-repeat !important;
+    color: transparent !important;
+    text-indent: -9999px;
+    overflow: hidden;
+    font-size: 0 !important;
+  }
 </style>
 <script src="/assets/beacon.js" defer></script>
 </head>
