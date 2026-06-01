@@ -222,6 +222,16 @@
     font-style: italic;
   }
 
+  /* ─── Mobile overrides for new sections ─────────────────── */
+  @media (max-width: 640px) {
+    .mid-moment { margin: 48px -28px; padding: 36px 28px; }
+    .mid-moment .line { font-size: 17px; line-height: 1.4; }
+    .section-divider { margin: 36px auto 26px; gap: 12px; max-width: 320px; }
+    .section-divider .glyph { font-size: 18px; }
+    .closing-stamp { margin: 40px 0 8px; gap: 12px; }
+    .closing-stamp .stamp-line { font-size: 17px; }
+  }
+
   .qa {
     margin-bottom: 36px;
     padding-bottom: 30px;

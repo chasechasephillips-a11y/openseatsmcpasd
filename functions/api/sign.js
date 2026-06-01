@@ -19,11 +19,12 @@ export async function onRequestPost(context) {
     const area = (d.area || '').toString().trim();
     const meeting = d.meeting ? 1 : 0;
     const circulate = d.circulator ? 1 : 0;
+    const pickup = d.pickup ? 1 : 0;
 
     await context.env.DB.prepare(
       `INSERT INTO signatures
-         (first_name, last_name, email, phone, area, address, will_attend_meeting, will_circulate)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+         (first_name, last_name, email, phone, area, address, will_attend_meeting, will_circulate, prefers_pickup)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
        ON CONFLICT(email) DO UPDATE SET
          first_name = excluded.first_name,
          last_name = excluded.last_name,
@@ -31,8 +32,9 @@ export async function onRequestPost(context) {
          area = excluded.area,
          address = excluded.address,
          will_attend_meeting = excluded.will_attend_meeting,
-         will_circulate = excluded.will_circulate`
-    ).bind(firstName, lastName, email, phone, area, address, meeting, circulate).run();
+         will_circulate = excluded.will_circulate,
+         prefers_pickup = excluded.prefers_pickup`
+    ).bind(firstName, lastName, email, phone, area, address, meeting, circulate, pickup).run();
 
     return json({ ok: true });
   } catch (err) {
