@@ -151,6 +151,77 @@
     margin: 56px 0 28px;
     display: block;
   }
+
+  /* ─── Section divider (between Q&A groups) ───────────────────── */
+  .section-divider {
+    display: flex; align-items: center; gap: 16px;
+    margin: 50px auto 36px;
+    max-width: 480px;
+    color: var(--rule-deep);
+  }
+  .section-divider .line { flex: 1; height: 1.5px; background: var(--rule-deep); }
+  .section-divider .glyph {
+    font-family: var(--display); font-weight: 700;
+    font-size: 22px; color: var(--red); line-height: 1;
+  }
+
+  /* ─── Mid-page civic moment ──────────────────────────────────── */
+  .mid-moment {
+    background: var(--paper-warm);
+    border-top: 3px solid var(--rule-deep);
+    border-bottom: 3px solid var(--rule-deep);
+    margin: 64px -32px;
+    padding: 44px 36px;
+    text-align: center;
+    position: relative;
+  }
+  .mid-moment::before {
+    content: "§";
+    position: absolute;
+    top: -18px; left: 50%; transform: translateX(-50%);
+    background: var(--paper);
+    color: var(--red);
+    padding: 0 12px;
+    font-family: var(--display); font-weight: 700; font-size: 22px;
+  }
+  .mid-moment .line {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(19px, 2.4vw, 26px);
+    line-height: 1.36;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .mid-moment .line strong { color: var(--red); font-weight: 700; }
+  .mid-moment .line em {
+    font-family: var(--italic); color: var(--ink);
+    font-style: italic; display: block;
+    margin-top: 8px;
+  }
+
+  /* ─── Closing stamp ──────────────────────────────────────────── */
+  .closing-stamp {
+    margin: 56px 0 8px;
+    display: flex; align-items: center; gap: 18px;
+    color: var(--rule-deep);
+  }
+  .closing-stamp .stamp-rule { flex: 1; height: 1.5px; background: var(--rule-deep); }
+  .closing-stamp .stamp-line {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(19px, 2.4vw, 26px);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .closing-stamp .stamp-line em {
+    font-family: var(--italic);
+    color: var(--red);
+    font-style: italic;
+  }
+
   .qa {
     margin-bottom: 36px;
     padding-bottom: 30px;
@@ -319,6 +390,10 @@
     </div>
   </div>
 
+  <div class="mid-moment" aria-label="Why now">
+    <p class="line">The structure we're voting on this September was set in <strong>1963</strong> — when Middleton and Cross Plains merged. <em>We are the first generation asked if we want to update it.</em></p>
+  </div>
+
   <!-- ─── Common concerns ────────────────────────────────── -->
   <span class="section-label">Common concerns</span>
 
@@ -358,6 +433,11 @@
   </div>
 
   <!-- ─── Areas + identity ────────────────────────────────── -->
+  <div class="section-divider" aria-hidden="true">
+    <span class="line"></span>
+    <span class="glyph">❖</span>
+    <span class="line"></span>
+  </div>
   <span class="section-label">About Areas + representation</span>
 
   <div class="qa">
@@ -385,6 +465,11 @@
   </div>
 
   <!-- ─── How to participate ──────────────────────────────── -->
+  <div class="section-divider" aria-hidden="true">
+    <span class="line"></span>
+    <span class="glyph">❖</span>
+    <span class="line"></span>
+  </div>
   <span class="section-label">How to participate</span>
 
   <div class="qa">
@@ -449,6 +534,12 @@
       • <strong>Spread the word</strong> — the toolkit has business cards, flyers, door hangers, a tabletop placard, a circulator cheat sheet, and copy-paste social media posts.<br>
       • <strong>Show up Sept 22</strong> — only people in the room can vote. This is where the petition lives or dies.</p>
     </div>
+  </div>
+
+  <div class="closing-stamp" aria-hidden="true">
+    <span class="stamp-rule"></span>
+    <span class="stamp-line">Same board. <em>Wider bench.</em></span>
+    <span class="stamp-rule"></span>
   </div>
 
   <div class="end-note">
