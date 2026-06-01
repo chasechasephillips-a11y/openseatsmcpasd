@@ -78,7 +78,7 @@
   .fact p { font-size: 9.5px; color: var(--ink-soft); line-height: 1.42; }
 
   /* What changes / doesn't */
-  .changes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.34in; margin-top: 0.2in; }
+  .changes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.34in; margin-top: 0.04in; }
   .changes ul { list-style: none; margin-top: 6px; }
   .changes li { font-size: 11px; color: var(--ink-soft); line-height: 1.34; padding-left: 20px; position: relative; margin-bottom: 6px; }
   .changes li strong { color: var(--ink); }
@@ -86,6 +86,20 @@
   .changes .yes li::before { content: "✦"; position: absolute; left: 2px; color: var(--green); font-size: 11px; }
   .changes .no .blockhead { color: var(--red-dark); }
   .changes .no li::before { content: "✕"; position: absolute; left: 2px; color: var(--red); font-size: 10px; font-weight: 700; }
+
+  /* Mid-page divider (between why and changes) */
+  .divider { display: flex; align-items: center; gap: 14px; margin: 0.14in auto 0.04in; max-width: 4.4in; color: var(--rule-deep); }
+  .divider .line { flex: 1; height: 1.2px; background: var(--rule-deep); }
+  .divider .glyph { font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--red); line-height: 1; }
+
+  /* Closing slogan stamp (between changes and foot) */
+  .stamp { display: flex; align-items: center; gap: 16px; margin: 0.16in 0 0.04in; color: var(--rule-deep); }
+  .stamp .rule { flex: 1; height: 1.3px; background: var(--rule-deep); }
+  .stamp .line {
+    font-family: var(--display); font-weight: 700; font-size: 17px;
+    color: var(--ink); letter-spacing: -0.005em; white-space: nowrap;
+  }
+  .stamp .line em { font-family: var(--italic); color: var(--red); font-style: italic; }
 
   /* Footer band */
   .foot { margin-top: auto; border-top: 2px solid var(--ink); padding-top: 0.13in; display: grid; grid-template-columns: 1fr 1fr 1.15fr; gap: 0.24in; align-items: end; }
@@ -183,7 +197,7 @@
 
     <div class="qr-block">
       <div class="blockhead" style="text-align:left;">Sign in 2 minutes</div>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&qzone=1&color=14223E&bgcolor=F5EFE0&data=https%3A%2F%2Fopenseatsmcpasd.org" alt="QR code linking to openseatsmcpasd.org">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&qzone=1&color=14223E&bgcolor=FFFBF1&data=https%3A%2F%2Fopenseatsmcpasd.org" alt="QR code linking to openseatsmcpasd.org">
       <div class="scan">Scan to sign &amp; learn more</div>
       <div class="url">openseatsmcpasd.org</div>
     </div>
@@ -210,6 +224,12 @@
     </div>
   </div>
 
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <span class="glyph">§</span>
+    <span class="line"></span>
+  </div>
+
   <div class="changes">
     <div class="yes">
       <div class="blockhead">What stays the same</div>
@@ -227,6 +247,12 @@
         <li><strong>Not a legal stretch.</strong> Authorized by Wis. Stat. § 120.02(2)(a); counsel-reviewed.</li>
       </ul>
     </div>
+  </div>
+
+  <div class="stamp" aria-hidden="true">
+    <span class="rule"></span>
+    <span class="line">Same board. <em>Wider bench.</em></span>
+    <span class="rule"></span>
   </div>
 
   <div class="foot">
