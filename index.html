@@ -737,6 +737,85 @@
   }
   #faq details > p + p { padding-top: 0; }
 
+  /* ─── Final-CTA closing stamp ──────────────────────────────────── */
+  .final-stamp {
+    margin-top: 56px;
+    display: flex; align-items: center; gap: 22px;
+    color: rgba(245,239,224,0.6);
+  }
+  .final-stamp .stamp-rule {
+    flex: 1; height: 1.5px;
+    background: rgba(245,239,224,0.32);
+  }
+  .final-stamp .stamp-line {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(20px, 2.4vw, 28px);
+    color: var(--paper);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .final-stamp .stamp-line em {
+    font-family: var(--italic);
+    color: var(--red-bright);
+    font-style: italic;
+  }
+  @media (max-width: 600px) {
+    .final-stamp { gap: 14px; margin-top: 44px; }
+    .final-stamp .stamp-line { font-size: 18px; }
+  }
+
+  /* ─── Civic moment (between timeline strip and why-it-matters) ─── */
+  .moment {
+    background: var(--paper-warm);
+    padding: 60px 0 64px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .moment .ornament-wide {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--rule-deep);
+    margin: 0 auto 28px;
+    max-width: 520px;
+  }
+  .moment .ornament-wide .line {
+    flex: 1; height: 1.5px; background: var(--rule-deep);
+  }
+  .moment .ornament-wide .mark {
+    font-family: var(--display); font-size: 18px; color: var(--red); line-height: 1;
+  }
+  .moment .ornament-wide .mark.small { font-size: 14px; color: var(--rule-deep); }
+  .moment .ornament-wide .dot { color: var(--rule-deep); font-size: 11px; line-height: 1; }
+  .moment-line {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(22px, 3.2vw, 34px);
+    line-height: 1.32;
+    color: var(--ink);
+    letter-spacing: -0.012em;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .moment-line strong { color: var(--red); font-weight: 700; }
+  .moment-line em {
+    font-family: var(--italic);
+    color: var(--ink);
+    font-style: italic;
+    display: block;
+    margin-top: 8px;
+  }
+  .moment-meta {
+    text-align: center;
+    margin-top: 30px;
+    font-family: var(--body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--red-dark);
+  }
+
   /* ─── Per-Area public gauge ────────────────────────────────────── */
   .area-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 24px; }
   @media (max-width: 880px) { .area-grid { grid-template-columns: 1fr 1fr; gap: 12px; } }
@@ -1406,6 +1485,22 @@
   </div>
 </div>
 
+<section class="moment" aria-label="Why now">
+  <div class="container narrow">
+    <div class="ornament-wide" aria-hidden="true">
+      <span class="line"></span>
+      <span class="mark">❖</span>
+      <span class="dot">·</span>
+      <span class="mark small">§</span>
+      <span class="dot">·</span>
+      <span class="mark">❖</span>
+      <span class="line"></span>
+    </div>
+    <p class="moment-line">This structure was set in <strong>1963</strong> — before the moon landing, before most of MCPASD's homes existed.<em>We are the first generation asked if we want to update it.</em></p>
+    <div class="moment-meta">Vote at the Annual Meeting · Tue Sept 22 · 7 PM</div>
+  </div>
+</section>
+
 <section class="tinted" id="why-it-matters">
   <div class="container">
     <div class="section-eyebrow">Why this matters</div>
@@ -1992,6 +2087,11 @@
     <div class="cta-row" style="justify-content: center;">
       <a href="#sign" class="btn btn-primary">Sign now <span class="btn-arrow">→</span></a>
       <a href="mailto:chase.chasephillips@gmail.com" class="btn btn-outline">Email us</a>
+    </div>
+    <div class="final-stamp" aria-hidden="true">
+      <div class="stamp-rule"></div>
+      <div class="stamp-line">Same board. <em>Wider bench.</em></div>
+      <div class="stamp-rule"></div>
     </div>
   </div>
 </section>
