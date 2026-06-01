@@ -542,6 +542,29 @@
     <div class="stat"><div class="num amber" id="s-unverified">—</div><div class="lbl">Unverified</div></div>
     <div class="stat"><div class="num"      id="s-invalid">—</div><div class="lbl">Invalid</div></div>
     <div class="stat"><div class="num green" id="s-online">—</div><div class="lbl">Online signups</div></div>
+    <div class="stat"><div class="num red"   id="s-pickup">—</div><div class="lbl">Pickup queue</div></div>
+  </div>
+
+  <div class="panel" id="pickup-panel">
+    <div class="panel-head">
+      <h2>Pickup route <span id="pickup-count" style="font-family: var(--body); font-weight: 400; font-size: 13px; color: var(--ink-muted); margin-left: 8px;"></span></h2>
+      <div class="panel-hint">Online signups who asked you to come pick up their sheet · most recent first</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Area</th>
+            <th>Email · Phone</th>
+            <th>Asked on</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="pickup-rows"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </div>
   </div>
 
   <div class="panel">
@@ -771,9 +794,59 @@
     });
     // Traffic stats
     loadTraffic();
+    // Pickup queue
+    loadPickups();
   }
 
   function fmtN(n) { return (n == null ? 0 : n).toLocaleString(); }
+
+  function loadPickups() {
+    var t = getToken();
+    fetch('/api/admin/pickups?token=' + encodeURIComponent(t)).then(function (r) {
+      if (r.status === 401) { clearToken(); showGate(); return; }
+      return r.json();
+    }).then(function (d) {
+      if (!d) return;
+      var rows = d.rows || [];
+      var n = d.total || 0;
+      document.getElementById('s-pickup').textContent = n;
+      var cnt = document.getElementById('pickup-count');
+      if (cnt) cnt.textContent = n === 0 ? '· empty' : '· ' + n + (n === 1 ? ' person' : ' people') + ' waiting';
+      var tbody = document.getElementById('pickup-rows');
+      if (rows.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty">No pickup requests yet. When someone checks the "come pick it up" box on the sign form, they show up here.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = rows.map(function (r) {
+        var when = (r.created_at || '').replace(' ', 'T') + 'Z';
+        var local = '';
+        try {
+          local = new Date(when).toLocaleString([], { month: 'short', day: 'numeric', year: 'numeric' });
+        } catch (e) { local = r.created_at || '—'; }
+        var notes = [];
+        if (r.will_attend_meeting) notes.push('Sept 22 ✓');
+        if (r.will_circulate) notes.push('Will circulate');
+        var notesHtml = notes.length ? notes.join(' · ') : '—';
+        var emailLine = r.email ? '<a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a>' : '';
+        var phoneLine = r.phone ? '<br><a href="tel:' + esc(r.phone) + '">' + esc(r.phone) + '</a>' : '';
+        var mapsHref = 'https://www.google.com/maps/dir/3795+Swoboda+Road,+Verona,+WI/' + encodeURIComponent(r.address || '');
+        var addressLine = r.address
+          ? '<a href="' + mapsHref + '" target="_blank" rel="noopener" title="Open directions in Google Maps">' + esc(r.address) + '</a>'
+          : '—';
+        return '<tr>' +
+          '<td class="name">' + esc(r.first_name || '') + ' ' + esc(r.last_name || '') + '</td>' +
+          '<td>' + addressLine + '</td>' +
+          '<td>' + esc(r.area || '—') + '</td>' +
+          '<td>' + emailLine + phoneLine + '</td>' +
+          '<td>' + esc(local) + '</td>' +
+          '<td>' + notesHtml + '</td>' +
+        '</tr>';
+      }).join('');
+    }).catch(function () {
+      var tbody = document.getElementById('pickup-rows');
+      tbody.innerHTML = '<tr><td colspan="6" class="empty">Pickup endpoint unreachable. Did /api/admin/pickups deploy?</td></tr>';
+    });
+  }
 
   function loadTraffic() {
     var t = getToken();
