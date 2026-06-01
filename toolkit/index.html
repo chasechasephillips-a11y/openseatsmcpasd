@@ -106,100 +106,186 @@
   .kit-card .cta::after { content: "→"; font-size: 14px; transition: transform 0.15s; }
   .kit-card:hover .cta::after { transform: translateX(3px); }
   .tip {
-    margin-top: 48px; padding: 22px 24px;
+    margin-top: 24px; padding: 18px 22px;
     background: var(--paper-card);
     border-left: 4px solid var(--green);
     box-shadow: 3px 3px 0 var(--rule);
-    font-size: 15px; color: var(--ink-soft);
-    line-height: 1.6;
+    font-size: 14px; color: var(--ink-soft);
+    line-height: 1.55;
   }
   .tip strong { color: var(--ink); font-weight: 700; }
   .tip code {
     font-family: 'Courier New', monospace;
     background: var(--paper-warm);
     padding: 2px 6px; border: 1px solid var(--rule);
-    font-size: 13.5px;
+    font-size: 13px;
+  }
+
+  /* ─── Hero ornament ─────────────────────────────────────── */
+  .ornament {
+    display: flex; align-items: center; gap: 18px;
+    margin: 14px 0 30px;
+    color: var(--rule-deep);
+  }
+  .ornament .line { flex: 1; height: 1.5px; background: var(--rule-deep); }
+  .ornament .mark {
+    font-family: var(--display); font-size: 22px;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  /* ─── Live stats band ──────────────────────────────────── */
+  .stats-band {
+    background: var(--ink);
+    color: var(--paper);
+    border-top: 4px solid var(--red);
+    border-bottom: 4px solid var(--red);
+    padding: 28px 32px;
+    margin: 0 0 56px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 28px;
+    align-items: center;
+    position: relative;
+  }
+  .stats-band::before {
+    content: "❖  WHERE WE ARE  ❖";
+    position: absolute;
+    top: -11px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    color: var(--red-dark);
+    padding: 0 14px;
+    font-family: var(--body); font-size: 9.5px;
+    font-weight: 700; letter-spacing: 0.36em;
+  }
+  @media (max-width: 720px) { .stats-band { grid-template-columns: 1fr; gap: 20px; padding: 24px 22px; } }
+  .stat-block .n {
+    font-family: var(--display);
+    font-weight: 700; font-size: 44px;
+    color: var(--red-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .stat-block .n .of {
+    font-family: var(--body); font-size: 16px;
+    color: rgba(245,239,224,0.6);
+    font-weight: 500; letter-spacing: 0;
+  }
+  .stat-block .lbl {
+    font-family: var(--body); font-size: 10px;
+    font-weight: 700; letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,239,224,0.75);
+    margin-top: 8px;
+  }
+  .stat-block .bar {
+    height: 6px; width: 100%;
+    background: rgba(245,239,224,0.16);
+    margin-top: 10px;
+    position: relative;
+  }
+  .stat-block .bar .fill {
+    height: 100%; width: 0%;
+    background: var(--red-bright);
+    transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .stat-block .bar .legal {
+    position: absolute; top: -3px; bottom: -3px;
+    width: 1.5px; background: rgba(245,239,224,0.5);
+    left: 90.9%;
+  }
+  .stat-block .bar .legal::after {
+    content: "500 legal";
+    position: absolute; top: 100%; right: -4px;
+    font-family: var(--body); font-size: 9px;
+    font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,239,224,0.55);
+    margin-top: 6px; white-space: nowrap;
+  }
+
+  /* ─── Section dividers ─────────────────────────────────── */
+  .section-head {
+    margin: 64px 0 22px;
+    display: flex; align-items: baseline; gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section-head .sec-num {
+    font-family: var(--display); font-weight: 700;
+    font-size: 38px; color: var(--red);
+    line-height: 1; letter-spacing: -0.02em;
+  }
+  .section-head .sec-titles {
+    flex: 1;
+  }
+  .section-head h2 {
+    font-family: var(--display); font-weight: 700;
+    font-size: 26px; color: var(--ink);
+    letter-spacing: -0.012em; line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .section-head h2 em { font-family: var(--italic); color: var(--red); font-style: italic; }
+  .section-head .sec-sub {
+    font-family: var(--italic); font-style: italic;
+    font-size: 14.5px; color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  /* Per-section card border colors */
+  .kit-grid.print .kit-card { border-top-color: var(--red); }
+  .kit-grid.talk  .kit-card { border-top-color: var(--green); }
+  .kit-grid.send  .kit-card { border-top-color: var(--ink); }
+  .kit-grid.talk  .kit-card .num { color: var(--green); }
+  .kit-grid.send  .kit-card .num { color: var(--ink-soft); }
+  .kit-grid.talk  .kit-card .cta { color: var(--green); }
+  .kit-grid.send  .kit-card .cta { color: var(--ink-soft); }
+
+  /* ─── Closing inspirational block ─────────────────────── */
+  .close-block {
+    margin: 72px 0 8px;
+    padding: 44px 40px;
+    background: var(--paper-warm);
+    border-top: 4px double var(--rule-deep);
+    border-bottom: 4px double var(--rule-deep);
+    text-align: center;
+    position: relative;
+  }
+  .close-block::before {
+    content: "§";
+    position: absolute;
+    top: -22px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    color: var(--red);
+    padding: 0 14px;
+    font-family: var(--display); font-weight: 700;
+    font-size: 28px; line-height: 1;
+  }
+  .close-block .close-quote {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(20px, 2.6vw, 28px);
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 720px; margin: 0 auto 18px;
+    letter-spacing: -0.005em;
+  }
+  .close-block .close-quote em {
+    font-family: var(--italic);
+    color: var(--red); font-style: italic;
+  }
+  .close-block .close-sig {
+    font-family: var(--body); font-size: 10.5px;
+    font-weight: 700; letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--red-dark);
+    margin-top: 18px;
   }
 </style>
 <script src="/assets/beacon.js" defer></script>
-</head>
-<body>
-
-<div class="topbar">
-  <a href="/">← Back to openseatsmcpasd.org</a>
-</div>
-
-<div class="container">
-  <span class="eyebrow">Campaign toolkit</span>
-  <h1>Help spread the <em>word</em>.</h1>
-  <p class="lead">Three things, all free, all yours. Print the cards to leave in coffee shops and slip into birthday-party goodie bags. Tape the flyer to community bulletin boards. Paste the social copy when you don't know what to say.</p>
-
-  <div class="kit-grid">
-    <a href="/toolkit/cards.html" class="kit-card">
-      <div class="num">01</div>
-      <h2>Business cards</h2>
-      <p>10 cards per letter sheet — Avery 5371 layout. Print on cardstock, cut along the lines, carry a dozen with you. URL + QR code on every card.</p>
-      <span class="cta">Open print sheet</span>
-    </a>
-    <a href="/toolkit/flyer.html" class="kit-card">
-      <div class="num">02</div>
-      <h2>Half-sheet flyer</h2>
-      <p>Two flyers per letter, fold or cut in half. Big "OPEN THE SEATS" headline, three facts, the dates, a QR. Tape it up at the library, Capital Brewery, your church bulletin board.</p>
-      <span class="cta">Open print sheet</span>
-    </a>
-    <a href="/toolkit/hangers.html" class="kit-card">
-      <div class="num">03</div>
-      <h2>Door hangers</h2>
-      <p>Three 4.25"×3.33" hangers per letter sheet, with a punch-hole template for the doorknob loop. Walk a block, hang on doorknobs, no doorbell required.</p>
-      <span class="cta">Open print sheet</span>
-    </a>
-    <a href="/toolkit/script.html" class="kit-card">
-      <div class="num">04</div>
-      <h2>Placard + circulator script</h2>
-      <p>Page 1: 5.5"×8.5" tabletop placard with QR (for coffee shop / farmers market / library). Page 2: a circulator cheat sheet — the 30-second pitch, common objections + answers, what to bring.</p>
-      <span class="cta">Open print sheet</span>
-    </a>
-    <a href="/toolkit/share.html" class="kit-card">
-      <div class="num">05</div>
-      <h2>Social share kit</h2>
-      <p>Pre-written copy for Facebook, NextDoor, a text to a neighbor, an email to a PTA. Plus three square graphics you can screenshot and post.</p>
-      <span class="cta">Open share kit</span>
-    </a>
-    <a href="/toolkit/faq.html" class="kit-card">
-      <div class="num">06</div>
-      <h2>FAQ + elevator pitch</h2>
-      <p>The full shareable FAQ — the 30-second pitch + 18 questions with answers. Print to hand out, save as PDF, or just send the link. Built to answer the "wait, what is this?" without making you ad-lib.</p>
-      <span class="cta">Open FAQ</span>
-    </a>
-    <a href="/toolkit/board-outreach.html" class="kit-card">
-      <div class="num">07</div>
-      <h2>Email the board</h2>
-      <p>Three email templates for reaching out to MCPASD board members directly — one default, one for when you have a personal connection, one for when you can thank them for specific work. Copy-paste with the buttons.</p>
-      <span class="cta">Open templates</span>
-    </a>
-    <a href="/toolkit/stickers.html" class="kit-card">
-      <div class="num">08</div>
-      <h2>Stickers</h2>
-      <p>12 round 2.5" stickers per letter sheet — six barn-red, six cream. Print at home on Avery 22806, or upload the saved PDF to Sticker Mule for weatherproof vinyl. Best per-dollar visibility you'll get.</p>
-      <span class="cta">Open print sheet</span>
-    </a>
-    <a href="/toolkit/printing.html" class="kit-card">
-      <div class="num">09</div>
-      <h2>Where to print everything</h2>
-      <p>Vendor recommendations + real prices for stickers, business cards, flyers, door hangers, yard signs, and the handout. DIY-at-home costs alongside pro-print costs so you can choose.</p>
-      <span class="cta">Open guide</span>
-    </a>
-    <a href="/toolkit/cross-plains.html" class="kit-card">
-      <div class="num">10</div>
-      <h2>A straight answer for Cross Plains</h2>
-      <p>The smaller community's fair worry — "won't Middleton just take the open seats?" — answered head-on, with the seat diagram and the political science behind why a hybrid keeps Cross Plains' guaranteed voice and adds four more. Hand to a skeptical neighbor.</p>
-      <span class="cta">Open the brief</span>
-    </a>
-  </div>
-
-  <div class="tip">
-    <strong>Printing tips.</strong> On the cards and flyer pages, hit <code>Ctrl/Cmd + P</code> → choose <strong>Save as PDF</strong> if you want to take it to FedEx Office, or print directly if you have cardstock at home. Use <strong>Letter</strong> size, <strong>portrait</strong> orientation, and turn on <strong>Background graphics</strong> in More Settings so the cream paper and red accents come through.
-  </div>
 </div>
 
 </body>

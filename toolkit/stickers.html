@@ -55,12 +55,12 @@
     width: 8.5in;
     height: 11in;
     background: var(--paper);
-    padding: 0.75in 0.75in;
+    padding: 0.5in;
     margin: 0 auto;
     box-shadow: 0 8px 30px rgba(0,0,0,0.18);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.18in;
+    gap: 0;
     align-content: start;
   }
   .sticker {
@@ -125,6 +125,29 @@
   .sticker.alt .title em { color: var(--red); }
   .sticker.alt .url { color: var(--ink); border-top-color: var(--rule); }
 
+  /* QR sticker — cream background, scannable */
+  .sticker.qr {
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 0.12in var(--paper), inset 0 0 0 0.13in var(--red), inset 0 0 0 0.14in var(--paper);
+    border-color: rgba(0,0,0,0.2);
+    padding: 0.26in 0.24in 0.22in;
+    gap: 0;
+  }
+  .sticker.qr .eb { color: var(--red-dark); opacity: 1; margin-bottom: 3px; }
+  .sticker.qr .qrhead {
+    font-family: var(--display); font-weight: 700;
+    font-size: 15px; line-height: 0.95; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 5px;
+  }
+  .sticker.qr .qrhead em { font-family: var(--italic); font-style: italic; color: var(--red); }
+  .sticker.qr img { width: 1.02in; height: 1.02in; background: #fff; display: block; }
+  .sticker.qr .url {
+    font-family: var(--display); font-weight: 700;
+    font-size: 10px; letter-spacing: -0.005em; color: var(--ink);
+    border-top: none; padding-top: 4px; margin-top: 4px;
+  }
+
   @page { size: letter; margin: 0; }
   @media print {
     body { background: white; padding: 0; }
@@ -138,7 +161,7 @@
 
 <div class="screen-only">
   <h1>Stickers — print sheet (Avery 22806 layout)</h1>
-  <p>12 round 2.5" stickers per letter sheet, 6 barn-red + 6 cream. For print at home: use <strong>Avery 22806</strong> sticker paper, or use full sticker paper and cut with a 2.5" circle punch. For pro quality (vinyl, weatherproof, fade-resistant), upload this saved-as-PDF to one of the vendors in the <a href="/toolkit/printing.html">printing guide</a> — Sticker Mule, StickerYou, or VistaPrint.</p>
+  <p>12 round 2.5" stickers per letter sheet — <strong>6 barn-red, 3 cream, and 3 scan-to-sign QR</strong>. For print at home: use <strong>Avery 22806</strong> sticker paper, or use full sticker paper and cut with a 2.5" circle punch. For pro quality (vinyl, weatherproof, fade-resistant), upload this saved-as-PDF to one of the vendors in the <a href="/toolkit/printing.html">printing guide</a> — Sticker Mule, StickerYou, or VistaPrint.</p>
   <p>In the print dialog: <strong>Letter</strong> · <strong>Portrait</strong> · <strong>Margins: None</strong> · <strong>Background graphics: ON</strong>. Sticker paper aligns with the 0.75" sheet margins built into the layout.</p>
   <button class="print-btn" onclick="window.print()">Print or save as PDF</button>
   <a class="print-btn" href="/toolkit/" style="margin-left: 10px; background: transparent; color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px 0 #9C8B73;">← Back to toolkit</a>
@@ -159,9 +182,17 @@
       <div class="title">Open the<br><em>Seats.</em></div>\
       <div class="url">openseatsmcpasd.org</div>\
     </div>';
-  // 6 red + 6 cream, alternating rows
+  var qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&qzone=1&color=1A1614&bgcolor=FCF9F0&data=https%3A%2F%2Fopenseatsmcpasd.org';
+  var qr = '\
+    <div class="sticker qr">\
+      <div class="eb">Scan to sign</div>\
+      <div class="qrhead">Open the <em>Seats.</em></div>\
+      <img src="' + qrUrl + '" alt="QR code linking to openseatsmcpasd.org">\
+      <div class="url">openseatsmcpasd.org</div>\
+    </div>';
+  // Row 1: red text · Row 2: cream text · Row 3: red text · Row 4: QR
   var sheet = document.getElementById('sheet');
-  sheet.innerHTML = (red + red + red + alt + alt + alt + red + red + red + alt + alt + alt);
+  sheet.innerHTML = (red + red + red + alt + alt + alt + red + red + red + qr + qr + qr);
 </script>
 
 </body>
