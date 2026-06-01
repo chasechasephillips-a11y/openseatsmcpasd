@@ -140,6 +140,113 @@
   }
   .pitch .url:hover { color: var(--paper); border-color: var(--paper); }
 
+  /* ─── Quick TOC (jump-to-question index) ─────────────────────── */
+  html { scroll-behavior: smooth; }
+  .qa { scroll-margin-top: 80px; }
+
+  .quick-toc {
+    background: var(--paper-card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--red);
+    box-shadow: 4px 4px 0 var(--rule);
+    margin: 0 0 56px;
+  }
+  .quick-toc[open] { box-shadow: 5px 5px 0 var(--rule-deep); }
+  .quick-toc .toc-summary {
+    list-style: none;
+    padding: 18px 24px;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 14px;
+    font-family: var(--body);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--red-dark);
+    user-select: none;
+  }
+  .quick-toc .toc-summary::-webkit-details-marker { display: none; }
+  .quick-toc .toc-arrow {
+    font-family: var(--display); font-weight: 700;
+    font-size: 18px; color: var(--red);
+    line-height: 1; transition: transform 0.2s;
+    letter-spacing: 0;
+  }
+  .quick-toc[open] .toc-arrow { transform: rotate(180deg); }
+  .quick-toc .toc-summary:hover { background: rgba(185, 133, 33, 0.04); }
+  .quick-toc .toc-list {
+    padding: 4px 24px 22px;
+    border-top: 1px solid var(--line-soft);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 28px;
+  }
+  @media (max-width: 700px) { .quick-toc .toc-list { grid-template-columns: 1fr; gap: 18px; } }
+  .quick-toc .toc-section { display: flex; flex-direction: column; gap: 6px; counter-reset: faq-q; }
+  .quick-toc .toc-section-label {
+    font-family: var(--body);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--red-dark);
+    padding-bottom: 4px; padding-top: 14px;
+    border-bottom: 1.5px solid var(--red);
+  }
+  .quick-toc .toc-questions {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .quick-toc .toc-questions li {
+    padding: 6px 0 6px 30px;
+    position: relative;
+    counter-increment: faq-q;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.15s;
+  }
+  .quick-toc .toc-questions li:hover { border-bottom-color: var(--rule); }
+  .quick-toc .toc-questions li::before {
+    content: counter(faq-q, decimal-leading-zero);
+    position: absolute; left: 0; top: 7px;
+    font-family: var(--body);
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--red);
+  }
+  .quick-toc .toc-questions a {
+    color: var(--ink-soft); text-decoration: none;
+    font-family: var(--body);
+    font-size: 14px; line-height: 1.45;
+    display: block;
+  }
+  .quick-toc .toc-questions a:hover { color: var(--red-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ─── Back-to-top floating button ────────────────────────────── */
+  .back-to-top {
+    position: fixed; bottom: 22px; right: 22px;
+    width: 44px; height: 44px;
+    background: var(--ink); color: var(--paper);
+    border: 1px solid var(--ink);
+    text-decoration: none;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 22px; font-weight: 700;
+    box-shadow: 3px 3px 0 var(--red);
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 50;
+    pointer-events: none;
+  }
+  .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .back-to-top:hover { background: var(--red); box-shadow: 3px 3px 0 var(--ink); }
+  @media (max-width: 640px) {
+    .back-to-top { width: 38px; height: 38px; font-size: 18px; bottom: 16px; right: 16px; }
+  }
+
+  /* ─── Anchor target highlight ────────────────────────────────── */
+  .qa:target { animation: target-pulse 1.6s ease-out 1; }
+  @keyframes target-pulse {
+    0%   { background: rgba(185, 133, 33, 0.14); }
+    100% { background: transparent; }
+  }
+  .qa:target .q { color: var(--red); }
+
   /* ─── Section + Q&A ───────────────────────────────────────────── */
   .section-label {
     font-family: var(--body);
@@ -352,17 +459,66 @@
     <a href="https://openseatsmcpasd.org" class="url">openseatsmcpasd.org</a>
   </div>
 
+  <details class="quick-toc">
+    <summary class="toc-summary"><span>Jump to a question</span><span class="toc-arrow">▾</span></summary>
+    <div class="toc-list">
+    <div class="toc-section">
+    <div class="toc-section-label">About the proposal</div>
+    <ol class="toc-questions">
+    <li><a href="#q1">What exactly does the petition do?</a></li>
+    <li><a href="#q2">When would I actually see different kinds of candidates on the ballot?</a></li>
+    <li><a href="#q3">More candidates — why is that good?</a></li>
+    <li><a href="#q4">Why hasn't this been changed before?</a></li>
+    <li><a href="#q5">Why now?</a></li>
+    <li><a href="#q6">How often has the district actually had a real election?</a></li>
+    </ol>
+    </div>
+    <div class="toc-section">
+    <div class="toc-section-label">Common concerns</div>
+    <ol class="toc-questions">
+    <li><a href="#q7">Will my Area lose its voice on the board?</a></li>
+    <li><a href="#q8">Will any current board member be forced out?</a></li>
+    <li><a href="#q9">Is this partisan? Who's funding it?</a></li>
+    <li><a href="#q10">Will this cost the district anything?</a></li>
+    <li><a href="#q11">Is this even legal?</a></li>
+    </ol>
+    </div>
+    <div class="toc-section">
+    <div class="toc-section-label">About Areas + representation</div>
+    <ol class="toc-questions">
+    <li><a href="#q12">I don't know what Area I live in.</a></li>
+    <li><a href="#q13">Why do you care about the school board?</a></li>
+    <li><a href="#q14">Is this about a specific board member or specific policy?</a></li>
+    </ol>
+    </div>
+    <div class="toc-section">
+    <div class="toc-section-label">How to participate</div>
+    <ol class="toc-questions">
+    <li><a href="#q15">How do I sign?</a></li>
+    <li><a href="#q16">Who can sign?</a></li>
+    <li><a href="#q17">Can someone pick up my signed sheet?</a></li>
+    <li><a href="#q18">I have a spot where neighbors gather — can a circulator come by?</a></li>
+    <li><a href="#q19">Wait — the vote is at a meeting, not on a regular ballot?</a></li>
+    <li><a href="#q20">What does the vote at the Annual Meeting actually look like?</a></li>
+    <li><a href="#q21">What if signatures fall short?</a></li>
+    <li><a href="#q22">I don't live in MCPASD — how can I help?</a></li>
+    <li><a href="#q23">How do I help beyond just signing?</a></li>
+    </ol>
+    </div>
+    </div>
+  </details>
+
   <!-- ─── About the proposal ─────────────────────────────── -->
   <span class="section-label">About the proposal</span>
 
-  <div class="qa">
+  <div class="qa" id="q1">
     <div class="q">What exactly does the petition do?</div>
     <div class="a">
       <p>It opens <strong>4 of MCPASD's 9 school board seats</strong> to any qualified district resident, while keeping <strong>5 tied to geographic Areas</strong> — one anchor seat per Area. The board size stays at 9. Voters still elect every single seat. The change phases in gradually as current terms naturally expire, starting with the April 2027 election.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q2">
     <div class="q">When would I actually see different kinds of candidates on the ballot?</div>
     <div class="a">
       <p><strong>April 2027</strong> is the first cycle: two Area seats up for re-election convert to open. A few neighbors who couldn't have run before will be eligible for the first time.</p>
@@ -370,21 +526,21 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q3">
     <div class="q">More candidates — why is that good?</div>
     <div class="a">
       <p>More candidates means voters have a real choice instead of just rubber-stamping the only name on the ballot. It means qualified people who happen to live in the wrong cul-de-sac can step up when their community needs them. It means the district can draw from the deepest possible bench when big decisions arrive — referendums, contracts, growth planning. <em>More candidates is good for everyone</em>, including current board members who deserve thoughtful colleagues alongside them.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q4">
     <div class="q">Why hasn't this been changed before?</div>
     <div class="a">
       <p>It's never been put to a vote. Under Wisconsin school law (Wis. Stat. § 120.02(2)(a)) the <em>only</em> way to change a common school district's apportionment is a citizen petition signed by at least 500 qualified electors, followed by a vote at the district Annual Meeting. No school board, no superintendent, no PAC, no outside group can do it. The current Area structure was set when MCPASD was formed in 1963 by the merger of the Middleton and Cross Plains districts — and it's held ever since, simply because no one had organized a petition until now.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q5">
     <div class="q">Why now?</div>
     <div class="a">
       <p>The district has changed substantially since the structure was set in 1963 — added thousands of students, new subdivisions across all five Areas, and far more complex governance asks. Bigger decisions are ahead: a likely referendum, ongoing budget pressure under state revenue caps, continued growth planning, superintendent reviews. It's important work, and we want the broadest possible community of capable people available to take it on.</p>
@@ -392,7 +548,7 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q6">
     <div class="q">How often has the district actually had a real election?</div>
     <div class="a">
       <p>Not often. <strong>Every spring primary since 2021 has been cancelled for lack of opposition</strong> — six straight years (2021, 2022, 2023, 2024, 2025, 2026). In April 2025, all three open seats on the ballot had a single candidate; voters didn't actually choose anyone.</p>
@@ -407,35 +563,35 @@
   <!-- ─── Common concerns ────────────────────────────────── -->
   <span class="section-label">Common concerns</span>
 
-  <div class="qa">
+  <div class="qa" id="q7">
     <div class="q">Will my Area lose its voice on the board?</div>
     <div class="a">
       <p>No. Every Area keeps a <strong>permanent anchor seat</strong> — one per Area, guaranteed. The petition adds four district-wide seats that any qualified resident can run for. Each neighborhood's anchor representation stays intact, and the district as a whole gains additional ways to elect members focused on cross-district issues.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q8">
     <div class="q">Will any current board member be forced out?</div>
     <div class="a">
       <p>No. Every current member finishes their full term. Conversion happens only at each seat's natural re-election point. Current members are free to run for either an Area anchor seat or one of the new open seats — their path forward stays intact. Their supporters get more ways to back them, not fewer.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q9">
     <div class="q">Is this partisan? Who's funding it?</div>
     <div class="a">
       <p>Neither partisan nor funded. No PAC, no political party, no outside organization. Parents pay for printing and the domain themselves. Any contribution will be disclosed publicly. The proposal is about democratic structure — not policy direction or candidate preference. Current board members of any political background can still run, and so can their challengers.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q10">
     <div class="q">Will this cost the district anything?</div>
     <div class="a">
       <p>No. The board stays at 9 seats. Same number of elections, same election costs, same governance structure. The change is to <em>who can run</em>, not how many seats exist or what they do.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q11">
     <div class="q">Is this even legal?</div>
     <div class="a">
       <p>Yes. Wisconsin Statute § 120.02(2)(a) explicitly authorizes apportionment changes for common school districts via citizen petition + Annual Meeting vote. The 500-signature threshold applies because MCPASD contains territory in Madison (a second-class city). The petition is counsel-reviewed.</p>
@@ -450,7 +606,7 @@
   </div>
   <span class="section-label">About Areas + representation</span>
 
-  <div class="qa">
+  <div class="qa" id="q12">
     <div class="q">I don't know what Area I live in.</div>
     <div class="a">
       <p>You're not alone — most parents don't know off the top of their heads. MCPASD has a school-boundary lookup on their website if you want to find out.</p>
@@ -459,7 +615,7 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q13">
     <div class="q">Why do you care about the school board?</div>
     <div class="a">
       <p>Honestly — because the work is important, and it's hard. The board picks the superintendent (the person who actually runs the district), approves the budget, decides whether to put a referendum on the ballot, sets long-term direction, and represents families to the administration.</p>
@@ -467,7 +623,7 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q14">
     <div class="q">Is this about a specific board member or specific policy?</div>
     <div class="a">
       <p>No. It's a structural reform — how we choose people, not who. It doesn't target any current member or push any particular policy agenda. Current board members work hard at difficult work and deserve our gratitude. This is about making sure the next great trustee can come from anywhere in our district, not just specific blocks.</p>
@@ -482,7 +638,7 @@
   </div>
   <span class="section-label">How to participate</span>
 
-  <div class="qa">
+  <div class="qa" id="q15">
     <div class="q">How do I sign?</div>
     <div class="a">
       <p>Wisconsin law requires a <strong>pen-and-paper signature on an official sheet</strong> with a circulator's certification (Wis. Stat. § 8.40). There is no legal online signature. Three steps:</p>
@@ -493,14 +649,29 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q16">
     <div class="q">Who can sign?</div>
     <div class="a">
       <p>Anyone who lives inside MCPASD, is at least 18 years old, and is a registered voter. One signature per resident. You don't need to have kids in the district. If you live here and you vote here, you can sign.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q17">
+    <div class="q">Can someone pick up my signed sheet?</div>
+    <div class="a">
+      <p><strong>Yes — happy to come get it.</strong> Text Chase at 336-207-1832 or email <a href="mailto:chase.chasephillips@gmail.com">chase.chasephillips@gmail.com</a> with your address and a good window. Pickup is great if mailing is a hassle, if you'd rather hand it over, or if you've collected sheets from several neighbors and want them all grabbed at once. No need to come to the door — leave it on the porch and we'll grab it.</p>
+    </div>
+  </div>
+
+  <div class="qa" id="q18">
+    <div class="q">I have a spot where neighbors gather — can a circulator come by?</div>
+    <div class="a">
+      <p><strong>Please — that's the best possible lead.</strong> Block parties, soccer sidelines, church coffee hour, a regular porch gathering, farmers market, the pool — anywhere a handful of MCPASD residents will already be in one place is exactly where we want to bring sheets.</p>
+      <p>Use the "Recommend an event" form on the homepage (<a href="https://openseatsmcpasd.org/#events">openseatsmcpasd.org/#events</a>) — anonymous is fine; leave your email if you want a heads-up when it's on the schedule. Or just text 336-207-1832. A circulator will be there with sheets ready.</p>
+    </div>
+  </div>
+
+  <div class="qa" id="q19">
     <div class="q">Wait — the vote is at a meeting, not on a regular ballot?</div>
     <div class="a">
       <p>Correct. MCPASD is a "common school district," and under § 120.02(2)(a) apportionment changes are decided at the district's <strong>Annual Meeting</strong>. Only electors physically present can vote.</p>
@@ -508,7 +679,7 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q20">
     <div class="q">What does the vote at the Annual Meeting actually look like?</div>
     <div class="a">
       <p>The petition will be on the agenda. The meeting moderator presents it, anyone in the room can speak briefly for or against, and then the assembly votes — usually by show of hands, or by paper ballot if requested. A simple majority of electors present carries it.</p>
@@ -516,14 +687,14 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q21">
     <div class="q">What if signatures fall short?</div>
     <div class="a">
       <p>The petition would fail for this cycle and the structure would stay as-is for another year. Earliest retry would be next year's Annual Meeting. We're aiming for <strong>550</strong> (50 above the 500 legal minimum) to cushion against any signatures that get challenged. As of writing, we're on track.</p>
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q22">
     <div class="q">I don't live in MCPASD — how can I help?</div>
     <div class="a">
       <p>You can't sign, but you can:</p>
@@ -535,7 +706,7 @@
     </div>
   </div>
 
-  <div class="qa">
+  <div class="qa" id="q23">
     <div class="q">How do I help beyond just signing?</div>
     <div class="a">
       <p>Several ways, all on <a href="https://openseatsmcpasd.org">openseatsmcpasd.org</a>:</p>
@@ -560,6 +731,25 @@
   </div>
 
 </div>
+
+<a id="back-to-top" class="back-to-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
+
+<script>
+  (function () {
+    var btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    function onScroll() {
+      if (window.scrollY > 600) btn.classList.add('visible');
+      else btn.classList.remove('visible');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    onScroll();
+  })();
+</script>
 
 </body>
 </html>
