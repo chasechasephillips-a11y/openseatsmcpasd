@@ -110,11 +110,19 @@
   .foot .hash .tag { font-family: var(--display); font-weight: 700; font-size: 16px; color: var(--red); }
   .foot .hash .legal { font-size: 8px; color: var(--ink-muted); margin-top: 3px; line-height: 1.35; }
 
-  @page { size: letter; margin: 0; }
+  /* Real printer-safe margins — nothing sits in the unprintable edge zone */
+  @page { size: letter; margin: 0.4in; }
   @media print {
     body { background: #fff; padding: 0; }
     .screen-only { display: none; }
-    .page { box-shadow: none; margin: 0; }
+    .page {
+      width: auto; height: auto; min-height: 10in;
+      box-shadow: none; margin: 0; padding: 0;
+      background-image: none;
+    }
+    /* pull the corner ornaments in so they land inside the safe area */
+    .page::before { top: 0; right: 0; }
+    .page::after { bottom: 0; left: 0; }
   }
 
   /* ─── New logo: Five Anchors, Four Open ─────────────────────── */
