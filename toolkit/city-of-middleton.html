@@ -163,8 +163,65 @@
   .card p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.58; }
   .card p strong { color: var(--ink); }
 
+  /* Mast rules around the eyebrow */
+  .eyebrow.with-rules {
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: none; padding-bottom: 0;
+    max-width: 580px;
+  }
+  .eyebrow.with-rules::before, .eyebrow.with-rules::after {
+    content: ""; flex: 1; height: 1.5px; background: var(--brass);
+    display: inline-block;
+  }
+
+  /* Mid-page civic moment */
+  .moment {
+    background: var(--paper-warm);
+    border-top: 3px solid var(--rule-deep);
+    border-bottom: 3px solid var(--rule-deep);
+    margin: 48px -28px;
+    padding: 38px 32px;
+    text-align: center;
+    position: relative;
+  }
+  .moment::before {
+    content: "§"; position: absolute;
+    top: -18px; left: 50%; transform: translateX(-50%);
+    background: var(--paper); color: var(--brass);
+    padding: 0 12px;
+    font-family: var(--display); font-weight: 700; font-size: 22px;
+  }
+  .moment .line {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(18px, 2.4vw, 24px);
+    line-height: 1.36; color: var(--ink);
+    letter-spacing: -0.01em;
+    max-width: 600px; margin: 0 auto;
+  }
+  .moment .line strong { color: var(--brass); font-weight: 700; }
+  .moment .line em {
+    font-family: var(--italic); color: var(--ink);
+    font-style: italic; display: block; margin-top: 8px;
+  }
+
+  /* Closing stamp */
+  .stamp {
+    margin: 40px 0 20px;
+    display: flex; align-items: center; gap: 18px;
+    color: var(--rule-deep);
+  }
+  .stamp .rule { flex: 1; height: 1.5px; background: var(--rule-deep); }
+  .stamp .line {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(18px, 2.4vw, 24px);
+    color: var(--ink); letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .stamp .line em { font-family: var(--italic); color: var(--brass); font-style: italic; }
+  @media (max-width: 540px) { .stamp { gap: 12px; } .stamp .line { font-size: 17px; } }
+
   .close {
-    margin-top: 48px; padding-top: 32px;
+    margin-top: 24px; padding-top: 32px;
     border-top: 3px double var(--rule-deep);
     display: grid; grid-template-columns: 1fr 180px;
     gap: 28px; align-items: center;
@@ -222,7 +279,7 @@
 
 <div class="wrap">
 
-  <span class="eyebrow">For our neighbors in the City of Middleton</span>
+  <span class="eyebrow with-rules">For our neighbors in the City of Middleton</span>
   <h1>If we trust our voters — and we do — <em>trust them with more candidates.</em></h1>
 
   <p class="lead">The City of Middleton is the largest community in MCPASD. We hold the largest share of voters. We turn out every spring to elect the school board. We've earned good board members because <strong>our neighbors made good choices.</strong></p>
@@ -236,6 +293,10 @@
       <li><strong>No artificial restrictions on who can serve.</strong> The current rules say a great City of Middleton candidate can only run when their specific Area's seat is open. That's an arbitrary clock. Open seats means the strongest community-minded people in our city — and across the district — can step forward whenever a seat opens.</li>
       <li><strong>Have faith in our voters.</strong> Every seat on the board, today and under this plan, is elected by the whole district — including all City of Middleton voters. We don't lose any influence; we just give our voters more choices. If we believe in our voters (and we do — that's why we vote), we should trust them with the bigger ballot.</li>
     </ul>
+  </div>
+
+  <div class="moment" aria-label="Why now">
+    <p class="line">MCPASD's seat structure has not changed since <strong>1963</strong> — when Middleton and Cross Plains merged to form one district. <em>We are the first generation of City of Middleton voters asked if we want to update it.</em></p>
   </div>
 
   <h2 class="section">Why this isn't a loss <em>for the City of Middleton</em></h2>
@@ -270,6 +331,12 @@
   <h2 class="section">The democratic argument, in one breath</h2>
   <p class="lead">We trust City of Middleton voters every other Tuesday in spring. We don't add training wheels to the ballot — we put real choices on it and trust our community to pick. That's the spirit of this petition. <strong>Don't restrict who can run. Trust the voters to decide.</strong></p>
   <p class="lead">If you believe in democracy at the local level — and the City of Middleton has shown again and again that we do — then artificial address-based restrictions on who can be on the ballot don't deserve our protection. The bigger ballot is the more democratic ballot.</p>
+
+  <div class="stamp" aria-hidden="true">
+    <span class="rule"></span>
+    <span class="line">Same board. <em>Wider bench.</em></span>
+    <span class="rule"></span>
+  </div>
 
   <div class="close">
     <div>
