@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Open Seats MCPASD — a parent-led petition to open 4 school board seats so any district resident can run, regardless of address. Sign by Aug 23, 2026.">
+<meta name="description" content="Open Seats MCPASD — a parent-led petition to open 4 school board seats so any district resident can run, regardless of address. Sign by Aug 20, 2026.">
 <title>Open Seats MCPASD — 4 school board seats. Any resident can run.</title>
 <meta property="og:title" content="Open Seats MCPASD — 4 school board seats any resident can run for">
 <meta property="og:description" content="Every MCPASD board seat is tied to a geographic Area. This petition opens 4 of the 9 to any district resident — widening the candidate pool while every Area keeps an anchor seat. More candidates, not different ones.">
@@ -1046,6 +1046,39 @@
   .step-card p { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
   .step-card .btn { align-self: flex-start; }
 
+  /* Pickup CTA inside Step 3 */
+  .pickup-cta {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 12px; padding: 12px 14px;
+    background: var(--green-soft);
+    border: 1.5px solid var(--green);
+    border-radius: 0;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
+    box-shadow: 3px 3px 0 var(--rule);
+  }
+  .pickup-cta:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--rule-deep); background: #DDE3CE; }
+  .pickup-cta .pickup-mark {
+    font-family: var(--display); font-weight: 700;
+    color: var(--green); font-size: 16px; line-height: 1.3;
+  }
+  .pickup-cta .pickup-text { font-size: 13.5px; line-height: 1.45; }
+  .pickup-cta strong { color: var(--green); font-weight: 700; }
+  .pickup-cta em { font-family: var(--italic); font-style: italic; color: var(--green); }
+
+  /* Pickup-row highlight animation when scrolled-to */
+  #pickup-row { scroll-margin-top: 90px; transition: background 0.3s; padding: 6px 8px; margin: 8px -8px; }
+  #pickup-row.flash {
+    background: rgba(185, 133, 33, 0.16);
+    box-shadow: 0 0 0 2px var(--red);
+    animation: pickup-pulse 1.4s ease-out 1;
+  }
+  @keyframes pickup-pulse {
+    0%   { background: rgba(185, 133, 33, 0.30); }
+    100% { background: rgba(185, 133, 33, 0.00); }
+  }
+
   /* ─── Sign-up form ─────────────────────────────────────────────── */
   .signup-box {
     background: var(--paper-card);
@@ -1496,7 +1529,7 @@
 
 <div class="timeline-strip">
   <div class="container timeline-strip-inner">
-    <div class="ts-item"><span class="ts-icon">📝</span><div><div class="ts-label">Sign by</div><div class="ts-value">Sun · Aug 23, 2026</div></div></div>
+    <div class="ts-item"><span class="ts-icon">📝</span><div><div class="ts-label">Sign by</div><div class="ts-value">Thu · Aug 20, 2026</div></div></div>
     <div class="ts-item"><span class="ts-icon">📬</span><div><div class="ts-label">Petition filed by</div><div class="ts-value">Mon · Aug 24, 2026</div></div></div>
     <div class="ts-item"><span class="ts-icon">🗳️</span><div><div class="ts-label">Annual Meeting vote</div><div class="ts-value">Tue · Sept 22 · 7 PM</div></div></div>
   </div>
@@ -1529,7 +1562,7 @@
         <h3 style="margin-bottom: 4px;">What the board actually does</h3>
         <ul class="duties-list">
           <li><strong>Hires, supports, and evaluates the superintendent</strong> — the single most important lever they pull</li>
-          <li><strong>Represents families and neighborhoods</strong> — fields concerns from parents and pushes for what their constituents need</li>
+          <li><strong>Represents all families</strong> — fields concerns from parents across the whole district and pushes for what families need</li>
           <li>Approves the annual budget the administration builds, under Wisconsin's revenue caps</li>
           <li>Decides whether to put referendums on the ballot (most recently a $24.9M operational referendum in 2022)</li>
           <li>Adopts the policies the administration proposes — curriculum, advanced learning, discipline, calendar</li>
@@ -1787,12 +1820,12 @@
     <div class="reveal">
       <span class="section-eyebrow">How it works</span>
       <h2>Two things we need <em>from you</em></h2>
-      <p class="section-lead">Wisconsin's petition process has two steps. We're tracking well on the first — but we still need a lot more signatures before Aug 23 to clear the threshold with room to spare. Both steps matter; the signature push is where we are right now.</p>
+      <p class="section-lead">Wisconsin's petition process has two steps. We're tracking well on the first — but we still need a lot more signatures before Aug 20 to clear the threshold with room to spare. Both steps matter; the signature push is where we are right now.</p>
     </div>
     <div class="phase-grid reveal">
       <div class="phase-card urgent">
         <div class="phase-num">1</div>
-        <h3>Sign the petition by Aug 23</h3>
+        <h3>Sign the petition by Aug 20</h3>
         <div class="phase-date">Phase 1 · happening now</div>
         <p>500 signatures from qualified MCPASD electors (Wis. Stat. § 120.02(2)(a)) — we're aiming for 550 to cushion against any that get challenged. <strong>This is where we need help today:</strong> sign your sheet, and ask a few neighbors to sign theirs.</p>
         <a href="#sign" class="btn btn-primary btn-block" style="margin-top: 16px;">Sign now <span class="btn-arrow">→</span></a>
@@ -1832,8 +1865,12 @@
         <div class="step-num">3</div>
         <h3>Mail it — or I'll come pick it up</h3>
         <p><strong>3795 Swoboda Road<br>Verona, WI</strong></p>
-        <p style="margin-top: 8px; font-size: 14.5px;">Drop in my mailbox or mail with a normal stamp. Or — if mailing is a pain — check the <em>"come pick it up"</em> box on the form below and I'll swing by your address. <strong>Arrive by Aug 20</strong> so I can file by Aug 23.</p>
-        <p style="margin-top: 10px; font-size: 13.5px; color: var(--ink-muted);">Questions? <a href="mailto:chase.chasephillips@gmail.com">chase.chasephillips@gmail.com</a></p>
+        <p style="margin-top: 8px; font-size: 14.5px;">Drop in my mailbox or mail with a normal stamp. <strong>Arrive by Aug 20.</strong></p>
+        <a href="#pickup-row" class="pickup-cta" data-pickup-link>
+          <span class="pickup-mark">✦</span>
+          <span class="pickup-text"><strong>Easier:</strong> have me pick it up from your door. <em>Click to ask →</em></span>
+        </a>
+        <p style="margin-top: 12px; font-size: 13.5px; color: var(--ink-muted);">Questions? <a href="mailto:chase.chasephillips@gmail.com">chase.chasephillips@gmail.com</a></p>
       </div>
     </div>
 
@@ -1875,8 +1912,8 @@
           <input type="checkbox" name="circulator">
           <span>I'd be willing to collect signatures from my neighbors (optional).</span>
         </label>
-        <label class="consent">
-          <input type="checkbox" name="pickup">
+        <label class="consent" id="pickup-row">
+          <input type="checkbox" name="pickup" id="pickup-checkbox">
           <span><strong>Come pick it up instead</strong> — I'd rather Elizabeth swing by my address than mail it back. (Use the address field above.)</span>
         </label>
         <button type="submit" class="btn btn-primary btn-block" id="signSubmit">Add me to the list</button>
@@ -1922,11 +1959,6 @@
     </div>
     <div class="events reveal">
       <div class="event">
-        <div class="event-date"><div class="month">Tue</div><div class="day">★</div><div class="dow">Weekly</div></div>
-        <div class="event-info"><h4>Downtown Middleton Farmers Market</h4><div class="where">Capital Brewery TAP · 2–7pm · when a volunteer is staffing</div></div>
-        <span class="event-tag">If staffed</span>
-      </div>
-      <div class="event">
         <div class="event-date"><div class="month">Thu</div><div class="day">★</div><div class="dow">Weekly</div></div>
         <div class="event-info"><h4>Greenway Station Farmers Market</h4><div class="where">Greenway Station · 8am–1pm · when a volunteer is staffing</div></div>
         <span class="event-tag">If staffed</span>
@@ -1937,12 +1969,7 @@
         <span class="event-tag flagship">Chase on site</span>
       </div>
       <div class="event">
-        <div class="event-date"><div class="month">Jul</div><div class="day">4</div><div class="dow">Sat</div></div>
-        <div class="event-info"><h4>Middleton 4th of July Celebration</h4><div class="where">Breakfast → fireworks at dusk · sheets out if staffed</div></div>
-        <span class="event-tag">If staffed</span>
-      </div>
-      <div class="event">
-        <div class="event-date"><div class="month">Aug</div><div class="day">23</div><div class="dow">Sun</div></div>
+        <div class="event-date"><div class="month">Aug</div><div class="day">20</div><div class="dow">Thu</div></div>
         <div class="event-info"><h4>🎯 Signature deadline — last day to sign</h4><div class="where">Petition filed Mon Aug 24 at District Services Center</div></div>
         <span class="event-tag flagship">Deadline</span>
       </div>
@@ -2035,7 +2062,7 @@
     <div class="reveal faq-pitch" style="margin-top: 28px;">
       <p><strong>The time to fix this is now.</strong> Our school districts are asked to do more every year — passing referendums, balancing budgets under state revenue caps, making harder calls about how our kids learn — and every family in MCPASD deserves a board elected without <em>artificial restrictions</em> on who can serve.</p>
       <p>All 9 of MCPASD's school board seats are locked to specific geographic Areas — and this structure hasn't changed since the district was formed in <strong>1963</strong>. In the six decades since, every other large Wisconsin district has evolved to a mixed or fully at-large model. We're the only large district that hasn't. I'm proposing the model <strong>Verona already uses next door</strong>: a guaranteed anchor representative per Area, plus <strong>open district-wide seats</strong> any MCPASD resident can run for. Same board size. Voters still pick every seat — we're just widening who's allowed on the ballot.</p>
-      <p style="margin-top: 14px; font-family: var(--display); font-size: 17px;"><strong>Sign by Aug 23 → openseatsmcpasd.org · Vote at the Annual Meeting Sept 22.</strong></p>
+      <p style="margin-top: 14px; font-family: var(--display); font-size: 17px;"><strong>Sign by Aug 20 → openseatsmcpasd.org · Vote at the Annual Meeting Sept 22.</strong></p>
     </div>
 
     <div style="margin-top: 44px;" class="reveal">
@@ -2105,7 +2132,7 @@
 <section class="final-cta">
   <div class="container narrow">
     <h2>Tracking well — but <em>we still need you</em>.</h2>
-    <p class="lead">Sign by Aug 23 if you haven't yet. Ask a few neighbors to do the same. Then mark your calendar for Tuesday, September 22, 7 PM at the District Services Center — only people in the room can vote it through.</p>
+    <p class="lead">Sign by Aug 20 if you haven't yet. Ask a few neighbors to do the same. Then mark your calendar for Tuesday, September 22, 7 PM at the District Services Center — only people in the room can vote it through.</p>
     <div class="cta-row" style="justify-content: center;">
       <a href="#sign" class="btn btn-primary">Sign now <span class="btn-arrow">→</span></a>
       <a href="mailto:chase.chasephillips@gmail.com" class="btn btn-outline">Email us</a>
@@ -2260,6 +2287,20 @@
     handle('suggestForm', 'suggestMsg', 'suggestSubmit', '/api/suggest-event',
       "Thanks — suggestion received. We'll line up a circulator and a sheet.",
       'Send suggestion');
+
+    // ─── Pickup CTA: scroll + check + flash ────────────────────────
+    document.querySelectorAll('[data-pickup-link]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var row = document.getElementById('pickup-row');
+        var box = document.getElementById('pickup-checkbox');
+        if (!row || !box) return;
+        if (!box.checked) box.checked = true;
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Re-trigger animation if user clicks repeatedly
+        row.classList.remove('flash'); void row.offsetWidth; row.classList.add('flash');
+      });
+    });
 
     // ─── Reveal on scroll ───────────────────────────────────────────
     if ('IntersectionObserver' in window) {

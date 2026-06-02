@@ -197,6 +197,24 @@
     width: 1.5px; background: rgba(251, 248, 239,0.5);
     left: 90.9%;
   }
+  /* ─── Milestone states ─────────────────────────────────── */
+  /* When count >= 500 (legal min met) */
+  .stats-band.milestone-legal::before { content: "✓  PETITION READY TO FILE  ✓"; color: var(--red); }
+  .stats-band.milestone-legal .stat-block .n { color: #F2D67A; }
+  .stats-band.milestone-legal .stat-block .bar .fill { background: linear-gradient(90deg, var(--red-bright), #F2D67A); box-shadow: 0 0 14px rgba(242, 214, 122, 0.6); }
+  /* When count >= goal (550) */
+  .stats-band.milestone-goal::before { content: "★  GOAL MET — FILED FOR SEPT 22  ★"; color: #F2D67A; }
+  .stats-band.milestone-goal {
+    background: linear-gradient(135deg, var(--ink) 0%, #1F3258 100%);
+    border-top-color: #F2D67A;
+    border-bottom-color: #F2D67A;
+  }
+  .stats-band.milestone-goal .stat-block .n { color: #F2D67A; }
+  .stats-band.milestone-goal .stat-block .bar .fill {
+    background: linear-gradient(90deg, #F2D67A, #FFEFB0);
+    box-shadow: 0 0 18px rgba(255, 239, 176, 0.65);
+  }
+
   .stat-block .bar .legal::after {
     content: "500 legal";
     position: absolute; top: 100%; right: -4px;
@@ -314,7 +332,122 @@
   }
 </style>
 <script src="/assets/beacon.js" defer></script>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/">← Back to openseatsmcpasd.org</a>
 </div>
+
+<div class="container">
+  <span class="eyebrow">Campaign toolkit</span>
+  <h1>Help spread the <em>word</em>.</h1>
+  <p class="lead">Thirteen things, all free, all yours. Print them, hand them out, paste them, send them. Whatever you take from this page is what gets us to 500 signatures — and to the hundreds we'll need in the room on September 22.</p>
+  <div class="ornament" aria-hidden="true">
+    <span class="line"></span>
+    <span class="mark">❖</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="stats-band" id="statsBand" aria-label="Where we are">
+    <div class="stat-block">
+      <div class="n" id="sb-sig">—<span class="of">/ 550 goal</span></div>
+      <div class="lbl">Signatures so far</div>
+      <div class="bar"><div class="fill" id="sb-fill"></div><div class="legal"></div></div>
+    </div>
+    <div class="stat-block">
+      <div class="n" id="sb-filed">—<span class="of">days</span></div>
+      <div class="lbl">Until petition is filed · Aug 23</div>
+    </div>
+    <div class="stat-block">
+      <div class="n" id="sb-vote">—<span class="of">days</span></div>
+      <div class="lbl">Until the vote · Sept 22</div>
+    </div>
+  </div>
+
+  <!-- 01 — Print + hand out -->
+  <div class="section-head">
+    <div class="sec-num">01</div>
+    <div class="sec-titles">
+      <h2>Print and <em>hand it out</em></h2>
+      <div class="sec-sub">Physical materials. The everyday ammunition for tables, doors, mailboxes, and bulletin boards.</div>
+    </div>
+  </div>
+  <div class="kit-grid print">
+    <a href="/toolkit/handout.html" class="kit-card"><div class="num">A</div><h2>The one-page handout</h2><p>The whole proposal on a single letter page — masthead, seat diagram, why it matters, what stays the same, dates, and a big QR. The everyday leave-behind.</p><span class="cta">Open print sheet</span></a>
+    <a href="/toolkit/cards.html" class="kit-card"><div class="num">B</div><h2>Business cards</h2><p>10 cards per letter sheet (Avery 5371). Carry a dozen with you — every pause in a conversation is a chance to slip one to a neighbor.</p><span class="cta">Open print sheet</span></a>
+    <a href="/toolkit/flyer.html" class="kit-card"><div class="num">C</div><h2>Half-sheet flyer</h2><p>Two flyers per letter, cut or fold in half. Big "OPEN THE SEATS" headline, three facts, dates, a QR. Tape it at the library or Capital Brewery.</p><span class="cta">Open print sheet</span></a>
+    <a href="/toolkit/hangers.html" class="kit-card"><div class="num">D</div><h2>Door hangers</h2><p>Three per letter sheet, with a doorknob-loop template. Walk a block, hang on doorknobs, no doorbell required.</p><span class="cta">Open print sheet</span></a>
+    <a href="/toolkit/stickers.html" class="kit-card"><div class="num">E</div><h2>Stickers</h2><p>12 round 2.5" stickers per letter sheet — barn-red, cream, and scan-to-sign QR. Most viral asset per dollar; a sticker travels everywhere its owner does.</p><span class="cta">Open print sheet</span></a>
+    <a href="/toolkit/printing.html" class="kit-card"><div class="num">F</div><h2>Where to print everything</h2><p>Vendor recommendations + real prices for every printable on this page. DIY-at-home costs alongside pro-print costs so you can choose.</p><span class="cta">Open guide</span></a>
+  </div>
+
+  <!-- 02 — Talk it through -->
+  <div class="section-head">
+    <div class="sec-num">02</div>
+    <div class="sec-titles">
+      <h2>Talk it <em>through</em></h2>
+      <div class="sec-sub">When you're standing at a door, a sideline, or a coffee counter — and a real question lands.</div>
+    </div>
+  </div>
+  <div class="kit-grid talk">
+    <a href="/toolkit/script.html" class="kit-card"><div class="num">G</div><h2>Placard + circulator script</h2><p>5.5"×8.5" tabletop placard with QR <em>and</em> a circulator cheat sheet — the 30-second pitch, common objections, the §8.40 certification reminder.</p><span class="cta">Open print sheet</span></a>
+    <a href="/toolkit/circulator-faq.html" class="kit-card"><div class="num">H</div><h2>Circulator field FAQ</h2><p>Two-page, double-sided field reference for hard questions — including the Cross Plains "won't Middleton just take over?" worry. Fold into your clipboard.</p><span class="cta">Open print sheet</span></a>
+    <a href="/toolkit/talking-script.html" class="kit-card"><div class="num">I</div><h2>Doorstep conversation guide</h2><p>How to talk with a neighbor who feels they're losing a seat. Curiosity-first questions, tailored answers, graceful ways to end early.</p><span class="cta">Open the guide</span></a>
+    <a href="/toolkit/cross-plains.html" class="kit-card"><div class="num">J</div><h2>A straight answer for Cross Plains</h2><p>The smaller community's fair worry — "won't Middleton take the open seats?" — answered head-on. Hand to a skeptical neighbor.</p><span class="cta">Open the brief</span></a>
+    <a href="/toolkit/faq.html" class="kit-card"><div class="num">K</div><h2>FAQ + elevator pitch</h2><p>The full shareable FAQ — the 30-second elevator pitch + 23 questions with answers. Print to hand out, save as PDF, or just text someone the link.</p><span class="cta">Open FAQ</span></a>
+  </div>
+
+  <!-- 03 — Send it out -->
+  <div class="section-head">
+    <div class="sec-num">03</div>
+    <div class="sec-titles">
+      <h2>Send it <em>out</em></h2>
+      <div class="sec-sub">For your feed, your group chat, your PTA list — and the people who shouldn't hear about this through the rumor mill.</div>
+    </div>
+  </div>
+  <div class="kit-grid send">
+    <a href="/toolkit/share.html" class="kit-card"><div class="num">L</div><h2>Social share kit</h2><p>Pre-written copy for Facebook, NextDoor, a text to a neighbor, an email to a PTA. Plus three 1080×1080 graphics you can screenshot and post.</p><span class="cta">Open share kit</span></a>
+    <a href="/toolkit/board-outreach.html" class="kit-card"><div class="num">M</div><h2>Email the board</h2><p>Three email templates for reaching out to MCPASD board members directly — one default, one for personal connection, one for specific thanks.</p><span class="cta">Open templates</span></a>
+  </div>
+
+  <div class="close-block">
+    <p class="close-quote">Every petition that ever changed a community's structure started with a flyer at the library, a card at the coffee counter, and <em>a conversation at the door.</em> Whatever you take from this page is the campaign.</p>
+    <div class="close-sig">— Open Seats MCPASD · 2026</div>
+  </div>
+
+  <div class="tip">
+    <strong>Printing tips.</strong> On any print sheet, hit <code>Ctrl/Cmd + P</code> → choose <strong>Save as PDF</strong> if you want to take it to FedEx Office, or print directly if you have cardstock at home. Use <strong>Letter</strong> size, <strong>portrait</strong> orientation, and turn on <strong>Background graphics</strong> in More Settings so the cream paper and red accents come through.
+  </div>
+</div>
+
+<script>
+  // Pull live numbers for the "Where we are" band + milestone state.
+  (function () {
+    var voteDate = new Date('2026-09-22T19:00:00-05:00');
+    var fileDate = new Date('2026-08-23T23:59:59-05:00');
+    var now = new Date();
+    var dDays = function (d) { return Math.max(0, Math.ceil((d - now) / 86400000)); };
+    var setEl = function (id, v) { var el = document.getElementById(id); if (el) el.innerHTML = v; };
+    setEl('sb-vote',  dDays(voteDate) + '<span class="of">days</span>');
+    setEl('sb-filed', dDays(fileDate) + '<span class="of">days</span>');
+
+    fetch('/api/stats').then(function (r) { return r.json(); }).then(function (d) {
+      var n    = (d && typeof d.signatures === 'number') ? d.signatures : 0;
+      var goal = (d && d.goal) ? d.goal : 550;
+      var legalMin = (d && d.legalMinimum) ? d.legalMinimum : 500;
+      setEl('sb-sig', n + '<span class="of">/ ' + goal + ' goal</span>');
+      var fill = document.getElementById('sb-fill');
+      if (fill) setTimeout(function () { fill.style.width = Math.min(100, (n / goal) * 100) + '%'; }, 200);
+      var band = document.getElementById('statsBand');
+      if (band) {
+        band.classList.remove('milestone-legal', 'milestone-goal');
+        if (n >= goal)          band.classList.add('milestone-goal');
+        else if (n >= legalMin) band.classList.add('milestone-legal');
+      }
+    }).catch(function () {});
+  })();
+</script>
 
 </body>
 </html>

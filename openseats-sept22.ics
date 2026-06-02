@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Open Seats MCPASD//Sept 22 Annual Meeting//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:openseats-sept22-2026@openseatsmcpasd.org
+DTSTAMP:20260601T000000Z
+DTSTART;TZID=America/Chicago:20260922T190000
+DTEND;TZID=America/Chicago:20260922T193000
+SUMMARY:MCPASD Annual Meeting — Open Seats Vote
+LOCATION:District Services Center\, 7106 South Avenue\, Middleton\, WI 53562
+DESCRIPTION:The MCPASD Annual Meeting where the Open Seats petition is voted on. Only electors physically present can vote.\n\nBring photo ID. Free parking on site. Plan on ~30 minutes.\n\nMore info: https://openseatsmcpasd.org/sept22\nQuestions: chase.chasephillips@gmail.com
+URL:https://openseatsmcpasd.org/sept22
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

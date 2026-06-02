@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Town of Middleton postcard — Open Seats MCPASD</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBF8EF;
+    --paper-warm: #FCF8E8;
+    --ink: #14223E;
+    --ink-soft: #2A3756;
+    --ink-muted: #6E4F2F;
+    --brass: #B98521;
+    --brass-dark: #8C6112;
+    --rule: #D5C8A9;
+    --rule-deep: #A89572;
+    --display: 'Old Standard TT', serif;
+    --body: 'Lora', Georgia, serif;
+    --italic: 'IM Fell DW Pica', 'Lora', Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--body);
+    background: #E8E2D2;
+    color: var(--ink);
+    padding: 28px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Screen-only instructions ─── */
+  .screen-only {
+    max-width: 880px; margin: 0 auto 32px;
+    background: #FCF8E8;
+    border: 1px solid var(--rule);
+    box-shadow: 4px 4px 0 var(--rule-deep);
+    padding: 24px 28px;
+  }
+  .screen-only h1 {
+    font-family: var(--display); font-size: 26px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .screen-only h1 em { font-family: var(--italic); color: var(--brass); font-style: italic; }
+  .screen-only p { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.6; }
+  .screen-only ul { margin: 8px 0 14px 22px; font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+  .screen-only a { color: var(--brass-dark); font-weight: 600; }
+  .print-btn {
+    display: inline-block;
+    background: var(--brass); color: var(--paper);
+    border: 1px solid var(--brass-dark);
+    padding: 12px 22px;
+    font-family: var(--body); font-weight: 700;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer; text-decoration: none;
+  }
+  .print-btn:hover { background: #D29D2E; }
+  .screen-only code {
+    font-family: 'Courier New', monospace;
+    background: var(--paper-warm); padding: 2px 6px;
+    border: 1px solid var(--rule); font-size: 13.5px;
+  }
+
+  /* ─── Sheet (one postcard per Letter, centered, with cut marks) ─── */
+  .sheet {
+    width: 8.5in; height: 11in;
+    background: white;
+    margin: 0 auto 24px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+  }
+  .sheet-label {
+    position: absolute; top: 0.35in; left: 0.5in;
+    font-family: var(--italic); font-style: italic;
+    font-size: 11px; color: #888;
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .crop {
+    position: absolute;
+    width: 9in; height: 6in;
+    /* center on 8.5x11 letter, so margins are (8.5-9)/2 = -0.25" (offscreen)
+       — fix: rotate 90deg and use 6w x 9h, OR landscape printing.
+       Simpler: place at top: 1in, left: 0; let printer use landscape. */
+  }
+
+  /* ─── The actual postcard surface (9w x 6h landscape) ─── */
+  .card {
+    width: 9in; height: 6in;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  /* on screen, center on the sheet (sideways since sheet is portrait) */
+  .sheet .card {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Cut guides (corner crops) */
+  .cut { position: absolute; width: 0.18in; height: 0.18in; pointer-events: none; }
+  .cut::before, .cut::after {
+    content: ''; position: absolute; background: #999;
+  }
+  .cut::before { left: 0; right: 0; top: 50%; height: 0.5px; }
+  .cut::after  { top: 0; bottom: 0; left: 50%; width: 0.5px; }
+  .cut.tl { top: -0.18in; left: -0.18in; }
+  .cut.tr { top: -0.18in; right: -0.18in; }
+  .cut.bl { bottom: -0.18in; left: -0.18in; }
+  .cut.br { bottom: -0.18in; right: -0.18in; }
+
+  /* ─── FRONT ─── */
+  .front {
+    padding: 0.45in 0.5in;
+    display: flex; flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+  .front::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 0.18in;
+    background: var(--ink);
+  }
+  .front::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 0.18in;
+    background: var(--brass);
+  }
+  .front-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 18px;
+  }
+  .mark-svg {
+    width: 44px; height: 44px;
+    background: var(--ink);
+    flex-shrink: 0;
+    box-shadow: 3px 3px 0 var(--brass);
+  }
+  .mark-svg svg { display: block; width: 100%; height: 100%; }
+  .front-id {
+    font-family: var(--display); font-weight: 700;
+    font-size: 16px; color: var(--ink);
+    letter-spacing: 0.03em;
+  }
+  .front-id .small {
+    display: block;
+    font-family: var(--body); font-weight: 600;
+    font-size: 10px; color: var(--ink-muted);
+    letter-spacing: 0.32em; text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .front-rule {
+    height: 1px; background: var(--rule-deep);
+    margin: 14px 0 24px;
+  }
+  .front h1 {
+    font-family: var(--display);
+    font-size: 40px; font-weight: 700;
+    line-height: 1.04; color: var(--ink);
+    letter-spacing: -0.018em;
+    margin-bottom: 6px;
+  }
+  .front h1 .one {
+    color: var(--brass);
+    font-family: var(--italic);
+    font-style: italic;
+    font-size: 44px;
+  }
+  .front .sub {
+    font-family: var(--italic); font-style: italic;
+    font-size: 19px; color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .facts {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 4px;
+    margin-bottom: auto;
+  }
+  .fact { text-align: left; }
+  .fact .num {
+    font-family: var(--display); font-weight: 700;
+    font-size: 32px; color: var(--brass);
+    line-height: 1; margin-bottom: 2px;
+  }
+  .fact .lbl {
+    font-family: var(--body); font-size: 11.5px;
+    color: var(--ink-soft); line-height: 1.35;
+  }
+  .front-cta {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .front-cta .deadline {
+    font-family: var(--display); font-weight: 700;
+    color: var(--ink); line-height: 1;
+  }
+  .front-cta .deadline .verb {
+    font-size: 28px; letter-spacing: -0.01em;
+    display: block;
+  }
+  .front-cta .deadline .when {
+    font-size: 18px; color: var(--brass);
+    margin-top: 4px;
+  }
+  .front-cta .url-block {
+    text-align: center;
+  }
+  .front-cta .url {
+    font-family: var(--display); font-weight: 700;
+    font-size: 15px; color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .front-cta .qr {
+    width: 92px; height: 92px;
+    border: 1px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--brass);
+  }
+  .front-cta .qr img { display: block; width: 100%; height: 100%; }
+  .front-cta .small {
+    font-family: var(--italic); font-style: italic;
+    font-size: 11px; color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── BACK (address side) ─── */
+  .back {
+    padding: 0.4in 0.45in;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4in;
+    height: 100%;
+    position: relative;
+  }
+  .back::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 0.12in;
+    background: var(--ink);
+  }
+  .msg .from {
+    font-family: var(--body); font-weight: 700;
+    font-size: 10.5px; letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--brass-dark);
+    margin-bottom: 8px;
+  }
+  .msg h2 {
+    font-family: var(--display); font-weight: 700;
+    font-size: 20px; line-height: 1.18;
+    color: var(--ink); margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .msg p {
+    font-family: var(--body); font-size: 12px;
+    line-height: 1.55; color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .msg p strong { color: var(--ink); }
+  .msg .sig {
+    margin-top: 12px;
+    font-family: var(--italic); font-style: italic;
+    color: var(--ink);
+    font-size: 13.5px;
+  }
+  .msg .url-stamp {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--display); font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .addr {
+    display: flex; flex-direction: column;
+    position: relative;
+    border-left: 1px solid var(--rule-deep);
+    padding-left: 0.35in;
+  }
+  .addr-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+  .return {
+    font-family: var(--body); font-size: 9.5px;
+    color: var(--ink-soft); line-height: 1.4;
+    max-width: 1.9in;
+  }
+  .return strong { color: var(--ink); font-size: 10.5px; }
+  .indicia {
+    border: 1px dashed var(--rule-deep);
+    padding: 6px 10px;
+    text-align: center;
+    font-family: var(--body); font-size: 8px;
+    line-height: 1.35; color: var(--ink-muted);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    width: 1.5in;
+  }
+  .indicia .big {
+    font-family: var(--display); font-weight: 700;
+    font-size: 11px; color: var(--ink);
+    letter-spacing: 0.04em;
+    display: block;
+    margin: 2px 0;
+  }
+  .recipient {
+    margin-top: auto;
+    margin-bottom: 0.2in;
+    text-align: center;
+  }
+  .recipient .to-line {
+    font-family: var(--display); font-weight: 700;
+    font-size: 18px; color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .recipient .postal-line {
+    font-family: var(--body); font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .recipient .blank-lines {
+    margin-top: 14px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .recipient .blank-lines .line {
+    height: 1px; background: var(--rule); width: 100%;
+  }
+
+  /* ─── Print ─── */
+  @page {
+    size: letter portrait;
+    margin: 0;
+  }
+  @media print {
+    body { background: white; padding: 0; }
+    .screen-only { display: none; }
+    .sheet { box-shadow: none; margin: 0 auto; page-break-after: always; }
+    .sheet:last-child { page-break-after: auto; }
+    .sheet-label { display: none; }
+    .cut::before, .cut::after { background: #aaa; }
+  }
+</style>
+</head>
+<body>
+
+<div class="screen-only">
+  <h1>Town of Middleton <em>postcard</em></h1>
+  <p>One 6"×9" postcard per page, two pages (front + back). Designed to either home-print on Letter paper (cut along the corner crops) <strong>or</strong> save as PDF and upload to a direct-mail service.</p>
+  <p><strong>Upload to a mailer site (e.g., Vistaprint, Got Print, PostcardMania, or USPS EDDM):</strong></p>
+  <ul>
+    <li>Click "Print or save as PDF" below and choose <strong>Save as PDF</strong>. You'll get a two-page PDF — page 1 is the front design, page 2 is the address side.</li>
+    <li>At the mailer site, pick the <strong>6" × 9" postcard</strong> template (or "6×9 EDDM flat" for door-direct-mail by carrier route — no addresses needed, USPS handles it).</li>
+    <li>Upload front + back as separate sides. Most services have a fit/crop step.</li>
+    <li>For EDDM specifically, the dashed indicia box is a placeholder — the EDDM tool replaces it automatically.</li>
+  </ul>
+  <p><strong>Print at home:</strong> Letter paper, <strong>Landscape</strong>, choose <strong>Print backgrounds</strong> in More Settings so the cream and brass come through. Cut along the corner crops.</p>
+  <p><strong>QR code:</strong> auto-generated via api.qrserver.com — needs an internet connection at print time so the QR renders into the PDF.</p>
+  <a class="print-btn" href="#" onclick="window.print(); return false;">Print or save as PDF</a>
+  &nbsp;
+  <a href="/toolkit/" style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--ink-soft); text-decoration: none; margin-left: 12px;">← Back to toolkit</a>
+</div>
+
+<!-- ─── PAGE 1 — FRONT ─── -->
+<div class="sheet">
+  <div class="sheet-label">Front · 6" × 9"</div>
+  <div class="card">
+    <div class="cut tl"></div><div class="cut tr"></div>
+    <div class="cut bl"></div><div class="cut br"></div>
+    <div class="front">
+      <div class="front-head">
+        <div class="mark-svg">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4"  y="4"  width="6" height="6" fill="none"   stroke="#FBF8EF" stroke-width="1.4"/>
+            <rect x="13" y="4"  width="6" height="6" fill="#FBF8EF"/>
+            <rect x="22" y="4"  width="6" height="6" fill="none"   stroke="#FBF8EF" stroke-width="1.4"/>
+            <rect x="4"  y="13" width="6" height="6" fill="#FBF8EF"/>
+            <rect x="13" y="13" width="6" height="6" fill="#FBF8EF"/>
+            <rect x="22" y="13" width="6" height="6" fill="#FBF8EF"/>
+            <rect x="4"  y="22" width="6" height="6" fill="none"   stroke="#FBF8EF" stroke-width="1.4"/>
+            <rect x="13" y="22" width="6" height="6" fill="#FBF8EF"/>
+            <rect x="22" y="22" width="6" height="6" fill="none"   stroke="#FBF8EF" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="front-id">
+          <span class="small">Open Seats MCPASD · 2026</span>
+          A parent-led citizen petition
+        </div>
+      </div>
+
+      <div class="front-rule"></div>
+
+      <h1>MCPASD's school board structure hasn't <span class="one">changed since 1963.</span></h1>
+      <p class="sub">It's time to widen the bench — without changing how anyone votes.</p>
+
+      <div class="facts">
+        <div class="fact">
+          <div class="num">9<span style="font-size:18px;color:var(--ink-soft)">/9</span></div>
+          <div class="lbl">Board seats locked to a specific Area today</div>
+        </div>
+        <div class="fact">
+          <div class="num">6</div>
+          <div class="lbl">Straight years of cancelled spring primaries (2021–26)</div>
+        </div>
+        <div class="fact">
+          <div class="num">∞</div>
+          <div class="lbl">Other large WI districts that have already evolved</div>
+        </div>
+      </div>
+
+      <div class="front-cta">
+        <div class="deadline">
+          <span class="verb">Sign by</span>
+          <span class="when">Thu · Aug 20, 2026</span>
+        </div>
+        <div class="url-block">
+          <div class="url">openseatsmcpasd.org</div>
+          <div class="qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=4&data=https%3A%2F%2Fopenseatsmcpasd.org" alt="QR code to openseatsmcpasd.org">
+          </div>
+          <div class="small">Same board size. Voters still decide.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PAGE 2 — BACK (address side) ─── -->
+<div class="sheet">
+  <div class="sheet-label">Back · 6" × 9" · address side</div>
+  <div class="card">
+    <div class="cut tl"></div><div class="cut tr"></div>
+    <div class="cut bl"></div><div class="cut br"></div>
+    <div class="back">
+
+      <div class="msg">
+        <div class="from">From a neighbor in Verona</div>
+        <h2>Town of Middleton — your school board, your call.</h2>
+        <p>I'm <strong>Chase Olson</strong>, a parent in the district. I'm circulating a petition to open <strong>4 of 9</strong> MCPASD school board seats to any qualified district resident, while keeping <strong>5 anchored</strong> to specific Areas — including yours. Same 9-member board. Voters still pick every seat. The change is to <em>who can be on the ballot</em>.</p>
+        <p>Wisconsin law (§ 120.02(2)(a)) requires a citizen petition + a vote at the MCPASD Annual Meeting on <strong>Tue Sept 22, 7 PM</strong> at the District Services Center, 7106 South Ave. Only people in the room can vote — I hope you'll come.</p>
+        <p>To sign: <strong>openseatsmcpasd.org</strong>, or text me at <strong>336-207-1832</strong> and I'll drop a paper sheet on your porch.</p>
+        <div class="sig">— Chase Olson · 3795 Swoboda Rd, Verona WI 53593</div>
+        <div class="url-stamp">SIGN BY AUG 23 · VOTE SEPT 22</div>
+      </div>
+
+      <div class="addr">
+        <div class="addr-head">
+          <div class="return">
+            <strong>Chase Olson</strong><br>
+            3795 Swoboda Rd<br>
+            Verona, WI 53593
+          </div>
+          <div class="indicia">
+            PRSRT STD<br>
+            <span class="big">U.S. Postage<br>PAID</span>
+            EDDM Retail<br>
+            (or stamp)
+          </div>
+        </div>
+
+        <div class="recipient">
+          <div class="to-line">Local Postal Customer</div>
+          <div class="postal-line">ECRWSS · Town of Middleton, WI</div>
+          <div class="blank-lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
