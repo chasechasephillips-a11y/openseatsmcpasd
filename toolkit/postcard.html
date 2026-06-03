@@ -83,7 +83,7 @@
   }
   .crop {
     position: absolute;
-    width: 9in; height: 6in;
+    width: 9in; height: 6.5in;
     /* center on 8.5x11 letter, so margins are (8.5-9)/2 = -0.25" (offscreen)
        — fix: rotate 90deg and use 6w x 9h, OR landscape printing.
        Simpler: place at top: 1in, left: 0; let printer use landscape. */
@@ -91,7 +91,7 @@
 
   /* ─── The actual postcard surface (9w x 6h landscape) ─── */
   .card {
-    width: 9in; height: 6in;
+    width: 9in; height: 6.5in;
     background: var(--paper);
     position: relative;
     overflow: hidden;
@@ -346,18 +346,25 @@
     height: 1px; background: var(--rule); width: 100%;
   }
 
-  /* ─── Print ─── */
+  /* ─── Print: each page IS the postcard at true 9 × 6.5 size, so "Save as PDF"
+     produces a clean front/back file ready to upload to a mailer (no letter
+     sheet, no clipped card, no manual cutting). ─── */
   @page {
-    size: letter portrait;
+    size: 9in 6.5in;
     margin: 0;
   }
   @media print {
     body { background: white; padding: 0; }
     .screen-only { display: none; }
-    .sheet { box-shadow: none; margin: 0 auto; page-break-after: always; }
+    .sheet {
+      width: 9in; height: 6.5in;
+      box-shadow: none; margin: 0; page-break-after: always;
+    }
     .sheet:last-child { page-break-after: auto; }
-    .sheet-label { display: none; }
-    .cut::before, .cut::after { background: #aaa; }
+    .sheet .card {
+      position: static; transform: none; top: auto; left: auto;
+    }
+    .sheet-label, .cut { display: none; }  /* mailer trims; no home crops needed */
   }
 </style>
 </head>
@@ -365,11 +372,11 @@
 
 <div class="screen-only">
   <h1>Town of Middleton <em>postcard</em></h1>
-  <p>One 6"×9" postcard per page, two pages (front + back). Designed to either home-print on Letter paper (cut along the corner crops) <strong>or</strong> save as PDF and upload to a direct-mail service.</p>
+  <p>One 6.5"×9" postcard per page, two pages (front + back), sized to exactly 9 × 6.5 inches so the PDF uploads clean to any mailer. <strong>6.5×9 is the smallest USPS-eligible size</strong> — a true 6×9 gets rejected (height must exceed 6.125"). Save as PDF and upload to a direct-mail service, or home-print and trim.</p>
   <p><strong>Upload to a mailer site (e.g., Vistaprint, Got Print, PostcardMania, or USPS EDDM):</strong></p>
   <ul>
     <li>Click "Print or save as PDF" below and choose <strong>Save as PDF</strong>. You'll get a two-page PDF — page 1 is the front design, page 2 is the address side.</li>
-    <li>At the mailer site, pick the <strong>6" × 9" postcard</strong> template (or "6×9 EDDM flat" for door-direct-mail by carrier route — no addresses needed, USPS handles it).</li>
+    <li>At the mailer site, pick the <strong>6.5" × 9" postcard</strong> template (or "6×9 EDDM flat" for door-direct-mail by carrier route — no addresses needed, USPS handles it).</li>
     <li>Upload front + back as separate sides. Most services have a fit/crop step.</li>
     <li>For EDDM specifically, the dashed indicia box is a placeholder — the EDDM tool replaces it automatically.</li>
   </ul>
@@ -382,7 +389,7 @@
 
 <!-- ─── PAGE 1 — FRONT ─── -->
 <div class="sheet">
-  <div class="sheet-label">Front · 6" × 9"</div>
+  <div class="sheet-label">Front · 6.5" × 9"</div>
   <div class="card">
     <div class="cut tl"></div><div class="cut tr"></div>
     <div class="cut bl"></div><div class="cut br"></div>
@@ -447,7 +454,7 @@
 
 <!-- ─── PAGE 2 — BACK (address side) ─── -->
 <div class="sheet">
-  <div class="sheet-label">Back · 6" × 9" · address side</div>
+  <div class="sheet-label">Back · 6.5" × 9" · address side</div>
   <div class="card">
     <div class="cut tl"></div><div class="cut tr"></div>
     <div class="cut bl"></div><div class="cut br"></div>
