@@ -1,0 +1,14 @@
+# Security headers (Cloudflare Pages, Netlify-style).
+# Conservative set — no CSP, since the site relies on inline scripts/styles
+# and a strict CSP would risk breaking them. These improve scanner ratings
+# and signal a legitimate, well-configured site. They do NOT fix
+# newly-registered-domain firewall blocks (submit the domain for
+# categorization with the major vendors for that).
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin
