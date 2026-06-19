@@ -8,7 +8,7 @@
 // Paste your CF Web Analytics site token here once you've enabled it at
 // dash.cloudflare.com → Analytics → Web Analytics → Add a site.
 // Leave blank to skip — the D1 tracker still works.
-var CF_TOKEN = '';
+var CF_TOKEN = '0f3e8d644a5543de8be948936f2f1a33';
 
 (function () {
   try {
