@@ -650,6 +650,17 @@
       </div>
     </div>
 
+    <div class="traffic-grid" style="margin-top: 18px;">
+      <div>
+        <h4>Source / circulator (?ref=) — visits · uniques</h4>
+        <table class="mini-tbl"><tbody id="t-refsrc"></tbody></table>
+      </div>
+      <div>
+        <h4>Top cities — visits · uniques</h4>
+        <table class="mini-tbl"><tbody id="t-cities"></tbody></table>
+      </div>
+    </div>
+
     <h4 style="font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--ink); margin: 22px 0 8px;">Today · hour by hour <span style="font-family: var(--italic); font-weight: 400; color: var(--ink-muted); font-style: italic; font-size: 12.5px;">(UTC, all 24 hours · bars are real visits)</span></h4>
     <div class="hour-grid" id="t-hours"></div>
 
@@ -920,6 +931,28 @@
         : cc.map(function (r) {
             return '<tr><td class="path">' + esc(r.country) + '</td>' +
                    '<td class="n">' + fmtN(r.c) + '</td></tr>';
+          }).join('');
+
+      // ─── Source / circulator attribution (?ref=) ───
+      var rr = d.by_ref || [];
+      var rrEl = document.getElementById('t-refsrc');
+      if (rrEl) rrEl.innerHTML = rr.length === 0
+        ? '<tr><td colspan="3" class="empty">No ?ref= links used yet — share links like openseatsmcpasd.org/?ref=kate</td></tr>'
+        : rr.map(function (r) {
+            return '<tr><td class="path">' + esc(r.ref) + '</td>' +
+                   '<td class="n">' + fmtN(r.views) + '</td>' +
+                   '<td class="u">' + fmtN(r.uniques) + '</td></tr>';
+          }).join('');
+
+      // ─── Top cities ───
+      var ct = d.by_city || [];
+      var ctEl = document.getElementById('t-cities');
+      if (ctEl) ctEl.innerHTML = ct.length === 0
+        ? '<tr><td colspan="3" class="empty">—</td></tr>'
+        : ct.map(function (r) {
+            return '<tr><td class="path">' + esc(r.city) + '</td>' +
+                   '<td class="n">' + fmtN(r.views) + '</td>' +
+                   '<td class="u">' + fmtN(r.uniques) + '</td></tr>';
           }).join('');
 
       // ─── Today, hour-by-hour ───
