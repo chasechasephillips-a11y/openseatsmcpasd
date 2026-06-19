@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Open Seats MCPASD — the phased transition, seat by seat. No board member is removed, no term is shortened, and every Area keeps a guaranteed anchor seat. Shows exactly which seats convert and when.">
+<title>The transition, seat by seat — Open Seats MCPASD</title>
+<meta name="theme-color" content="#FBF8EF">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBF8EF; --paper-deep: #ECE3CB; --paper-warm: #FCF8E8;
+    --ink: #14223E; --ink-soft: #2A3756; --ink-muted: #6E4F2F;
+    --red: #B98521; --red-dark: #8C6112; --red-bright: #D29D2E;
+    --rule: #D5C8A9; --rule-deep: #A89572; --line-soft: #E9DDC0;
+    --green: #6B7A4F; --green-soft: #E2E6D4;
+    --display: 'Old Standard TT', serif;
+    --body: 'Lora', Georgia, serif;
+    --italic: 'IM Fell DW Pica', 'Lora', Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--body); background: #E8E2D2; color: var(--ink); padding: 28px; -webkit-font-smoothing: antialiased; }
+
+  .screen-only { max-width: 8.5in; margin: 0 auto 24px; background: #FCF8E8; border: 1px solid var(--rule); box-shadow: 4px 4px 0 var(--rule-deep); padding: 20px 24px; }
+  .screen-only h1 { font-family: var(--display); font-size: 21px; font-weight: 700; margin-bottom: 7px; }
+  .screen-only p { font-size: 14px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.5; }
+  .print-btn { display: inline-block; background: var(--red); color: var(--paper); border: 1px solid var(--red-dark); padding: 11px 20px; font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; box-shadow: 3px 3px 0 var(--ink); cursor: pointer; text-decoration: none; }
+  .print-btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px 0 var(--rule-deep); margin-left: 8px; }
+  .print-btn:hover { background: var(--red-bright); }
+
+  .page {
+    width: 8.5in; min-height: 11in; background: var(--paper); margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+    padding: 0.5in 0.55in 0.42in;
+    display: flex; flex-direction: column; position: relative;
+  }
+  .page::before, .page::after { content: "\2756"; position: absolute; color: var(--red); font-family: var(--display); font-size: 15px; opacity: 0.55; }
+  .page::before { top: 0.26in; right: 0.55in; }
+  .page::after { bottom: 0.24in; left: 0.55in; }
+
+  .mast { text-align: center; border-bottom: 2.5px solid var(--ink); padding-bottom: 0.13in; }
+  .mast .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--red-dark); margin-bottom: 7px; }
+  .mast .eyebrow::before, .mast .eyebrow::after { content: "\2014"; margin: 0 11px; color: var(--red); }
+  .mast h1 { font-family: var(--display); font-weight: 700; font-size: 52px; line-height: 0.94; letter-spacing: -0.02em; color: var(--ink); }
+  .mast h1 em { font-family: var(--italic); font-style: italic; color: var(--red); }
+  .mast .tagline { font-family: var(--italic); font-style: italic; font-size: 15.5px; color: var(--ink-soft); margin-top: 9px; }
+
+  .lead { text-align: center; font-size: 13px; color: var(--ink-soft); line-height: 1.5; max-width: 6.6in; margin: 0.15in auto 0.02in; }
+  .lead strong { color: var(--ink); font-weight: 700; }
+
+  .blockhead { font-family: var(--body); font-size: 9.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--red-dark); border-bottom: 1px solid var(--rule); padding-bottom: 4px; margin-bottom: 9px; }
+
+  /* The rule callout */
+  .rule-box { background: var(--paper-warm); border: 1px solid var(--rule); border-left: 4px solid var(--red); padding: 0.13in 0.16in; margin-top: 0.16in; }
+  .rule-box p { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+  .rule-box p strong { color: var(--ink); }
+
+  /* Seat table */
+  .seats { margin-top: 0.18in; }
+  table.grid { width: 100%; border-collapse: collapse; font-size: 11px; }
+  table.grid th { text-align: left; font-family: var(--body); font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); border-bottom: 1.5px solid var(--ink); padding: 0 6px 4px; }
+  table.grid td { padding: 5px 6px; border-bottom: 1px solid var(--line-soft); vertical-align: baseline; line-height: 1.3; }
+  table.grid .area { font-family: var(--display); font-weight: 700; color: var(--ink); white-space: nowrap; }
+  table.grid .who { color: var(--ink); font-weight: 600; }
+  table.grid .status { color: var(--ink-soft); }
+  table.grid tr.open td { background: var(--paper-deep); }
+  .pill { display: inline-block; font-size: 8px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 1px 6px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+  .pill.anchor { background: var(--green-soft); color: var(--green); border: 1px solid #BFCBBA; }
+  .pill.open { background: var(--red); color: var(--paper); }
+
+  /* Year-by-year */
+  .years { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.14in; margin-top: 0.18in; }
+  .yr { border: 1px solid var(--rule); border-top: 3px solid var(--red); padding: 0.1in 0.12in 0.12in; background: #fff; }
+  .yr .y { font-family: var(--display); font-weight: 700; font-size: 19px; color: var(--red); line-height: 1; }
+  .yr .c { font-size: 8px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin: 3px 0 5px; }
+  .yr p { font-size: 9.5px; color: var(--ink-soft); line-height: 1.36; }
+  .yr p strong { color: var(--ink); }
+
+  /* Why row + footer */
+  .why { margin-top: 0.18in; background: var(--ink); color: var(--paper); padding: 0.13in 0.18in; }
+  .why .h { font-size: 8.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red-bright); margin-bottom: 5px; }
+  .why p { font-size: 11.5px; line-height: 1.46; color: #ECE6D6; }
+  .why p strong { color: #fff; }
+
+  .foot { margin-top: auto; border-top: 2px solid var(--ink); padding-top: 0.13in; display: grid; grid-template-columns: 1fr 1fr 0.9fr; gap: 0.22in; align-items: end; }
+  .foot .item .l { font-size: 8.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red-dark); margin-bottom: 3px; }
+  .foot .item .v { font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.12; }
+  .foot .item .s { font-size: 9px; color: var(--ink-muted); margin-top: 2px; line-height: 1.3; }
+  .foot .qr { text-align: right; }
+  .foot .qr img { width: 0.92in; height: 0.92in; background: #fff; border: 0.5px solid var(--rule); display: inline-block; }
+  .foot .qr .url { font-family: var(--display); font-weight: 700; font-size: 12px; color: var(--ink); margin-top: 3px; }
+  .legal { text-align: center; font-size: 8px; color: var(--ink-muted); margin-top: 0.1in; line-height: 1.4; }
+
+  @page { size: letter; margin: 0; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .screen-only { display: none; }
+    .page { box-shadow: none; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="screen-only">
+  <h1>The transition, seat by seat</h1>
+  <p>A one-page explainer of exactly how the phased conversion works — which seats stay anchored to an Area, which convert to open, and when. Built to answer the most common question: "who decides which seat is which?" Print on white or cream and hand out at meetings and doors.</p>
+  <a href="#" class="print-btn" onclick="window.print();return false;">Print / save as PDF</a>
+  <a href="/toolkit/" class="print-btn ghost">&larr; Back to toolkit</a>
+</div>
+
+<div class="page">
+  <div class="mast">
+    <div class="eyebrow">MCPASD School Board &middot; The Phased Transition</div>
+    <h1>Same board. <em>No one removed.</em></h1>
+    <div class="tagline">Exactly which seats change, when &mdash; and who decides.</div>
+  </div>
+
+  <p class="lead">If the petition passes, the change is <strong>gradual and mechanical</strong>. No board member is removed and no term is shortened. Each seat simply comes up at its normal three-year mark &mdash; and the person holding it decides whether to run again, just like today. <strong>Voters still elect every seat.</strong></p>
+
+  <div class="rule-box">
+    <div class="blockhead" style="border:0;padding:0;margin-bottom:6px;">How a seat is chosen to convert &mdash; nobody hand-picks it</div>
+    <p>Every Area keeps <strong>one guaranteed anchor seat</strong>. An Area's <em>extra</em> seats convert to open <strong>in the order their terms naturally end</strong> &mdash; the calendar decides, not any person. The <strong>last seat remaining</strong> in each Area is that Area's anchor. That's why Area&nbsp;II's and Area&nbsp;IV's earliest-expiring seats convert first.</p>
+  </div>
+
+  <div class="seats">
+    <div class="blockhead">Every seat today &mdash; and what happens to it</div>
+    <table class="grid">
+      <tr><th style="width:14%">Area</th><th style="width:30%">Held today</th><th>What happens</th></tr>
+      <tr><td class="area">Area I</td><td class="who">Emily Evans</td><td class="status"><span class="pill anchor">Anchor</span>Stays the Area I seat (comes up 2028)</td></tr>
+      <tr><td class="area">Area II</td><td class="who">Catherine Kells</td><td class="status"><span class="pill anchor">Anchor</span>Stays as Area II's guaranteed seat</td></tr>
+      <tr class="open"><td class="area">Area II</td><td class="who">Bob Greene</td><td class="status"><span class="pill open">Opens 2027</span>Term ends first in Area II &rarr; becomes an open, district-wide seat</td></tr>
+      <tr><td class="area">Area III</td><td class="who">Tabitha Hansen</td><td class="status"><span class="pill anchor">Anchor</span>Stays the Area III seat (comes up 2028)</td></tr>
+      <tr class="open"><td class="area">Area IV</td><td class="who">Katie Frank</td><td class="status"><span class="pill open">Opens 2027</span>Term ends first in Area IV &rarr; becomes an open seat</td></tr>
+      <tr class="open"><td class="area">Area IV</td><td class="who">Bob Hesselbein</td><td class="status"><span class="pill open">Opens 2028</span>Next Area IV term to end &rarr; becomes an open seat</td></tr>
+      <tr><td class="area">Area IV</td><td class="who">Jim Coursey</td><td class="status">2029 &mdash; chooses to run for the Area IV anchor <em>or</em> an open seat</td></tr>
+      <tr><td class="area">Area IV</td><td class="who">Marni Ginsberg</td><td class="status">2029 &mdash; chooses to run for the Area IV anchor <em>or</em> an open seat</td></tr>
+      <tr><td class="area">Area V</td><td class="who">Bartlett Durand</td><td class="status"><span class="pill anchor">Anchor</span>Stays the Area V seat</td></tr>
+    </table>
+  </div>
+
+  <div class="years">
+    <div class="yr"><div class="y">2027</div><div class="c">2 of 4 open</div><p><strong>Greene</strong> (II) and <strong>Frank</strong> (IV) reach their term end &rarr; both become open seats.</p></div>
+    <div class="yr"><div class="y">2028</div><div class="c">3 of 4 open</div><p><strong>Hesselbein</strong> (IV) opens. <strong>Evans</strong> (I) and <strong>Hansen</strong> (III) come up and stay Area seats.</p></div>
+    <div class="yr"><div class="y">2029</div><div class="c">4 of 4 open</div><p><strong>Coursey</strong> &amp; <strong>Ginsberg</strong> (IV) come up; one runs for the Area IV anchor, one for an open seat.</p></div>
+    <div class="yr"><div class="y">Done</div><div class="c">5 anchors + 4 open</div><p>One anchor per Area (I&ndash;V) plus four district-wide open seats. <strong>Still 9 total.</strong></p></div>
+  </div>
+
+  <div class="why">
+    <div class="h">Why convert at each term's natural end?</div>
+    <p>Because it's the only way to keep the promise: <strong>no one is ever forced out and no term is ever cut short.</strong> Syncing the conversions into one big year would mean shortening a sitting member's term. The trade-off is deliberate &mdash; we protect every incumbent's full term, and the timing simply follows the existing election calendar.</p>
+  </div>
+
+  <div class="foot">
+    <div class="item">
+      <div class="l">Sign by</div>
+      <div class="v">Thu &middot; Aug 20, 2026</div>
+      <div class="s">500 elector signatures needed</div>
+    </div>
+    <div class="item">
+      <div class="l">Vote at the Annual Meeting</div>
+      <div class="v">Tue &middot; Sept 22 &middot; 7 PM</div>
+      <div class="s">District Services Center &middot; 7106 South Ave</div>
+    </div>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&qzone=1&color=14223E&bgcolor=FFFBF1&data=https%3A%2F%2Fopenseatsmcpasd.org" alt="QR code to openseatsmcpasd.org">
+      <div class="url">openseatsmcpasd.org</div>
+    </div>
+  </div>
+  <div class="legal">Same board size &middot; no member displaced &middot; voters still elect every seat. Authorized under Wis. Stat. &sect; 120.02(2)(a); counsel-reviewed. &nbsp;#OpenSeatsMCPASD</div>
+</div>
+
+</body>
+</html>
