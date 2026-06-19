@@ -1,0 +1,10 @@
+{
+  "sigCount": 145,
+  "circulators": 3,
+  "goal": 550,
+  "recent": [
+    { "name": "A Town of Middleton neighbor", "area": "Area I", "count": 9 },
+    { "name": "A family in Cross Plains", "area": "Area II", "count": 5 },
+    { "name": "A Middleton parent", "area": "Area IV", "count": 7 }
+  ]
+}

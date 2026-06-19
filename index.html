@@ -1427,6 +1427,37 @@
   .sticky-cta:hover .arrow { transform: translateX(3px); }
   @media (max-width: 720px) { .sticky-cta { display: flex; } }
 
+  /* ─── New: data-driven momentum + action components ─── */
+  .recent-ticker { margin-top: 16px; min-height: 34px; font-size: 13px; color: var(--paper); opacity: 0.94; line-height: 1.4; transition: opacity 0.45s; }
+  .recent-ticker .rt-dot { color: var(--red-bright); margin-right: 7px; }
+  .recent-ticker .rt-count { font-family: var(--display); font-weight: 700; }
+
+  .pickup-ribbon { display: block; margin-top: 16px; background: var(--green-soft); border: 1.5px solid var(--green); border-left: 5px solid var(--green); padding: 12px 16px; text-decoration: none; color: var(--ink); font-size: 14.5px; line-height: 1.45; box-shadow: 3px 3px 0 var(--rule-deep); transition: transform 0.15s, box-shadow 0.15s; }
+  .pickup-ribbon:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--rule-deep); }
+  .pickup-ribbon strong { color: var(--green); }
+  .pickup-ribbon .r-arrow { color: var(--green); font-weight: 700; white-space: nowrap; }
+
+  .who-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 26px; }
+  .who-photo { margin: 0; }
+  .who-photo .ph-slot { aspect-ratio: 4/3; background: var(--paper-warm); border: 1.5px dashed var(--rule-deep); display: flex; align-items: center; justify-content: center; font-size: 38px; color: var(--rule-deep); }
+  .who-photo figcaption { font-size: 12px; color: var(--ink-muted); text-align: center; margin-top: 7px; font-style: italic; }
+  .who-names { text-align: center; margin-top: 24px; font-family: var(--display); font-size: 17px; color: var(--ink); line-height: 1.55; }
+  @media (max-width: 640px) { .who-photos { grid-template-columns: 1fr; } }
+
+  .radio-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
+  .pledge-row { display: flex; gap: 12px; margin-bottom: 16px; }
+  .pledge { flex: 1; position: relative; }
+  .pledge input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+  .pledge span { display: block; text-align: center; padding: 12px 8px; border: 1.5px solid var(--rule); background: var(--paper-warm); font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink-soft); transition: all 0.15s; }
+  .pledge input:checked + span { background: var(--green-soft); border-color: var(--green); color: var(--green); box-shadow: 3px 3px 0 var(--rule-deep); }
+
+  .sticky-bar { display: none; position: fixed; bottom: 12px; left: 12px; right: 12px; gap: 10px; z-index: 50; transform: translateY(120%); opacity: 0; transition: transform 0.3s, opacity 0.3s; }
+  .sticky-bar.visible { transform: translateY(0); opacity: 1; }
+  .sticky-bar a { flex: 1; text-align: center; text-decoration: none; padding: 14px 10px; font-family: var(--body); font-weight: 700; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 3px 3px 0 var(--ink); }
+  .sticky-bar .sb-primary { background: var(--red); color: var(--paper); border: 1px solid var(--red-dark); }
+  .sticky-bar .sb-text { background: var(--green); color: var(--paper); border: 1px solid #55603F; }
+  @media (max-width: 720px) { .sticky-bar { display: flex; } }
+
   /* ─── Reveal on scroll ────────────────────────────────────────── */
   .reveal {
     opacity: 0;
@@ -1519,9 +1550,12 @@
         <h1>4 school board seats. <span class="accent">Any MCPASD resident can run.</span></h1>
         <p class="lead">Every one of MCPASD's 9 school board seats is tied to a specific geographic Area — which limits who can run when a seat opens. This petition opens 4 of the 9 to any district resident, while keeping 5 geographic so every Area still has a guaranteed anchor seat. <strong>Same board size. Deeper bench.</strong> Current board members keep their path forward; the community gains more ways for great neighbors to serve.</p>
         <div class="cta-row">
-          <a href="#sign" class="btn btn-primary">Sign the petition <span class="btn-arrow">→</span></a>
-          <a href="#meeting" class="btn btn-outline">Show up Sept 22</a>
+          <a href="#volunteer" class="btn btn-primary">I'll collect signatures <span class="btn-arrow">→</span></a>
+          <a href="#sign" class="btn btn-outline">Sign the petition</a>
         </div>
+        <a class="pickup-ribbon" href="sms:+13362071832?&body=Hi%20Chase%2C%20I%20have%20a%20signed%20petition%20sheet%20ready%20for%20pickup.%20My%20address%20is%3A%20">
+          <strong>Already have a signed sheet?</strong> Let's make pickup easy — thank you! Text me your address and I'll grab it. <span class="r-arrow">→</span>
+        </a>
         <p class="hero-fastpath">Ready right now? <a href="petition-sheet.pdf" download>Download the official sheet (PDF)</a> — print it, sign with a pen, mail to 3795 Swoboda Rd. <strong>That paper signature is the one that legally counts.</strong></p>
       </div>
 
@@ -1531,6 +1565,11 @@
           <div class="stat-label">Supporters signed up</div>
           <div class="sig-count"><span id="sigNow">—</span><span class="of">/ 550 goal</span></div>
           <div class="sig-bar"><div class="sig-bar-fill" id="sigBar"></div></div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-label">Neighbors collecting</div>
+          <div class="sig-count"><span id="circNow">—</span><span class="of">circulators</span></div>
+          <div class="recent-ticker" id="recentTicker" aria-live="polite"></div>
         </div>
         <div class="stat-block">
           <div class="stat-label">Until the vote</div>
@@ -1948,17 +1987,23 @@
           <input type="checkbox" name="elector" required>
           <span>I confirm I am a registered voter residing in the Middleton-Cross Plains Area School District.</span>
         </label>
-        <label class="consent">
-          <input type="checkbox" name="meeting">
-          <span><strong>I commit to attending the MCPASD Annual Meeting on Tue Sept 22, 2026 at 7:00 PM.</strong></span>
-        </label>
+        <label style="margin-top:6px;">Where are you in the process?</label>
+        <div class="radio-row">
+          <label class="consent"><input type="radio" name="status" value="will-sign" checked><span>I'll print &amp; sign it</span></label>
+          <label class="consent"><input type="radio" name="status" value="signed"><span><strong>I've already signed</strong> — come get it</span></label>
+        </div>
+        <label>How should your sheet get to us?</label>
+        <div class="radio-row" id="pickup-row">
+          <label class="consent"><input type="radio" name="delivery" value="pickup" id="pickup-radio" checked><span><strong>Come pick it up</strong> — swing by my address above (easiest)</span></label>
+          <label class="consent"><input type="radio" name="delivery" value="mail"><span>I'll mail it to 3795 Swoboda Rd</span></label>
+        </div>
         <label class="consent">
           <input type="checkbox" name="circulator">
-          <span>I'd be willing to collect signatures from my neighbors (optional).</span>
+          <span><strong>I'll also collect a few</strong> from neighbors — send me a couple of extra sheets.</span>
         </label>
-        <label class="consent" id="pickup-row">
-          <input type="checkbox" name="pickup" id="pickup-checkbox">
-          <span><strong>Come pick it up instead</strong> — I'd rather Elizabeth swing by my address than mail it back. (Use the address field above.)</span>
+        <label class="consent">
+          <input type="checkbox" name="meeting">
+          <span>I commit to attending the MCPASD Annual Meeting on Tue Sept 22, 2026 at 7:00 PM.</span>
         </label>
         <button type="submit" class="btn btn-primary btn-block" id="signSubmit">Add me to the list</button>
         <div class="disclaimer">We'll never share your info. Used only to count momentum, follow up if needed, and send a Sept 22 Annual Meeting reminder.</div>
@@ -2019,7 +2064,7 @@
       </div>
       <div class="event" id="meeting">
         <div class="event-date" style="background: var(--red);"><div class="month">Sep</div><div class="day">22</div><div class="dow">Tue</div></div>
-        <div class="event-info"><h4>🗳️ MCPASD Annual Meeting — THE VOTE</h4><div class="where">District Services Center, 7106 South Ave · 7:00 PM</div></div>
+        <div class="event-info"><h4>🗳️ MCPASD Annual Meeting — THE VOTE</h4><div class="where">District Services Center, 7106 South Ave · 7:00 PM</div><a href="#" id="addCalBtn" style="display:inline-block;margin-top:7px;font-size:13px;font-weight:700;color:var(--red-dark);text-decoration:underline;">+ Add to calendar</a></div>
         <span class="event-tag vote">The Vote</span>
       </div>
     </div>
@@ -2051,6 +2096,22 @@
   </div>
 </section>
 
+<section class="alt" id="who">
+  <div class="container narrow">
+    <div class="reveal">
+      <span class="section-eyebrow">Who's behind this</span>
+      <h2>Your <em>neighbors</em> — not a campaign</h2>
+      <p class="section-lead">This is an all-volunteer, grassroots effort by MCPASD parents and residents. It is <strong>not about any one person or candidate</strong>, and it isn't aimed at anyone on the board. No party, no PAC, nothing for sale — we're not running for anything. We just think more good neighbors should be able to.</p>
+    </div>
+    <div class="who-photos reveal">
+      <figure class="who-photo"><div class="ph-slot">📋</div><figcaption>Sheets on a clipboard</figcaption></figure>
+      <figure class="who-photo"><div class="ph-slot">🤝</div><figcaption>Neighbors signing</figcaption></figure>
+      <figure class="who-photo"><div class="ph-slot">🏫</div><figcaption>The schools we share</figcaption></figure>
+    </div>
+    <p class="who-names reveal">Organized by Chase Olson, with neighbors lending a few hours each — Krista, Emily, Tabitha, Kathryn, and a growing list across all five Areas.</p>
+  </div>
+</section>
+
 <section id="volunteer">
   <div class="container narrow">
     <div class="reveal">
@@ -2067,14 +2128,20 @@
         </div>
         <label for="vphone">Phone <span style="color: var(--ink-muted); font-weight: 400; letter-spacing: 0; text-transform: none;">(optional — only if you'd rather we text than email)</span></label>
         <input type="tel" id="vphone" name="phone">
-        <label>How can you help? (check all that apply)</label>
+        <label>How can you help? <span style="color: var(--ink-muted); font-weight: 400; letter-spacing: 0; text-transform: none;">— collecting a few signatures is the single biggest help</span></label>
         <div style="margin-bottom: 14px;">
-          <label class="consent"><input type="checkbox" name="how" value="collect"><span>Collect signatures from neighbors / school community</span></label>
+          <label class="consent"><input type="checkbox" name="how" value="collect" checked><span><strong>Collect a few signatures</strong> from neighbors / my school community</span></label>
           <label class="consent"><input type="checkbox" name="how" value="host"><span>Host a signature party at my house</span></label>
           <label class="consent"><input type="checkbox" name="how" value="event"><span>Staff a table at one of our events</span></label>
           <label class="consent"><input type="checkbox" name="how" value="meeting"><span>Help turn people out for the Sept 22 Annual Meeting</span></label>
           <label class="consent"><input type="checkbox" name="how" value="childcare"><span>Provide childcare on Sept 22 so parents can attend</span></label>
           <label class="consent"><input type="checkbox" name="how" value="press"><span>Help with press / social media</span></label>
+        </div>
+        <label>If you'll collect, how many can you aim for? <span style="color: var(--ink-muted); font-weight: 400; letter-spacing: 0; text-transform: none;">(no pressure — just a target)</span></label>
+        <div class="pledge-row">
+          <label class="pledge"><input type="radio" name="pledge" value="3"><span>~3</span></label>
+          <label class="pledge"><input type="radio" name="pledge" value="5"><span>~5</span></label>
+          <label class="pledge"><input type="radio" name="pledge" value="10+"><span>~10+</span></label>
         </div>
         <button type="submit" class="btn btn-primary btn-block" id="volSubmit">Count me in</button>
       </form>
@@ -2092,6 +2159,7 @@
     <div class="share-row reveal">
       <a class="share-btn" href="mailto:?subject=2%20minutes%20to%20help%20open%20up%20MCPASD%20school%20board%20elections&body=I%20signed%20this%20petition%20to%20open%204%20school%20board%20seats%20to%20any%20district%20resident.%20Worth%20a%20look%3A%20openseatsmcpasd.org">✉️ Email</a>
       <a class="share-btn" href="sms:?&body=Just%20signed%20the%20Open%20Seats%20MCPASD%20petition%20%E2%80%94%20opens%204%20school%20board%20seats%20to%20any%20resident.%20openseatsmcpasd.org">📱 Text</a>
+      <button class="share-btn" id="shareBtn" type="button" style="font: inherit; cursor: pointer;">↗ Share with a neighbor</button>
     </div>
   </div>
 </section>
@@ -2111,6 +2179,26 @@
 
     <div style="margin-top: 44px;" class="reveal">
       <details open>
+        <summary>Do I have to run for anything?</summary>
+        <p>No. This isn't about you running, and it isn't about us running — none of the organizers are candidates. It simply <em>widens who's allowed</em> on the ballot so more good neighbors <em>could</em> run if they ever wanted to. Most people just sign and help; that's plenty.</p>
+      </details>
+      <details>
+        <summary>Is it partisan, or aimed at a board member?</summary>
+        <p>Neither. No party, no PAC, no candidate — and it's <strong>not aimed at anyone on the board</strong>. Every current member keeps their full term and can run again. It's a structural fix to who's <em>eligible</em>, not a referendum on any person or policy.</p>
+      </details>
+      <details>
+        <summary>What does it actually change?</summary>
+        <p>Of MCPASD's 9 seats, 4 become open to <em>any</em> district resident; 5 stay anchored one-per-Area. Same board size, same elections, same voters deciding. The only thing that changes is the rule that you must live in a specific Area to run.</p>
+      </details>
+      <details>
+        <summary>Why does it have to be paper?</summary>
+        <p>Wisconsin law. A petition to change a common school district's apportionment requires a <strong>pen-and-paper signature</strong> with a circulator's certification (Wis. Stat. § 8.40). There is no legal online signature — an online form can show momentum, but only the paper sheet counts.</p>
+      </details>
+      <details>
+        <summary>What happens to my information?</summary>
+        <p>We never sell or share it. The optional online form is used only to count momentum, follow up if something's unclear, and send a Sept 22 reminder. Your legal signature lives on the paper sheet filed with the district clerk — standard for any petition.</p>
+      </details>
+      <details>
         <summary>What exactly does the petition do?</summary>
         <p>It opens <strong>4 of the 9 seats</strong> to any qualified MCPASD resident, while keeping 5 tied to geographic Areas — one anchor seat per Area. Board size stays at 9. Voters still elect every seat. The change phases in as current terms naturally expire, starting April 2027.</p>
       </details>
@@ -2228,10 +2316,10 @@
   </div>
 </footer>
 
-<a href="#sign" class="sticky-cta" id="stickyCta">
-  <span>Sign the petition</span>
-  <span class="arrow">→</span>
-</a>
+<div class="sticky-bar" id="stickyCta">
+  <a href="#volunteer" class="sb-primary">I'll collect</a>
+  <a href="sms:+13362071832?&body=Hi%20Chase%2C%20" class="sb-text">Text Chase</a>
+</div>
 
 <script>
   (function () {
@@ -2265,20 +2353,46 @@
       requestAnimationFrame(step);
     }
 
+    var tickerItems = [];
+    var tickerIdx = 0;
+    function renderTicker() {
+      var el = document.getElementById('recentTicker');
+      if (!el || !tickerItems.length) return;
+      var it = tickerItems[tickerIdx % tickerItems.length];
+      el.style.opacity = '0';
+      setTimeout(function () {
+        el.innerHTML = '<span class="rt-dot">●</span>' + it;
+        el.style.opacity = '0.94';
+      }, 300);
+      tickerIdx++;
+    }
     function loadStats() {
-      fetch('/api/stats').then(function (r) { return r.json(); }).then(function (data) {
-        var n = (data && typeof data.signatures === 'number') ? data.signatures : 0;
+      // Live numbers come from a single static file you control: /data.json
+      fetch('/data.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (data) {
+        var n = (data && typeof data.sigCount === 'number') ? data.sigCount : 0;
         var goal = (data && data.goal) ? data.goal : 550;
         animateNumber(document.getElementById('sigNow'), n);
+        var c = document.getElementById('circNow');
+        if (c && typeof data.circulators === 'number') animateNumber(c, data.circulators);
         setTimeout(function () {
           var bar = document.getElementById('sigBar');
           if (bar) bar.style.width = Math.min(100, (n / goal) * 100) + '%';
         }, 200);
+        if (data && data.recent && data.recent.length) {
+          tickerItems = data.recent.map(function (r) {
+            var who = r.name || 'A neighbor';
+            var cnt = r.count ? ('<span class="rt-count">' + r.count + '</span> collected') : 'signed up to collect';
+            return who + ' — ' + cnt + (r.area ? ' · ' + r.area : '');
+          });
+        }
       }).catch(function () {
-        var s = document.getElementById('sigNow'); if (s) s.textContent = '0';
+        var s = document.getElementById('sigNow'); if (s) s.textContent = '—';
       });
     }
     loadStats();
+    setInterval(loadStats, 90000);
+    setTimeout(renderTicker, 1500);
+    setInterval(renderTicker, 4800);
 
     // ─── Form handlers ──────────────────────────────────────────────
     function handle(formId, msgId, btnId, endpoint, okText, defaultBtnText) {
@@ -2309,7 +2423,7 @@
           return r.json();
         }).then(function () {
           msg.className = 'form-msg ok';
-          msg.textContent = okText;
+          msg.innerHTML = okText;
           form.reset();
           btn.textContent = 'Done ✓';
           if (formId === 'signForm') loadStats();
@@ -2323,7 +2437,7 @@
       });
     }
     handle('signForm', 'signMsg', 'signSubmit', '/api/sign',
-      "Thanks — you're on the list. Don't forget: download the sheet above, sign with a pen, and mail it to 3795 Swoboda Road, Verona, WI.",
+      "Thanks — you're on the list! Next: download the sheet above and sign it with a pen. Want me to come grab it? <a href=\"sms:+13362071832?&body=Hi%20Chase%2C%20my%20signed%20sheet%20is%20ready.%20My%20address%20is%3A%20\" style=\"color:var(--green);font-weight:700;\">Text me your address →</a> and I'll pick it up.",
       'Add me to the list');
     handle('volForm', 'volMsg', 'volSubmit', '/api/volunteer',
       "Thank you! A campaign coordinator will reach out within 48 hours.",
@@ -2337,7 +2451,7 @@
       link.addEventListener('click', function (e) {
         e.preventDefault();
         var row = document.getElementById('pickup-row');
-        var box = document.getElementById('pickup-checkbox');
+        var box = document.getElementById('pickup-radio');
         if (!row || !box) return;
         if (!box.checked) box.checked = true;
         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -2345,6 +2459,43 @@
         row.classList.remove('flash'); void row.offsetWidth; row.classList.add('flash');
       });
     });
+
+    // ─── Add to calendar (.ics, real CRLF) ─────────────────────────
+    var calBtn = document.getElementById('addCalBtn');
+    if (calBtn) {
+      calBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var ics = [
+          'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Open Seats MCPASD//EN', 'CALSCALE:GREGORIAN',
+          'BEGIN:VEVENT', 'UID:annual-meeting-2026@openseatsmcpasd.org', 'DTSTAMP:20260601T000000Z',
+          'DTSTART;TZID=America/Chicago:20260922T190000', 'DTEND;TZID=America/Chicago:20260922T200000',
+          'SUMMARY:MCPASD Annual Meeting — vote on the Open Seats petition',
+          'LOCATION:District Services Center, 7106 South Ave, Middleton, WI',
+          'DESCRIPTION:Only electors physically present can vote. Bring photo ID. Details: openseatsmcpasd.org',
+          'END:VEVENT', 'END:VCALENDAR'
+        ].join('\r\n') + '\r\n';
+        var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url; a.download = 'mcpasd-annual-meeting-sept-22.ics';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      });
+    }
+
+    // ─── Share with a neighbor (native share sheet, SMS fallback) ───
+    var shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function () {
+        var text = 'A neighbor-led petition to open 4 of MCPASD’s 9 school board seats to any district resident. Worth a look:';
+        var url = 'https://openseatsmcpasd.org';
+        if (navigator.share) {
+          navigator.share({ title: 'Open Seats MCPASD', text: text, url: url }).catch(function () {});
+        } else {
+          window.location.href = 'sms:?&body=' + encodeURIComponent(text + ' ' + url);
+        }
+      });
+    }
 
     // ─── Reveal on scroll ───────────────────────────────────────────
     if ('IntersectionObserver' in window) {
