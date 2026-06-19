@@ -661,6 +661,18 @@
       </div>
     </div>
 
+    <div class="traffic-grid" style="margin-top: 18px;">
+      <div>
+        <h4>Device — visits · uniques</h4>
+        <table class="mini-tbl"><tbody id="t-devices"></tbody></table>
+      </div>
+      <div>
+        <h4>Likely QR / print scans <span style="font-weight:400;color:var(--ink-muted);font-style:italic;">(direct + mobile homepage, by city)</span></h4>
+        <table class="mini-tbl"><tbody id="t-qrcity"></tbody></table>
+      </div>
+    </div>
+    <p style="font-size:11.5px;color:var(--ink-muted);line-height:1.5;margin-top:8px;font-style:italic;">&ldquo;Likely QR/print&rdquo; = homepage visits with no referrer, no <code>?ref=</code>, on a phone — the closest proxy for scans of bare-URL printed pieces. Watch it spike when postcards / door hangers go out. It also catches organic mobile direct visits, so read it as a trend, not an exact count.</p>
+
     <h4 style="font-family: var(--display); font-size: 14px; font-weight: 700; color: var(--ink); margin: 22px 0 8px;">Today · hour by hour <span style="font-family: var(--italic); font-weight: 400; color: var(--ink-muted); font-style: italic; font-size: 12.5px;">(UTC, all 24 hours · bars are real visits)</span></h4>
     <div class="hour-grid" id="t-hours"></div>
 
@@ -950,6 +962,28 @@
       if (ctEl) ctEl.innerHTML = ct.length === 0
         ? '<tr><td colspan="3" class="empty">—</td></tr>'
         : ct.map(function (r) {
+            return '<tr><td class="path">' + esc(r.city) + '</td>' +
+                   '<td class="n">' + fmtN(r.views) + '</td>' +
+                   '<td class="u">' + fmtN(r.uniques) + '</td></tr>';
+          }).join('');
+
+      // ─── Device split ───
+      var dv = d.by_device || [];
+      var dvEl = document.getElementById('t-devices');
+      if (dvEl) dvEl.innerHTML = dv.length === 0
+        ? '<tr><td colspan="3" class="empty">—</td></tr>'
+        : dv.map(function (r) {
+            return '<tr><td class="path">' + esc(r.device) + '</td>' +
+                   '<td class="n">' + fmtN(r.views) + '</td>' +
+                   '<td class="u">' + fmtN(r.uniques) + '</td></tr>';
+          }).join('');
+
+      // ─── Likely QR/print scans (direct + mobile homepage), by city ───
+      var qc = (d.qr_proxy && d.qr_proxy.by_city) || [];
+      var qcEl = document.getElementById('t-qrcity');
+      if (qcEl) qcEl.innerHTML = qc.length === 0
+        ? '<tr><td colspan="3" class="empty">No direct-mobile homepage hits yet.</td></tr>'
+        : qc.map(function (r) {
             return '<tr><td class="path">' + esc(r.city) + '</td>' +
                    '<td class="n">' + fmtN(r.views) + '</td>' +
                    '<td class="u">' + fmtN(r.uniques) + '</td></tr>';

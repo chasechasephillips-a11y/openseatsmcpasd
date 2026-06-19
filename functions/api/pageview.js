@@ -34,10 +34,17 @@ export async function onRequestPost(context) {
     const city = (context.request.cf && context.request.cf.city)
       ? String(context.request.cf.city).slice(0, 80) : null;
 
+    // Coarse device type from UA (no fingerprinting) — lets "direct + mobile" act as a
+    // QR/print-scan proxy for bare-URL printed pieces.
+    const uaL = ua.toLowerCase();
+    let device = 'desktop';
+    if (/ipad|tablet/.test(uaL) || (/android/.test(uaL) && !/mobi/.test(uaL))) device = 'tablet';
+    else if (/mobi|iphone|ipod|android|blackberry|windows phone/.test(uaL)) device = 'mobile';
+
     await context.env.DB.prepare(
-      `INSERT INTO pageviews (path, referrer, ua_hash, ip_hash, country, ref, city)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`
-    ).bind(path, referrer || null, uaHash, ipHash, country || null, ref, city).run();
+      `INSERT INTO pageviews (path, referrer, ua_hash, ip_hash, country, ref, city, device)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(path, referrer || null, uaHash, ipHash, country || null, ref, city, device).run();
 
     return json({ ok: true });
   } catch (err) {

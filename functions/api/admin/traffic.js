@@ -91,6 +91,36 @@ export async function onRequestGet(context) {
         LIMIT 15`
     ).bind(days).all();
 
+    // Device split (mobile / desktop / tablet).
+    const byDevice = await db.prepare(
+      `SELECT device, COUNT(*) AS views, COUNT(DISTINCT ip_hash) AS uniques
+         FROM pageviews
+        WHERE device IS NOT NULL AND device != ''
+          AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY device ORDER BY views DESC`
+    ).bind(days).all();
+
+    // QR/print proxy: homepage hits that are direct (no referrer), no ?ref, and on mobile —
+    // the closest signal for scans of bare-URL printed pieces. Broken out by city + by day.
+    const qrByCity = await db.prepare(
+      `SELECT COALESCE(city,'(unknown)') AS city, COUNT(*) AS views, COUNT(DISTINCT ip_hash) AS uniques
+         FROM pageviews
+        WHERE device = 'mobile' AND path = '/'
+          AND (referrer IS NULL OR referrer = '')
+          AND (ref IS NULL OR ref = '')
+          AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY city ORDER BY views DESC LIMIT 12`
+    ).bind(days).all();
+    const qrByDay = await db.prepare(
+      `SELECT date(ts) AS day, COUNT(*) AS views
+         FROM pageviews
+        WHERE device = 'mobile' AND path = '/'
+          AND (referrer IS NULL OR referrer = '')
+          AND (ref IS NULL OR ref = '')
+          AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY day ORDER BY day`
+    ).bind(days).all();
+
     // Today, hour-by-hour (UTC). Pads missing hours to 0 in the UI.
     const byHour = await db.prepare(
       `SELECT strftime('%H', ts) AS hour, COUNT(*) AS views, COUNT(DISTINCT ip_hash) AS uniques
@@ -153,6 +183,8 @@ export async function onRequestGet(context) {
       by_country: byCountry.results || [],
       by_ref: byRef.results || [],
       by_city: byCity.results || [],
+      by_device: byDevice.results || [],
+      qr_proxy: { by_city: qrByCity.results || [], by_day: qrByDay.results || [] },
       by_hour: byHour.results || [],
       recent: recent.results || [],
       engagement: {

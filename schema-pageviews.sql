@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS pageviews (
   ip_hash   TEXT,
   country   TEXT,
   ref       TEXT,   -- ?ref= / ?utm_source= attribution (channel or circulator)
-  city      TEXT    -- coarse city from Cloudflare edge (cookieless)
+  city      TEXT,   -- coarse city from Cloudflare edge (cookieless)
+  device    TEXT    -- mobile / tablet / desktop from UA (no fingerprinting)
 );
 CREATE INDEX IF NOT EXISTS idx_pageviews_ts ON pageviews(ts);
 CREATE INDEX IF NOT EXISTS idx_pageviews_path ON pageviews(path);

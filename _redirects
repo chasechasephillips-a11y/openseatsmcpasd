@@ -11,3 +11,11 @@
 /meeting    /sept22/                 301
 
 /handout.pdf  /toolkit/transition  302
+
+# Attributed short links — point QR/links here to auto-tag the source (?ref=)
+/pc         /?ref=postcard      302
+/dh         /?ref=doorhanger    302
+/fl         /?ref=flyer         302
+/card       /?ref=card          302
+/fb         /?ref=facebook      302
+/nd         /?ref=nextdoor      302
