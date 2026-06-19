@@ -1578,6 +1578,11 @@
             <div class="countdown-item"><div class="countdown-num" id="cd-hours">—</div><div class="countdown-sub">Hours</div></div>
           </div>
         </div>
+        <div style="margin-top:16px;text-align:center;">
+          <a href="#" class="js-addcal" style="color:var(--paper);font-size:12px;font-weight:700;text-decoration:underline;">📅 Add to calendar</a>
+          <span style="color:var(--paper);opacity:0.45;margin:0 9px;">·</span>
+          <button type="button" class="js-share" style="background:none;border:none;color:var(--paper);font:inherit;font-size:12px;font-weight:700;text-decoration:underline;cursor:pointer;padding:0;">↗ Share</button>
+        </div>
       </aside>
     </div>
   </div>
@@ -2064,7 +2069,7 @@
       </div>
       <div class="event" id="meeting">
         <div class="event-date" style="background: var(--red);"><div class="month">Sep</div><div class="day">22</div><div class="dow">Tue</div></div>
-        <div class="event-info"><h4>🗳️ MCPASD Annual Meeting — THE VOTE</h4><div class="where">District Services Center, 7106 South Ave · 7:00 PM</div><a href="#" id="addCalBtn" style="display:inline-block;margin-top:7px;font-size:13px;font-weight:700;color:var(--red-dark);text-decoration:underline;">+ Add to calendar</a></div>
+        <div class="event-info"><h4>🗳️ MCPASD Annual Meeting — THE VOTE</h4><div class="where">District Services Center, 7106 South Ave · 7:00 PM</div><a href="#" id="addCalBtn" class="js-addcal" style="display:inline-block;margin-top:7px;font-size:13px;font-weight:700;color:var(--red-dark);text-decoration:underline;">+ Add to calendar</a></div>
         <span class="event-tag vote">The Vote</span>
       </div>
     </div>
@@ -2159,7 +2164,7 @@
     <div class="share-row reveal">
       <a class="share-btn" href="mailto:?subject=2%20minutes%20to%20help%20open%20up%20MCPASD%20school%20board%20elections&body=I%20signed%20this%20petition%20to%20open%204%20school%20board%20seats%20to%20any%20district%20resident.%20Worth%20a%20look%3A%20openseatsmcpasd.org">✉️ Email</a>
       <a class="share-btn" href="sms:?&body=Just%20signed%20the%20Open%20Seats%20MCPASD%20petition%20%E2%80%94%20opens%204%20school%20board%20seats%20to%20any%20resident.%20openseatsmcpasd.org">📱 Text</a>
-      <button class="share-btn" id="shareBtn" type="button" style="font: inherit; cursor: pointer;">↗ Share with a neighbor</button>
+      <button class="share-btn js-share" id="shareBtn" type="button" style="font: inherit; cursor: pointer;">↗ Share with a neighbor</button>
     </div>
   </div>
 </section>
@@ -2268,6 +2273,10 @@
     <div class="cta-row" style="justify-content: center;">
       <a href="#sign" class="btn btn-primary">Sign now <span class="btn-arrow">→</span></a>
       <a href="mailto:chase.chasephillips@gmail.com" class="btn btn-outline">Email us</a>
+    </div>
+    <div class="cta-row" style="justify-content: center; margin-top: 12px;">
+      <a href="#" class="btn btn-outline js-addcal">📅 Add Sept 22 to my calendar</a>
+      <button type="button" class="btn btn-outline js-share" style="font: inherit; cursor: pointer;">↗ Text a friend</button>
     </div>
     <div class="final-stamp" aria-hidden="true">
       <div class="stamp-rule"></div>
@@ -2461,8 +2470,7 @@
     });
 
     // ─── Add to calendar (.ics, real CRLF) ─────────────────────────
-    var calBtn = document.getElementById('addCalBtn');
-    if (calBtn) {
+    document.querySelectorAll('.js-addcal').forEach(function (calBtn) {
       calBtn.addEventListener('click', function (e) {
         e.preventDefault();
         var ics = [
@@ -2481,11 +2489,10 @@
         document.body.appendChild(a); a.click(); document.body.removeChild(a);
         setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
       });
-    }
+    });
 
     // ─── Share with a neighbor (native share sheet, SMS fallback) ───
-    var shareBtn = document.getElementById('shareBtn');
-    if (shareBtn) {
+    document.querySelectorAll('.js-share').forEach(function (shareBtn) {
       shareBtn.addEventListener('click', function () {
         var text = 'A neighbor-led petition to open 4 of MCPASD’s 9 school board seats to any district resident. Worth a look:';
         var url = 'https://openseatsmcpasd.org';
@@ -2495,7 +2502,7 @@
           window.location.href = 'sms:?&body=' + encodeURIComponent(text + ' ' + url);
         }
       });
-    }
+    });
 
     // ─── Reveal on scroll ───────────────────────────────────────────
     if ('IntersectionObserver' in window) {
