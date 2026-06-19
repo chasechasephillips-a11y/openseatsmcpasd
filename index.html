@@ -1433,8 +1433,8 @@
   @media (max-width: 720px) { .sticky-cta { display: flex; } }
 
   /* ─── New: data-driven momentum + action components ─── */
-  .recent-ticker { margin-top: 16px; min-height: 34px; font-size: 13px; color: var(--paper); opacity: 0.94; line-height: 1.4; transition: opacity 0.45s; }
-  .recent-ticker .rt-dot { color: var(--red-bright); margin-right: 7px; }
+  .recent-ticker { margin-top: 14px; min-height: 0; font-size: 13px; color: var(--ink-soft); opacity: 0.94; line-height: 1.4; transition: opacity 0.45s; }
+  .recent-ticker .rt-dot { color: var(--red-dark); margin-right: 7px; }
   .recent-ticker .rt-count { font-family: var(--display); font-weight: 700; }
 
   .pickup-ribbon { display: block; margin-top: 16px; background: var(--green-soft); border: 1.5px solid var(--green); border-left: 5px solid var(--green); padding: 12px 16px; text-decoration: none; color: var(--ink); font-size: 14.5px; line-height: 1.45; box-shadow: 3px 3px 0 var(--rule-deep); transition: transform 0.15s, box-shadow 0.15s; }
@@ -2319,7 +2319,7 @@
       <div>
         <h4>Contact</h4>
         <p><a href="mailto:chase.chasephillips@gmail.com">chase.chasephillips@gmail.com</a></p>
-        <p>Lead organizer: Elizabeth Chase Olson</p>
+        <p>Lead organizer: Chase Olson</p>
       </div>
       <div>
         <h4>Follow</h4>
@@ -2405,7 +2405,7 @@
         var goal = (data && data.goal) ? data.goal : 550;
         animateNumber(document.getElementById('sigNow'), n);
         var gapEl = document.getElementById('sigGap');
-        if (gapEl) { var togo = Math.max(0, 500 - n); gapEl.textContent = togo > 0 ? ('~' + togo + ' more to reach 500 by Aug 20') : 'Past the 500 legal minimum!'; }
+        if (gapEl) { var togo = Math.max(0, goal - n); gapEl.textContent = togo > 0 ? ('~' + togo + ' more to reach our ' + goal + ' goal by Aug 20') : 'Goal reached — thank you!'; }
         var c = document.getElementById('circNow');
         if (c && typeof data.circulators === 'number') animateNumber(c, data.circulators);
         setTimeout(function () {
