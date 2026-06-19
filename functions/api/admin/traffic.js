@@ -69,6 +69,28 @@ export async function onRequestGet(context) {
         LIMIT 10`
     ).bind(days).all();
 
+    // Attribution by source/circulator (?ref=).
+    const byRef = await db.prepare(
+      `SELECT ref, COUNT(*) AS views, COUNT(DISTINCT ip_hash) AS uniques
+         FROM pageviews
+        WHERE ref IS NOT NULL AND ref != ''
+          AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY ref
+        ORDER BY views DESC
+        LIMIT 25`
+    ).bind(days).all();
+
+    // City-level geo (cookieless, from Cloudflare edge).
+    const byCity = await db.prepare(
+      `SELECT city, COUNT(*) AS views, COUNT(DISTINCT ip_hash) AS uniques
+         FROM pageviews
+        WHERE city IS NOT NULL AND city != ''
+          AND ts >= datetime('now','-' || ?1 || ' days')
+        GROUP BY city
+        ORDER BY views DESC
+        LIMIT 15`
+    ).bind(days).all();
+
     // Today, hour-by-hour (UTC). Pads missing hours to 0 in the UI.
     const byHour = await db.prepare(
       `SELECT strftime('%H', ts) AS hour, COUNT(*) AS views, COUNT(DISTINCT ip_hash) AS uniques
@@ -129,6 +151,8 @@ export async function onRequestGet(context) {
       by_day: byDay.results || [],
       by_referrer: byReferrer.results || [],
       by_country: byCountry.results || [],
+      by_ref: byRef.results || [],
+      by_city: byCity.results || [],
       by_hour: byHour.results || [],
       recent: recent.results || [],
       engagement: {

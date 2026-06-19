@@ -15,9 +15,16 @@ var CF_TOKEN = '';
     if (location.search.indexOf('notrack=1') !== -1) return;
 
     // ─── 1) D1 pageview beacon ───
+    // Attribution: ?ref=kate / ?utm_source=facebook — which channel or circulator sent them.
+    var refParam = '';
+    try {
+      var sp = new URLSearchParams(location.search);
+      refParam = (sp.get('ref') || sp.get('utm_source') || '').slice(0, 60);
+    } catch (e) {}
     var payload = JSON.stringify({
       path: location.pathname,
-      referrer: document.referrer || ''
+      referrer: document.referrer || '',
+      ref: refParam
     });
     var url = '/api/pageview';
     if (navigator.sendBeacon) {

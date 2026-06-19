@@ -28,10 +28,16 @@ export async function onRequestPost(context) {
     const uaHash = await sha256(salt + '|ua|' + ua);
     const ipHash = await sha256(salt + '|ip|' + ip);
 
+    // Attribution: ?ref= / ?utm_source= passed by the beacon (which channel/circulator).
+    const ref = (d.ref || '').toString().trim().replace(/[^a-zA-Z0-9_.\-]/g, '').slice(0, 60) || null;
+    // City from Cloudflare's edge (cookieless; coarse geo only) for a location breakdown.
+    const city = (context.request.cf && context.request.cf.city)
+      ? String(context.request.cf.city).slice(0, 80) : null;
+
     await context.env.DB.prepare(
-      `INSERT INTO pageviews (path, referrer, ua_hash, ip_hash, country)
-       VALUES (?, ?, ?, ?, ?)`
-    ).bind(path, referrer || null, uaHash, ipHash, country || null).run();
+      `INSERT INTO pageviews (path, referrer, ua_hash, ip_hash, country, ref, city)
+       VALUES (?, ?, ?, ?, ?, ?, ?)`
+    ).bind(path, referrer || null, uaHash, ipHash, country || null, ref, city).run();
 
     return json({ ok: true });
   } catch (err) {

@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS pageviews (
   referrer  TEXT,
   ua_hash   TEXT,
   ip_hash   TEXT,
-  country   TEXT
+  country   TEXT,
+  ref       TEXT,   -- ?ref= / ?utm_source= attribution (channel or circulator)
+  city      TEXT    -- coarse city from Cloudflare edge (cookieless)
 );
 CREATE INDEX IF NOT EXISTS idx_pageviews_ts ON pageviews(ts);
 CREATE INDEX IF NOT EXISTS idx_pageviews_path ON pageviews(path);

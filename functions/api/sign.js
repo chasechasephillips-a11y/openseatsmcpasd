@@ -20,11 +20,12 @@ export async function onRequestPost(context) {
     const meeting = d.meeting ? 1 : 0;
     const circulate = d.circulator ? 1 : 0;
     const pickup = d.pickup ? 1 : 0;
+    const heard = (d.heard || '').toString().trim().slice(0, 60) || 'website';
 
     await context.env.DB.prepare(
       `INSERT INTO signatures
-         (first_name, last_name, email, phone, area, address, will_attend_meeting, will_circulate, prefers_pickup)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+         (first_name, last_name, email, phone, area, address, will_attend_meeting, will_circulate, prefers_pickup, source)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
        ON CONFLICT(email) DO UPDATE SET
          first_name = excluded.first_name,
          last_name = excluded.last_name,
@@ -33,8 +34,9 @@ export async function onRequestPost(context) {
          address = excluded.address,
          will_attend_meeting = excluded.will_attend_meeting,
          will_circulate = excluded.will_circulate,
-         prefers_pickup = excluded.prefers_pickup`
-    ).bind(firstName, lastName, email, phone, area, address, meeting, circulate, pickup).run();
+         prefers_pickup = excluded.prefers_pickup,
+         source = excluded.source`
+    ).bind(firstName, lastName, email, phone, area, address, meeting, circulate, pickup, heard).run();
 
     return json({ ok: true });
   } catch (err) {

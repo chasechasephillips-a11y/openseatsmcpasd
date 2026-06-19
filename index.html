@@ -1458,8 +1458,9 @@
 
   .sticky-bar { display: none; position: fixed; bottom: 12px; left: 12px; right: 12px; gap: 10px; z-index: 50; transform: translateY(120%); opacity: 0; transition: transform 0.3s, opacity 0.3s; }
   .sticky-bar.visible { transform: translateY(0); opacity: 1; }
-  .sticky-bar a { flex: 1; text-align: center; text-decoration: none; padding: 14px 10px; font-family: var(--body); font-weight: 700; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 3px 3px 0 var(--ink); }
+  .sticky-bar a, .sticky-bar button { flex: 1; text-align: center; text-decoration: none; padding: 13px 5px; font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 3px 3px 0 var(--ink); cursor: pointer; }
   .sticky-bar .sb-primary { background: var(--red); color: var(--paper); border: 1px solid var(--red-dark); }
+  .sticky-bar .sb-share { background: var(--red-bright); color: var(--ink); border: 1px solid var(--red-dark); }
   .sticky-bar .sb-text { background: var(--green); color: var(--paper); border: 1px solid #55603F; }
   @media (max-width: 720px) { .sticky-bar { display: flex; } }
 
@@ -1554,6 +1555,7 @@
         <span class="eyebrow">Parent-led · Wis. Stat. § 120.02(2)(a)</span>
         <h1>4 school board seats. <span class="accent">Any MCPASD resident can run.</span></h1>
         <p class="lead">Every one of MCPASD's 9 school board seats is tied to a specific geographic Area — which limits who can run when a seat opens. This petition opens 4 of the 9 to any district resident, while keeping 5 geographic so every Area still has a guaranteed anchor seat. <strong>Same board size. Deeper bench.</strong> Current board members keep their path forward; the community gains more ways for great neighbors to serve.</p>
+        <p style="font-family:var(--display);font-size:19px;font-weight:700;color:var(--ink);line-height:1.3;margin-top:14px;">From a real choice <em style="font-style:italic;color:var(--red);">once every few years</em> — to one <em style="font-style:italic;color:var(--red);">almost every year.</em></p>
         <div class="cta-row">
           <a href="#volunteer" class="btn btn-primary">I'll collect signatures <span class="btn-arrow">→</span></a>
           <a href="#sign" class="btn btn-outline">Sign the petition</a>
@@ -1570,6 +1572,7 @@
           <div class="stat-label">Supporters signed up</div>
           <div class="sig-count"><span id="sigNow">—</span><span class="of">/ 550 goal</span></div>
           <div class="sig-bar"><div class="sig-bar-fill" id="sigBar"></div></div>
+          <div id="sigGap" style="font-size:11.5px;color:var(--ink-muted);margin-top:7px;font-weight:700;letter-spacing:0.02em;"></div>
         </div>
         <div class="stat-block">
           <div class="stat-label">Neighbors collecting</div>
@@ -1995,6 +1998,18 @@
         </div>
         <label for="address">Home address (must be inside MCPASD)</label>
         <input type="text" id="address" name="address" placeholder="Street, City, ZIP" required>
+        <label for="heard">How did you hear about this? <span style="color: var(--ink-muted); font-weight: 400; letter-spacing: 0; text-transform: none;">(optional — helps us know what's working)</span></label>
+        <select id="heard" name="heard">
+          <option value="">— select —</option>
+          <option value="friend">A friend or neighbor</option>
+          <option value="facebook">Facebook</option>
+          <option value="nextdoor">Nextdoor</option>
+          <option value="print">A flyer / door hanger / postcard</option>
+          <option value="event">An event or table</option>
+          <option value="email">Email</option>
+          <option value="search">Google / search</option>
+          <option value="other">Other</option>
+        </select>
         <label class="consent">
           <input type="checkbox" name="elector" required>
           <span>I confirm I am a registered voter residing in the Middleton-Cross Plains Area School District.</span>
@@ -2334,6 +2349,7 @@
 
 <div class="sticky-bar" id="stickyCta">
   <a href="#volunteer" class="sb-primary">I'll collect</a>
+  <button type="button" class="sb-share js-share">↗ Share</button>
   <a href="sms:+13362071832?&body=Hi%20Chase%2C%20" class="sb-text">Text Chase</a>
 </div>
 
@@ -2388,6 +2404,8 @@
         var n = (data && typeof data.sigCount === 'number') ? data.sigCount : 0;
         var goal = (data && data.goal) ? data.goal : 550;
         animateNumber(document.getElementById('sigNow'), n);
+        var gapEl = document.getElementById('sigGap');
+        if (gapEl) { var togo = Math.max(0, 500 - n); gapEl.textContent = togo > 0 ? ('~' + togo + ' more to reach 500 by Aug 20') : 'Past the 500 legal minimum!'; }
         var c = document.getElementById('circNow');
         if (c && typeof data.circulators === 'number') animateNumber(c, data.circulators);
         setTimeout(function () {
