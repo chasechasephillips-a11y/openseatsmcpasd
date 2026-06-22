@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Circulator log — quickly record each door you visit for the Open Seats MCPASD petition.">
+<meta name="robots" content="noindex, nofollow">
+<title>Circulator Log — Open Seats MCPASD</title>
+<meta name="theme-color" content="#14223E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Lora:wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#FBF8EF; --warm:#FCF8E8; --card:#FFFBF1;
+    --ink:#14223E; --ink-soft:#2A3756; --muted:#6E4F2F;
+    --gold:#B98521; --gold-dk:#8C6112; --gold-br:#D29D2E;
+    --rule:#D5C8A9; --rule-dp:#A89572; --green:#6B7A4F; --green-sf:#E2E6D4;
+    --display:'Old Standard TT',serif; --body:'Lora',Georgia,serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family:var(--body); background:var(--paper); color:var(--ink);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+    padding-bottom:96px;
+  }
+  .wrap { max-width:560px; margin:0 auto; padding:0 16px; }
+
+  header {
+    background:var(--ink); color:var(--paper);
+    padding:14px 16px calc(14px + env(safe-area-inset-top,0)); position:sticky; top:0; z-index:20;
+    padding-top:max(14px, env(safe-area-inset-top,0));
+    box-shadow:0 2px 0 var(--gold);
+  }
+  header .wrap { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .brand { font-family:var(--display); font-weight:700; font-size:18px; letter-spacing:-0.01em; }
+  .brand .sub { display:block; font-family:var(--body); font-size:9.5px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold-br); margin-top:1px; }
+  .today-count { text-align:right; font-size:11px; color:rgba(251,248,239,.75); letter-spacing:.05em; }
+  .today-count b { display:block; font-family:var(--display); font-size:24px; color:var(--paper); line-height:1; }
+
+  .who {
+    background:var(--warm); border-bottom:1px solid var(--rule);
+    padding:10px 0; font-size:13.5px;
+  }
+  .who .wrap { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .who label { font-weight:700; color:var(--muted); font-size:11px; letter-spacing:.14em; text-transform:uppercase; }
+  .who input { flex:1; min-width:140px; font-family:var(--body); font-size:16px; padding:9px 11px; border:1px solid var(--rule-dp); background:#fff; color:var(--ink); border-radius:0; }
+
+  section.card-form { background:var(--card); border:1px solid var(--rule); border-top:5px solid var(--gold); box-shadow:4px 4px 0 var(--rule-dp); padding:18px 16px; margin:18px 0; }
+  h2 { font-family:var(--display); font-size:21px; font-weight:700; margin-bottom:4px; }
+  .hint { font-size:12.5px; color:var(--muted); margin-bottom:14px; }
+  label.fld { display:block; font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-dk); margin:16px 0 6px; }
+  input[type=text], textarea {
+    width:100%; font-family:var(--body); font-size:16px; color:var(--ink);
+    padding:12px 13px; border:1px solid var(--rule-dp); background:#fff; border-radius:0;
+  }
+  textarea { min-height:74px; resize:vertical; line-height:1.45; }
+  input:focus, textarea:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 2px rgba(185,133,33,.2); }
+
+  .addr-row { display:flex; gap:8px; align-items:stretch; }
+  .addr-row input { flex:1; }
+  .loc-btn {
+    flex:none; border:1px solid var(--ink); background:#fff; color:var(--ink);
+    font-family:var(--body); font-weight:700; font-size:13px; padding:0 12px; cursor:pointer;
+    display:flex; align-items:center; gap:5px;
+  }
+  .loc-btn.on { background:var(--green-sf); border-color:var(--green); color:var(--green); }
+
+  .chips { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+  .chip {
+    display:flex; align-items:center; gap:8px; justify-content:flex-start;
+    padding:13px 12px; border:1.5px solid var(--rule-dp); background:#fff;
+    font-family:var(--body); font-size:14.5px; font-weight:600; color:var(--ink-soft);
+    cursor:pointer; text-align:left; line-height:1.2; min-height:52px; border-radius:0;
+  }
+  .chip .em { font-size:20px; line-height:1; }
+  .chip.sel { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .chip.sel.good { background:var(--green); border-color:var(--green); }
+
+  .save {
+    position:fixed; left:0; right:0; bottom:0; z-index:30;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0));
+    background:linear-gradient(to top, var(--paper) 70%, rgba(251,248,239,0));
+  }
+  .save .wrap { padding:0; }
+  .save button {
+    width:100%; background:var(--gold); color:var(--paper); border:1px solid var(--gold-dk);
+    font-family:var(--display); font-weight:700; font-size:19px; letter-spacing:.01em;
+    padding:16px; box-shadow:3px 3px 0 var(--ink); cursor:pointer; border-radius:0;
+  }
+  .save button:active { transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+  .save button:disabled { opacity:.5; }
+
+  .flash { text-align:center; font-size:13.5px; font-weight:700; color:var(--green); min-height:18px; margin-bottom:8px; }
+
+  .log h3 { font-family:var(--display); font-size:16px; border-bottom:2px solid var(--ink); padding-bottom:6px; margin:26px 0 12px; display:flex; justify-content:space-between; align-items:baseline; }
+  .log h3 .mini { font-size:11px; font-weight:400; color:var(--muted); letter-spacing:0; text-transform:none; }
+  .stop { background:#fff; border:1px solid var(--rule); border-left:3px solid var(--gold); padding:11px 13px; margin-bottom:9px; font-size:13.5px; }
+  .stop .top { display:flex; justify-content:space-between; gap:8px; font-size:11.5px; color:var(--muted); margin-bottom:3px; }
+  .stop .addr { font-family:var(--display); font-weight:700; font-size:15px; color:var(--ink); }
+  .stop .acts { color:var(--green); font-weight:600; margin-top:2px; }
+  .stop .extra { color:var(--ink-soft); margin-top:3px; }
+  .stop .sync { font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+  .stop .sync.q { color:var(--gold-dk); }
+  .stop .sync.ok { color:var(--green); }
+  .empty { color:var(--muted); font-size:13.5px; font-style:italic; }
+  .share-btn { display:inline-block; margin-top:6px; background:none; border:1px solid var(--rule-dp); color:var(--ink-soft); font-family:var(--body); font-weight:700; font-size:12px; padding:8px 14px; cursor:pointer; }
+
+  details.faq { background:var(--card); border:1px solid var(--rule); margin-bottom:9px; }
+  details.faq summary { padding:13px 15px; font-family:var(--display); font-weight:700; font-size:15.5px; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  details.faq summary::-webkit-details-marker { display:none; }
+  details.faq summary::after { content:"+"; color:var(--gold); font-size:22px; font-weight:700; }
+  details.faq[open] summary::after { content:"–"; }
+  details.faq .body { padding:0 15px 15px; font-size:14px; color:var(--ink-soft); line-height:1.55; }
+  details.faq .body strong { color:var(--ink); }
+  .why-band { background:var(--ink); color:var(--paper); padding:16px; margin:18px 0; border-left:5px solid var(--gold); font-size:14.5px; line-height:1.55; }
+  .why-band b { color:var(--gold-br); }
+  .safe { background:var(--green-sf); border-left:4px solid var(--green); padding:12px 15px; font-size:13.5px; color:var(--ink); margin:14px 0; }
+  .foot { text-align:center; font-size:11px; color:var(--muted); padding:20px 0 8px; }
+  .foot a { color:var(--gold-dk); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Circulator Log<span class="sub">Open Seats MCPASD</span></div>
+    <div class="today-count"><b id="todayN">0</b>stops today</div>
+  </div>
+</header>
+
+<div class="who">
+  <div class="wrap">
+    <label for="circName">You are</label>
+    <input type="text" id="circName" placeholder="Type your name once" autocomplete="name">
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="card-form">
+    <h2>Log a stop</h2>
+    <div class="hint">Tap what happened, then hit save. Works even with no signal — it saves on your phone and uploads later.</div>
+
+    <label class="fld" for="addr">Where are you?</label>
+    <div class="addr-row">
+      <input type="text" id="addr" placeholder="House # &amp; street, e.g. 1234 Oak Dr">
+      <button type="button" class="loc-btn" id="locBtn">📍 Pin</button>
+    </div>
+
+    <label class="fld">What happened? (tap all that apply)</label>
+    <div class="chips" id="chips"></div>
+
+    <label class="fld" for="talked">Who did you talk to? (optional)</label>
+    <input type="text" id="talked" placeholder="First name(s), or leave blank">
+
+    <label class="fld" for="comments">Comments (optional)</label>
+    <textarea id="comments" placeholder="Anything worth remembering — “asked for a sheet,” “dog, careful,” “come back Sat”…"></textarea>
+  </section>
+
+  <div class="log">
+    <div class="flash" id="flash"></div>
+    <h3>Today's stops <span class="mini" id="syncNote"></span></h3>
+    <div id="stops"><div class="empty">No stops logged yet — your first one shows up here.</div></div>
+    <button class="share-btn" id="shareBtn" style="display:none;">Share today's log →</button>
+  </div>
+
+  <div class="why-band">
+    <b>Why we're doing this:</b> Right now you can only run for a school board seat if you live in one specific part of the district. We're asking neighbors to sign a petition to <b>open some seats so anyone in the whole district can run</b> — while every area still keeps its own seat. So every year there's a seat open to everyone, and voters get a real choice.
+  </div>
+
+  <div class="log">
+    <h3 style="border-color:var(--gold);">What we're doing &amp; why <span class="mini">tap to open</span></h3>
+
+    <details class="faq"><summary>What am I asking people to do?</summary>
+      <div class="body">Sign a petition — with a real pen, on the official sheet. It asks the school district to let <strong>more people run</strong> for the school board. You're not asking for money and nothing is for sale.</div></details>
+
+    <details class="faq"><summary>Why does it matter?</summary>
+      <div class="body">Today, to run for a board seat you have to live inside one specific area's lines. Lots of great people can't even get on the ballot just because of <strong>which street their house is on</strong>. We want to remove restrictions that don't really matter, so more neighbors can serve.</div></details>
+
+    <details class="faq"><summary>Does every area still get a voice?</summary>
+      <div class="body"><strong>Yes.</strong> Every area keeps its own guaranteed seat — nobody loses representation. We're opening <strong>some</strong> of the seats on top of that, so there's always a seat anyone in the district can run for. The board stays the same size and no one is removed.</div></details>
+
+    <details class="faq"><summary>What do I say at the door?</summary>
+      <div class="body">“Hi! I'm helping with a local petition to let more people run for our school board — every area keeps its seat, we just open a few so anyone in the district can run. Would you take a look?” Then hand them the sheet or a door hanger. Smile, keep it short.</div></details>
+
+    <details class="faq"><summary>What if no one answers?</summary>
+      <div class="body">Leave a <strong>door hanger</strong> and tap “Left door hanger.” That still counts — they can scan the code and sign later.</div></details>
+
+    <details class="faq"><summary>What if they say no?</summary>
+      <div class="body">Say “No problem — have a great day!” and move on. <strong>Never argue.</strong> A friendly no is totally fine; you're just offering.</div></details>
+
+    <div class="safe"><strong>Stay safe:</strong> always go with your buddy or a grown-up, stay on sidewalks and driveways, and never go inside anyone's house. If anything feels off, leave and tell your adult.</div>
+  </div>
+
+  <div class="foot">
+    Open Seats MCPASD · <a href="/">openseatsmcpasd.org</a><br>
+    Your log is saved on this phone and uploaded when you have signal.
+  </div>
+</div>
+
+<div class="save">
+  <div class="wrap"><button id="saveBtn">✓ Save this stop</button></div>
+</div>
+
+<script>
+const API = "/api/canvass";
+const ACTIONS = [
+  { key:"hanger",   em:"🚪", label:"Left door hanger" },
+  { key:"dropped",  em:"📄", label:"Dropped off petition" },
+  { key:"signed",   em:"🖊️", label:"They signed!", good:true },
+  { key:"talked",   em:"🙋", label:"Talked to someone" },
+  { key:"noanswer", em:"🔕", label:"No answer" },
+  { key:"later",    em:"↩️", label:"Come back later" },
+  { key:"notinterested", em:"👋", label:"Not interested" },
+  { key:"wantsheet", em:"📥", label:"Wants a sheet", good:true },
+];
+const LS_NAME = "os_circulator", LS_STOPS = "os_canvass_stops";
+let selected = new Set();
+let coords = null;
+
+const $ = id => document.getElementById(id);
+const nameEl = $("circName"), addrEl = $("addr"), talkedEl = $("talked"), commentsEl = $("comments");
+
+// ── name persistence ──
+nameEl.value = localStorage.getItem(LS_NAME) || "";
+nameEl.addEventListener("input", () => localStorage.setItem(LS_NAME, nameEl.value.trim()));
+
+// ── chips ──
+const chipWrap = $("chips");
+ACTIONS.forEach(a => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.dataset.key = a.key;
+  b.innerHTML = `<span class="em">${a.em}</span><span>${a.label}</span>`;
+  b.addEventListener("click", () => {
+    if (selected.has(a.key)) { selected.delete(a.key); b.classList.remove("sel","good"); }
+    else { selected.add(a.key); b.classList.add("sel"); if (a.good) b.classList.add("good"); }
+  });
+  chipWrap.appendChild(b);
+});
+
+// ── geolocation ──
+$("locBtn").addEventListener("click", () => {
+  if (!navigator.geolocation) { alert("Location isn't available on this device."); return; }
+  $("locBtn").textContent = "…";
+  navigator.geolocation.getCurrentPosition(
+    p => { coords = { lat:+p.coords.latitude.toFixed(6), lon:+p.coords.longitude.toFixed(6) };
+           $("locBtn").textContent = "📍 Pinned"; $("locBtn").classList.add("on"); },
+    () => { $("locBtn").textContent = "📍 Pin"; alert("Couldn't get location — just type the street instead."); },
+    { enableHighAccuracy:true, timeout:8000 }
+  );
+});
+
+// ── storage helpers ──
+const loadStops = () => { try { return JSON.parse(localStorage.getItem(LS_STOPS)) || []; } catch { return []; } };
+const saveStops = s => localStorage.setItem(LS_STOPS, JSON.stringify(s));
+const isToday = iso => (iso||"").slice(0,10) === new Date().toISOString().slice(0,10);
+const uuid = () => (crypto.randomUUID ? crypto.randomUUID() : "id-"+Date.now()+"-"+Math.random().toString(16).slice(2));
+
+// ── render ──
+function render() {
+  const all = loadStops();
+  const today = all.filter(s => isToday(s.stop_time));
+  $("todayN").textContent = today.length;
+  const box = $("stops");
+  if (!today.length) { box.innerHTML = '<div class="empty">No stops logged yet — your first one shows up here.</div>'; $("shareBtn").style.display="none"; }
+  else {
+    box.innerHTML = today.slice().reverse().map(s => {
+      const t = new Date(s.stop_time).toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+      const acts = (s.actions||[]).map(k => (ACTIONS.find(a=>a.key===k)||{}).label).filter(Boolean).join(" · ");
+      const extra = [s.talked_to ? "Talked to: "+esc(s.talked_to) : "", s.comments ? esc(s.comments) : ""].filter(Boolean).join("<br>");
+      return `<div class="stop">
+        <div class="top"><span>${t}${s.lat?" · 📍":""}</span><span class="sync ${s.synced?"ok":"q"}">${s.synced?"uploaded":"saved · will upload"}</span></div>
+        <div class="addr">${esc(s.address)||"(no address)"}</div>
+        ${acts?`<div class="acts">${acts}</div>`:""}
+        ${extra?`<div class="extra">${extra}</div>`:""}
+      </div>`;
+    }).join("");
+    $("shareBtn").style.display = "inline-block";
+  }
+  const unsynced = all.filter(s => !s.synced).length;
+  $("syncNote").textContent = unsynced ? (unsynced+" waiting to upload") : (all.length ? "all uploaded" : "");
+}
+const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// ── sync ──
+async function syncOne(stop) {
+  try {
+    const r = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ circulator:stop.circulator, client_id:stop.client_id, address:stop.address,
+        lat:stop.lat, lon:stop.lon, talked_to:stop.talked_to, actions:stop.actions, comments:stop.comments, stop_time:stop.stop_time }) });
+    const d = await r.json();
+    return !!d.ok;
+  } catch { return false; }
+}
+async function syncQueue() {
+  const all = loadStops(); let changed = false;
+  for (const s of all) {
+    if (!s.synced) { if (await syncOne(s)) { s.synced = true; changed = true; } }
+  }
+  if (changed) { saveStops(all); render(); }
+}
+
+// ── save ──
+$("saveBtn").addEventListener("click", async () => {
+  const name = nameEl.value.trim();
+  if (!name) { nameEl.focus(); flash("Type your name at the top first ↑", true); return; }
+  if (!addrEl.value.trim() && !selected.size && !talkedEl.value.trim() && !commentsEl.value.trim()) {
+    flash("Add an address or tap what happened.", true); return;
+  }
+  const stop = {
+    client_id: uuid(), circulator: name, address: addrEl.value.trim(),
+    lat: coords?coords.lat:null, lon: coords?coords.lon:null,
+    talked_to: talkedEl.value.trim(), actions:[...selected], comments: commentsEl.value.trim(),
+    stop_time: new Date().toISOString(), synced:false
+  };
+  const all = loadStops(); all.push(stop); saveStops(all);
+  // reset form (keep name)
+  addrEl.value=""; talkedEl.value=""; commentsEl.value=""; selected.clear(); coords=null;
+  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("sel","good"));
+  $("locBtn").textContent="📍 Pin"; $("locBtn").classList.remove("on");
+  render(); flash("✓ Saved! On to the next door.");
+  if (await syncOne(stop)) { stop.synced=true; saveStops(loadStops().map(s=>s.client_id===stop.client_id?stop:s)); render(); }
+  addrEl.focus();
+});
+function flash(msg, warn) { const f=$("flash"); f.textContent=msg; f.style.color = warn?"var(--gold-dk)":"var(--green)";
+  clearTimeout(f._t); f._t=setTimeout(()=>{f.textContent="";}, 3500); }
+
+// ── share fallback ──
+$("shareBtn").addEventListener("click", () => {
+  const today = loadStops().filter(s=>isToday(s.stop_time));
+  const name = nameEl.value.trim() || "Circulator";
+  let txt = `${name} — door log for ${new Date().toLocaleDateString()} (${today.length} stops)\n\n`;
+  today.forEach(s => {
+    const t = new Date(s.stop_time).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+    const acts = (s.actions||[]).map(k=>(ACTIONS.find(a=>a.key===k)||{}).label).filter(Boolean).join(", ");
+    txt += `• ${t} — ${s.address||"(no address)"}${acts?" — "+acts:""}${s.talked_to?" — talked to "+s.talked_to:""}${s.comments?" — "+s.comments:""}\n`;
+  });
+  if (navigator.share) navigator.share({ title:"Circulator log", text:txt }).catch(()=>{});
+  else window.location.href = "mailto:?subject=" + encodeURIComponent(`Door log — ${name}`) + "&body=" + encodeURIComponent(txt);
+});
+
+// ── boot ──
+render();
+syncQueue();
+window.addEventListener("online", syncQueue);
+</script>
+</body>
+</html>
