@@ -12,6 +12,7 @@
 /log        /circulate/              301
 /circulate  /circulate/              301
 /watch      /circulate/watch.html    301
+/kids       /circulate/kids.html     301
 
 /handout.pdf  /toolkit/transition  302
 
