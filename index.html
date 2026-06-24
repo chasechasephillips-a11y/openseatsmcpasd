@@ -2405,7 +2405,9 @@
     }
     function loadStats() {
       // Live numbers come from a single static file you control: /data.json
-      fetch('/data.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (data) {
+      fetch('/api/live?t=' + Date.now()).then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .catch(function () { return fetch('/data.json?t=' + Date.now()).then(function (r) { return r.json(); }); })
+        .then(function (data) {
         var n = (data && typeof data.sigCount === 'number') ? data.sigCount : 0;
         var goal = (data && data.goal) ? data.goal : 550;
         animateNumber(document.getElementById('sigNow'), n);
