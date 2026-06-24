@@ -70,6 +70,8 @@
     <div class="totals" id="totals"></div>
     <h2>Who's out</h2>
     <div id="circs"></div>
+    <h2>Follow up next <span style="font-weight:400;font-size:11px;color:var(--muted);">— come back / wants a sheet</span></h2>
+    <div id="revisit"></div>
     <h2>Live feed <span style="font-weight:400;font-size:11px;color:var(--muted);">— newest first</span></h2>
     <div class="feed" id="feed"></div>
     <div class="foot">Auto-refreshes every 20 seconds · <a href="/circulate/" style="color:var(--gold-dk);">the log app →</a></div>
@@ -114,7 +116,18 @@ function render(d){
       <div class="nums">${c.stops} stops<br><b>${c.signed} signed</b> · ${c.hangers} hangers</div>
     </div>`).join("") : '<div class="empty">No one has logged a door yet today.</div>';
 
-  const rows=(d.rows||[]).slice(0,40);
+  const allRows=d.rows||[];
+  const revisit=allRows.filter(s=>/later|wantsheet/.test(s.actions||""));
+  $("revisit").innerHTML = revisit.length ? revisit.slice(0,30).map(s=>{
+    const why = /wantsheet/.test(s.actions||"") ? "wants a sheet" : "come back later";
+    const note = s.comments?` &mdash; &ldquo;${esc(s.comments)}&rdquo;`:"";
+    return `<div class="stop" style="border-left-color:var(--green);">
+      <div class="top"><span class="who">${esc(s.address)||"(no address)"}</span><span>${esc(s.circulator)} · ${fmt(s.created_at)}</span></div>
+      <div class="acts" style="color:var(--green-dk,var(--gold-dk));"><b>${why}</b>${s.talked_to?" · "+esc(s.talked_to):""}${note}</div>
+    </div>`;
+  }).join("") : '<div class="empty">Nothing to revisit yet — “come back later” and “wants a sheet” doors land here.</div>';
+
+  const rows=allRows.slice(0,40);
   $("feed").innerHTML = rows.length ? rows.map(s=>{
     const acts=actLabel(s.actions);
     const extra=[s.talked_to?"Talked to: "+esc(s.talked_to):"", s.comments?"&ldquo;"+esc(s.comments)+"&rdquo;":""].filter(Boolean).join("<br>");
