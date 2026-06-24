@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Watch circulators — Open Seats MCPASD</title>
+<meta name="theme-color" content="#14223E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Lora:wght@0,400;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#FBF8EF;--warm:#FCF8E8;--card:#FFFBF1;--ink:#14223E;--ink-soft:#2A3756;--muted:#6E4F2F;--gold:#B98521;--gold-dk:#8C6112;--gold-br:#D29D2E;--rule:#D5C8A9;--rule-dp:#A89572;--green:#6B7A4F;--green-sf:#E2E6D4;--display:'Old Standard TT',serif;--body:'Lora',Georgia,serif;}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:620px;margin:0 auto;padding:0 16px;}
+  header{background:var(--ink);color:var(--paper);padding:max(14px,env(safe-area-inset-top,0)) 16px 14px;position:sticky;top:0;z-index:5;box-shadow:0 2px 0 var(--gold);}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0;}
+  .brand{font-family:var(--display);font-weight:700;font-size:18px;}
+  .brand .sub{display:block;font-size:9.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-br);margin-top:1px;}
+  .live{font-size:11px;color:rgba(251,248,239,.75);text-align:right;}
+  .live .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:5px;animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .gate{padding:40px 0;}
+  .gate input{width:100%;font-size:16px;padding:13px;border:1px solid var(--rule-dp);background:#fff;margin:12px 0;font-family:var(--body);}
+  .gate button{width:100%;background:var(--gold);color:var(--paper);border:1px solid var(--gold-dk);font-family:var(--display);font-weight:700;font-size:17px;padding:14px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;}
+  .gate p{font-size:13.5px;color:var(--muted);}
+
+  .totals{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:18px 0;}
+  .totals .c{background:var(--card);text-align:center;padding:14px 6px;}
+  .totals .n{font-family:var(--display);font-weight:700;font-size:28px;color:var(--gold);line-height:1;}
+  .totals .n.green{color:var(--green);}
+  .totals .l{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+
+  h2{font-family:var(--display);font-size:16px;border-bottom:2px solid var(--ink);padding-bottom:6px;margin:24px 0 12px;}
+  .circ{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--gold);padding:12px 14px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .circ .name{font-family:var(--display);font-weight:700;font-size:16px;}
+  .circ .meta{font-size:12px;color:var(--muted);}
+  .circ .nums{text-align:right;font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+  .circ .nums b{color:var(--green);}
+
+  .feed .stop{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--gold);padding:10px 13px;margin-bottom:8px;font-size:13.5px;}
+  .feed .stop .top{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--muted);margin-bottom:2px;}
+  .feed .stop .who{font-weight:700;color:var(--ink);}
+  .feed .stop .addr{font-family:var(--display);font-weight:700;font-size:14.5px;}
+  .feed .stop .acts{color:var(--green);font-weight:600;margin-top:2px;font-size:12.5px;}
+  .feed .stop .extra{color:var(--ink-soft);margin-top:2px;font-size:12.5px;}
+  .empty{color:var(--muted);font-style:italic;font-size:14px;padding:14px 0;}
+  .foot{text-align:center;font-size:11px;color:var(--muted);padding:22px 0;}
+  .err{color:#9A3B2C;font-size:13px;padding:8px 0;}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">Circulator Watch<span class="sub">Open Seats MCPASD</span></div>
+  <div class="live" id="liveTag" style="display:none;"><span class="dot"></span><span id="liveTxt">live</span></div>
+</div></header>
+
+<div class="wrap">
+  <div class="gate" id="gate">
+    <h2 style="border:none;margin:0;">Watch your circulators</h2>
+    <p>See every door logged in the Circulator Log app, live. Enter the admin token (same one as the admin dashboard).</p>
+    <input type="password" id="tok" placeholder="Admin token" autocomplete="off">
+    <button id="go">Watch →</button>
+    <div class="err" id="gateErr"></div>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="totals" id="totals"></div>
+    <h2>Who's out</h2>
+    <div id="circs"></div>
+    <h2>Live feed <span style="font-weight:400;font-size:11px;color:var(--muted);">— newest first</span></h2>
+    <div class="feed" id="feed"></div>
+    <div class="foot">Auto-refreshes every 20 seconds · <a href="/circulate/" style="color:var(--gold-dk);">the log app →</a></div>
+  </div>
+</div>
+
+<script>
+const API="/api/canvass";
+const ACT={hanger:"Left door hanger",dropped:"Dropped off petition",signed:"They signed!",talked:"Talked to someone",noanswer:"No answer",later:"Come back later",notinterested:"Not interested",wantsheet:"Wants a sheet"};
+const $=id=>document.getElementById(id);
+const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let token=localStorage.getItem("os_admin_token")||"";
+let timer=null;
+
+function actLabel(a){ return (a||"").split(/,\s*/).map(k=>ACT[k]||k).filter(Boolean).join(" · "); }
+function fmt(ts){ if(!ts) return ""; const d=new Date(ts.replace(" ","T")+"Z"); return d.toLocaleString([], {month:"numeric",day:"numeric",hour:"numeric",minute:"2-digit"}); }
+function ago(ts){ if(!ts) return ""; const s=(Date.now()-new Date(ts.replace(" ","T")+"Z").getTime())/1000; if(s<90)return"just now"; if(s<3600)return Math.round(s/60)+"m ago"; if(s<86400)return Math.round(s/3600)+"h ago"; return Math.round(s/86400)+"d ago"; }
+
+async function poll(){
+  try{
+    const r=await fetch(`${API}?token=${encodeURIComponent(token)}`,{cache:"no-store"});
+    if(r.status===401){ fail("That token didn't work."); return; }
+    const d=await r.json();
+    if(!d.ok){ fail("Couldn't load."); return; }
+    render(d);
+    $("gate").style.display="none"; $("app").style.display="block";
+    $("liveTag").style.display="block"; $("liveTxt").textContent="updated "+new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+  }catch(e){ $("liveTxt").textContent="offline — retrying"; }
+}
+function fail(msg){ $("gateErr").textContent=msg; $("gate").style.display="block"; $("app").style.display="none"; if(timer){clearInterval(timer);timer=null;} }
+
+function render(d){
+  const t=d.totals||{};
+  $("totals").innerHTML=[
+    [t.stops||0,"stops"],[t.stops_24h||0,"last 24h"],[t.hangers||0,"hangers",true],[t.signed||0,"signed","green"]
+  ].map(c=>`<div class="c"><div class="n ${c[2]==="green"?"green":""}">${c[0]}</div><div class="l">${c[1]}</div></div>`).join("");
+
+  const circs=d.byCirculator||[];
+  $("circs").innerHTML = circs.length ? circs.map(c=>`
+    <div class="circ">
+      <div><div class="name">${esc(c.circulator)}</div><div class="meta">last active ${ago(c.last_active)}</div></div>
+      <div class="nums">${c.stops} stops<br><b>${c.signed} signed</b> · ${c.hangers} hangers</div>
+    </div>`).join("") : '<div class="empty">No one has logged a door yet today.</div>';
+
+  const rows=(d.rows||[]).slice(0,40);
+  $("feed").innerHTML = rows.length ? rows.map(s=>{
+    const acts=actLabel(s.actions);
+    const extra=[s.talked_to?"Talked to: "+esc(s.talked_to):"", s.comments?"&ldquo;"+esc(s.comments)+"&rdquo;":""].filter(Boolean).join("<br>");
+    return `<div class="stop">
+      <div class="top"><span class="who">${esc(s.circulator)}</span><span>${fmt(s.created_at)}${s.lat?" · 📍":""}</span></div>
+      <div class="addr">${esc(s.address)||"(no address)"}</div>
+      ${acts?`<div class="acts">${acts}</div>`:""}
+      ${extra?`<div class="extra">${extra}</div>`:""}
+    </div>`;
+  }).join("") : '<div class="empty">Stops will appear here the moment she logs them.</div>';
+}
+
+$("go").addEventListener("click",()=>{
+  token=$("tok").value.trim(); if(!token){ $("gateErr").textContent="Enter the token."; return; }
+  localStorage.setItem("os_admin_token",token);
+  start();
+});
+$("tok").addEventListener("keydown",e=>{ if(e.key==="Enter") $("go").click(); });
+
+function start(){ poll(); if(timer)clearInterval(timer); timer=setInterval(poll,20000); }
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) poll(); });
+
+if(token){ start(); }
+</script>
+</body>
+</html>
