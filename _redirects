@@ -23,3 +23,10 @@
 /card       /?ref=card          302
 /fb         /?ref=facebook      302
 /nd         /?ref=nextdoor      302
+
+# Per-advocate share links — hand each person their own so you see whose post lands
+/fb-kathryn   /?ref=fb-kathryn    302
+/fb-krista    /?ref=fb-krista     302
+/fb-emily     /?ref=fb-emily      302
+/fb-tabitha   /?ref=fb-tabitha    302
+/s-chase      /?ref=share-chase   302
