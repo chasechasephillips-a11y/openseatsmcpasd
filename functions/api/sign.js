@@ -19,7 +19,11 @@ export async function onRequestPost(context) {
     const area = (d.area || '').toString().trim();
     const meeting = d.meeting ? 1 : 0;
     const circulate = d.circulator ? 1 : 0;
-    const pickup = d.pickup ? 1 : 0;
+    // "Needs a sheet delivered" and "come pick up my signed sheet" both put this
+    // person in the pickup queue — either way I'm driving to their address.
+    // (Form sends delivery=pickup|mail and status=need-sheet|have-sheet; older
+    //  clients may still send a boolean `pickup`.)
+    const pickup = (d.pickup || d.delivery === 'pickup' || d.status === 'need-sheet') ? 1 : 0;
     const heard = (d.heard || '').toString().trim().slice(0, 60) || 'website';
 
     await context.env.DB.prepare(

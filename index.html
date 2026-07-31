@@ -226,10 +226,10 @@
 
   .hero h1 {
     font-family: var(--display);
-    font-size: clamp(44px, 7.4vw, 88px);
+    font-size: clamp(38px, 5.4vw, 62px);
     font-weight: 700;
-    line-height: 0.98;
-    margin-bottom: 28px;
+    line-height: 1.02;
+    margin-bottom: 16px;
     letter-spacing: -0.022em;
     color: var(--ink);
   }
@@ -287,6 +287,34 @@
   .btn-arrow { font-size: 14px; }
 
   /* ─── Hero fast-path (peak-intent download) ───────────────────── */
+  /* Primary conversion block — printing the sheet is the ONLY thing that legally counts,
+     so it gets the loudest treatment on the page, above every other CTA. */
+  .sheet-cta {
+    margin-top: 26px; padding: 20px 22px;
+    background: var(--paper-card, #FFFBF1);
+    border: 1px solid var(--rule, #D5C8A9);
+    border-left: 6px solid var(--red, #B98521);
+  }
+  .sheet-btn {
+    display: block; text-align: center; text-decoration: none;
+    background: var(--red, #B98521); color: var(--paper, #FBF8EF);
+    font-family: var(--display); font-weight: 700; font-size: 25px;
+    padding: 16px 20px; border: 1px solid var(--red-dark, #8C6112);
+    box-shadow: 5px 5px 0 var(--ink, #14223E);
+    transition: transform .08s ease, box-shadow .08s ease;
+  }
+  .sheet-btn:hover { transform: translate(2px,2px); box-shadow: 3px 3px 0 var(--ink, #14223E); }
+  .sheet-btn .sheet-sub {
+    display: block; font-family: var(--body); font-weight: 400; font-size: 13px;
+    letter-spacing: .12em; text-transform: uppercase; opacity: .85; margin-top: 5px;
+  }
+  .sheet-math { font-size: 15px; line-height: 1.5; margin-top: 14px; color: var(--ink-soft, #2A3756); }
+  .sheet-warn {
+    font-size: 13.5px; line-height: 1.5; margin-top: 10px; padding: 9px 12px;
+    background: #F9E9E4; border-left: 3px solid #9A3B2C; color: var(--ink, #14223E);
+  }
+  @media (max-width: 600px) { .sheet-btn { font-size: 21px; } }
+
   .hero-fastpath {
     margin-top: 16px;
     font-size: 14.5px;
@@ -1333,6 +1361,16 @@
     max-width: 800px;
   }
   .final-cta h2 em { color: var(--red-bright); }
+  .final-cta .lead {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: clamp(16px, 1.5vw, 18.5px);
+    line-height: 1.75;
+    max-width: 640px;
+    margin: 0 auto;
+    color: rgba(251, 248, 239, 0.82);
+    letter-spacing: 0.15px;
+  }
   .final-cta .cta-row { justify-content: center; margin-top: 28px; }
   .final-cta .btn-outline { color: var(--paper); border-color: var(--paper); box-shadow: 3px 3px 0 var(--rule-deep); }
   .final-cta .btn-outline:hover { background: var(--paper); color: var(--ink); box-shadow: 4px 4px 0 var(--rule-deep); }
@@ -1516,18 +1554,14 @@
 <body>
 
 <div id="announce-bar" style="background:var(--ink);color:var(--paper);text-align:center;padding:11px 16px;font-size:14.5px;line-height:1.45;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;border-bottom:3px solid var(--red);">
-  <strong style="color:var(--red-bright);letter-spacing:0.06em;">JUNE 15 UPDATE</strong> &nbsp;Presented the proposal to the Town of Middleton Board — warm reception in the room. <a href="#sign" style="color:var(--paper);text-decoration:underline;font-weight:700;">Add your name →</a>
+  <strong style="color:var(--red-bright);letter-spacing:0.06em;">🔥 LIVE</strong> &nbsp;<strong id="ab-count">321</strong> neighbors have signed<span id="ab-week"></span> · <strong id="ab-days">—</strong> days left to reach <strong>500</strong> and make the ballot. <a href="#sign" style="color:var(--paper);text-decoration:underline;font-weight:700;">Add your name →</a>
 </div>
 <script>
-  // Auto-expire the June 15 Town Board announcement after 4 days (gone on Jun 19).
+  // Top bar + mid-page milestone update are both live (July 28 refresh).
   document.addEventListener('DOMContentLoaded', function () {
-    var until = new Date('2026-06-18T23:59:59-05:00');
-    if (new Date() > until) {
-      ['announce-bar', 'announce-mid'].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) el.style.display = 'none';
-      });
-    }
+    var sb = new Date('2026-08-20T23:59:59-05:00');
+    var dd = Math.max(0, Math.ceil((sb - new Date()) / 86400000));
+    var de = document.getElementById('ab-days'); if (de) de.textContent = dd;
   });
 </script>
 
@@ -1536,13 +1570,13 @@
     <a href="#top" class="brand"><span class="mark">OS</span> Open Seats MCPASD</a>
     <nav>
       <ul>
-        <li><a href="#help">How to help</a></li>
+        <li><a href="/carry/">Carry it yourself</a></li>
         <li><a href="#problem">The problem</a></li>
         <li><a href="#fix">The fix</a></li>
         <li><a href="#transition">The plan</a></li>
         <li><a href="#comparison">Other districts</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#sign" class="nav-cta">Sign now</a></li>
+        <li><a href="#get-a-sheet" class="nav-cta">Get a sheet</a></li>
       </ul>
     </nav>
   </div>
@@ -1554,16 +1588,23 @@
       <div>
         <span class="eyebrow">Parent-led · Wis. Stat. § 120.02(2)(a)</span>
         <h1>4 school board seats. <span class="accent">Any MCPASD resident can run.</span></h1>
-        <p class="lead">Every one of MCPASD's 9 school board seats is tied to a specific geographic Area — which limits who can run when a seat opens. This petition opens 4 of the 9 to any district resident, while keeping 5 geographic so every Area still has a guaranteed anchor seat. <strong>Same board size. Deeper bench.</strong> Current board members keep their path forward; the community gains more ways for great neighbors to serve.</p>
-        <p style="font-family:var(--display);font-size:19px;font-weight:700;color:var(--ink);line-height:1.3;margin-top:14px;">From a real choice <em style="font-style:italic;color:var(--red);">once every few years</em> — to one <em style="font-style:italic;color:var(--red);">almost every year.</em></p>
+        <p class="lead">All 9 MCPASD board seats are locked to a geographic Area — lines drawn in <strong>1963</strong>. This petition keeps 5 anchored, so every Area keeps a guaranteed seat, and opens 4 to any district resident. <strong>Same board size. Nobody loses a seat. Deeper bench.</strong></p>
+        <div class="sheet-cta">
+          <a href="petition-sheet.pdf" download class="sheet-btn">⬇ Print the petition sheet <span class="sheet-sub">1 page · takes 2 minutes</span></a>
+          <p class="sheet-math"><strong>One sheet holds 7 signatures.</strong> If about <strong>50 people</strong> each fill one, this is on the ballot. That's the whole plan — and it's why a printed sheet beats anything else you can do.</p>
+          <p class="sheet-warn">⚠️ <strong>Whoever collects the signatures signs the box at the bottom</strong> ("Certification of Circulator"). That's you. 15 seconds — and without it the sheet doesn't count.</p>
+          <p class="sheet-math" style="margin-top:12px"><a href="/carry/" style="font-weight:700">→ How to carry the petition yourself</a> — the five rules that make a signature count, and the one mistake ("Middleton" vs the <em>Town</em> of Middleton) that voids the most sheets. <strong>You don't need permission. You need a printer.</strong></p>
+          <p style="font-size:14px;margin-top:10px;text-align:center;"><strong>No printer?</strong> <a href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I'll%20take%20a%20petition%20sheet.%20Drop%20one%20at%3A%20" style="color:var(--red);font-weight:700;text-decoration:underline;">Text me and I'll bring a sheet to your door →</a></p>
+        </div>
         <div class="cta-row">
-          <a href="#volunteer" class="btn btn-primary">I'll collect signatures <span class="btn-arrow">→</span></a>
-          <a href="#sign" class="btn btn-outline">Sign the petition</a>
+          <a href="#get-a-sheet" class="btn btn-primary">📮 Send me a sheet to sign <span class="btn-arrow">→</span></a>
+          <a href="#volunteer" class="btn btn-outline">I'll collect signatures</a>
         </div>
         <a class="pickup-ribbon" href="sms:+13362071832?&body=Hi%20Chase%2C%20I%20have%20a%20signed%20petition%20sheet%20ready%20for%20pickup.%20My%20address%20is%3A%20">
-          <strong>Already have a signed sheet?</strong> Let's make pickup easy — thank you! Text me your address and I'll grab it. <span class="r-arrow">→</span>
+          <strong>Sheet filled up?</strong> Text me your address and <strong>I'll drive over and pick it up.</strong> <span class="r-arrow">→</span>
         </a>
-        <p class="hero-fastpath">Ready right now? <a href="petition-sheet.pdf" download>Download the official sheet (PDF)</a> — print it, sign with a pen, mail to 3795 Swoboda Rd. <strong>That paper signature is the one that legally counts.</strong></p>
+        <p class="hero-fastpath">Only the <strong>paper</strong> signature legally counts — a photo or an online form can't be filed. Print it, sign with a pen, and I'll collect it (or mail to 3795 Swoboda Rd).</p>
+        <p style="font-family:var(--display);font-size:18px;font-weight:700;color:var(--ink);line-height:1.35;margin-top:18px;">From a real choice <em style="font-style:italic;color:var(--red);">once every few years</em> — to one <em style="font-style:italic;color:var(--red);">almost every year.</em></p>
       </div>
 
       <aside class="hero-stats" aria-label="Campaign momentum">
@@ -1601,7 +1642,7 @@
 <div class="timeline-strip">
   <div class="container timeline-strip-inner">
     <div class="ts-item"><span class="ts-icon">📝</span><div><div class="ts-label">Sign by</div><div class="ts-value">Thu · Aug 20, 2026</div></div></div>
-    <div class="ts-item"><span class="ts-icon">📬</span><div><div class="ts-label">Petition filed by</div><div class="ts-value">Mon · Aug 24, 2026</div></div></div>
+    <div class="ts-item"><span class="ts-icon">📬</span><div><div class="ts-label">Petition filed by</div><div class="ts-value">Fri · Aug 21, 2026</div></div></div>
     <div class="ts-item"><span class="ts-icon">🗳️</span><div><div class="ts-label">Annual Meeting vote</div><div class="ts-value">Tue · Sept 22 · 7 PM</div></div></div>
   </div>
 </div>
@@ -1609,10 +1650,19 @@
 <div class="container" id="announce-mid" style="margin-top:28px;">
   <div style="background:var(--red-soft);border:1px solid var(--rule);border-left:5px solid var(--red);padding:14px 20px;">
     <p style="margin:0;color:var(--ink-soft);font-size:15px;line-height:1.55;">
-      <strong style="color:var(--red-dark);letter-spacing:0.05em;">UPDATE · JUNE 15</strong> — I shared the proposal with the <strong>Town of Middleton Board</strong> and got a warm, encouraging reception from the room. The case for giving the Town a fair shot is resonating — thank you, neighbors. <a href="#sign" style="color:var(--red-dark);font-weight:700;">Add your name →</a>
+      <strong style="color:var(--red-dark);letter-spacing:0.05em;">🎉 UPDATE · JULY 28</strong> — <strong>We just crossed 321 signatures — well past the halfway mark to the ballot!</strong> Neighbors signed in a wave across West Middleton and Cross Plains this month. Just about <strong>180 more by Aug 20</strong> and this goes to a vote. The momentum is real — thank you, neighbors. <a href="#sign" style="color:var(--red-dark);font-weight:700;">Add your name →</a>
     </p>
   </div>
 </div>
+
+<section class="tinted" aria-label="Where neighbors have signed">
+  <div class="container" style="text-align:center;">
+    <h2 class="reveal">This is spreading — <em>neighborhood by neighborhood</em></h2>
+    <p class="reveal" style="max-width:640px;margin:0 auto 18px;color:var(--ink-soft);">Every dot is a street where neighbors have signed. <strong>321 signatures</strong> and counting, across the Town of Middleton, Cross Plains, Springfield, and beyond.</p>
+    <img src="signature-map.png" alt="Map of MCPASD streets where neighbors have signed the Open Seats petition" style="width:100%;max-width:820px;border:1px solid var(--rule);box-shadow:6px 6px 0 var(--gold);" loading="lazy">
+    <p style="font-size:13px;color:var(--muted);margin-top:12px;">Don't see your street yet? <a href="#sign" style="color:var(--red-dark);font-weight:700;">Be the first on your block →</a></p>
+  </div>
+</section>
 
 <!-- ── How you can help (moved high; the clear ask) ── -->
 <section class="alt" id="help">
@@ -1733,7 +1783,7 @@
     </div>
 
     <div class="reveal" style="margin-top: 32px; max-width: 800px;">
-      <p style="font-size: 17.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 18px;">The data tells the story. <strong>Every spring primary since 2021 has been cancelled for lack of opposition</strong> — six straight years (2021, 2022, 2023, 2024, 2025, 2026). In April 2025, every seat on the ballot had a single candidate. Voters didn't actually choose anyone.</p>
+      <p style="font-size: 17.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 18px;">The data tells the story. <strong>In the last two elections — April 2025 and April 2026 — not one board race gave voters a choice.</strong> Every race had exactly as many candidates as open seats: four candidates for four seats in 2025, three for three in 2026. And the map itself is lopsided — <strong>Area IV holds four of the nine seats</strong>, while Areas I, III, and V hold one apiece.</p>
       <p style="font-size: 17.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 0;">It's not that nobody cares. I personally know qualified neighbors who wanted to serve but couldn't — they live a few blocks outside the Area where a seat was open. <em>That's an artificial restriction with a real cost</em>, and voters never get to weigh in on candidates who can't even make the ballot.</p>
     </div>
   </div>
@@ -1746,6 +1796,98 @@
       <h2>Open 4 of the 9 seats. <em>Keep the board the same size.</em></h2>
       <p class="section-lead">We're not adding seats or removing anyone. The board stays at 9. We're changing how the 9 are allocated — keeping geographic representation while opening the door for more people to run.</p>
     </div>
+
+<style>
+.seatviz{max-width:760px;margin:0 auto 8px;background:var(--paper-card,#FFFBF1);border:1px solid var(--rule,#D5C8A9);padding:26px 26px 20px;}
+.seatviz .sv-rowhead{font-family:var(--display);font-weight:700;font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.seatviz .sv-tag{font-size:10px;font-weight:700;letter-spacing:.14em;padding:3px 9px;border-radius:2px;}
+.seatviz .sv-tag.today{background:#EDE3C6;color:var(--gold-dark,#8C6112);border:1px solid var(--gold,#B98521);}
+.seatviz .sv-tag.fix{background:var(--ink,#14223E);color:var(--paper,#FBF8EF);}
+.seatviz .sv-seats{display:flex;gap:7px;flex-wrap:wrap;justify-content:space-between;}
+.seatviz .sv-seat{width:56px;flex:0 0 auto;text-align:center;}
+.seatviz .sv-seat svg{display:block;width:100%;height:60px;}
+.seatviz .sv-lab{font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-top:3px;line-height:1.1;}
+.seatviz .sv-sub{font-size:7.5px;color:var(--muted,#6E4F2F);line-height:1;}
+.seatviz .sv-note{font-size:13px;color:var(--ink-soft,#2A3756);margin-top:10px;line-height:1.45;}
+.seatviz .sv-arrow{text-align:center;margin:15px 0 16px;position:relative;}
+.seatviz .sv-arrow:before{content:"";display:block;height:1px;background:var(--rule,#D5C8A9);position:absolute;left:0;right:0;top:11px;}
+.seatviz .sv-arrow span{position:relative;font-family:var(--display);font-style:italic;font-size:14.5px;color:var(--red,#9A3B2C);background:var(--paper-card,#FFFBF1);padding:0 12px;}
+.seatviz .sv-fix{display:flex;align-items:flex-start;justify-content:center;background:var(--paper,#FBF8EF);border:1px solid var(--rule,#D5C8A9);padding:16px 10px;}
+.seatviz .sv-grp{flex:1;padding:0 10px;}
+.seatviz .sv-cap{font-size:10.5px;font-weight:700;text-transform:uppercase;color:var(--muted,#6E4F2F);text-align:center;margin-bottom:11px;min-height:28px;display:flex;align-items:center;justify-content:center;line-height:1.25;}
+.seatviz .sv-grpseats{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;}
+.seatviz .sv-div{width:2px;align-self:stretch;background:repeating-linear-gradient(var(--rule,#D5C8A9),var(--rule,#D5C8A9) 4px,transparent 4px,transparent 8px);margin:0 3px;}
+.seatviz .sv-foot{text-align:center;font-family:var(--display);font-size:15px;margin-top:18px;padding-top:14px;border-top:2px solid var(--ink,#14223E);}
+@media(max-width:640px){.seatviz .sv-fix{flex-direction:column;gap:14px;}.seatviz .sv-div{width:auto;height:2px;background:repeating-linear-gradient(90deg,var(--rule,#D5C8A9),var(--rule,#D5C8A9) 4px,transparent 4px,transparent 8px);}.seatviz .sv-seat{width:48px;}.seatviz .sv-seats{justify-content:center;}}
+</style>
+<div class="seatviz">
+  <div class="sv-rowhead"><span class="sv-tag today">TODAY</span> All 9 seats locked to one Area</div>
+  <div class="sv-seats"><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#F0E4C6" style="stroke:#C9A94F;stroke-width:2;"/><circle cx="30" cy="26" r="10" fill="#A6812B"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#A6812B"/></svg>
+  <div class="sv-lab" style="color:#7A6320">Locked</div>
+</div></div>
+  <div class="sv-note">To run for any seat, you must live in that specific Area &mdash; lines drawn in <strong>1963</strong>.</div>
+  <div class="sv-arrow"><span>the petition changes this &darr;</span></div>
+  <div class="sv-rowhead"><span class="sv-tag fix">THE PETITION</span> 5 stay anchored &middot; 4 open to anyone</div>
+  <div class="sv-fix">
+    <div class="sv-grp"><div class="sv-cap">5 anchored &mdash; every Area keeps a guaranteed seat</div><div class="sv-grpseats"><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FBF3DE" style="stroke:#B98521;stroke-width:2.5;"/><circle cx="30" cy="26" r="10" fill="#8C6112"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#8C6112"/></svg>
+  <div class="sv-lab" style="color:#8C6112">Area I</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FBF3DE" style="stroke:#B98521;stroke-width:2.5;"/><circle cx="30" cy="26" r="10" fill="#8C6112"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#8C6112"/></svg>
+  <div class="sv-lab" style="color:#8C6112">Area II</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FBF3DE" style="stroke:#B98521;stroke-width:2.5;"/><circle cx="30" cy="26" r="10" fill="#8C6112"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#8C6112"/></svg>
+  <div class="sv-lab" style="color:#8C6112">Area III</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FBF3DE" style="stroke:#B98521;stroke-width:2.5;"/><circle cx="30" cy="26" r="10" fill="#8C6112"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#8C6112"/></svg>
+  <div class="sv-lab" style="color:#8C6112">Area IV</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FBF3DE" style="stroke:#B98521;stroke-width:2.5;"/><circle cx="30" cy="26" r="10" fill="#8C6112"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#8C6112"/></svg>
+  <div class="sv-lab" style="color:#8C6112">Area V</div>
+</div></div></div>
+    <div class="sv-div"></div>
+    <div class="sv-grp"><div class="sv-cap">4 open &mdash; any qualified resident may run</div><div class="sv-grpseats"><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FFFFFF" style="stroke:#14223E;stroke-width:2.5;stroke-dasharray:5 4;"/><circle cx="30" cy="26" r="10" fill="#14223E"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#14223E"/></svg>
+  <div class="sv-lab" style="color:#14223E">OPEN</div><div class="sv-sub">any resident</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FFFFFF" style="stroke:#14223E;stroke-width:2.5;stroke-dasharray:5 4;"/><circle cx="30" cy="26" r="10" fill="#14223E"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#14223E"/></svg>
+  <div class="sv-lab" style="color:#14223E">OPEN</div><div class="sv-sub">any resident</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FFFFFF" style="stroke:#14223E;stroke-width:2.5;stroke-dasharray:5 4;"/><circle cx="30" cy="26" r="10" fill="#14223E"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#14223E"/></svg>
+  <div class="sv-lab" style="color:#14223E">OPEN</div><div class="sv-sub">any resident</div>
+</div><div class="sv-seat">
+  <svg viewBox="0 0 60 66" aria-hidden="true"><rect x="3" y="3" width="54" height="60" rx="9" fill="#FFFFFF" style="stroke:#14223E;stroke-width:2.5;stroke-dasharray:5 4;"/><circle cx="30" cy="26" r="10" fill="#14223E"/><path d="M13 55 C13 41 20 37 30 37 C40 37 47 41 47 55 Z" fill="#14223E"/></svg>
+  <div class="sv-lab" style="color:#14223E">OPEN</div><div class="sv-sub">any resident</div>
+</div></div></div>
+  </div>
+  <div class="sv-foot"><strong>Same board size (9).</strong> &middot; Nobody loses a seat. &middot; Voters still elect every one.</div>
+</div>
+
 
     <div class="compare-wrap reveal">
       <div class="compare-col">
@@ -1782,7 +1924,7 @@
         <ul class="plain">
           <li>Keeps 5 geographic seats — one per Area, so every Area still has a guaranteed voice</li>
           <li>Opens 4 at-large seats any district resident can run for, regardless of address</li>
-          <li>Gives voters real choices — more candidates, fewer uncontested races</li>
+          <li>Gives voters real choices — more candidates on the ballot, in every Area</li>
           <li>Follows Wisconsin statute step-by-step — attorney-reviewed (Wis. Stat. § 120.02(2)(a))</li>
         </ul>
       </div>
@@ -1926,13 +2068,13 @@
         <h3>Sign the petition by Aug 20</h3>
         <div class="phase-date">Phase 1 · happening now</div>
         <p>500 signatures from qualified MCPASD electors (Wis. Stat. § 120.02(2)(a)) — we're aiming for 550 to cushion against any that get challenged. <strong>This is where we need help today:</strong> sign your sheet, and ask a few neighbors to sign theirs.</p>
-        <a href="#sign" class="btn btn-primary btn-block" style="margin-top: 16px;">Sign now <span class="btn-arrow">→</span></a>
+        <a href="#get-a-sheet" class="btn btn-primary btn-block" style="margin-top: 16px;">Get a sheet to sign <span class="btn-arrow">→</span></a>
       </div>
       <div class="phase-card">
         <div class="phase-num">2</div>
         <h3>Show up Sept 22, 7 PM</h3>
         <div class="phase-date">Phase 2 · the vote at the Annual Meeting</div>
-        <p>MCPASD is a common school district, so the vote on the petition happens <strong>at the Annual Meeting</strong> — only electors physically present in the room can vote. About 30 people came in 2025. We'll need hundreds in 2026.</p>
+        <p>MCPASD is a common school district, so the vote on the petition happens <strong>at the Annual Meeting</strong> — only electors physically present in the room can vote, and a simple majority carries it. About 30 people came in 2025, so this doesn't take hundreds — it takes <strong>many strong, committed supporters</strong> in the room, enough to be the clear majority.</p>
         <p style="font-size: 14.5px; margin-bottom: 0; padding: 12px 14px; background: rgba(107, 122, 79, 0.18); border-radius: 8px; margin-top: 10px;"><strong>Tue Sept 22, 2026 · 7:00 PM</strong><br>District Services Center<br>7106 South Avenue, Middleton</p>
       </div>
     </div>
@@ -1941,10 +2083,14 @@
 
 <section id="sign">
   <div class="container narrow">
-    <div class="reveal">
-      <span class="section-eyebrow">Sign the petition</span>
-      <h2>Three steps — <em>all from home</em></h2>
-      <p class="section-lead">Wisconsin law only counts a <strong>pen-and-paper signature</strong> on an official sheet — no legal online signature exists. Download, print, sign, and mail back. One sheet holds 7 signatures, so you and six neighbors can sign on the same page.</p>
+    <div class="reveal" id="get-a-sheet" style="scroll-margin-top:90px;">
+      <div style="background:var(--red);color:#fff;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:20px 24px;margin-bottom:26px;text-align:center;">
+        <div style="font-family:var(--display);font-size:23px;font-weight:800;line-height:1.2;letter-spacing:0.01em;">🚫 You can't sign this petition online.</div>
+        <p style="margin:10px 0 0;font-size:15.5px;line-height:1.5;color:#fff;">Wisconsin law counts a signature <strong>only</strong> on the official paper sheet — signed with a pen. No website, form, or photo can be filed. <strong>There is nothing to click here that signs you.</strong> The one real step is to get a paper sheet in your hands — and I'll get you one.</p>
+      </div>
+      <span class="section-eyebrow">Get a sheet to sign</span>
+      <h2>How you actually sign — <em>get a paper sheet</em></h2>
+      <p class="section-lead">Print your own, or <strong>tell me where you are and I'll bring or mail you one.</strong> Sign it with a pen, and I'll come pick it up. One sheet holds 7 signatures, so you and six neighbors can sign the same page.</p>
     </div>
 
     <div class="signup-steps reveal">
@@ -1972,9 +2118,12 @@
       </div>
     </div>
 
-    <div class="signup-box reveal" style="margin-top: 44px;">
-      <h3 style="margin-bottom: 6px;">Optional — tell me you're signing</h3>
-      <p style="color: var(--ink-soft); margin-bottom: 18px; font-size: 15.5px;">So I can count momentum, follow up if anything's unclear, and send you a Sept 22 Annual Meeting reminder. Totally separate from your legal signature on the paper sheet — that one still has to be on paper.</p>
+    <div class="signup-box reveal" id="request-sheet" style="margin-top: 44px; scroll-margin-top:90px;">
+      <h3 style="margin-bottom: 6px;">📮 Want a sheet? Tell me where to send it</h3>
+      <p style="color: var(--ink-soft); margin-bottom: 16px; font-size: 15.5px;">No printer, or just want it made easy? Fill this out and <strong>I'll bring or mail you a paper sheet</strong> — then pick it up once you've signed. <em>This isn't a signature</em> (only pen-on-paper counts) — it's how you get the sheet that is.</p>
+      <a class="pickup-ribbon" style="margin-bottom:18px;" href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I'd%20like%20a%20petition%20sheet%20to%20sign.%20Please%20bring%2Fmail%20one%20to%3A%20">
+        <strong>Fastest:</strong> text me and I'll get a sheet to you today. <span class="r-arrow">→</span>
+      </a>
       <div id="signMsg" class="form-msg"></div>
       <form id="signForm">
         <div class="form-row">
@@ -2014,10 +2163,10 @@
           <input type="checkbox" name="elector" required>
           <span>I confirm I am a registered voter residing in the Middleton-Cross Plains Area School District.</span>
         </label>
-        <label style="margin-top:6px;">Where are you in the process?</label>
+        <label style="margin-top:6px;">Do you have a sheet yet?</label>
         <div class="radio-row">
-          <label class="consent"><input type="radio" name="status" value="will-sign" checked><span>I'll print &amp; sign it</span></label>
-          <label class="consent"><input type="radio" name="status" value="signed"><span><strong>I've already signed</strong> — come get it</span></label>
+          <label class="consent"><input type="radio" name="status" value="need-sheet" checked><span><strong>I need a sheet</strong> — please get me one</span></label>
+          <label class="consent"><input type="radio" name="status" value="have-sheet"><span>I already have one — I'll sign it</span></label>
         </div>
         <label>How should your sheet get to us?</label>
         <div class="radio-row" id="pickup-row">
@@ -2032,8 +2181,8 @@
           <input type="checkbox" name="meeting">
           <span>I commit to attending the MCPASD Annual Meeting on Tue Sept 22, 2026 at 7:00 PM.</span>
         </label>
-        <button type="submit" class="btn btn-primary btn-block" id="signSubmit">Add me to the list</button>
-        <div class="disclaimer">We'll never share your info. Used only to count momentum, follow up if needed, and send a Sept 22 Annual Meeting reminder.</div>
+        <button type="submit" class="btn btn-primary btn-block" id="signSubmit">📮 Send me a sheet to sign</button>
+        <div class="disclaimer">We'll never share your info. Used only to get you a sheet, follow up if needed, and send a Sept 22 Annual Meeting reminder. <strong>Sending this is not a signature</strong> — only your pen on the paper sheet counts.</div>
       </form>
     </div>
   </div>
@@ -2075,18 +2224,23 @@
     </div>
     <div class="events reveal">
       <div class="event">
+        <div class="event-date" style="background: var(--gold);"><div class="month">Fri</div><div class="day">&amp;</div><div class="dow">Sat</div></div>
+        <div class="event-info"><h4>📍 All-City — come find us</h4><div class="where">We're there Friday &amp; Saturday with sheets · stop by and sign</div></div>
+        <span class="event-tag flagship">This weekend</span>
+      </div>
+      <div class="event">
         <div class="event-date"><div class="month">Thu</div><div class="day">★</div><div class="dow">Weekly</div></div>
         <div class="event-info"><h4>Greenway Station Farmers Market</h4><div class="where">Greenway Station · 8am–1pm · when a volunteer is staffing</div></div>
         <span class="event-tag">If staffed</span>
       </div>
       <div class="event">
-        <div class="event-date"><div class="month">Jul</div><div class="day">4</div><div class="dow">Sat</div></div>
-        <div class="event-info"><h4>Spruce Hollow 4th of July</h4><div class="where">Spruce Hollow neighborhood · <strong>Chase will be there with sheets</strong></div></div>
-        <span class="event-tag flagship">Chase on site</span>
+        <div class="event-date"><div class="month">Aug</div><div class="day">★</div><div class="dow">TBA</div></div>
+        <div class="event-info"><h4>National Night Out</h4><div class="where">Lakeview Park, 6300 Mendota Ave · Middleton PD's community night, early Aug · we'll be there with sheets</div></div>
+        <span class="event-tag">Come say hi</span>
       </div>
       <div class="event">
         <div class="event-date"><div class="month">Aug</div><div class="day">20</div><div class="dow">Thu</div></div>
-        <div class="event-info"><h4>🎯 Signature deadline — last day to sign</h4><div class="where">Petition filed Mon Aug 24 at District Services Center</div></div>
+        <div class="event-info"><h4>🎯 Signature deadline — last day to sign</h4><div class="where">Petition filed Fri Aug 21 at District Services Center</div></div>
         <span class="event-tag flagship">Deadline</span>
       </div>
       <div class="event" id="meeting">
@@ -2096,7 +2250,16 @@
       </div>
     </div>
 
-    <div class="reveal" style="margin-top: 44px;">
+    <div class="reveal" style="margin-top: 30px;">
+      <div class="card" style="background: var(--ink); color: var(--paper); max-width: 760px; border-left: 5px solid var(--gold);">
+        <span class="section-eyebrow" style="color: #D29D2E; margin-bottom: 12px;">Catch us around town</span>
+        <h3 style="color: var(--paper); margin-bottom: 8px;">We're out and about this week</h3>
+        <p style="color: #fff; margin: 0 0 12px; font-weight: 700; font-size: 16px;">📍 Find us at <strong style="color:#F0C24B;">All-City this Friday &amp; Saturday</strong> — stop by, say hi, and sign a sheet.</p>
+        <p style="color: rgba(251,248,239,0.85); margin: 0;">You'll also find the <strong>Open Seats</strong> clipboard at <strong>Middleton youth baseball games</strong>, <strong>Pioneer Park ballgames (Cross Plains)</strong>, the <strong>Pioneer Pointe pool</strong>, and the <strong>Greenway Station Farmers Market on Thursdays</strong>. Spot us? Come sign — it takes 30 seconds. Days and times shift with the summer schedule, so if you want a heads-up when we'll be near you, tell us below.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 24px;">
       <div class="card" style="background: var(--paper); max-width: 760px;">
         <span class="section-eyebrow" style="margin-bottom: 14px;">Recommend an event</span>
         <h3 style="margin-bottom: 8px;">Where should we be?</h3>
@@ -2135,7 +2298,7 @@
       <figure class="who-photo"><div class="ph-slot">🤝</div><figcaption>Neighbors signing</figcaption></figure>
       <figure class="who-photo"><div class="ph-slot">🏫</div><figcaption>The schools we share</figcaption></figure>
     </div>
-    <p class="who-names reveal">Organized by Chase Olson, with neighbors lending a few hours each — Krista, Emily, Tabitha, Kathryn, and a growing list across all five Areas.</p>
+    <p class="who-names reveal">Organized by Chase Olson, with neighbors helping — Kate, Kelly, Randi, Emily, Kris, Katie, Jen, and others across all five Areas.</p>
   </div>
 </section>
 
@@ -2239,7 +2402,8 @@
       </details>
       <details>
         <summary>How often has the district actually had a real election?</summary>
-        <p>Not often. <strong>Every spring primary since 2021 has been cancelled for lack of opposition</strong> — six straight years. In April 2025, all three open seats had a single candidate; voters didn't actually choose anyone. It's not that nobody cares — qualified neighbors are out there. The structure just makes it impossible for most of them to run in any given year.</p>
+        <p>Lately, almost never. <strong>In April 2025 and again in April 2026, not one race gave voters a choice</strong> — every race had exactly as many candidates as open seats (four for four in 2025, three for three in 2026).</p>
+        <p><strong>To be fair: 2024 was different.</strong> Area IV and Area V both had real contested races, and voters made a real choice. That's worth saying plainly — and it actually sharpens the point. Those contests happened in the Areas with candidates to spare. <strong>Area IV alone holds four of the nine seats.</strong> The Areas with a single seat apiece mostly don't get a choice at all. It's not that nobody cares — qualified neighbors are out there. The structure just makes it impossible for most of them to run in any given year.</p>
         <p>I personally know capable, civically-engaged neighbors who wanted to serve but couldn't, because they live a few blocks outside the Area where a seat was open. <em>The cost isn't theoretical — it's specific people who didn't make the ballot.</em></p>
       </details>
       <details>
@@ -2283,7 +2447,7 @@
       <details>
         <summary>What happens at the Sept 22 Annual Meeting?</summary>
         <p>The petition will be on the agenda. Any MCPASD elector physically present can vote — by show of hands or paper ballot, depending on how the meeting runs it. We expect to be at the District Services Center, 7106 South Avenue, Middleton, at 7:00 PM. Plan on ~30 minutes; bring photo ID.</p>
-        <p>About <strong>30 people came in 2025</strong>. To pass the petition we need hundreds in the room. <strong>This is where it's won or lost — please plan to be there.</strong></p>
+        <p>A simple majority of the electors present carries it — and about <strong>30 people came in 2025</strong>. So this doesn't take hundreds. It takes <strong>many strong, committed supporters</strong> who actually show up — enough to be the clear majority in the room. The more we bring, the safer it is, because the other side can turn people out too. <strong>This is where it's won or lost — please plan to be there, and bring someone.</strong></p>
       </details>
     </div>
 
@@ -2296,9 +2460,9 @@
 <section class="final-cta">
   <div class="container narrow">
     <h2>Tracking well — but <em>we still need you</em>.</h2>
-    <p class="lead">Sign by Aug 20 if you haven't yet. Ask a few neighbors to do the same. Then mark your calendar for Tuesday, September 22, 7 PM at the District Services Center — only people in the room can vote it through.</p>
+    <p class="lead">Sign by Aug 20 if you haven't yet — we turn all the signatures in on August 21. Ask a few neighbors to do the same. Then mark your calendar for Tuesday, September 22, 7 PM at the District Services Center — only people in the room can vote it through.</p>
     <div class="cta-row" style="justify-content: center;">
-      <a href="#sign" class="btn btn-primary">Sign now <span class="btn-arrow">→</span></a>
+      <a href="#get-a-sheet" class="btn btn-primary">Get a sheet to sign <span class="btn-arrow">→</span></a>
       <a href="mailto:chase.chasephillips@gmail.com" class="btn btn-outline">Email us</a>
     </div>
     <div class="cta-row" style="justify-content: center; margin-top: 12px;">
@@ -2318,19 +2482,13 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand"><span class="mark">OS</span> Open Seats MCPASD</div>
-        <p>A parent-led petition to open 4 Middleton-Cross Plains school board seats to any district resident — ending artificial barriers and uncontested elections.</p>
+        <p>A parent-led petition to open 4 Middleton-Cross Plains school board seats to any district resident — ending artificial barriers and giving voters a real choice.</p>
         <p style="margin-top: 10px;">Petition authorized under Wis. Stat. § 120.02(2)(a). Counsel-reviewed.</p>
       </div>
       <div>
         <h4>Contact</h4>
         <p><a href="mailto:chase.chasephillips@gmail.com">chase.chasephillips@gmail.com</a></p>
         <p>Lead organizer: Chase Olson</p>
-      </div>
-      <div>
-        <h4>Follow</h4>
-        <p><a href="https://facebook.com/OpenSeatsMCPASD" target="_blank" rel="noopener">Facebook</a></p>
-        <p><a href="https://instagram.com/openseatsmcpasd" target="_blank" rel="noopener">Instagram</a></p>
-        <p style="opacity: 0.55;">#OpenSeatsMCPASD</p>
       </div>
       <div>
         <h4>Spread the word</h4>
@@ -2353,9 +2511,9 @@
 </footer>
 
 <div class="sticky-bar" id="stickyCta">
-  <a href="#volunteer" class="sb-primary">I'll collect</a>
+  <a href="#get-a-sheet" class="sb-primary">📮 Get a sheet</a>
   <button type="button" class="sb-share js-share">↗ Share</button>
-  <a href="sms:+13362071832?&body=Hi%20Chase%2C%20" class="sb-text">Text Chase</a>
+  <a href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I'd%20like%20a%20petition%20sheet%20to%20sign.%20Please%20bring%2Fmail%20one%20to%3A%20" class="sb-text">Text for a sheet</a>
 </div>
 
 <script>
@@ -2411,6 +2569,7 @@
         var n = (data && typeof data.sigCount === 'number') ? data.sigCount : 0;
         var goal = (data && data.goal) ? data.goal : 550;
         animateNumber(document.getElementById('sigNow'), n);
+        var abc = document.getElementById('ab-count'); if (abc && n) abc.textContent = n;
         var gapEl = document.getElementById('sigGap');
         if (gapEl) { var togo = Math.max(0, goal - n); gapEl.textContent = togo > 0 ? ('~' + togo + ' more to reach our ' + goal + ' goal by Aug 20') : 'Goal reached — thank you!'; }
         var c = document.getElementById('circNow');
@@ -2431,6 +2590,14 @@
       });
     }
     loadStats();
+    // "this week" momentum for the top bar — bandwagon signal, honest data
+    (function weekSpark() {
+      fetch('/api/stats?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+        var w = d && d.momentum && (d.momentum.paperLast7 || d.momentum.addedLast7);
+        var el = document.getElementById('ab-week');
+        if (el && w && w > 0) el.innerHTML = ' &middot; <strong style="color:var(--red-bright)">' + w + ' this week</strong>';
+      }).catch(function () {});
+    })();
     setInterval(loadStats, 90000);
     setTimeout(renderTicker, 1500);
     setInterval(renderTicker, 4800);
@@ -2478,8 +2645,8 @@
       });
     }
     handle('signForm', 'signMsg', 'signSubmit', '/api/sign',
-      "Thanks — you're on the list! Next: download the sheet above and sign it with a pen. Want me to come grab it? <a href=\"sms:+13362071832?&body=Hi%20Chase%2C%20my%20signed%20sheet%20is%20ready.%20My%20address%20is%3A%20\" style=\"color:var(--green);font-weight:700;\">Text me your address →</a> and I'll pick it up.",
-      'Add me to the list');
+      "Got it — I'll get a sheet to you. Remember: <strong>this wasn't a signature</strong>; your pen on the paper sheet is the one that counts. Want it faster? <a href=\"sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I'd%20like%20a%20petition%20sheet%20to%20sign.%20Please%20bring%2Fmail%20one%20to%3A%20\" style=\"color:var(--green);font-weight:700;\">Text me your address →</a> and I'll bring one today.",
+      '📮 Send me a sheet to sign');
     handle('volForm', 'volMsg', 'volSubmit', '/api/volunteer',
       "Thank you! A campaign coordinator will reach out within 48 hours.",
       'Count me in');
