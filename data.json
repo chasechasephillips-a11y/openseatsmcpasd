@@ -1,6 +1,9 @@
 {
+  "filedTotal": null,
+  "rsvps": null,
+  "recent": [],
+  "_note": "Static fallback only — the homepage reads /api/stats first (signatures + meetingCommits). Set filedTotal to the real filed signature count if you want a hard-coded number; leave null to show 'Filed ✓'.",
   "sigCount": 145,
   "circulators": 6,
-  "goal": 550,
-  "recent": []
+  "goal": 550
 }
