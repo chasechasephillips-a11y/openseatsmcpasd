@@ -5,11 +5,12 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:openseats-sept22-2026@openseatsmcpasd.org
-DTSTAMP:20260601T000000Z
+DTSTAMP:20260921T000000Z
+SEQUENCE:2
 DTSTART;TZID=America/Chicago:20260922T183000
 DTEND;TZID=America/Chicago:20260922T194500
 SUMMARY:Pizza tailgate + MCPASD Annual Meeting — Open Seats Vote
-LOCATION:District Services Center\, 7106 South Avenue\, Middleton\, WI 53562
+LOCATION:Middleton High School Performing Arts Center\, 2100 Bristol Street\, Middleton\, WI 53562
 DESCRIPTION:Pizza tailgate outside at 6:30\, meeting at 7:00. The Open Seats petition is voted on by the electors physically present\, after a short district budget review.\n\nNo photo ID needed. You just sign in as an eligible elector. Free parking on site. Home by about 7:45.\n\nMore info: https://openseatsmcpasd.org/sept22\nQuestions: chase.chasephillips@gmail.com
 URL:https://openseatsmcpasd.org/sept22
 STATUS:CONFIRMED
