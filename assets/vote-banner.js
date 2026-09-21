@@ -94,9 +94,35 @@
     document.body.insertBefore(bar, document.body.firstChild);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', render);
-  } else {
-    render();
+  // Exported so pages can reuse these boundaries instead of redeclaring them.
+  // One source of truth: if the meeting time ever moves, it moves here.
+  window.OSVote = {
+    MEETING: MEETING,
+    MEETING_ENDS: MEETING_ENDS,
+    phase: function () { return phase(Date.now()); },
+    // "Tomorrow" / "Tonight" / ... as a display word.
+    word: function () {
+      var ph = phase(Date.now());
+      if (ph === 'after') return 'Thank you';
+      if (ph === 'now') return 'Happening now';
+      if (ph === 'today') return 'Tonight';
+      if (ph === 'tomorrow') return 'Tomorrow';
+      return Math.floor((MEETING - Date.now()) / 86400000) + ' days away';
+    }
+  };
+
+  // A page that only wants the phase logic (e.g. /sept22, which IS the
+  // details page) opts out of the strip with data-no-banner on the tag.
+  var tag = document.currentScript ||
+            document.querySelector('script[src*="vote-banner"]');
+  var suppressed = tag && tag.hasAttribute('data-no-banner');
+
+  if (!suppressed) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', render);
+    } else {
+      render();
+    }
   }
+  document.dispatchEvent(new CustomEvent('osvote:ready'));
 })();

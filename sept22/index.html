@@ -322,6 +322,7 @@
   .stamp .stamp-line em { font-family: var(--italic); color: var(--red); font-style: italic; }
 </style>
 <script src="/assets/beacon.js" defer></script>
+<script src="/assets/vote-banner.js" data-no-banner></script>
 </head>
 <body>
 
@@ -332,9 +333,9 @@
 
 <section class="hero">
   <div class="container">
-    <div class="eb">The vote</div>
-    <h1>Tuesday<br>Sept 22, <em>7 PM</em></h1>
-    <div class="when">MCPASD Annual Meeting</div>
+    <div class="eb" id="voteEb">The vote is tomorrow</div>
+    <h1 id="voteH1">Tomorrow<br>Tues Sept 22, <em>7 PM</em></h1>
+    <div class="when">MCPASD Annual Meeting · <span id="voteWhen">pizza outside from 6:30</span></div>
     <div class="where"><strong>Middleton High School Performing Arts Center</strong> · 2100 Bristol Street, Middleton, WI 53562 · Free parking on site</div>
 
     <div class="countdown" id="cd">
@@ -507,6 +508,52 @@
       document.getElementById('cd-secs').textContent  = s;
     }
     tick(); setInterval(tick, 1000);
+  })();
+</script>
+
+<script>
+  /* This page's own phase wording. Boundaries come from OSVote (see
+     /assets/vote-banner.js) so there's one definition of "tomorrow". */
+  (function () {
+    function apply() {
+      var V = window.OSVote;
+      if (!V) return;
+      var ph = V.phase();
+      var eb = document.getElementById('voteEb');
+      var h1 = document.getElementById('voteH1');
+      var wh = document.getElementById('voteWhen');
+      var cd = document.getElementById('cd');
+
+      if (ph === 'tomorrow') {
+        eb.textContent = 'The vote is tomorrow';
+        h1.innerHTML = 'Tomorrow<br>Tues Sept 22, <em>7 PM</em>';
+        wh.textContent = 'pizza outside from 6:30';
+        document.title = 'TOMORROW 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
+      } else if (ph === 'today') {
+        eb.textContent = 'The vote is tonight';
+        h1.innerHTML = 'Tonight<br>Tues Sept 22, <em>7 PM</em>';
+        wh.textContent = 'pizza outside from 6:30';
+        document.title = 'TONIGHT 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
+      } else if (ph === 'now') {
+        eb.textContent = 'Happening right now';
+        h1.innerHTML = 'Happening<br><em>right now</em>';
+        wh.textContent = 'if you can get here, come';
+        document.title = 'HAPPENING NOW \u00b7 Open Seats MCPASD';
+        if (cd) cd.style.display = 'none';
+      } else if (ph === 'after') {
+        eb.textContent = 'Thank you for coming';
+        h1.innerHTML = 'The vote<br><em>has happened</em>';
+        wh.textContent = 'results posted once the district confirms';
+        document.title = 'Thank you \u00b7 Open Seats MCPASD';
+        if (cd) cd.style.display = 'none';
+      } else {
+        eb.textContent = 'The vote';
+        h1.innerHTML = 'Tuesday<br>Sept 22, <em>7 PM</em>';
+        wh.textContent = 'pizza outside from 6:30';
+      }
+    }
+    if (window.OSVote) apply(); else document.addEventListener('osvote:ready', apply);
+    setInterval(apply, 30000);
   })();
 </script>
 
