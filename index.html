@@ -128,6 +128,36 @@
     box-shadow: none;
   }
   .nav-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  /* The header is sticky, so this is the one line that stays on screen the
+     whole way down the page. It carries the phase word. */
+  .nav-vote {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--red); color: #fff;
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(14px, 1.9vw, 17px); letter-spacing: 0.03em;
+    text-transform: uppercase; text-decoration: none;
+    padding: 8px 16px; border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink); line-height: 1.1; white-space: nowrap;
+  }
+  .nav-vote:hover { color: #fff; }
+  .nav-vote .nv-dot {
+    width: 9px; height: 9px; border-radius: 50%; background: var(--ink);
+    box-shadow: 0 0 0 2px rgba(255,255,255,.6); flex: 0 0 auto;
+    animation: nvpulse 1.6s ease-in-out infinite;
+  }
+  @keyframes nvpulse { 0%,100%{opacity:1;} 50%{opacity:.25;} }
+  @media (prefers-reduced-motion: reduce) { .nav-vote .nv-dot { animation: none; } }
+  @media (max-width: 860px) {
+    /* Phone: the sticky bottom bar already carries the CTAs, so the header
+       drops the link list and becomes brand + the one line that matters.
+       Keeps the sticky header short instead of eating half the screen. */
+    header.nav { padding: 10px 0; }
+    .nav-inner { gap: 9px; }
+    header.nav nav { display: none; }
+    .nav-vote { width: 100%; justify-content: center; padding: 9px 14px; }
+    .brand { font-size: 17px; gap: 10px; }
+    .brand .mark { width: 30px; height: 30px; }
+  }
   .brand {
     color: var(--ink);
     text-decoration: none;
@@ -1624,6 +1654,7 @@
 <header class="nav" id="top">
   <div class="container nav-inner">
     <a href="#top" class="brand"><span class="mark">OS</span> Open Seats MCPASD</a>
+    <a href="#meeting" class="nav-vote" id="navVote"><span class="nv-dot" aria-hidden="true"></span><span id="navVoteText">The vote is tomorrow</span></a>
     <nav>
       <ul>
         <li><a href="#meeting">The meeting</a></li>
@@ -2201,6 +2232,7 @@
         set('bmKicker', 'This meeting has ended');
         stamp('Thank you', 'The vote was Tuesday, September 22', '#4F6B3E', '');
         set('tsLabel', 'The vote \u2014 done');
+        set('navVoteText', 'Thank you for coming');
         document.title = 'Thank you \u2014 Open Seats MCPASD';
         set('heroClock', '');
         set('askEyebrow', 'What happens next');
@@ -2218,6 +2250,7 @@
         set('bmKicker', 'Doors are open \u00b7 go now');
         stamp('Happening now', 'Middleton High School PAC \u00b7 2100 Bristol St', '#9A3B2C', '');
         set('tsLabel', 'The vote \u2014 happening now');
+        set('navVoteText', 'Happening right now');
         document.title = 'HAPPENING NOW \u2014 Open Seats MCPASD';
         set('heroClock', 'The meeting is <span class="hc-num">underway</span>. If you can get there, go.');
         set('askEyebrow', 'Right now');
@@ -2235,6 +2268,7 @@
         set('bmKicker', 'Tonight \u00b7 pizza at 6:30');
         stamp('Today', 'Pizza 6:30 \u00b7 Meeting 7:00 \u00b7 Middleton High School PAC');
         set('tsLabel', 'The vote \u2014 TODAY');
+        set('navVoteText', 'The vote is TODAY');
         document.title = 'TONIGHT 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
         set('askEyebrow', 'Today');
         set('finalHeadline', 'It comes down to <em>tonight</em>.');
@@ -2247,6 +2281,7 @@
         set('ab-body', '<strong>Tomorrow \u2014 🍕 pizza 6:30, meeting 7:00</strong> \u00b7 ' + WHERE + '. Only people in the room can vote. Set an alarm.');
         stamp('Tomorrow', 'Pizza 6:30 \u00b7 Meeting 7:00 \u00b7 Middleton High School PAC');
         set('tsLabel', 'The vote \u2014 tomorrow');
+        set('navVoteText', 'The vote is tomorrow');
         document.title = 'TOMORROW 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
         return; // the rest of the markup already ships in 'tomorrow' wording
       }
@@ -2261,6 +2296,7 @@
       set('finalHeadline', 'It comes down to <em>Tuesday</em>.');
       stamp('In ' + days + ' days', 'Tuesday, September 22 \u00b7 Meeting 7:00 PM');
       set('tsLabel', 'The vote \u2014 in ' + days + ' days');
+      set('navVoteText', 'The vote is in ' + days + ' days');
       document.title = 'Sept 22, 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
     }
 
