@@ -1588,7 +1588,22 @@
   .textkit{background:var(--paper-card);border:1.5px solid var(--rule);padding:20px 22px;margin-top:16px;}
   .textkit h4{font-family:var(--display);font-size:16px;margin-bottom:8px;}
   .textkit blockquote{border:0;margin:0 0 14px;padding:12px 14px;background:var(--paper);border-left:3px solid var(--gold);font-family:var(--body);font-style:normal;font-size:15.5px;line-height:1.55;color:var(--ink-soft);}
-  @media(max-width:640px){.bigmeet{padding:20px 18px;box-shadow:5px 5px 0 var(--gold);}}
+  .unequal{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);margin-top:26px;background:var(--paper-card);}
+  .unequal .uq{padding:26px 24px;}
+  .unequal .uq+.uq{border-left:2px solid var(--ink);}
+  .unequal .uq-where{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:12px;line-height:1.5;}
+  .unequal .uq-big{font-family:var(--display);font-size:clamp(22px,3.2vw,30px);font-weight:800;line-height:1.15;letter-spacing:.01em;margin-bottom:10px;}
+  .unequal .uq-body{font-size:15.5px;line-height:1.55;color:var(--ink-soft);margin:0;}
+  .unequal .uq.good .uq-big{color:var(--ink);}
+  .unequal .uq.bad{background:var(--red-soft,#F7EFD9);}
+  .unequal .uq.bad .uq-big{color:var(--red-dark);}
+  .uq-foot{border:2px solid var(--ink);border-top:0;background:var(--ink);color:var(--paper);padding:20px 24px;font-family:var(--display);font-size:clamp(17px,2.3vw,21px);line-height:1.4;font-weight:700;}
+  .uq-foot em{font-style:italic;color:var(--gold);}
+  @media(max-width:640px){
+    .bigmeet{padding:20px 18px;box-shadow:5px 5px 0 var(--gold);}
+    .unequal{grid-template-columns:1fr;}
+    .unequal .uq+.uq{border-left:0;border-top:2px solid var(--ink);}
+  }
 </style>
 
 <div id="announce-bar" style="background:var(--ink);color:var(--paper);text-align:center;padding:11px 16px;font-size:14.5px;line-height:1.45;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;border-bottom:3px solid var(--red);">
@@ -1832,6 +1847,24 @@
       </div>
     </div>
 
+    <div class="reveal" style="margin-top:34px;">
+      <h3 style="font-size:23px;margin-bottom:6px;">It isn't just <em>who</em> can run. It's <em>how often.</em></h3>
+      <p style="color:var(--ink-soft);max-width:66ch;margin-bottom:0;">Board terms are staggered, so only a few seats come up each spring. Because the 1963 map gave one part of the district four of the nine seats, your address doesn't just decide <em>which</em> seat you could run for — it decides <strong>which years you're allowed to run at all.</strong></p>
+      <div class="unequal">
+        <div class="uq good">
+          <div class="uq-where">If you live in what was the<br>City of Middleton in 1963</div>
+          <div class="uq-big">You can run almost every year.</div>
+          <p class="uq-body">That area holds four of the nine seats, so there is nearly always one on the ballot — and in some years, two at once. If you're a parent there who decides this is the year you want to serve, the door is open.</p>
+        </div>
+        <div class="uq bad">
+          <div class="uq-where">If you live in roughly<br>half the district</div>
+          <div class="uq-big">You're barred two years out of every three.</div>
+          <p class="uq-body">Your area has one seat, and it comes up once every three years. In the other two, you are not simply unlikely to win — you are <strong>legally ineligible to file.</strong> Same district, same taxes, same schools, same kids.</p>
+        </div>
+      </div>
+      <div class="uq-foot">The map behind that rule was drawn in 1963. Middleton had fewer than 5,000 people and most of the subdivisions we live in today hadn't been built yet. <em>Do 1963's boundaries and 1963's population assumptions still make sense as the thing deciding who may run for school board — and in which years?</em></div>
+    </div>
+
     <div class="two-col reveal" style="margin-top:28px;">
       <div>
         <h3>What it does</h3>
@@ -1964,6 +1997,11 @@
       <details>
         <summary>Is this partisan, or aimed at a board member?</summary>
         <p>Neither. No party, no PAC, no candidate, and it's not aimed at anyone serving. Every current member keeps their full term and can run again. It's a structural fix to who's <em>eligible</em> — not a referendum on any person or policy.</p>
+      </details>
+      <details>
+        <summary>Does where I live really change whether I can run?</summary>
+        <p>Yes, and it changes <em>when</em> too. Seats are staggered across three-year terms, so only a handful come up each spring. The area that was the City of Middleton in 1963 holds <strong>four of the nine seats</strong>, so somebody living there has a seat to run for almost every year — sometimes two in the same election. The areas with a single seat get one shot every three years, which means residents of roughly half the district are <strong>legally ineligible to run for school board two years out of every three.</strong></p>
+        <p style="margin-top:10px;">Middleton had fewer than 5,000 residents in 1963 and most of today's neighborhoods hadn't been built. The lines never moved. Opening four seats means a qualified neighbor can step up in the year they're actually ready, instead of waiting for their address's turn.</p>
       </details>
       <details>
         <summary>Will my Area lose representation?</summary>
