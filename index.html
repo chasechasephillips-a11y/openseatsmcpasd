@@ -1592,7 +1592,7 @@
 </style>
 
 <div id="announce-bar" style="background:var(--ink);color:var(--paper);text-align:center;padding:11px 16px;font-size:14.5px;line-height:1.45;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;border-bottom:3px solid var(--red);">
-  <strong style="color:var(--red-bright);letter-spacing:0.06em;">🗳️ THE VOTE</strong> &nbsp;<strong id="ab-days">—</strong> days out · <strong>Tue Sept 22, 7:00 PM</strong> · District Services Center. Only people in the room can vote. <a href="#rsvp" style="color:var(--paper);text-decoration:underline;font-weight:700;">I'll be there →</a>
+  <strong id="ab-flag" style="color:var(--red-bright);letter-spacing:0.06em;">🗳️ THE VOTE</strong> &nbsp;<span id="ab-body"><strong>Tue Sept 22, 7:00 PM</strong> · District Services Center, 7106 South Ave. Only people in the room can vote.</span> <a id="ab-cta" href="#rsvp" style="color:var(--paper);text-decoration:underline;font-weight:700;">I'll be there →</a>
 </div>
 
 <header class="nav" id="top">
@@ -1614,20 +1614,21 @@
   <div class="container hero-content">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">Petition filed · Wis. Stat. § 120.02(2)(a)</span>
-        <h1>The petition is filed. <span class="accent">Now it comes down to one room.</span></h1>
-        <p class="lead">Neighbors signed. The petition is on the Annual Meeting agenda. Under Wisconsin law, <strong>only electors physically in the room can vote on it</strong> — about 30 people showed up last year. Thirty minutes of your Tuesday decides whether 4 of MCPASD's 9 school board seats open to any district resident.</p>
+        <span class="eyebrow" id="heroEyebrow">Petition filed · Wis. Stat. § 120.02(2)(a)</span>
+        <h1 id="heroHeadline">This is it. <span class="accent">The vote is tomorrow night.</span></h1>
+        <p class="lead" id="heroLead">Everything neighbors did this summer comes down to one room on <strong>Tuesday — pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> — no absentee, no proxy — and about 30 people showed up last year. Thirty minutes decides whether 4 of MCPASD's 9 school board seats open to any district resident.</p>
 
         <div class="bigmeet" id="meeting">
-          <div class="bm-kicker">Be there · Bring someone</div>
+          <div class="bm-kicker" id="bmKicker">Tomorrow · pizza at 6:30</div>
           <div class="bm-when">Tuesday, Sept 22<br>7:00 PM</div>
           <div class="bm-where"><strong>MCPASD District Services Center</strong><br>7106 South Avenue, Middleton</div>
           <div class="bm-rule"></div>
-          <p class="bm-note">You don't have to speak. You don't have to know anything. <strong>You raise your hand.</strong> Plan on about 30 minutes.</p>
+          <p class="bm-note"><strong>🍕 Pizza tailgate at 6:30</strong> — come early, eat, walk in together. You don't have to speak or know anything. <strong>You raise your hand.</strong></p>
           <div class="chiprow">
+            <span class="chip">🍕 Pizza at 6:30</span>
             <span class="chip">🪪 Bring photo ID</span>
             <span class="chip">🅿️ Free parking on site</span>
-            <span class="chip">⏱️ ~30 minutes</span>
+            <span class="chip">⏱️ ~45 minutes</span>
             <span class="chip">👶 Childcare — just ask</span>
           </div>
         </div>
@@ -1651,11 +1652,11 @@
           <div class="sig-count"><span id="sigNow">—</span><span class="of" id="sigOf">filed ✓</span></div>
           <div style="font-size:11.5px;color:var(--ink-muted);margin-top:7px;font-weight:700;letter-spacing:0.02em;">Threshold cleared. Step one is done.</div>
         </div>
-        <div class="stat-block">
-          <div class="stat-label">Until the vote</div>
+        <div class="stat-block" id="cdBlock">
+          <div class="stat-label" id="cdLabel">Until the vote</div>
           <div class="countdown">
-            <div class="countdown-item"><div class="countdown-num" id="cd-days">—</div><div class="countdown-sub">Days</div></div>
-            <div class="countdown-item"><div class="countdown-num" id="cd-hours">—</div><div class="countdown-sub">Hours</div></div>
+            <div class="countdown-item"><div class="countdown-num" id="cd-days">—</div><div class="countdown-sub" id="cd-days-label">Days</div></div>
+            <div class="countdown-item"><div class="countdown-num" id="cd-hours">—</div><div class="countdown-sub" id="cd-hours-label">Hours</div></div>
           </div>
         </div>
         <div class="stat-block" id="rsvpBlock" style="display:none;">
@@ -1679,33 +1680,33 @@
   <div class="container timeline-strip-inner">
     <div class="ts-item"><span class="ts-icon">✅</span><div><div class="ts-label">Signatures collected</div><div class="ts-value">Done</div></div></div>
     <div class="ts-item"><span class="ts-icon">✅</span><div><div class="ts-label">Petition filed with the district</div><div class="ts-value">Done</div></div></div>
-    <div class="ts-item"><span class="ts-icon">🗳️</span><div><div class="ts-label">The vote — this is the one</div><div class="ts-value">Tue · Sept 22 · 7 PM</div></div></div>
+    <div class="ts-item"><span class="ts-icon">🗳️</span><div><div class="ts-label">The vote — this is the one</div><div class="ts-value">Tue · 🍕 6:30 · vote 7 PM</div></div></div>
   </div>
 </div>
 
 <!-- ── The ask: three things, in priority order ── -->
 <section class="alt" id="ask">
   <div class="container">
-    <div class="section-eyebrow">Six days out</div>
-    <h2 class="reveal">Three things. <em>The first one is the whole ballgame.</em></h2>
+    <div class="section-eyebrow" id="askEyebrow">The last 24 hours</div>
+    <h2 class="reveal">Three things, and <em>one of them is tonight.</em></h2>
     <p class="section-lead reveal">A simple majority of the electors in the room carries it. Roughly 30 people came to last year's Annual Meeting — which means a couple dozen neighbors genuinely decide this. <strong>You are not a rounding error here. You're the margin.</strong></p>
     <div class="asks">
       <div class="ask">
-        <div class="ask-n">Ask 1 · Essential</div>
-        <h3>Be in the room</h3>
-        <p>Tue Sept 22, 7:00 PM, District Services Center. Bring photo ID, park free, raise your hand, go home. Nothing else you do matters as much as your body in that chair.</p>
-        <a href="#rsvp" class="btn btn-primary">Tell me you're coming <span class="btn-arrow">→</span></a>
+        <div class="ask-n">Ask 1 · Everything</div>
+        <h3>Put it in your phone now</h3>
+        <p><strong>Pizza at 6:30, meeting at 7:00</strong>, District Services Center, 7106 South Ave. Set an alarm for 6:00 tomorrow. The most common way this is lost is a supporter who meant to come and lost the evening.</p>
+        <a href="#" class="btn btn-primary js-addcal">📅 Add it to my calendar <span class="btn-arrow">→</span></a>
       </div>
       <div class="ask">
         <div class="ask-n">Ask 2 · Doubles everything</div>
-        <h3>Bring one person</h3>
-        <p>Spouse, neighbor, the parent you text about pickup. One ask, one ride, one extra hand in the air. Every person who brings one person doubles this effort in a week.</p>
+        <h3>Text one person tonight</h3>
+        <p>Spouse, neighbor, the parent you text about pickup. Ask them directly and offer to drive. One ask tonight is worth more than everything else on this page.</p>
         <button type="button" class="btn btn-primary js-share" style="font:inherit;cursor:pointer;">Text someone now <span class="btn-arrow">→</span></button>
       </div>
       <div class="ask">
-        <div class="ask-n">Ask 3 · Two minutes</div>
-        <h3>Send three texts</h3>
-        <p>Group chats beat yard signs this week. Copy-paste messages written for your team chat, your street, and your school parents — no writing required.</p>
+        <div class="ask-n">Ask 3 · Tomorrow at 5:15</div>
+        <h3>Send the last reminder</h3>
+        <p>Most people who don't show up wanted to and forgot. One "heading over for pizza at 6:25, want a ride?" text tomorrow evening moves more attendance than a month of posts. We wrote it for you.</p>
         <a href="/toolkit/texts.html" class="btn btn-outline">Grab the texts <span class="btn-arrow">→</span></a>
       </div>
     </div>
@@ -1713,7 +1714,7 @@
     <div class="reveal" style="margin-top:26px;">
       <div class="winbar">
         <span class="wb-tick">🙏</span>
-        <p><strong>Can't make Tuesday?</strong> You can still help: send the texts, offer someone a ride, or <a href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I%20can't%20make%20Sept%2022%20but%20I%20want%20to%20help.">text Chase</a>. Proxy and absentee votes aren't allowed at an Annual Meeting — turnout is the only lever.</p>
+        <p><strong>Can't make it tomorrow?</strong> You can still help: send the texts tonight, offer someone a ride, or <a href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I%20can't%20make%20Sept%2022%20but%20I%20want%20to%20help.">text Chase</a>. Proxy and absentee votes aren't allowed at an Annual Meeting — turnout is the only lever.</p>
       </div>
     </div>
   </div>
@@ -1723,28 +1724,32 @@
 <section id="whathappens">
   <div class="container narrow">
     <div class="section-eyebrow">No mystery</div>
-    <h2 class="reveal">Exactly what your 30 minutes looks like</h2>
-    <p class="section-lead reveal">Most people have never been to an Annual Meeting. It is far less intimidating than it sounds — here's the whole thing.</p>
+    <h2 class="reveal">Exactly how <em>the night</em> goes</h2>
+    <p class="section-lead reveal">Most people have never been to an Annual Meeting. It's far less intimidating than it sounds, and we're starting with pizza — here's the whole night, start to finish.</p>
     <ul class="runsheet reveal">
       <li>
-        <div class="rs-t">6:45 PM · ARRIVE</div>
-        <div class="rs-b">Park free at the District Services Center, 7106 South Avenue. Walk in, sign in as an MCPASD elector, bring photo ID. Look for the Open Seats folks — we'll be by the door.</div>
+        <div class="rs-t">6:30 PM · PIZZA TAILGATE</div>
+        <div class="rs-b"><strong>Come early and eat.</strong> Pizza outside the District Services Center, 7106 South Avenue, free parking on site. Grab a slice, say hi, and walk in with people instead of alone — which is exactly why we start at 6:30.</div>
       </li>
       <li>
         <div class="rs-t">7:00 PM · MEETING OPENS</div>
-        <div class="rs-b">Standard district business first — budget and reports. You just sit. No one is called on.</div>
+        <div class="rs-b">First up is the district's annual budget review. The district estimates <strong>10 to 15 minutes</strong>, and we're genuinely glad to sit through it — it's our budget too. You just sit. Nobody is called on.</div>
       </li>
       <li>
-        <div class="rs-t">THE AGENDA ITEM</div>
-        <div class="rs-b">The petition comes up. Someone explains it briefly. If you want to speak, you can — but <strong>you absolutely do not have to</strong>, and most people won't.</div>
+        <div class="rs-t">THE MOTION</div>
+        <div class="rs-b">The petition comes to the floor. <strong>Chase makes the motion, and it needs a second from someone in the room.</strong> If you'd be willing to be that person, <a href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I%20can%20second%20the%20motion%20Tuesday%20night.">text 336-207-1832</a> so we're not scanning the room for a raised hand.</div>
+      </li>
+      <li>
+        <div class="rs-t">DISCUSSION</div>
+        <div class="rs-b">The floor opens. Anyone with concerns speaks first — on purpose. Chase speaks last, because meeting rules give her one turn and she'd rather answer what's actually raised than guess at it in advance. <strong>You are not expected to speak.</strong> Most people won't, and that's completely normal.</div>
       </li>
       <li>
         <div class="rs-t">THE VOTE</div>
-        <div class="rs-b">Show of hands or paper ballot, depending on how the meeting runs it. Simple majority of electors present carries it. <strong>This is the moment. Raise your hand.</strong></div>
+        <div class="rs-b">Show of hands or paper ballot, depending on how the meeting runs it. A simple majority of the electors present carries it. <strong>This is the moment. Raise your hand.</strong></div>
       </li>
       <li>
-        <div class="rs-t">~7:30 PM · HOME</div>
-        <div class="rs-b">That's it. Sixty years of a 1963 rule, decided in one evening — and you were there for it.</div>
+        <div class="rs-t">~7:45 PM · HOME</div>
+        <div class="rs-b">That's it. A rule set in 1963, finally put to the people it applies to — and you were in the room for it. Local press is expected to cover the meeting, so how full that room is becomes part of the story either way.</div>
       </li>
     </ul>
     <p style="margin-top:22px;"><strong>Need childcare that night?</strong> We have neighbors offering to help so parents can come. <a href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20I%20need%20childcare%20to%20make%20Sept%2022.">Text 336-207-1832</a> and we'll sort it.</p>
@@ -1757,7 +1762,7 @@
     <div class="reveal" style="scroll-margin-top:90px;">
       <span class="section-eyebrow">Count yourself in</span>
       <h2>Tell me you'll be there</h2>
-      <p class="section-lead">This isn't a vote and it isn't binding — it's how we know whether we have the room, and how you get a reminder Tuesday afternoon so it doesn't slip past you. <strong>Takes 20 seconds.</strong></p>
+      <p class="section-lead">This isn't a vote and it isn't binding — it's how we know whether we have the room, and how you get a reminder tomorrow afternoon so the evening doesn't get away from you. <strong>Takes 20 seconds.</strong></p>
     </div>
     <div class="signup-box reveal" style="margin-top:18px;">
       <a class="pickup-ribbon" style="margin-bottom:18px;" href="sms:+13362071832?&body=Hi%20Chase%20%E2%80%94%20count%20me%20in%20for%20Sept%2022.%20My%20name%3A%20">
@@ -1989,8 +1994,8 @@
 
 <section class="final-cta">
   <div class="container narrow">
-    <h2>It comes down to <em>Tuesday</em>.</h2>
-    <p class="lead">Tuesday, September 22 · 7:00 PM · District Services Center, 7106 South Avenue, Middleton. Put it in your calendar right now, tell one person you're going, and bring them with you. Only the people in that room decide this.</p>
+    <h2 id="finalHeadline">It comes down to <em>tomorrow night</em>.</h2>
+    <p class="lead" id="finalLead">Tuesday, September 22 · pizza at 6:30, meeting at 7:00 · District Services Center, 7106 South Avenue, Middleton. Set the alarm, text one person tonight, and walk in together tomorrow. Only the people in that room decide this.</p>
     <div class="cta-row" style="justify-content:center;">
       <a href="#rsvp" class="btn btn-primary">✋ I'll be there <span class="btn-arrow">→</span></a>
       <a href="#" class="btn btn-outline js-addcal">📅 Add Sept 22 to my calendar</a>
@@ -2050,20 +2055,115 @@
 <script>
   (function () {
     var MEETING = new Date('2026-09-22T19:00:00-05:00').getTime();
+    var MEETING_ENDS = new Date('2026-09-22T21:00:00-05:00').getTime();
 
-    // ─── Countdown (hero + top bar) ─────────────────────────────────
+    function set(id, html) { var el = document.getElementById(id); if (el) el.innerHTML = html; }
+
+    // ─── Phase ──────────────────────────────────────────────────────
+    // The page re-words itself as the meeting approaches and passes, so it
+    // never reads as stale: 'out' (2+ days) → 'tomorrow' → 'today' →
+    // 'now' (doors open) → 'after'. Everything keys off the two timestamps
+    // above; nothing here needs editing on the day.
+    function phaseOf(now) {
+      if (now >= MEETING_ENDS) return 'after';
+      if (now >= MEETING) return 'now';
+      var hrs = (MEETING - now) / 3600000;
+      if (hrs <= 14) return 'today';   // same calendar day (from ~5 AM Tue)
+      if (hrs <= 38) return 'tomorrow';
+      return 'out';
+    }
+
+    function applyPhase() {
+      var now = Date.now();
+      var ph = phaseOf(now);
+      var WHERE = 'District Services Center, 7106 South Ave';
+
+      if (ph === 'after') {
+        set('ab-flag', '\u2713 THANK YOU');
+        set('ab-body', '<strong>The vote happened Tuesday night.</strong> Thank you to every neighbor who walked in that door. We\u2019ll post what happened as soon as the district confirms it.');
+        var cta = document.getElementById('ab-cta'); if (cta) cta.style.display = 'none';
+        set('heroEyebrow', 'The Annual Meeting \u00b7 Sept 22, 2026');
+        set('heroHeadline', 'You showed up. <span class="accent">Thank you.</span>');
+        set('heroLead', 'The MCPASD Annual Meeting has come and gone, and the petition to open 4 of the district\u2019s 9 school board seats went to a vote of the electors in the room. <strong>We\u2019ll post the outcome here as soon as the district confirms it.</strong> However it landed, a group of neighbors turned a 1963 rule into a question the community actually got to answer \u2014 and that took every single person who gave up an evening.');
+        set('bmKicker', 'This meeting has ended');
+        set('askEyebrow', 'What happens next');
+        set('finalHeadline', 'However it landed \u2014 <em>thank you</em>.');
+        set('finalLead', 'Results will be posted here once the district confirms them. If you were in that room, you did the whole job. If you couldn\u2019t be, the neighbors who were went on your behalf.');
+        return;
+      }
+
+      if (ph === 'now') {
+        set('ab-flag', '🔴 HAPPENING NOW');
+        set('ab-body', '<strong>The Annual Meeting is underway</strong> \u00b7 ' + WHERE + '. If you can still get there, go \u2014 they vote while people are in the room.');
+        set('heroEyebrow', 'Happening right now \u00b7 Sept 22, 7:00 PM');
+        set('heroHeadline', 'It\u2019s happening <span class="accent">right now.</span>');
+        set('heroLead', 'The MCPASD Annual Meeting is underway at the District Services Center, 7106 South Avenue. <strong>If you can still walk in, walk in.</strong> Only electors physically in the room can vote, and the count is taken live.');
+        set('bmKicker', 'Doors are open \u00b7 go now');
+        set('askEyebrow', 'Right now');
+        set('finalHeadline', 'Go <em>now</em>.');
+        set('finalLead', '7106 South Avenue, Middleton. Bring a photo ID. If you\u2019re reading this and you\u2019re close, you can still be counted.');
+        return;
+      }
+
+      if (ph === 'today') {
+        set('ab-flag', '🗳️ TONIGHT');
+        set('ab-body', '<strong>Tonight \u2014 pizza 6:30, meeting 7:00</strong> \u00b7 ' + WHERE + '. Only people in the room can vote. Bring photo ID.');
+        set('heroEyebrow', 'Tonight \u00b7 Tue Sept 22 \u00b7 7:00 PM');
+        set('heroHeadline', 'It\u2019s tonight. <span class="accent">Be in the room.</span>');
+        set('heroLead', 'Everything neighbors did this summer comes down to <strong>tonight \u2014 pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> \u2014 no absentee, no proxy \u2014 and about 30 people showed up last year. Come at 6:30 for pizza outside and walk in together. Bring a photo ID and bring one person with you.');
+        set('bmKicker', 'Tonight \u00b7 pizza at 6:30');
+        set('askEyebrow', 'Today');
+        set('finalHeadline', 'It comes down to <em>tonight</em>.');
+        set('finalLead', 'Tonight \u00b7 pizza at 6:30, meeting at 7:00 \u00b7 District Services Center, 7106 South Avenue, Middleton. Free parking, photo ID, about 45 minutes. Text one person on your way and walk in together.');
+        return;
+      }
+
+      if (ph === 'tomorrow') {
+        set('ab-flag', '🗳️ TOMORROW NIGHT');
+        set('ab-body', '<strong>Tomorrow \u2014 🍕 pizza 6:30, meeting 7:00</strong> \u00b7 ' + WHERE + '. Only people in the room can vote. Set an alarm.');
+        return; // markup already ships in the 'tomorrow' wording
+      }
+
+      // 'out' — more than ~38 hours away
+      var days = Math.floor((MEETING - now) / 86400000);
+      set('ab-flag', '🗳️ THE VOTE');
+      set('ab-body', '<strong>' + days + ' days out</strong> \u00b7 <strong>Tue Sept 22, 7:00 PM</strong> \u00b7 ' + WHERE + '. Only people in the room can vote.');
+      set('heroHeadline', 'The petition is filed. <span class="accent">Now it comes down to one room.</span>');
+      set('bmKicker', 'Be there \u00b7 bring someone');
+      set('askEyebrow', days + ' days out');
+      set('finalHeadline', 'It comes down to <em>Tuesday</em>.');
+    }
+
+    // ─── Countdown (hero) ───────────────────────────────────────────
+    // Inside 48 hours the units switch to hours/minutes — "1 day" reads
+    // like there's time left when there isn't.
     function tick() {
-      var diff = Math.max(0, MEETING - Date.now());
-      var d = Math.floor(diff / 86400000);
-      var h = Math.floor((diff % 86400000) / 3600000);
+      var diff = MEETING - Date.now();
       var dd = document.getElementById('cd-days'), hh = document.getElementById('cd-hours');
-      if (dd) dd.textContent = d;
-      if (hh) hh.textContent = h;
-      var ab = document.getElementById('ab-days');
-      if (ab) ab.textContent = diff <= 0 ? '0' : (d === 0 ? 'Hours' : d);
+      var dl = document.getElementById('cd-days-label'), hl = document.getElementById('cd-hours-label');
+      var block = document.getElementById('cdBlock');
+      if (diff <= 0) {
+        if (block) block.style.display = 'none';
+        return applyPhase();
+      }
+      if (block) block.style.display = '';
+      if (diff < 172800000) {
+        if (dd) dd.textContent = Math.floor(diff / 3600000);
+        if (hh) hh.textContent = Math.floor((diff % 3600000) / 60000);
+        if (dl) dl.textContent = 'Hours';
+        if (hl) hl.textContent = 'Minutes';
+        set('cdLabel', 'Until the doors open');
+      } else {
+        if (dd) dd.textContent = Math.floor(diff / 86400000);
+        if (hh) hh.textContent = Math.floor((diff % 86400000) / 3600000);
+        if (dl) dl.textContent = 'Days';
+        if (hl) hl.textContent = 'Hours';
+        set('cdLabel', 'Until the vote');
+      }
+      applyPhase();
     }
     tick();
-    setInterval(tick, 60000);
+    setInterval(tick, 30000);
 
     // ─── Animated number counter ────────────────────────────────────
     function animateNumber(el, target) {
@@ -2179,11 +2279,11 @@
       var ics = [
         'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Open Seats MCPASD//EN', 'CALSCALE:GREGORIAN',
         'BEGIN:VEVENT', 'UID:annual-meeting-2026@openseatsmcpasd.org', 'DTSTAMP:20260901T000000Z',
-        'DTSTART;TZID=America/Chicago:20260922T190000', 'DTEND;TZID=America/Chicago:20260922T200000',
-        'SUMMARY:MCPASD Annual Meeting — vote on the Open Seats petition',
+        'DTSTART;TZID=America/Chicago:20260922T183000', 'DTEND;TZID=America/Chicago:20260922T194500',
+        'SUMMARY:🍕 Pizza tailgate + MCPASD Annual Meeting vote',
         'LOCATION:District Services Center, 7106 South Ave, Middleton, WI',
-        'DESCRIPTION:Only electors physically present can vote. Bring photo ID. Free parking. About 30 minutes. Details: openseatsmcpasd.org',
-        'BEGIN:VALARM', 'TRIGGER:-PT3H', 'ACTION:DISPLAY', 'DESCRIPTION:MCPASD Annual Meeting tonight at 7 PM — bring someone', 'END:VALARM',
+        'DESCRIPTION:Pizza outside at 6:30\\, meeting at 7:00. Only electors physically present can vote. Bring photo ID. Free parking. Home by about 7:45. Details: openseatsmcpasd.org',
+        'BEGIN:VALARM', 'TRIGGER:-PT2H', 'ACTION:DISPLAY', 'DESCRIPTION:MCPASD Annual Meeting tonight — pizza at 6:30, vote at 7. Bring someone.', 'END:VALARM',
         'END:VEVENT', 'END:VCALENDAR'
       ].join('\r\n') + '\r\n';
       var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
