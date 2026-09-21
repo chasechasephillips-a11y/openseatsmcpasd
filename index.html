@@ -1567,6 +1567,13 @@
   .bigmeet .bm-rule{height:2px;background:var(--gold);margin:16px 0 14px;opacity:.55;}
   .bigmeet .bm-note{font-size:15px;line-height:1.55;color:rgba(251,248,239,.92);margin:0;}
   .bigmeet .bm-note strong{color:#fff;font-weight:700;}
+  .daystamp{display:inline-flex;align-items:center;gap:12px;background:var(--red);color:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:11px 20px;margin-bottom:20px;font-family:var(--display);font-size:clamp(16px,2.6vw,21px);font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.15;}
+  .daystamp .ds-dot{width:11px;height:11px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 2px rgba(255,255,255,.55);flex:0 0 auto;animation:dspulse 1.6s ease-in-out infinite;}
+  @keyframes dspulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+  @media (prefers-reduced-motion:reduce){.daystamp .ds-dot{animation:none;}}
+  .daystamp .ds-sub{font-family:var(--body);font-size:12.5px;font-weight:700;letter-spacing:.14em;opacity:.92;}
+  .hero-clock{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin:0 0 18px;font-family:var(--display);font-size:clamp(17px,2.4vw,20px);font-weight:700;color:var(--ink);}
+  .hero-clock .hc-num{color:var(--red-dark);font-size:1.25em;font-weight:800;}
   .venuefix{background:var(--red);color:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:15px 20px;margin:16px 0 4px;}
   .venuefix .vf-t{font-family:var(--display);font-size:16.5px;font-weight:800;letter-spacing:.02em;margin-bottom:5px;}
   .venuefix p{margin:0;font-size:15px;line-height:1.5;color:#fff;}
@@ -1633,8 +1640,12 @@
   <div class="container hero-content">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow" id="heroEyebrow">Petition filed · Wis. Stat. § 120.02(2)(a)</span>
+        <div class="daystamp" id="dayStamp">
+          <span class="ds-dot" aria-hidden="true"></span>
+          <span><span id="dsWord">Tomorrow</span><span id="dsDate"> — Tuesday, September 22</span><br><span class="ds-sub" id="dsSub">Pizza 6:30 · Meeting 7:00 · Middleton High School PAC</span></span>
+        </div>
         <h1 id="heroHeadline">This is it. <span class="accent">The vote is tomorrow night.</span></h1>
+        <p class="hero-clock" id="heroClock" aria-live="polite"></p>
         <p class="lead" id="heroLead">Everything neighbors did this summer comes down to one room on <strong>Tuesday — pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> — no absentee, no proxy — and about 30 people showed up last year. Thirty minutes decides whether 4 of MCPASD's 9 school board seats open to any district resident.</p>
 
         <div class="bigmeet" id="meeting">
@@ -1704,7 +1715,7 @@
   <div class="container timeline-strip-inner">
     <div class="ts-item"><span class="ts-icon">✅</span><div><div class="ts-label">Signatures collected</div><div class="ts-value">Done</div></div></div>
     <div class="ts-item"><span class="ts-icon">✅</span><div><div class="ts-label">Petition filed with the district</div><div class="ts-value">Done</div></div></div>
-    <div class="ts-item"><span class="ts-icon">🗳️</span><div><div class="ts-label">The vote — this is the one</div><div class="ts-value">Tue · 🍕 6:30 · vote 7 PM</div></div></div>
+    <div class="ts-item"><span class="ts-icon">🗳️</span><div><div class="ts-label" id="tsLabel">The vote — tomorrow</div><div class="ts-value">Tue Sept 22 · 🍕 6:30 · vote 7 PM</div></div></div>
   </div>
 </div>
 
@@ -2120,8 +2131,47 @@
   (function () {
     var MEETING = new Date('2026-09-22T19:00:00-05:00').getTime();
     var MEETING_ENDS = new Date('2026-09-22T21:00:00-05:00').getTime();
+    // Phase flips on CENTRAL-TIME MIDNIGHT, not on an hours-until offset, so
+    // the page says "today" the moment the 22nd begins — which is what a
+    // visitor checking at 12:30 AM expects to read.
+    var DAY_OF   = new Date('2026-09-22T00:00:00-05:00').getTime();
+    var DAY_BEFORE = new Date('2026-09-21T00:00:00-05:00').getTime();
 
     function set(id, html) { var el = document.getElementById(id); if (el) el.innerHTML = html; }
+
+    // The day stamp is the first thing anyone reads, so it carries the phase
+    // word ("Tomorrow" / "Today") rather than making people do date math.
+    function stamp(word, sub, bg, date) {
+      set('dsWord', word);
+      set('dsDate', date === undefined ? ' \u2014 Tuesday, September 22' : date);
+      set('dsSub', sub);
+      var el = document.getElementById('dayStamp');
+      if (el) el.style.background = bg || '';
+      if (el) el.setAttribute('aria-label', word + ' \u2014 ' + sub.replace(/\u00b7/g, ','));
+    }
+
+    // Plain-English time-remaining line under the headline. Driven by the
+    // PHASE, not raw hours — at 11:59 PM on the 21st the vote is "tomorrow"
+    // even though it's only 19 hours off, and at 153 hours it isn't
+    // "tomorrow" at all.
+    function heroClock(diff) {
+      if (diff <= 0) return;
+      var ph = phaseOf(Date.now());
+      var h = Math.floor(diff / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var txt;
+      if (ph === 'today') {
+        txt = h < 1
+          ? 'Starts in <span class="hc-num">' + m + '</span> minutes \u2014 pizza is already out front.'
+          : '<span class="hc-num">' + h + '</span> hours out. Leave the house by 6:15.';
+      } else if (ph === 'tomorrow') {
+        txt = '<span class="hc-num">' + h + '</span> hours out. Set an alarm for <span class="hc-num">6:00 PM</span> tomorrow.';
+      } else {
+        var d = Math.floor(diff / 86400000);
+        txt = 'The vote is <span class="hc-num">Tuesday, September 22</span> \u2014 <span class="hc-num">' + d + '</span> day' + (d === 1 ? '' : 's') + ' away.';
+      }
+      set('heroClock', txt);
+    }
 
     // ─── Phase ──────────────────────────────────────────────────────
     // The page re-words itself as the meeting approaches and passes, so it
@@ -2131,9 +2181,8 @@
     function phaseOf(now) {
       if (now >= MEETING_ENDS) return 'after';
       if (now >= MEETING) return 'now';
-      var hrs = (MEETING - now) / 3600000;
-      if (hrs <= 14) return 'today';   // same calendar day (from ~5 AM Tue)
-      if (hrs <= 38) return 'tomorrow';
+      if (now >= DAY_OF) return 'today';
+      if (now >= DAY_BEFORE) return 'tomorrow';
       return 'out';
     }
 
@@ -2150,6 +2199,10 @@
         set('heroHeadline', 'You showed up. <span class="accent">Thank you.</span>');
         set('heroLead', 'The MCPASD Annual Meeting has come and gone, and the petition to open 4 of the district\u2019s 9 school board seats went to a vote of the electors in the room. <strong>We\u2019ll post the outcome here as soon as the district confirms it.</strong> However it landed, a group of neighbors turned a 1963 rule into a question the community actually got to answer \u2014 and that took every single person who gave up an evening.');
         set('bmKicker', 'This meeting has ended');
+        stamp('Thank you', 'The vote was Tuesday, September 22', '#4F6B3E', '');
+        set('tsLabel', 'The vote \u2014 done');
+        document.title = 'Thank you \u2014 Open Seats MCPASD';
+        set('heroClock', '');
         set('askEyebrow', 'What happens next');
         set('finalHeadline', 'However it landed \u2014 <em>thank you</em>.');
         set('finalLead', 'Results will be posted here once the district confirms them. If you were in that room, you did the whole job. If you couldn\u2019t be, the neighbors who were went on your behalf.');
@@ -2163,6 +2216,10 @@
         set('heroHeadline', 'It\u2019s happening <span class="accent">right now.</span>');
         set('heroLead', 'The MCPASD Annual Meeting is underway at the Middleton High School Performing Arts Center, 2100 Bristol Street. <strong>If you can still walk in, walk in.</strong> Only electors physically in the room can vote, and the count is taken live.');
         set('bmKicker', 'Doors are open \u00b7 go now');
+        stamp('Happening now', 'Middleton High School PAC \u00b7 2100 Bristol St', '#9A3B2C', '');
+        set('tsLabel', 'The vote \u2014 happening now');
+        document.title = 'HAPPENING NOW \u2014 Open Seats MCPASD';
+        set('heroClock', 'The meeting is <span class="hc-num">underway</span>. If you can get there, go.');
         set('askEyebrow', 'Right now');
         set('finalHeadline', 'Go <em>now</em>.');
         set('finalLead', '2100 Bristol Street, Middleton. Nothing to bring \u2014 you just sign in. If you\u2019re reading this and you\u2019re close, you can still be counted.');
@@ -2176,6 +2233,9 @@
         set('heroHeadline', 'It\u2019s tonight. <span class="accent">Be in the room.</span>');
         set('heroLead', 'Everything neighbors did this summer comes down to <strong>tonight \u2014 pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> \u2014 no absentee, no proxy \u2014 and about 30 people showed up last year. Come at 6:30 for pizza outside and walk in together. Nothing to bring, kids welcome in the room \u2014 just bring one person with you.');
         set('bmKicker', 'Tonight \u00b7 pizza at 6:30');
+        stamp('Today', 'Pizza 6:30 \u00b7 Meeting 7:00 \u00b7 Middleton High School PAC');
+        set('tsLabel', 'The vote \u2014 TODAY');
+        document.title = 'TONIGHT 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
         set('askEyebrow', 'Today');
         set('finalHeadline', 'It comes down to <em>tonight</em>.');
         set('finalLead', 'Tonight \u00b7 pizza at 6:30, meeting at 7:00 \u00b7 Middleton High School Performing Arts Center, 2100 Bristol Street, Middleton. Free parking, nothing to bring, about 45 minutes. Text one person on your way and walk in together.');
@@ -2185,7 +2245,10 @@
       if (ph === 'tomorrow') {
         set('ab-flag', '🗳️ TOMORROW NIGHT');
         set('ab-body', '<strong>Tomorrow \u2014 🍕 pizza 6:30, meeting 7:00</strong> \u00b7 ' + WHERE + '. Only people in the room can vote. Set an alarm.');
-        return; // markup already ships in the 'tomorrow' wording
+        stamp('Tomorrow', 'Pizza 6:30 \u00b7 Meeting 7:00 \u00b7 Middleton High School PAC');
+        set('tsLabel', 'The vote \u2014 tomorrow');
+        document.title = 'TOMORROW 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
+        return; // the rest of the markup already ships in 'tomorrow' wording
       }
 
       // 'out' — more than ~38 hours away
@@ -2196,6 +2259,9 @@
       set('bmKicker', 'Be there \u00b7 bring someone');
       set('askEyebrow', days + ' days out');
       set('finalHeadline', 'It comes down to <em>Tuesday</em>.');
+      stamp('In ' + days + ' days', 'Tuesday, September 22 \u00b7 Meeting 7:00 PM');
+      set('tsLabel', 'The vote \u2014 in ' + days + ' days');
+      document.title = 'Sept 22, 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
     }
 
     // ─── Countdown (hero) ───────────────────────────────────────────
@@ -2211,6 +2277,7 @@
         return applyPhase();
       }
       if (block) block.style.display = '';
+      heroClock(diff);
       if (diff < 172800000) {
         if (dd) dd.textContent = Math.floor(diff / 3600000);
         if (hh) hh.textContent = Math.floor((diff % 3600000) / 60000);
