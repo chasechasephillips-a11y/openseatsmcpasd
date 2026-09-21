@@ -1626,7 +1626,7 @@
           <p class="bm-note"><strong>🍕 Pizza tailgate at 6:30</strong> — come early, eat, walk in together. You don't have to speak or know anything. <strong>You raise your hand.</strong></p>
           <div class="chiprow">
             <span class="chip">🍕 Pizza at 6:30</span>
-            <span class="chip">🪪 Bring photo ID</span>
+            <span class="chip">🚶 Nothing to bring</span>
             <span class="chip">🅿️ Free parking on site</span>
             <span class="chip">⏱️ ~45 minutes</span>
             <span class="chip">👶 Childcare — just ask</span>
@@ -1729,7 +1729,11 @@
     <ul class="runsheet reveal">
       <li>
         <div class="rs-t">6:30 PM · PIZZA TAILGATE</div>
-        <div class="rs-b"><strong>Come early and eat.</strong> Pizza outside the District Services Center, 7106 South Avenue, free parking on site. Grab a slice, say hi, and walk in with people instead of alone — which is exactly why we start at 6:30.</div>
+        <div class="rs-b"><strong>Come early and eat.</strong> Pizza outside the District Services Center, 7106 South Avenue, free parking on site. Grab a slice, say hi, and walk in with people instead of alone — which is exactly why we start at 6:30. <strong>There's nothing you need to bring.</strong></div>
+      </li>
+      <li>
+        <div class="rs-t">SIGNING IN</div>
+        <div class="rs-b"><strong>No photo ID required.</strong> You sign a short statement that you're an eligible elector — 18 or older, a US citizen, and living in the district for at least 28 days. That's the whole check. If you live here and you vote here, you're in.</div>
       </li>
       <li>
         <div class="rs-t">7:00 PM · MEETING OPENS</div>
@@ -1935,7 +1939,11 @@
     <div style="margin-top:32px;" class="reveal">
       <details open>
         <summary>Can I vote if I don't have kids in the district?</summary>
-        <p>Yes. Any MCPASD <em>elector</em> — an adult resident of the district who's eligible to vote — can vote at the Annual Meeting. Kids in school are not required. Bring photo ID.</p>
+        <p>Yes. Any MCPASD <em>elector</em> — an adult US citizen who has lived in the district for at least 28 days — can vote at the Annual Meeting. Having kids in the schools is not required.</p>
+      </details>
+      <details>
+        <summary>What do I need to bring?</summary>
+        <p><strong>Nothing.</strong> There's no photo ID requirement at an Annual Meeting. You sign a short statement at the door confirming you're an eligible elector — 18 or older, a US citizen, and a resident of the district for at least the past 28 days. Then you sit down. That's it.</p>
       </details>
       <details>
         <summary>Will I have to speak or know anything?</summary>
@@ -2101,20 +2109,20 @@
         set('bmKicker', 'Doors are open \u00b7 go now');
         set('askEyebrow', 'Right now');
         set('finalHeadline', 'Go <em>now</em>.');
-        set('finalLead', '7106 South Avenue, Middleton. Bring a photo ID. If you\u2019re reading this and you\u2019re close, you can still be counted.');
+        set('finalLead', '7106 South Avenue, Middleton. Nothing to bring \u2014 you just sign in. If you\u2019re reading this and you\u2019re close, you can still be counted.');
         return;
       }
 
       if (ph === 'today') {
         set('ab-flag', '🗳️ TONIGHT');
-        set('ab-body', '<strong>Tonight \u2014 pizza 6:30, meeting 7:00</strong> \u00b7 ' + WHERE + '. Only people in the room can vote. Bring photo ID.');
+        set('ab-body', '<strong>Tonight \u2014 pizza 6:30, meeting 7:00</strong> \u00b7 ' + WHERE + '. Only people in the room can vote. No ID needed.');
         set('heroEyebrow', 'Tonight \u00b7 Tue Sept 22 \u00b7 7:00 PM');
         set('heroHeadline', 'It\u2019s tonight. <span class="accent">Be in the room.</span>');
-        set('heroLead', 'Everything neighbors did this summer comes down to <strong>tonight \u2014 pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> \u2014 no absentee, no proxy \u2014 and about 30 people showed up last year. Come at 6:30 for pizza outside and walk in together. Bring a photo ID and bring one person with you.');
+        set('heroLead', 'Everything neighbors did this summer comes down to <strong>tonight \u2014 pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> \u2014 no absentee, no proxy \u2014 and about 30 people showed up last year. Come at 6:30 for pizza outside and walk in together. Nothing to bring \u2014 just bring one person with you.');
         set('bmKicker', 'Tonight \u00b7 pizza at 6:30');
         set('askEyebrow', 'Today');
         set('finalHeadline', 'It comes down to <em>tonight</em>.');
-        set('finalLead', 'Tonight \u00b7 pizza at 6:30, meeting at 7:00 \u00b7 District Services Center, 7106 South Avenue, Middleton. Free parking, photo ID, about 45 minutes. Text one person on your way and walk in together.');
+        set('finalLead', 'Tonight \u00b7 pizza at 6:30, meeting at 7:00 \u00b7 District Services Center, 7106 South Avenue, Middleton. Free parking, nothing to bring, about 45 minutes. Text one person on your way and walk in together.');
         return;
       }
 
@@ -2282,7 +2290,7 @@
         'DTSTART;TZID=America/Chicago:20260922T183000', 'DTEND;TZID=America/Chicago:20260922T194500',
         'SUMMARY:🍕 Pizza tailgate + MCPASD Annual Meeting vote',
         'LOCATION:District Services Center, 7106 South Ave, Middleton, WI',
-        'DESCRIPTION:Pizza outside at 6:30\\, meeting at 7:00. Only electors physically present can vote. Bring photo ID. Free parking. Home by about 7:45. Details: openseatsmcpasd.org',
+        'DESCRIPTION:Pizza outside at 6:30\\, meeting at 7:00. Only electors physically present can vote. No ID needed \u2014 you sign in as an eligible elector. Free parking. Home by about 7:45. Details: openseatsmcpasd.org',
         'BEGIN:VALARM', 'TRIGGER:-PT2H', 'ACTION:DISPLAY', 'DESCRIPTION:MCPASD Annual Meeting tonight — pizza at 6:30, vote at 7. Bring someone.', 'END:VALARM',
         'END:VEVENT', 'END:VCALENDAR'
       ].join('\r\n') + '\r\n';
