@@ -12,3 +12,25 @@
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
   Cross-Origin-Opener-Policy: same-origin
+
+# HTML must never be cached by browsers. Every date phrase on this site is
+# phase-dependent ("tomorrow" -> "today" at midnight), and the venue changed
+# late, so a phone holding yesterday's copy shows the wrong night and the
+# wrong building. Assets keep short caching; documents always revalidate.
+/*.html
+  Cache-Control: no-cache, must-revalidate
+
+/
+  Cache-Control: no-cache, must-revalidate
+
+/sept22/
+  Cache-Control: no-cache, must-revalidate
+
+/toolkit/*
+  Cache-Control: no-cache, must-revalidate
+
+/circulate/*
+  Cache-Control: no-cache, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=300, must-revalidate
