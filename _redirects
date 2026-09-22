@@ -4,11 +4,14 @@
 /faq        /toolkit/faq.html        301
 /share      /toolkit/share.html      301
 /print      /toolkit/                301
-/sign       /#sign                   302
+/sign       /#rsvp                   302
 /explain    /toolkit/faq.html        301
 /sept22     /sept22/                 301
 /vote       /sept22/                 301
 /meeting    /sept22/                 301
+/texts      /toolkit/texts.html      301
+/closing    /toolkit/closing.html    302
+/rsvp       /#rsvp                   302
 /log        /circulate/              301
 /circulate  /circulate/              301
 /watch      /circulate/watch.html    301

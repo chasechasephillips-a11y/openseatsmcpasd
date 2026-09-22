@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MCPASD Annual Meeting — Tuesday September 22, 2026, 7:00 PM. The vote on the Open Seats petition happens here. Only electors physically present can vote. Bring photo ID.">
+<meta name="description" content="MCPASD Annual Meeting — Tuesday September 22, 2026. Pizza tailgate outside at 6:30, meeting at 7:00. The vote on the Open Seats petition happens here. Only electors physically present can vote. No ID needed — you sign a statement that you're an eligible elector.">
 <title>Sept 22 · The Vote — Open Seats MCPASD</title>
 <meta name="theme-color" content="#FBF8EF">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -322,6 +322,7 @@
   .stamp .stamp-line em { font-family: var(--italic); color: var(--red); font-style: italic; }
 </style>
 <script src="/assets/beacon.js" defer></script>
+<script src="/assets/vote-banner.js" data-no-banner></script>
 </head>
 <body>
 
@@ -332,10 +333,10 @@
 
 <section class="hero">
   <div class="container">
-    <div class="eb">The vote</div>
-    <h1>Tuesday<br>Sept 22, <em>7 PM</em></h1>
-    <div class="when">MCPASD Annual Meeting</div>
-    <div class="where"><strong>District Services Center</strong> · 7106 South Avenue, Middleton, WI 53562 · Free parking on site</div>
+    <div class="eb" id="voteEb">The vote is tomorrow</div>
+    <h1 id="voteH1">Tomorrow<br>Tues Sept 22, <em>7 PM</em></h1>
+    <div class="when">MCPASD Annual Meeting · <span id="voteWhen">pizza outside from 6:30</span></div>
+    <div class="where"><strong>Middleton High School Performing Arts Center</strong> · 2100 Bristol Street, Middleton, WI 53562 · Free parking on site</div>
 
     <div class="countdown" id="cd">
       <div class="cd-item"><div class="cd-num" id="cd-days">—</div><div class="cd-lbl">Days</div></div>
@@ -346,27 +347,34 @@
 
     <div class="cta-row">
       <a href="/openseats-sept22.ics" class="btn" download>Add to calendar</a>
-      <a href="https://www.google.com/maps/dir//7106+South+Ave,+Middleton,+WI+53562" target="_blank" rel="noopener" class="btn ghost">Get directions</a>
+      <a href="https://www.google.com/maps/dir//2100+Bristol+St,+Middleton,+WI+53562" target="_blank" rel="noopener" class="btn ghost">Get directions</a>
     </div>
   </div>
 </section>
+
+<div style="background:#B98521;color:#fff;border-top:3px solid #14223E;border-bottom:3px solid #14223E;padding:16px 28px;text-align:center;">
+  <div style="max-width:920px;margin:0 auto;">
+    <div style="font-family:'Old Standard TT',serif;font-size:18px;font-weight:800;margin-bottom:5px;">⚠️ Venue note: it's the high school, not the district office.</div>
+    <p style="margin:0;font-size:15.5px;line-height:1.5;color:#fff;">The meeting is in the <strong style="color:#fff;">Middleton High School Performing Arts Center, 2100 Bristol Street</strong> — moved to a larger room because a crowd is expected. If you saved the District Services Center on South Avenue, that address is out of date.</p>
+  </div>
+</div>
 
 <section class="quickfacts">
   <div class="container quickfacts-inner">
     <div class="qf">
       <div class="qf-l">When</div>
-      <div class="qf-v">Tue, Sept 22<br>7:00 PM</div>
-      <div class="qf-s">Plan on ~30 min</div>
+      <div class="qf-v">Tue, Sept 22<br>🍕 6:30 · vote 7:00</div>
+      <div class="qf-s">Home by ~7:45</div>
     </div>
     <div class="qf">
       <div class="qf-l">Where</div>
-      <div class="qf-v">District Services<br>Center</div>
-      <div class="qf-s"><a href="https://www.google.com/maps/dir//7106+South+Ave,+Middleton,+WI+53562" target="_blank" rel="noopener">7106 South Ave</a></div>
+      <div class="qf-v">MHS Performing<br>Arts Center</div>
+      <div class="qf-s"><a href="https://www.google.com/maps/dir//2100+Bristol+St,+Middleton,+WI+53562" target="_blank" rel="noopener">2100 Bristol St</a></div>
     </div>
     <div class="qf">
       <div class="qf-l">Bring</div>
-      <div class="qf-v">Photo ID</div>
-      <div class="qf-s">Driver's license or state ID</div>
+      <div class="qf-v">Yourself</div>
+      <div class="qf-s">No ID required — you just sign in</div>
     </div>
     <div class="qf">
       <div class="qf-l">Cost</div>
@@ -386,9 +394,8 @@
       <ul>
         <li>You live inside the <strong>Middleton-Cross Plains Area School District</strong> (Middleton, Cross Plains, Westport, Springfield, and parts of Berry, Vermont, Roxbury, and Madison).</li>
         <li>You are <strong>18 or older</strong>.</li>
-        <li>You are a <strong>US citizen</strong> and have lived at your address for at least 28 days.</li>
+        <li>You are a <strong>US citizen</strong> and have lived at your address for <strong>at least 28 days</strong>.</li>
         <li>You are <strong>physically present</strong> at the meeting on Sept 22.</li>
-        <li>You bring a <strong>photo ID</strong> (driver's license or Wisconsin ID).</li>
       </ul>
     </div>
   </div>
@@ -398,12 +405,12 @@
   <div class="container">
     <div class="section-eb">What to expect</div>
     <h2>The meeting in <em>four steps</em>.</h2>
-    <p class="lead">It's a Wisconsin school district Annual Meeting — long-standing, simple, public. The petition is one item on the agenda. Plan on ~30 minutes total.</p>
+    <p class="lead">It's a Wisconsin school district Annual Meeting — long-standing, simple, public. Come at <strong>6:30 for pizza outside</strong>, and the meeting opens at <strong>7:00</strong> with a short district budget review (10–15 minutes) before the petition comes to the floor. Plan on being home by about 7:45.</p>
     <div class="flow">
       <div class="flow-step">
         <div class="n">01</div>
         <h3>Sign in</h3>
-        <p>Show photo ID at the door. Get a paper ballot (if used). Find a seat.</p>
+        <p>No ID needed. You sign a statement that you're an eligible elector living in the district. Find a seat.</p>
       </div>
       <div class="flow-step">
         <div class="n">02</div>
@@ -430,12 +437,13 @@
     <h2>Quick tips to make it <em>painless</em>.</h2>
     <div class="tips">
       <ul>
-        <li><strong>Arrive 15 minutes early</strong> so you can sign in, find parking, and grab a seat without rushing.</li>
+        <li><strong>Join us for pizza starting at 6:30.</strong> We'll be outside before the meeting — come eat, say hi, and walk in together. Everyone's welcome, whether you've been part of this all summer or just heard about it today.</li>
+        <li><strong>Get there by 6:45 at the latest.</strong> That gives you time to park, sign in and find a seat before the 7:00 start — or come at 6:30 and none of it feels rushed.</li>
         <li><strong>Bring a friend who's also an MCPASD elector.</strong> Every neighbor in the room is another vote in favor. About 30 people came in 2025; we need hundreds.</li>
-        <li><strong>Have your photo ID ready</strong> when you walk in. Driver's license is easiest.</li>
-        <li><strong>Pre-plan parking.</strong> The District Services Center has free parking on site. Use the main entrance off South Avenue.</li>
-        <li><strong>Eat first.</strong> The meeting is short but you don't want to be hungry watching your democracy work.</li>
-        <li><strong>Tell three more people in the next two weeks.</strong> Send them this URL: <a href="https://openseatsmcpasd.org/sept22">openseatsmcpasd.org/sept22</a>.</li>
+        <li><strong>You don't need to bring anything.</strong> There's no ID requirement — you sign a short statement at the door that you're an eligible elector who's lived in the district at least 28 days.</li>
+        <li><strong>Pre-plan parking.</strong> Free parking on site at Middleton High School, 2100 Bristol Street. Follow signs for the Performing Arts Center entrance — and note this is the high school, not the district office on South Avenue.</li>
+        <li><strong>Bring your kids if that's what it takes.</strong> Children are welcome in the room. Sit near an aisle, bring headphones or a snack, and don't give bedtime logistics a veto over your vote.</li>
+        <li><strong>Text three people today.</strong> Ask them directly and offer to drive — it works far better than a link. Send them here: <a href="https://openseatsmcpasd.org/sept22">openseatsmcpasd.org/sept22</a>.</li>
       </ul>
     </div>
   </div>
@@ -453,14 +461,15 @@
     <div class="section-eb">One more time</div>
     <h2>The basics, <em>in one block</em>.</h2>
     <p class="lead" style="font-size: 17px;">
-      <strong>Tuesday, September 22, 2026 · 7:00 PM</strong><br>
-      District Services Center · 7106 South Avenue, Middleton, WI 53562<br>
-      Free parking on site · Bring photo ID · Plan on ~30 minutes<br>
+      <strong>Tuesday, September 22, 2026</strong><br>
+      🍕 Pizza tailgate 6:30 PM · Meeting 7:00 PM<br>
+      Middleton High School Performing Arts Center · 2100 Bristol Street, Middleton, WI 53562<br>
+      Free parking on site · No ID needed, you just sign in · Home by about 7:45<br>
       Questions: <a href="mailto:chase.chasephillips@gmail.com">chase.chasephillips@gmail.com</a>
     </p>
     <div class="cta-row" style="display: flex; gap: 12px; flex-wrap: wrap;">
       <a href="/openseats-sept22.ics" class="btn" download style="background: var(--red); color: var(--paper); border: 1px solid var(--red-dark); padding: 13px 22px; font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; box-shadow: 3px 3px 0 var(--ink);">Add to calendar</a>
-      <a href="https://www.google.com/maps/dir//7106+South+Ave,+Middleton,+WI+53562" target="_blank" rel="noopener" class="btn" style="background: transparent; color: var(--ink); border: 1px solid var(--ink); padding: 13px 22px; font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; box-shadow: 3px 3px 0 var(--rule-deep);">Get directions</a>
+      <a href="https://www.google.com/maps/dir//2100+Bristol+St,+Middleton,+WI+53562" target="_blank" rel="noopener" class="btn" style="background: transparent; color: var(--ink); border: 1px solid var(--ink); padding: 13px 22px; font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; box-shadow: 3px 3px 0 var(--rule-deep);">Get directions</a>
     </div>
 
     <div class="stamp" aria-hidden="true">
@@ -499,6 +508,52 @@
       document.getElementById('cd-secs').textContent  = s;
     }
     tick(); setInterval(tick, 1000);
+  })();
+</script>
+
+<script>
+  /* This page's own phase wording. Boundaries come from OSVote (see
+     /assets/vote-banner.js) so there's one definition of "tomorrow". */
+  (function () {
+    function apply() {
+      var V = window.OSVote;
+      if (!V) return;
+      var ph = V.phase();
+      var eb = document.getElementById('voteEb');
+      var h1 = document.getElementById('voteH1');
+      var wh = document.getElementById('voteWhen');
+      var cd = document.getElementById('cd');
+
+      if (ph === 'tomorrow') {
+        eb.textContent = 'The vote is tomorrow';
+        h1.innerHTML = 'Tomorrow<br>Tues Sept 22, <em>7 PM</em>';
+        wh.textContent = 'pizza outside from 6:30';
+        document.title = 'TOMORROW 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
+      } else if (ph === 'today') {
+        eb.textContent = 'The vote is tonight';
+        h1.innerHTML = 'Tonight<br>Tues Sept 22, <em>7 PM</em>';
+        wh.textContent = 'pizza outside from 6:30';
+        document.title = 'TONIGHT 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
+      } else if (ph === 'now') {
+        eb.textContent = 'Happening right now';
+        h1.innerHTML = 'Happening<br><em>right now</em>';
+        wh.textContent = 'if you can get here, come';
+        document.title = 'HAPPENING NOW \u00b7 Open Seats MCPASD';
+        if (cd) cd.style.display = 'none';
+      } else if (ph === 'after') {
+        eb.textContent = 'Thank you for coming';
+        h1.innerHTML = 'The vote<br><em>has happened</em>';
+        wh.textContent = 'results posted once the district confirms';
+        document.title = 'Thank you \u00b7 Open Seats MCPASD';
+        if (cd) cd.style.display = 'none';
+      } else {
+        eb.textContent = 'The vote';
+        h1.innerHTML = 'Tuesday<br>Sept 22, <em>7 PM</em>';
+        wh.textContent = 'pizza outside from 6:30';
+      }
+    }
+    if (window.OSVote) apply(); else document.addEventListener('osvote:ready', apply);
+    setInterval(apply, 30000);
   })();
 </script>
 

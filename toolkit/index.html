@@ -332,6 +332,7 @@
   }
 </style>
 <script src="/assets/beacon.js" defer></script>
+<script src="/assets/vote-banner.js" defer></script>
 </head>
 <body>
 
@@ -342,7 +343,13 @@
 <div class="container">
   <span class="eyebrow">Campaign toolkit</span>
   <h1>Help spread the <em>word</em>.</h1>
-  <p class="lead">Sixteen things, all free, all yours. Print them, hand them out, paste them, send them. Whatever you take from this page is what gets us to 500 signatures — and to the hundreds we'll need in the room on September 22.</p>
+  <p class="lead">All free, all yours. Print them, hand them out, paste them, send them.</p>
+
+  <div style="background:#14223E;color:#FBF8EF;border-left:6px solid #B98521;padding:18px 22px;margin:22px 0 8px;">
+    <div style="font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#D29D2E;margin-bottom:8px;">Signature phase is over — this is turnout week</div>
+    <p style="margin:0 0 12px;font-size:16.5px;line-height:1.55;">The petition is filed. Everything now rides on how many MCPASD electors are physically in the room on <strong>Tuesday, September 22 at 7:00 PM</strong>, Middleton High School Performing Arts Center. Print materials below still reference the signature drive — <strong>use the texts page instead this week.</strong></p>
+    <a href="/toolkit/texts.html" style="display:inline-block;background:#FBF8EF;color:#14223E;font-weight:700;font-size:14.5px;text-decoration:none;padding:10px 18px;border:1.5px solid #FBF8EF;">📱 Texts &amp; posts for the final week →</a>
+  </div>
   <div class="ornament" aria-hidden="true">
     <span class="line"></span>
     <span class="mark">❖</span>
@@ -352,12 +359,12 @@
   <div class="stats-band" id="statsBand" aria-label="Where we are">
     <div class="stat-block">
       <div class="n" id="sb-sig">—<span class="of">/ 550 goal</span></div>
-      <div class="lbl">Signatures so far</div>
+      <div class="lbl">Signatures filed</div>
       <div class="bar"><div class="fill" id="sb-fill"></div><div class="legal"></div></div>
     </div>
     <div class="stat-block">
-      <div class="n" id="sb-filed">—<span class="of">days</span></div>
-      <div class="lbl">Until sheets are due · Aug 20</div>
+      <div class="n" id="sb-filed">✓<span class="of">filed</span></div>
+      <div class="lbl">Petition filed with the district</div>
     </div>
     <div class="stat-block">
       <div class="n" id="sb-vote">—<span class="of">days</span></div>
@@ -428,18 +435,16 @@
   // Pull live numbers for the "Where we are" band + milestone state.
   (function () {
     var voteDate = new Date('2026-09-22T19:00:00-05:00');
-    var fileDate = new Date('2026-08-20T23:59:59-05:00');
     var now = new Date();
     var dDays = function (d) { return Math.max(0, Math.ceil((d - now) / 86400000)); };
     var setEl = function (id, v) { var el = document.getElementById(id); if (el) el.innerHTML = v; };
     setEl('sb-vote',  dDays(voteDate) + '<span class="of">days</span>');
-    setEl('sb-filed', dDays(fileDate) + '<span class="of">days</span>');
 
     fetch('/api/stats').then(function (r) { return r.json(); }).then(function (d) {
       var n    = (d && typeof d.signatures === 'number') ? d.signatures : 0;
       var goal = (d && d.goal) ? d.goal : 550;
       var legalMin = (d && d.legalMinimum) ? d.legalMinimum : 500;
-      setEl('sb-sig', n + '<span class="of">/ ' + goal + ' goal</span>');
+      setEl('sb-sig', n > 0 ? (n + '<span class="of">filed \u2713</span>') : ('\u2014<span class="of">filed \u2713</span>'));
       var fill = document.getElementById('sb-fill');
       if (fill) setTimeout(function () { fill.style.width = Math.min(100, (n / goal) * 100) + '%'; }, 200);
       var band = document.getElementById('statsBand');
