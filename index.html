@@ -1675,7 +1675,7 @@
           <span class="ds-dot" aria-hidden="true"></span>
           <span><span id="dsWord">Tomorrow</span><span id="dsDate"> — Tuesday, September 22</span><br><span class="ds-sub" id="dsSub">Pizza 6:30 · Meeting 7:00 · Middleton High School PAC</span></span>
         </div>
-        <h1 id="heroHeadline">This is it. <span class="accent">The vote is tomorrow night.</span></h1>
+        <h1 id="heroHeadline">Vote tomorrow <span class="accent">9/22</span></h1>
         <p class="hero-clock" id="heroClock" aria-live="polite"></p>
         <p class="lead" id="heroLead">Everything neighbors did this summer comes down to one room on <strong>Tuesday — pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> — no absentee, no proxy — and about 30 people showed up last year. Thirty minutes decides whether 4 of MCPASD's 9 school board seats open to any district resident.</p>
 
@@ -2245,7 +2245,7 @@
         set('ab-flag', '🔴 HAPPENING NOW');
         set('ab-body', '<strong>The Annual Meeting is underway</strong> \u00b7 ' + WHERE + '. If you can still get there, go \u2014 they vote while people are in the room.');
         set('heroEyebrow', 'Happening right now \u00b7 Sept 22, 7:00 PM');
-        set('heroHeadline', 'It\u2019s happening <span class="accent">right now.</span>');
+        set('heroHeadline', 'Voting <span class="accent">right now</span>');
         set('heroLead', 'The MCPASD Annual Meeting is underway at the Middleton High School Performing Arts Center, 2100 Bristol Street. <strong>If you can still walk in, walk in.</strong> Only electors physically in the room can vote, and the count is taken live.');
         set('bmKicker', 'Doors are open \u00b7 go now');
         stamp('Happening now', 'Middleton High School PAC \u00b7 2100 Bristol St', '#9A3B2C', '');
@@ -2263,7 +2263,7 @@
         set('ab-flag', '🗳️ TONIGHT');
         set('ab-body', '<strong>Tonight \u2014 pizza 6:30, meeting 7:00</strong> \u00b7 ' + WHERE + '. Only people in the room can vote. No ID needed.');
         set('heroEyebrow', 'Tonight \u00b7 Tue Sept 22 \u00b7 7:00 PM');
-        set('heroHeadline', 'It\u2019s tonight. <span class="accent">Be in the room.</span>');
+        set('heroHeadline', 'Vote today <span class="accent">9/22</span>');
         set('heroLead', 'Everything neighbors did this summer comes down to <strong>tonight \u2014 pizza at 6:30, meeting at 7:00</strong>. Under Wisconsin law, <strong>only electors physically present can vote</strong> \u2014 no absentee, no proxy \u2014 and about 30 people showed up last year. Come at 6:30 for pizza outside and walk in together. Nothing to bring, kids welcome in the room \u2014 just bring one person with you.');
         set('bmKicker', 'Tonight \u00b7 pizza at 6:30');
         stamp('Today', 'Pizza 6:30 \u00b7 Meeting 7:00 \u00b7 Middleton High School PAC');
@@ -2282,6 +2282,7 @@
         stamp('Tomorrow', 'Pizza 6:30 \u00b7 Meeting 7:00 \u00b7 Middleton High School PAC');
         set('tsLabel', 'The vote \u2014 tomorrow');
         set('navVoteText', 'The vote is tomorrow');
+        set('heroHeadline', 'Vote tomorrow <span class="accent">9/22</span>');
         document.title = 'TOMORROW 7 PM \u2014 the vote \u00b7 Open Seats MCPASD';
         return; // the rest of the markup already ships in 'tomorrow' wording
       }
@@ -2290,7 +2291,7 @@
       var days = Math.floor((MEETING - now) / 86400000);
       set('ab-flag', '🗳️ THE VOTE');
       set('ab-body', '<strong>' + days + ' days out</strong> \u00b7 <strong>Tue Sept 22, 7:00 PM</strong> \u00b7 ' + WHERE + '. Only people in the room can vote.');
-      set('heroHeadline', 'The petition is filed. <span class="accent">Now it comes down to one room.</span>');
+      set('heroHeadline', 'Vote Tuesday <span class="accent">9/22</span>');
       set('bmKicker', 'Be there \u00b7 bring someone');
       set('askEyebrow', days + ' days out');
       set('finalHeadline', 'It comes down to <em>Tuesday</em>.');
