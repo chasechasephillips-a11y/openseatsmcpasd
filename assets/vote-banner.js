@@ -32,9 +32,9 @@
     switch (ph) {
       case 'after':
         return {
-          flag: '✓ THANK YOU',
-          text: '<strong>The vote happened Tuesday night.</strong> Thank you to everyone who was in the room. Results posted as soon as the district confirms.',
-          cta: 'Read more', bg: '#4F6B3E'
+          flag: '✓ IT PASSED, 60–46',
+          text: '<strong>On Sept 22, 2026, MCPASD electors voted to open 4 of the 9 school board seats to any qualified resident.</strong> Thank you to everyone who took part, on both sides of the vote.',
+          cta: 'The whole story', bg: '#4F6B3E'
         };
       case 'now':
         return {
