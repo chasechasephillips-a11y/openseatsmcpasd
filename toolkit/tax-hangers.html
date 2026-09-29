@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment door hangers — print sheet</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBF8EF; --paper-warm: #FCF8E8; --paper-card: #FFFBF1;
+    --ink: #14223E; --ink-soft: #2A3756; --ink-muted: #6E4F2F;
+    --red: #B98521; --red-dark: #8C6112; --red-bright: #D29D2E;
+    --rule: #D5C8A9; --rule-deep: #A89572;
+    --green: #4F6B3E;
+    --display: 'Old Standard TT', serif;
+    --body: 'Lora', Georgia, serif;
+    --italic: 'IM Fell DW Pica', 'Lora', Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--body); background: #E8E2D2; color: var(--ink); padding: 28px 16px; -webkit-font-smoothing: antialiased; }
+
+  .screen-only { max-width: 8.5in; margin: 0 auto 24px; background: #FCF8E8; border: 1px solid var(--rule); box-shadow: 4px 4px 0 var(--rule-deep); padding: 20px 24px; }
+  .screen-only h1 { font-family: var(--display); font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .screen-only p, .screen-only li { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+  .screen-only p { margin-bottom: 12px; }
+  .screen-only ul { margin: 0 0 14px 20px; }
+  .toggle { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .toggle button { font-family: var(--body); font-size: 13px; font-weight: 700; padding: 9px 14px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+  .toggle button.on { background: var(--ink); color: var(--paper); }
+  .print-btn { display: inline-block; background: var(--red); color: var(--paper); border: 1px solid var(--red-dark); padding: 11px 20px; font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; box-shadow: 3px 3px 0 var(--ink); cursor: pointer; text-decoration: none; }
+  .print-btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px 0 var(--rule-deep); margin-left: 8px; }
+
+  /* ─── Sheet: letter portrait, two standard 4.25" × 11" hangers side by side ─── */
+  .sheet-wrap { overflow-x: auto; }
+  .sheet {
+    width: 8.5in; height: 11in; margin: 0 auto; background: #fff;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .hanger {
+    position: relative; height: 11in; background: var(--paper);
+    padding: 2.05in 0.3in 0.3in;
+    display: flex; flex-direction: column;
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .hanger:last-child { border-right: 0; }
+
+  /* Doorknob hole + slit (die line) */
+  .hole {
+    position: absolute; top: 0.45in; left: 50%; transform: translateX(-50%);
+    width: 1.35in; height: 1.35in; border-radius: 50%;
+    border: 1.5px dashed var(--red); background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red);
+  }
+  .slit {
+    position: absolute; top: 0; left: 50%; width: 0; height: 0.46in;
+    border-left: 1.5px dashed var(--red); transform: translateX(-0.5px);
+  }
+  .knob-note {
+    position: absolute; top: 1.86in; left: 0; right: 0; text-align: center;
+    font-size: 7px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rule-deep);
+  }
+
+  .eyebrow {
+    text-align: center; font-size: 9px; font-weight: 700; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--red-dark);
+    border-bottom: 1.5px solid var(--red); padding-bottom: 5px; margin: 0 auto 12px;
+    width: max-content; max-width: 100%;
+  }
+  .head { font-family: var(--display); font-weight: 700; font-size: 38px; line-height: 0.98; letter-spacing: -0.02em; text-align: center; }
+  .head em { display: block; font-family: var(--italic); font-style: italic; color: var(--red); margin-top: 4px; }
+
+  .bigstat { margin: 20px 0 0; background: var(--ink); color: var(--paper); text-align: center; padding: 12px 10px 11px; }
+  .bigstat .n { font-family: var(--display); font-weight: 700; font-size: 66px; line-height: 0.95; color: var(--red-bright); letter-spacing: -0.02em; }
+  .bigstat .l { font-size: 12px; line-height: 1.35; margin-top: 5px; color: #DCD6C4; }
+  .bigstat .l strong { color: var(--paper); }
+  .bigstat.blank .n { font-size: 30px; color: var(--paper); }
+  .bigstat.blank .n span { display: inline-block; width: 1.1in; border-bottom: 2px solid var(--red-bright); margin: 0 3px; }
+
+  .key { font-size: 13.5px; line-height: 1.45; color: var(--ink-soft); margin-top: 18px; text-align: center; }
+  .key strong { color: var(--ink); }
+
+  .rows { margin-top: 14px; border-top: 1px solid var(--rule); }
+  .row { display: grid; grid-template-columns: 0.72in 1fr; gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .row .j { font-family: var(--display); font-weight: 700; font-size: 23px; line-height: 1; }
+  .row .t { font-size: 12px; line-height: 1.35; color: var(--ink-soft); }
+  .row .t strong { color: var(--ink); }
+  .row.lo .j { color: var(--green); }
+  .row.hi .j { color: var(--red-dark); }
+
+  .writein { margin-top: 16px; background: var(--paper-card); border: 1px solid var(--rule-deep); padding: 10px 12px; font-size: 12.5px; line-height: 1.9; color: var(--ink-soft); }
+  .writein b { color: var(--ink); }
+  .writein .ln { display: inline-block; width: 0.75in; border-bottom: 1px solid var(--ink); margin: 0 2px; }
+
+  .todo { margin-top: 16px; font-size: 12px; line-height: 1.4; color: var(--ink-soft); }
+  .todo .k { font-size: 9.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red-dark); margin-bottom: 4px; }
+  .todo ul { margin-left: 13px; }
+  .todo li { margin-bottom: 5px; }
+  .todo strong { color: var(--ink); }
+
+  .foot { margin-top: auto; border-top: 2px solid var(--ink); padding-top: 9px; display: grid; grid-template-columns: 1fr 1.05in; gap: 10px; align-items: center; }
+  .foot .kick { font-size: 8.5px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red-dark); }
+  .foot .cta { font-family: var(--display); font-weight: 700; font-size: 16px; line-height: 1.1; margin-top: 3px; }
+  .foot .url { font-family: var(--display); font-weight: 700; font-size: 12.5px; margin-top: 5px; word-break: break-word; }
+  .foot img { width: 1.05in; height: 1.05in; display: block; background: #fff; border: 0.5px solid var(--rule); }
+  .disclaim { font-size: 7.5px; line-height: 1.35; color: var(--ink-muted); margin-top: 7px; }
+
+  @page { size: letter; margin: 0; }
+  @media print {
+    body { background: #fff; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .screen-only { display: none; }
+    .sheet { box-shadow: none; margin: 0; }
+  }
+</style>
+<script src="/assets/beacon.js" defer></script>
+</head>
+<body>
+
+<div class="screen-only">
+  <h1>Assessment door hangers</h1>
+  <p>Two standard 4.25" × 11" hangers per letter sheet. The QR goes to the <a href="/assessment/">"did you out-jump the average?" calculator</a> and is tagged so the site stats show hanger traffic.</p>
+  <div class="toggle" role="group" aria-label="Version">
+    <button type="button" data-v="city" class="on">City of Middleton</button>
+    <button type="button" data-v="town">Town of Middleton</button>
+  </div>
+  <ul>
+    <li><strong>City</strong> version prints the City's +32% figure.</li>
+    <li><strong>Town</strong> version leaves the average blank because the Town did its own revaluation. Once you get the townwide % from Town Hall, write it in (or ask me to print it).</li>
+    <li>Print on <strong>80–100 lb cover stock</strong>. Cut down the center line, cut out the red circle and slit. A print shop can die-cut 4.25 × 11 hangers from the PDF if you're doing hundreds.</li>
+    <li>Doorknobs only. <strong>Never put them in or on mailboxes</strong>; that's a federal no-no.</li>
+  </ul>
+  <p>In the print dialog: <strong>Letter</strong> · <strong>Portrait</strong> · <strong>Margins: None</strong> · <strong>Background graphics: ON</strong>.</p>
+  <button class="print-btn" onclick="window.print()">Print or save as PDF</button>
+  <a class="print-btn ghost" href="/toolkit/">← Toolkit</a>
+</div>
+
+<div class="sheet-wrap"><div class="sheet" id="sheet"></div></div>
+
+<script>
+(function () {
+  function qr(data) {
+    return 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&qzone=1&color=14223E&bgcolor=FFFBF1&data=' + encodeURIComponent(data);
+  }
+
+  var V = {
+    city: {
+      eyebrow: 'City of Middleton · 2026 revaluation',
+      big: '<div class="bigstat"><div class="n">+32%</div><div class="l">How much <strong>all City property</strong> went up in assessed value this year.</div></div>',
+      key: 'Your tax bill doesn\'t follow <strong>your</strong> jump. It follows <strong>your jump compared with +32%.</strong>',
+      rows: [
+        ['lo', '+20%', 'Slower than the City. Your share of taxes <strong>shrinks ~9%</strong>.'],
+        ['',   '+32%', 'Right with the City. <strong>Same share.</strong> Big number, same slice.'],
+        ['hi', '+50%', 'Faster than the City. Your share <strong>grows ~14%</strong>.']
+      ],
+      writein: '<b>Your jump:</b> <span class="ln"></span>% &nbsp;vs.&nbsp; <b>City: +32%</b>',
+      url: 'openseatsmcpasd.org/tax',
+      link: 'https://openseatsmcpasd.org/tax'
+    },
+    town: {
+      eyebrow: 'Town of Middleton · 2026 revaluation',
+      big: '<div class="bigstat blank"><div class="n">+<span></span>%</div><div class="l">The <strong>townwide</strong> jump in assessed value. Nearly every home went up.</div></div>',
+      key: 'Your tax bill doesn\'t follow <strong>your</strong> jump. It follows <strong>your jump compared with the Town\'s.</strong>',
+      rows: [
+        ['lo', 'Less', 'Rose slower than the Town? Your share of taxes <strong>shrinks</strong>.'],
+        ['',   'Same', 'Rose with the Town? <strong>Same share.</strong> Big number, same slice.'],
+        ['hi', 'More', 'Rose faster than the Town? Your share <strong>grows</strong>.']
+      ],
+      writein: '<b>Your jump:</b> <span class="ln"></span>% &nbsp;vs.&nbsp; <b>Town:</b> <span class="ln"></span>%',
+      url: 'openseatsmcpasd.org/tax-town',
+      link: 'https://openseatsmcpasd.org/tax-town'
+    }
+  };
+
+  function hanger(v) {
+    var rows = v.rows.map(function (r) {
+      return '<div class="row ' + r[0] + '"><div class="j">' + r[1] + '</div><div class="t">' + r[2] + '</div></div>';
+    }).join('');
+    return '' +
+      '<div class="hanger">' +
+        '<div class="slit"></div><div class="hole">cut</div>' +
+        '<div class="knob-note">hang on doorknob</div>' +
+        '<div class="eyebrow">' + v.eyebrow + '</div>' +
+        '<div class="head">Your assessment jumped.<em>So did your neighbor\'s.</em></div>' +
+        v.big +
+        '<p class="key">' + v.key + '</p>' +
+        '<div class="rows">' + rows + '</div>' +
+        '<div class="writein">' + v.writein + '</div>' +
+        '<div class="todo"><div class="k">Before your December bill lands</div><ul>' +
+          '<li><strong>Check your property record</strong> for errors (sq ft, baths, basement) on AccessDane.</li>' +
+          '<li><strong>Don\'t panic yet.</strong> If you rose about as much as everyone else, the revaluation alone barely moves your bill.</li>' +
+          '<li><strong>Watch the fall budget hearings.</strong> The levies set there move your bill more than your assessment does.</li>' +
+        '</ul></div>' +
+        '<div class="foot">' +
+          '<div><div class="kick">Check yours in 10 seconds</div>' +
+          '<div class="cta">Did you out-jump the average?</div>' +
+          '<div class="url">' + v.url + '</div></div>' +
+          '<img src="' + qr(v.link) + '" alt="QR code to ' + v.url + '">' +
+        '</div>' +
+        '<p class="disclaim">A neighbor-made explainer. Not affiliated with the City or Town, the assessor, or the school district. Not tax advice.</p>' +
+      '</div>';
+  }
+
+  var sheet = document.getElementById('sheet');
+  function render(key) {
+    sheet.innerHTML = hanger(V[key]) + hanger(V[key]);
+    Array.prototype.forEach.call(document.querySelectorAll('.toggle button'), function (b) {
+      b.classList.toggle('on', b.getAttribute('data-v') === key);
+    });
+    try { history.replaceState(null, '', '?v=' + key); } catch (e) {}
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.toggle button'), function (b) {
+    b.addEventListener('click', function () { render(b.getAttribute('data-v')); });
+  });
+  var start = 'city';
+  try { if (new URLSearchParams(location.search).get('v') === 'town') start = 'town'; } catch (e) {}
+  render(start);
+})();
+</script>
+</body>
+</html>

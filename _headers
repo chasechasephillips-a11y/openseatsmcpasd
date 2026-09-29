@@ -26,6 +26,9 @@
 /sept22/
   Cache-Control: no-cache, must-revalidate
 
+/assessment/
+  Cache-Control: no-cache, must-revalidate
+
 /toolkit/*
   Cache-Control: no-cache, must-revalidate
 

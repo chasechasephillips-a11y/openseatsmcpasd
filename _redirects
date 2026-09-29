@@ -17,6 +17,12 @@
 /watch      /circulate/watch.html    301
 /kids       /circulate/kids.html     301
 
+# 2026 revaluation explainer + its door hangers (QR codes point at /tax and /tax-town)
+/assessment      /assessment/                            301
+/tax             /assessment/?ref=doorhanger-tax         302
+/tax-town        /assessment/?area=town&ref=doorhanger-tax-town  302
+/tax-hangers     /toolkit/tax-hangers.html               301
+
 /handout.pdf  /toolkit/transition  302
 
 # Attributed short links — point QR/links here to auto-tag the source (?ref=)
