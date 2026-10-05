@@ -12,7 +12,13 @@ export async function onRequestGet(context) {
 
   try {
     let rows, headers;
-    if (type === 'volunteers') {
+    if (type === 'yes-volunteers') {
+      const res = await context.env.DB.prepare(
+        'SELECT id, name, email, phone, area, help, note, created_at FROM yes_volunteers ORDER BY created_at DESC'
+      ).all();
+      rows = res.results || [];
+      headers = ['id', 'name', 'email', 'phone', 'area', 'help', 'note', 'created_at'];
+    } else if (type === 'volunteers') {
       const res = await context.env.DB.prepare(
         'SELECT id, name, email, phone, help, created_at FROM volunteers ORDER BY created_at DESC'
       ).all();
