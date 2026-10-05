@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Yes MCPASD</title>
+<meta name="description" content="Vote yes Nov 3 to renew the Middleton-Cross Plains school operating referendum. It replaces the 2022 measure, $0 more in year one. Facts, answers, and a toolkit of ways to help.">
+<meta property="og:title" content="Vote Yes MCPASD · Tue, Nov 3">
+<meta property="og:description" content="It replaces, it doesn't stack. Renew the 2022 school funding with $0 more in year one. Pick a way to help in 15 minutes or less.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://openseatsmcpasd.org/yes/">
+<meta name="theme-color" content="#6E1F2B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: door-hanger language on the web. A maroon halftone masthead,
+     then cream "panels" separated by scalloped edges; one column of reading
+     width with a wider toolkit grid. Brand matches the printed hangers. */
+  :root {
+    --maroon: #6E1F2B;
+    --maroon-deep: #4A121B;
+    --coral: #F2957F;
+    --coral-ink: #A63A2E;
+    --cream: #F6EEE2;
+    --paper: #FFF9F1;
+    --ink: #2B1418;
+    --ink-soft: #5A4246;
+    --rule: #E3D3C2;
+    --on-maroon: #FFF9F1;
+    --ok: #2F6B45;
+    --display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+    --body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --hand: 'Caveat', 'Comic Sans MS', cursive;
+    --wrap: 1080px;
+    --read: 68ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream: #1E1214; --paper: #2A191C; --ink: #F6EEE2; --ink-soft: #CDB9B4;
+      --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream: #1E1214; --paper: #2A191C; --ink: #F6EEE2; --ink-soft: #CDB9B4;
+    --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--coral-ink); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 20px; }
+  h1, h2, h3 { text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(34px, 5.5vw, 54px); line-height: 1; letter-spacing: 0.01em; margin: 0 0 14px; }
+  h2 .c { color: var(--coral-ink); }
+  h3 { font-size: 19px; margin: 0 0 6px; line-height: 1.25; }
+  .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral-ink); margin: 0 0 10px; }
+  .lede { font-size: 19px; color: var(--ink-soft); max-width: var(--read); margin: 0 0 28px; }
+  .hand { font-family: var(--hand); font-weight: 700; }
+
+  /* Top strip */
+  .strip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--maroon-deep); color: var(--on-maroon); font-size: 14px; }
+  .strip .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 18px; padding-block: 9px; }
+  .strip strong { color: var(--coral); }
+  .strip nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .strip nav a { color: var(--on-maroon); text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .strip nav a:hover { color: var(--coral); }
+
+  /* Masthead */
+  .mast { position: relative; overflow: hidden; background-color: var(--maroon); background-image: radial-gradient(rgba(255,255,255,0.07) 1.2px, transparent 1.3px); background-size: 9px 9px; color: var(--on-maroon); }
+  .mast::after { content: "YES"; position: absolute; right: -2vw; bottom: -6vw; font-family: var(--display); font-size: 34vw; line-height: 1; color: rgba(255,255,255,0.05); pointer-events: none; }
+  .mast .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr); gap: 40px; align-items: center; padding-block: 48px 64px; }
+  .stamp { display: inline-flex; align-items: center; gap: 8px; border: 2.5px solid var(--coral); color: var(--coral); padding: 5px 12px; font-family: var(--display); font-size: 18px; letter-spacing: 0.12em; transform: rotate(-4deg); margin-bottom: 22px; }
+  .mast h1 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(64px, 12vw, 132px); line-height: 0.9; margin: 0 0 18px; letter-spacing: 0.005em; }
+  .mast h1 span { display: block; color: var(--coral); }
+  .mast .sub { font-size: 21px; max-width: 34ch; margin: 0 0 26px; color: #F3E4DA; }
+  .mast .sub strong { color: #fff; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; font-family: var(--body); font-weight: 800; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 14px 20px; border-radius: 4px; border: 2px solid transparent; cursor: pointer; }
+  .btn.primary { background: var(--coral); color: var(--maroon-deep); }
+  .btn.primary:hover { background: #F7AE9C; }
+  .btn.ghost { border-color: rgba(255,249,241,0.6); color: var(--on-maroon); }
+  .btn.ghost:hover { border-color: var(--on-maroon); }
+
+  /* Ballot card */
+  .ballot { background: #FFF9F1; color: #2B1418; border-radius: 6px; padding: 22px 22px 18px; box-shadow: 0 18px 40px rgba(0,0,0,0.28); transform: rotate(1.5deg); max-width: 400px; justify-self: end; width: 100%; }
+  .ballot .bt { font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: #6E1F2B; border-bottom: 2px solid #2B1418; padding-bottom: 6px; margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px; }
+  .ballot p { font-size: 13.5px; line-height: 1.45; margin: 0 0 14px; color: #5A4246; }
+  .ballot .opt { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 17px; padding: 6px 0; }
+  .oval { width: 34px; height: 18px; border: 2px solid #2B1418; border-radius: 50%; flex: none; }
+  .oval.on { background: #2B1418; }
+  .ballot .this { font-family: var(--hand); font-size: 26px; color: #A63A2E; font-weight: 700; margin-left: 4px; }
+  .ballot .flip { margin-top: 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6E1F2B; }
+
+  /* Scallop divider */
+  .scallop { height: 18px; background: radial-gradient(circle at 12px 0, var(--maroon) 12px, transparent 12.5px) repeat-x; background-size: 24px 18px; background-color: var(--cream); }
+
+  section.panel { padding-block: 64px; }
+  section.panel + section.panel { border-top: 1px solid var(--rule); }
+
+  /* No overlap timeline */
+  .overlap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; margin: 8px 0 26px; max-width: 760px; }
+  .seg { padding: 16px 18px; border-radius: 4px; }
+  .seg .y { font-family: var(--display); font-size: 28px; line-height: 1; }
+  .seg .l { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; }
+  .seg.old { background: var(--paper); border: 2px dashed var(--rule); color: var(--ink-soft); }
+  .seg.new { background: var(--maroon); color: var(--on-maroon); }
+  .seg.new .l { color: var(--coral); }
+  .seam { display: flex; align-items: center; padding: 0 12px; font-family: var(--hand); font-size: 26px; color: var(--coral-ink); }
+  .pill { display: inline-block; background: var(--coral); color: var(--maroon-deep); font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; }
+
+  /* Amounts table */
+  .amounts { width: 100%; max-width: 760px; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-bottom: 30px; }
+  .amounts th { text-align: left; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); padding: 8px 10px; }
+  .amounts td { padding: 11px 10px; border-bottom: 1px solid var(--rule); }
+  .amounts td.n { font-weight: 800; text-align: right; white-space: nowrap; }
+  .amounts th.n { text-align: right; }
+  .amounts tr.hi td { background: var(--paper); }
+  .tablewrap { overflow-x: auto; }
+
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .fact h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 24px; letter-spacing: 0.01em; }
+  .fact ul { margin: 0; padding-left: 18px; color: var(--ink-soft); }
+  .fact li { margin-bottom: 6px; }
+  .fact li strong { color: var(--ink); }
+  .note { font-size: 14px; color: var(--ink-soft); max-width: var(--read); margin-top: 26px; }
+
+  /* Toolkit */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .chip { font-family: var(--body); font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 99px; border: 2px solid var(--maroon); background: transparent; color: var(--ink); cursor: pointer; }
+  :root[data-theme="dark"] .chip { border-color: var(--coral); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chip { border-color: var(--coral); } }
+  .chip[aria-pressed="true"] { background: var(--maroon); color: var(--on-maroon); border-color: var(--maroon); }
+  .tasks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+  .task { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .task .meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .tag { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+  .tag.t15 { background: #E4EFE6; color: #2F6B45; }
+  .tag.t60 { background: #FBE6D6; color: #8A4A12; }
+  .tag.t120 { background: #F6D9DD; color: #6E1F2B; }
+  .task p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+  .task .how { font-size: 14px; color: var(--ink-soft); border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: auto; }
+  .task .how strong { color: var(--ink); }
+
+  .scripts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 40px; }
+  .script { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 18px; min-width: 0; }
+  .script blockquote { margin: 8px 0 12px; font-size: 15px; line-height: 1.5; padding-left: 12px; border-left: 3px solid var(--coral); white-space: pre-line; }
+  .copy { font-family: var(--body); font-weight: 800; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--maroon); color: var(--on-maroon); border: 0; padding: 8px 12px; border-radius: 3px; cursor: pointer; }
+  .copy.done { background: var(--ok); }
+
+  .rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; margin: 0; padding: 0; list-style: none; }
+  .rules li { padding-left: 30px; position: relative; font-size: 15.5px; }
+  .rules li::before { content: "✓"; position: absolute; left: 0; top: 0; font-weight: 800; color: var(--ok); }
+  .rules li.no::before { content: "✕"; color: var(--coral-ink); }
+
+  .outlets { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .outlets th { text-align: left; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); padding: 6px 10px; }
+  .outlets td { padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .outlets td:nth-child(2) { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .sel { user-select: all; font-weight: 600; word-break: break-all; }
+
+  /* Sign-up form */
+  .signup { background: var(--maroon); color: var(--on-maroon); border-radius: 8px; padding: 32px; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 32px; }
+  .signup h2 { color: var(--on-maroon); }
+  .signup h2 .c { color: var(--coral); }
+  .signup p { color: #F3E4DA; }
+  form .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  label { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 4px; }
+  input[type=text], input[type=email], input[type=tel], select, textarea { width: 100%; font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 4px; border: 1px solid #C79A8F; background: #FFF9F1; color: #2B1418; }
+  textarea { min-height: 70px; resize: vertical; }
+  fieldset { border: 0; padding: 0; margin: 14px 0; }
+  legend { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
+  .checks label { display: flex; gap: 8px; align-items: flex-start; font-weight: 500; font-size: 14.5px; letter-spacing: 0; margin: 0; }
+  .checks input { margin-top: 4px; accent-color: var(--coral); }
+  .field { margin-bottom: 12px; }
+  .formmsg { margin-top: 12px; font-weight: 700; }
+  .formmsg.ok { color: #BFE8CB; }
+  .formmsg.err { color: #FFD3C8; }
+
+  /* Vote plan */
+  .dates { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 780px; }
+  .dates li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .dates .d { font-family: var(--display); font-size: 22px; line-height: 1.1; color: var(--coral-ink); text-transform: uppercase; }
+  .dates .d small { display: block; font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink-soft); }
+  .dates li.big .d { color: var(--maroon); }
+  :root[data-theme="dark"] .dates li.big .d { color: var(--coral); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .dates li.big .d { color: var(--coral); } }
+  .dates li.past { opacity: 0.55; }
+  .dates b { display: block; }
+
+  /* FAQ */
+  .faq { max-width: 820px; }
+  .faq details { border-bottom: 1px solid var(--rule); }
+  .faq summary { cursor: pointer; list-style: none; padding: 16px 36px 16px 0; font-weight: 800; font-size: 18px; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-family: var(--display); font-size: 26px; color: var(--coral-ink); }
+  .faq details[open] summary::after { content: "–"; }
+  .faq .a { padding: 0 0 18px; color: var(--ink-soft); max-width: var(--read); }
+  .faq .a p { margin: 0 0 8px; }
+  .faq .say { font-family: var(--hand); font-size: 22px; color: var(--coral-ink); line-height: 1.2; }
+
+  .donate { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .card { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; }
+  .card p { margin: 0 0 10px; }
+
+  footer { background: var(--maroon-deep); color: #E9D6CF; font-size: 14px; }
+  footer .wrap { padding-block: 34px; display: grid; gap: 10px; }
+  footer .paid { border: 2px solid #E9D6CF; display: inline-block; padding: 6px 12px; font-weight: 800; letter-spacing: 0.06em; color: #fff; justify-self: start; }
+  footer a { color: var(--coral); }
+
+  @media (max-width: 860px) {
+    .mast .wrap, .signup, .donate { grid-template-columns: minmax(0, 1fr); }
+    .ballot { justify-self: start; transform: rotate(1deg); }
+    .facts, .scripts, .rules { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .strip nav { display: none; }
+    .overlap { grid-template-columns: minmax(0, 1fr); }
+    .seam { padding: 4px 0; justify-content: center; }
+    form .row, .checks { grid-template-columns: minmax(0, 1fr); }
+    .dates li { grid-template-columns: 90px minmax(0, 1fr); gap: 12px; }
+    .signup { padding: 22px 18px; }
+    section.panel { padding-block: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="wrap">
+    <div><strong>Vote yes · Tue, Nov 3.</strong> <span id="countdown">Early voting opens Oct 20.</span></div>
+    <nav aria-label="Sections">
+      <a href="#facts">Facts</a>
+      <a href="#help">Help</a>
+      <a href="#vote">Vote</a>
+      <a href="#faq">FAQ</a>
+      <a href="#donate">Donate</a>
+    </nav>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <div>
+      <div class="stamp">★ VOTE ★ YES ★</div>
+      <h1>Vote yes<span>Nov 3</span></h1>
+      <p class="sub">Renew the school funding voters approved in 2022. <strong>It replaces, it doesn't stack.</strong> And it's <strong>$0 more in year one.</strong></p>
+      <div class="ctas">
+        <a class="btn primary" href="#help">Pick a way to help</a>
+        <a class="btn ghost" href="#facts">Get the facts</a>
+        <a class="btn ghost" href="#vote">Make a voting plan</a>
+      </div>
+    </div>
+    <div class="ballot" aria-label="Sample ballot showing the school referendum question">
+      <div class="bt"><span>Middleton-Cross Plains Area School District</span><span>Referendum</span></div>
+      <p>School district question: renew operating funding above the state revenue limit for four years, 2027-28 through 2030-31. <em>(Sample. Read the official wording at myvote.wi.gov.)</em></p>
+      <div class="opt"><span class="oval on" aria-hidden="true"></span> YES <span class="this">← this one!</span></div>
+      <div class="opt"><span class="oval" aria-hidden="true"></span> NO</div>
+      <div class="flip">↻ Flip your ballot over. It's on the back.</div>
+    </div>
+  </div>
+</header>
+<div class="scallop" aria-hidden="true"></div>
+
+<main>
+
+<section class="panel" id="facts">
+  <div class="wrap">
+    <p class="eyebrow">The 60-second version</p>
+    <h2>One ends. <span class="c">One begins.</span></h2>
+    <p class="lede">This is an <strong>operating</strong> referendum. It pays for the day-to-day running of our schools: teachers and staff, class sizes, and programs. The 2022 referendum runs out after the 2026-27 school year. This one picks up the next year. They never overlap.</p>
+
+    <div class="overlap" role="img" aria-label="The 2022 referendum ends after 2026-27; the renewal starts in 2027-28">
+      <div class="seg old"><div class="y">2022 vote</div><div class="l">Ends after 2026-27</div></div>
+      <div class="seam">then</div>
+      <div class="seg new"><div class="y">Nov 3 renewal</div><div class="l">Starts 2027-28</div></div>
+    </div>
+    <p><span class="pill">No overlap · No stacking</span></p>
+
+    <h3 style="margin-top:34px">The amounts are set up front</h3>
+    <div class="tablewrap">
+      <table class="amounts">
+        <thead><tr><th>School year</th><th class="n">Above the state cap</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr class="hi"><td>2027-28</td><td class="n">$24.9M</td><td>Same as today. $0 more in year one.</td></tr>
+          <tr><td>2028-29</td><td class="n">set amount</td><td>Steps up to keep pace with inflation</td></tr>
+          <tr><td>2029-30</td><td class="n">set amount</td><td>Steps up to keep pace with inflation</td></tr>
+          <tr class="hi"><td>2030-31</td><td class="n">$34.6M</td><td>Final year. Then it ends and voters decide again.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <h3>What a yes keeps</h3>
+        <ul>
+          <li><strong>Competitive class sizes</strong></li>
+          <li><strong>Current programs</strong>, in class and after school</li>
+          <li><strong>Pay and benefits</strong> to recruit and keep great staff</li>
+          <li>Upkeep of the buildings we already have</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3>What a no would cost</h3>
+        <ul>
+          <li>Cuts of <strong>nearly 20%</strong> of the operating budget</li>
+          <li>As many as <strong>250 positions</strong></li>
+          <li>Closing an elementary school has been discussed</li>
+          <li>Bigger classes, and a harder time keeping teachers</li>
+        </ul>
+      </div>
+      <div class="fact">
+        <h3>A careful district</h3>
+        <ul>
+          <li><strong>Aa1</strong> credit rating from Moody's</li>
+          <li>Clean independent audit</li>
+          <li>Plans about <strong>$5M in cuts even if this passes</strong></li>
+          <li>The state's top rating, <strong>Significantly Exceeds Expectations</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note"><strong>Why are we voting again?</strong> Wisconsin caps what each district can collect. Since 2009 that cap has grown far slower than costs, and general state aid is flat in the current state budget. Only voters can approve going above the cap. MCPASD voters said yes in 2018 (69%) and 2022 (63%). <strong>What will it cost me?</strong> Nothing more in year one. For later years, check your own home with the district's tax calculator on the <a href="https://www.mcpasd.k12.wi.us/article/3071354/" rel="noopener">district's referendum page</a>.</p>
+  </div>
+</section>
+
+<section class="panel" id="help">
+  <div class="wrap">
+    <p class="eyebrow">The volunteer toolkit</p>
+    <h2>Got 15 minutes? <span class="c">You're hired.</span></h2>
+    <p class="lede">Pick anything below. Sign up at the bottom of this section and a coordinator will get back to you within 48 hours with signs, hangers, lists, or postcards.</p>
+
+    <div class="filters" role="group" aria-label="Filter by time">
+      <button class="chip" type="button" data-f="all" aria-pressed="true">Everything</button>
+      <button class="chip" type="button" data-f="t15" aria-pressed="false">15 minutes or less</button>
+      <button class="chip" type="button" data-f="t60" aria-pressed="false">About an hour</button>
+      <button class="chip" type="button" data-f="t120" aria-pressed="false">A 2-hour shift</button>
+    </div>
+
+    <div class="tasks" id="tasks">
+      <article class="task" data-t="t15"><div class="meta"><h3>Talk to 3</h3><span class="tag t15">15 min</span></div><p>Ask three friends who live in the district to vote yes, and to tell three more. This is the whole campaign in one sentence.</p><div class="how"><strong>How:</strong> use the "Talk to 3" script below. Listen more than you talk.</div></article>
+      <article class="task" data-t="t15"><div class="meta"><h3>Take a yard sign</h3><span class="tag t15">15 min</span></div><p>Put one in your yard, then ask the neighbor with the corner lot to take a second.</p><div class="how"><strong>How:</strong> request one in the form below. Private property only, never the terrace by the curb.</div></article>
+      <article class="task" data-t="t15"><div class="meta"><h3>Post once a week</h3><span class="tag t15">10 min</span></div><p>Share a post with one sentence about why you care. Use #VoteYesMCPASD.</p><div class="how"><strong>How:</strong> copy the social post below and make it yours.</div></article>
+      <article class="task" data-t="t15"><div class="meta"><h3>Text 5 reminders</h3><span class="tag t15">10 min</span></div><p>Text five friends on Oct 20 when early voting opens, and again on Nov 2.</p><div class="how"><strong>How:</strong> the reminder text is below. Personal texts beat any ad.</div></article>
+      <article class="task" data-t="t15"><div class="meta"><h3>Add your name</h3><span class="tag t15">2 min</span></div><p>Join the public list of neighbors voting yes. Names persuade people more than numbers do.</p><div class="how"><strong>How:</strong> tick "Supporter list" in the form.</div></article>
+
+      <article class="task" data-t="t60"><div class="meta"><h3>Write a letter to the editor</h3><span class="tag t60">1 hour</span></div><p>150 to 250 words, one point, your own story. Letters run best between now and mid-October.</p><div class="how"><strong>How:</strong> see where to send it, below. Use your own words, not a form letter.</div></article>
+      <article class="task" data-t="t60"><div class="meta"><h3>Write 20 postcards</h3><span class="tag t60">1 hour</span></div><p>Handwritten notes to neighbors, especially seniors and the outlying towns. Cards and addresses provided.</p><div class="how"><strong>How:</strong> tick "Postcards" and we'll get you a stack.</div></article>
+      <article class="task" data-t="t60"><div class="meta"><h3>Hand out 5 yard signs</h3><span class="tag t60">1 hour</span></div><p>Deliver signs to neighbors who asked for one.</p><div class="how"><strong>How:</strong> tick "Deliver signs." Signs come down by Tue, Nov 10.</div></article>
+      <article class="task" data-t="t60"><div class="meta"><h3>Call 5 businesses</h3><span class="tag t60">1 hour</span></div><p>Ask local businesses to put a sign in the window. Log each yes or no on the shared list.</p><div class="how"><strong>How:</strong> tick "Business signs" and claim names from the call list.</div></article>
+      <article class="task" data-t="t60"><div class="meta"><h3>Post in your neighborhood group</h3><span class="tag t60">30 min</span></div><p>Nextdoor, your HOA list, a Facebook group, your church or club newsletter.</p><div class="how"><strong>How:</strong> link this page and add a line about your own family.</div></article>
+
+      <article class="task" data-t="t120"><div class="meta"><h3>Drop door hangers</h3><span class="tag t120">2 hours</span></div><p>Walk a route with a buddy. No conversations required, which makes it a good fit for introverts.</p><div class="how"><strong>How:</strong> Saturdays Oct 10, 17 and 24, 10am to noon, or your own street any time. Hang on the door, never in the mailbox.</div></article>
+      <article class="task" data-t="t120"><div class="meta"><h3>Knock doors</h3><span class="tag t120">2 hours</span></div><p>Talk with likely supporters on a short list. Script and a quick training provided.</p><div class="how"><strong>How:</strong> open with a question, share one fact, and leave a hanger either way.</div></article>
+      <article class="task" data-t="t120"><div class="meta"><h3>Host a Pie &amp; Info</h3><span class="tag t120">45 min</span></div><p>Have 6 to 12 neighbors over for coffee or pie. No slides, one fact sheet, real questions.</p><div class="how"><strong>How:</strong> welcome, your story, the facts, Q&amp;A, then ask each guest for a voting plan.</div></article>
+      <article class="task" data-t="t120"><div class="meta"><h3>Wave a sign</h3><span class="tag t120">1 hour</span></div><p>Rush hour on a public sidewalk with friends. Never block traffic.</p><div class="how"><strong>How:</strong> tick "Sign wave" and we'll send the spot.</div></article>
+      <article class="task" data-t="t120"><div class="meta"><h3>Drive a neighbor to vote</h3><span class="tag t120">1 hour</span></div><p>Give a ride to early voting or on Nov 3. Rides are fine; anything of value for a vote is not.</p><div class="how"><strong>How:</strong> tick "Rides." Campaign at least 100 feet from any polling entrance.</div></article>
+    </div>
+
+    <div class="scripts">
+      <div class="script">
+        <h3>Talk to 3</h3>
+        <blockquote id="s1">Hey, are you voting Nov 3? There's a school referendum on the back of the ballot. It renews what we passed in 2022, with no increase in year one, and if it fails the district is looking at about a 20% cut. I'm voting yes. Can I count on you too, and maybe tell a couple of friends?</blockquote>
+        <button class="copy" type="button" data-copy="s1">Copy</button>
+      </div>
+      <div class="script">
+        <h3>Social post</h3>
+        <blockquote id="s2">I'm voting YES for MCPASD kids on Nov 3. It renews the 2022 referendum voters already approved, with $0 more in year one, and keeps the class sizes and programs our kids count on. Early voting starts Oct 20. Flip your ballot over, it's on the back! #VoteYesMCPASD</blockquote>
+        <button class="copy" type="button" data-copy="s2">Copy</button>
+      </div>
+      <div class="script">
+        <h3>Reminder text (Oct 20 and Nov 2)</h3>
+        <blockquote id="s3">Quick reminder: the MCPASD school referendum is on the Nov 3 ballot, on the back. Early voting is open at your clerk's office now. Check your polling place at myvote.wi.gov. I'm voting yes!</blockquote>
+        <button class="copy" type="button" data-copy="s3">Copy</button>
+      </div>
+      <div class="script">
+        <h3>Recruit a friend</h3>
+        <blockquote id="s4">Can you spare an hour for our schools? On Nov 3 we vote to renew the MCPASD operating referendum. It replaces the 2022 funding that's expiring, with no increase in year one. Pick one: drop door hangers on your street, take a yard sign, write a short letter to the editor, or text 10 friends when early voting opens Oct 20. Here's the list: openseatsmcpasd.org/yes</blockquote>
+        <button class="copy" type="button" data-copy="s4">Copy</button>
+      </div>
+    </div>
+
+    <div style="margin-top:48px">
+      <h3>Where to send a letter to the editor</h3>
+      <p class="note" style="margin-top:4px">Send to one paper at a time, from your personal email. Lead with your own story and one fact. Best window: now through Oct 16.</p>
+      <div class="tablewrap">
+        <table class="outlets">
+          <thead><tr><th>Paper</th><th>Length</th><th>Send to</th></tr></thead>
+          <tbody>
+            <tr><td>Middleton Times-Tribune</td><td>up to 400 words</td><td><span class="sel">timestribuneeditor@fingerpub.com</span><br><small>Monday noon for Thursday's paper. Last safe Monday: Oct 19.</small></td></tr>
+            <tr><td>Wisconsin State Journal</td><td>200 words</td><td><span class="sel">wsjopine@madison.com</span></td></tr>
+            <tr><td>The Cap Times</td><td>250 words</td><td><span class="sel">tctvoice@madison.com</span></td></tr>
+            <tr><td>Isthmus</td><td>200 words</td><td><span class="sel">edit@isthmus.com</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-top:48px">
+      <h3>Sign and outreach rules, in plain English</h3>
+      <ul class="rules" style="margin-top:12px">
+        <li>Yard signs are fine on private property with the owner's okay. Renters can post them too.</li>
+        <li class="no">No signs in the road right-of-way: terraces, ditches, medians, or utility poles.</li>
+        <li class="no">No signs in parks, on school grounds, or on other public land without permission.</li>
+        <li class="no">Nothing in mailboxes (federal property) or on car windshields. Hand it over or hang it on the door.</li>
+        <li class="no">No campaigning within 100 feet of a polling place or early-voting entrance while voting is open.</li>
+        <li>Every printed piece carries "Paid for by the MCPASD Yes Committee." Texts and social posts don't need it.</li>
+        <li>Teachers and staff can volunteer as private citizens, on their own time and personal email.</li>
+        <li>All signs come down by Tuesday, Nov 10.</li>
+      </ul>
+    </div>
+
+    <div class="signup" id="signup" style="margin-top:56px">
+      <div>
+        <p class="eyebrow" style="color:var(--coral)">Sign me up</p>
+        <h2>Count me <span class="c">in.</span></h2>
+        <p>Tell us what you'd like to do. A coordinator will follow up within 48 hours. Anything checked is a "maybe," not a promise.</p>
+        <p>Questions or sign pickup:<br><span class="sel" style="color:#fff">mcpasdyescommittee@gmail.com</span></p>
+      </div>
+      <form id="vform" novalidate>
+        <div class="row">
+          <div class="field"><label for="v-name">Name</label><input id="v-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="v-email">Email</label><input id="v-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="v-phone">Phone (optional, for texts)</label><input id="v-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="v-area">Where you live</label>
+            <select id="v-area" name="area">
+              <option value="">Choose one</option>
+              <option>City of Middleton</option>
+              <option>Village of Cross Plains</option>
+              <option>Town of Middleton</option>
+              <option>Town of Cross Plains</option>
+              <option>Town of Springfield</option>
+              <option>Town of Berry</option>
+              <option>Town of Westport</option>
+              <option>City of Madison (in MCPASD)</option>
+              <option>Other / not sure</option>
+            </select>
+          </div>
+        </div>
+        <fieldset>
+          <legend>I'd like to help with</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="how" value="Yard sign for me" id="h1"> A yard sign for my yard</label>
+            <label><input type="checkbox" name="how" value="Supporter list" id="h2"> Add me to the supporter list</label>
+            <label><input type="checkbox" name="how" value="Door hangers" id="h3"> Drop door hangers</label>
+            <label><input type="checkbox" name="how" value="Knock doors" id="h4"> Knock doors</label>
+            <label><input type="checkbox" name="how" value="Postcards" id="h5"> Write postcards</label>
+            <label><input type="checkbox" name="how" value="Letter to the editor" id="h6"> Write a letter to the editor</label>
+            <label><input type="checkbox" name="how" value="Deliver signs" id="h7"> Deliver signs</label>
+            <label><input type="checkbox" name="how" value="Business signs" id="h8"> Call businesses about signs</label>
+            <label><input type="checkbox" name="how" value="Host Pie & Info" id="h9"> Host a Pie &amp; Info</label>
+            <label><input type="checkbox" name="how" value="Sign wave" id="h10"> Wave a sign</label>
+            <label><input type="checkbox" name="how" value="Rides" id="h11"> Drive voters</label>
+            <label><input type="checkbox" name="how" value="Donate" id="h12"> Donate</label>
+          </div>
+        </fieldset>
+        <div class="field"><label for="v-note">Anything else? (your street for hangers, a business you know, an idea)</label><textarea id="v-note" name="note"></textarea></div>
+        <button class="btn primary" type="submit" id="v-submit">Sign me up</button>
+        <div class="formmsg" id="v-msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="vote">
+  <div class="wrap">
+    <p class="eyebrow">Your voting plan</p>
+    <h2>Pick your day. <span class="c">Flip it over.</span></h2>
+    <p class="lede">The referendum question is on the back of the ballot. Look up your polling place, registration, and sample ballot at <a href="https://myvote.wi.gov" rel="noopener">myvote.wi.gov</a>. Bring a photo ID.</p>
+    <ul class="dates" id="dates">
+      <li data-end="2026-10-14"><div class="d">Oct 14<small>Wednesday</small></div><div><b>Last day to register online or by mail</b>After that you can still register at your clerk's office or at the polls on Election Day.</div></li>
+      <li data-end="2026-11-01" class="big"><div class="d">Oct 20<small>Tuesday</small></div><div><b>Early in-person voting opens</b>Vote at your municipal clerk's office. City of Middleton: City Clerk, 7426 Hubbard Ave, weekdays 8:30am to 3pm (until 5pm the Friday before). Other towns and the Village of Cross Plains set their own hours, so check with your clerk.</div></li>
+      <li data-end="2026-10-29"><div class="d">Oct 29<small>Thursday, 5pm</small></div><div><b>Deadline to request a mail ballot</b>Request it at myvote.wi.gov, then return it as soon as you can.</div></li>
+      <li data-end="2026-11-01"><div class="d">Nov 1<small>Sunday</small></div><div><b>Early voting ends in most places</b>Hours vary by municipality.</div></li>
+      <li data-end="2026-11-03" class="big"><div class="d">Nov 3<small>Tuesday</small></div><div><b>Election Day, 7am to 8pm</b>If you're in line by 8pm, you can vote. Flip your ballot over and vote yes.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="panel" id="faq">
+  <div class="wrap">
+    <p class="eyebrow">Questions at the door</p>
+    <h2>Straight <span class="c">answers.</span></h2>
+    <div class="faq">
+      <details open><summary>Isn't this a new tax on top of the old one?</summary><div class="a"><p>No. The 2022 referendum ends after 2026-27. This one starts the next year and takes its place. They never overlap.</p><p class="say">It replaces, it doesn't stack.</p></div></details>
+      <details open><summary>Will my taxes go up?</summary><div class="a"><p>Not in year one: it holds the same $24.9M already in place. After that, set amounts step up each year to $34.6M in 2030-31, then it ends. The district's tax calculator shows the amount for your home.</p></div></details>
+      <details><summary>What happens if it fails?</summary><div class="a"><p>Cuts of nearly 20% of the operating budget. As many as 250 positions could go, and closing a school has been discussed. That means bigger classes and a harder time keeping great teachers.</p><p class="say">It's not a raise. It's keeping what we have.</p></div></details>
+      <details><summary>Didn't we just vote on this?</summary><div class="a"><p>Yes, in 2022, when 63% said yes. It was always a four-year approval. This renews it.</p></div></details>
+      <details><summary>I don't have kids in school. Why should I care?</summary><div class="a"><p>Strong schools hold up every home's value on the block. MCPASD earned the state's top rating, Significantly Exceeds Expectations, with its best score ever (84.4).</p></div></details>
+      <details><summary>Isn't the district just spending too much?</summary><div class="a"><p>MCPASD spends about $17,160 per student, within about 2% of the Dane County average. Moody's rates it Aa1, its audit was clean, and it plans about $5M in cuts even if this passes.</p><p class="say">Belt-tightening, not a 20% gutting.</p></div></details>
+      <details><summary>My assessment went up. Doesn't the district get more money?</summary><div class="a"><p>No. The state caps the total the district can collect. When assessments rise, the tax rate drops and the district collects the same capped amount. Your assessment changes your slice, not the size of the pizza. Only voters can make the pizza bigger.</p><p class="say">Your reassessment didn't give the schools a dime more.</p></div></details>
+      <details><summary>Can't the school board just raise the levy?</summary><div class="a"><p>No. State law bars going over the cap, and the state would take back any excess by cutting aid. Only voters can raise it, by referendum.</p></div></details>
+      <details><summary>Why doesn't the state just fix this?</summary><div class="a"><p>It should, and we should push it to. The cap grows $325 per student a year, far below inflation, and general state aid is flat in the current budget. Our kids can't wait for Madison to sort it out.</p><p class="say">Vote yes now. Push the state to fix it for good.</p></div></details>
+      <details><summary>Is it for new buildings or a pool?</summary><div class="a"><p>No. It's an operating referendum for day-to-day costs: teachers, staff, class sizes, programs, and upkeep. New buildings need a separate vote.</p></div></details>
+      <details><summary>Is this forever?</summary><div class="a"><p>No. Four school years, 2027-28 through 2030-31. Then it ends and voters decide again.</p></div></details>
+      <details><summary>I'm on a fixed income. Is there help?</summary><div class="a"><p>Year one adds $0. Wisconsin's Homestead Credit and the lottery credit lower property taxes for many homeowners. Ask your clerk or a tax preparer.</p></div></details>
+      <details><summary>Who's behind this site?</summary><div class="a"><p>Volunteers: parents, retirees, and neighbors in the MCPASD Yes Committee. The school district can share facts, but it can't ask you to vote yes. That's our job.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="donate">
+  <div class="wrap">
+    <p class="eyebrow">Chip in</p>
+    <h2>Signs don't print <span class="c">themselves.</span></h2>
+    <div class="donate">
+      <p class="lede" style="margin:0">Every dollar goes to yard signs, door hangers, and postcards. Gifts of any size help, and so do in-kind donations like printing.</p>
+      <div class="card">
+        <p><strong>Make checks payable to:</strong><br>MCPASD Yes Committee</p>
+        <p><strong>For the mailing address, or to give in kind:</strong><br><span class="sel">mcpasdyescommittee@gmail.com</span></p>
+        <p style="font-size:14px;color:var(--ink-soft);margin:0">Or tick "Donate" in the <a href="#signup">sign-up form</a> and we'll reach out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="paid">Paid for by the MCPASD Yes Committee</span>
+    <span>Questions: <span class="sel">mcpasdyescommittee@gmail.com</span> · #VoteYesMCPASD</span>
+    <span>Made by volunteers. Not produced or paid for by the Middleton-Cross Plains Area School District. Official facts and the tax calculator are on the <a href="https://www.mcpasd.k12.wi.us/article/3071354/" rel="noopener">district's referendum page</a>.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Countdown in the top strip (Central Time). Text is already sensible without JS.
+  var ELECTION = new Date('2026-11-03T07:00:00-06:00');
+  var EARLY = new Date('2026-10-20T00:00:00-05:00');
+  var now = new Date();
+  var cd = document.getElementById('countdown');
+  var days = Math.ceil((ELECTION - now) / 86400000);
+  if (cd) {
+    if (now >= new Date('2026-11-03T20:00:00-06:00')) cd.textContent = 'Polls are closed. Thank you, neighbors.';
+    else if (days <= 0) cd.textContent = 'Today! Polls open 7am to 8pm.';
+    else if (now >= EARLY) cd.textContent = days + (days === 1 ? ' day' : ' days') + ' left. Early voting is open now.';
+    else cd.textContent = days + ' days to go. Early voting opens Oct 20.';
+  }
+
+  // Dim dates that have passed.
+  Array.prototype.forEach.call(document.querySelectorAll('#dates li'), function (li) {
+    var end = new Date(li.getAttribute('data-end') + 'T23:59:59-05:00');
+    if (now > end) li.classList.add('past');
+  });
+
+  // Toolkit filter.
+  var chips = document.querySelectorAll('.chip');
+  Array.prototype.forEach.call(chips, function (c) {
+    c.addEventListener('click', function () {
+      var f = c.getAttribute('data-f');
+      Array.prototype.forEach.call(chips, function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      Array.prototype.forEach.call(document.querySelectorAll('#tasks .task'), function (t) {
+        t.hidden = !(f === 'all' || t.getAttribute('data-t') === f);
+      });
+    });
+  });
+
+  // Copy buttons.
+  Array.prototype.forEach.call(document.querySelectorAll('.copy'), function (b) {
+    b.addEventListener('click', function () {
+      var el = document.getElementById(b.getAttribute('data-copy'));
+      var text = el.textContent.trim();
+      function ok() { b.textContent = 'Copied'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('done'); }, 1800); }
+      function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected, press copy'; }
+      try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (e) { fallback(); }
+    });
+  });
+
+  // Volunteer form.
+  var form = document.getElementById('vform');
+  var msg = document.getElementById('v-msg');
+  var btn = document.getElementById('v-submit');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    if (!name || email.indexOf('@') < 1) {
+      msg.className = 'formmsg err';
+      msg.textContent = 'Add your name and an email address so a coordinator can reach you.';
+      return;
+    }
+    var how = Array.prototype.map.call(form.querySelectorAll('input[name=how]:checked'), function (c) { return c.value; });
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('/api/yes-volunteer', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, phone: form.phone.value, area: form.area.value, how: how, note: form.note.value })
+    }).then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(function () {
+        msg.className = 'formmsg ok';
+        msg.textContent = 'You\'re in, ' + name.split(' ')[0] + '! A coordinator will be in touch within 48 hours.';
+        form.reset();
+      })
+      .catch(function () {
+        msg.className = 'formmsg err';
+        msg.textContent = 'That didn\'t go through. Email mcpasdyescommittee@gmail.com with what you\'d like to do and we\'ll set you up.';
+      })
+      .then(function () { btn.disabled = false; btn.textContent = 'Sign me up'; });
+  });
+})();
+</script>
+</body>
+</html>

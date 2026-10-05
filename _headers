@@ -34,3 +34,6 @@
 
 /assets/*
   Cache-Control: public, max-age=300, must-revalidate
+
+/yes/*
+  Cache-Control: no-cache, must-revalidate
