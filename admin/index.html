@@ -892,7 +892,7 @@
         var notesHtml = notes.length ? notes.join(' · ') : '—';
         var emailLine = r.email ? '<a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a>' : '';
         var phoneLine = r.phone ? '<br><a href="tel:' + esc(r.phone) + '">' + esc(r.phone) + '</a>' : '';
-        var mapsHref = 'https://www.google.com/maps/dir/3795+Swoboda+Road,+Verona,+WI/' + encodeURIComponent(r.address || '');
+        var mapsHref = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(r.address || '');
         var addressLine = r.address
           ? '<a href="' + mapsHref + '" target="_blank" rel="noopener" title="Open directions in Google Maps">' + esc(r.address) + '</a>'
           : '—';
