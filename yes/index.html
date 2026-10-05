@@ -28,6 +28,8 @@
     --ink-soft: #5A4246;
     --rule: #E3D3C2;
     --on-maroon: #FFF9F1;
+    --bar: #D9C6BC;
+    --hi: #6E1F2B;
     --ok: #2F6B45;
     --display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
     --body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
@@ -38,12 +40,12 @@
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --cream: #1E1214; --paper: #2A191C; --ink: #F6EEE2; --ink-soft: #CDB9B4;
-      --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; color-scheme: dark;
+      --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; --bar: #5A4246; --hi: #F2957F; color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --cream: #1E1214; --paper: #2A191C; --ink: #F6EEE2; --ink-soft: #CDB9B4;
-    --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; color-scheme: dark;
+    --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; --bar: #5A4246; --hi: #F2957F; color-scheme: dark;
   }
 
   * { box-sizing: border-box; }
@@ -212,6 +214,35 @@
   footer .paid { border: 2px solid #E9D6CF; display: inline-block; padding: 6px 12px; font-weight: 800; letter-spacing: 0.06em; color: #fff; justify-self: start; }
   footer a { color: var(--coral); }
 
+
+  /* Tax-rate ranking */
+  .ratecard { --lab: 190px; --val: 64px; --px: 20px; position: relative; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 18px var(--px) 34px; max-width: 820px; }
+  .rhead { display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); padding-bottom: 8px; border-bottom: 2px solid var(--ink); margin-bottom: 6px; }
+  .rates { list-style: none; margin: 0; padding: 0; position: relative; }
+  .r { display: grid; grid-template-columns: 28px calc(var(--lab) - 28px) minmax(0, 1fr) var(--val); align-items: center; height: 30px; font-size: 15px; color: var(--ink-soft); }
+  .r .rk { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink-soft); }
+  .r .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px; }
+  .r .tr { position: relative; height: 16px; }
+  .r .br { position: absolute; left: 0; top: 0; bottom: 0; background: var(--bar); border-radius: 0 4px 4px 0; }
+  .r .v { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .r:hover .br { filter: brightness(0.92); }
+  .r.me { height: 40px; color: var(--ink); font-weight: 800; font-size: 17px; }
+  .r.me .rk { color: var(--coral-ink); font-weight: 800; }
+  .r.me .tr { height: 26px; }
+  .r.me .br { background: var(--hi); }
+  .r.me .v { font-size: 19px; color: var(--coral-ink); }
+  .avgline { position: absolute; top: 40px; bottom: 28px; border-left: 2px dashed var(--ink-soft); pointer-events: none; }
+  .avgline span { position: absolute; bottom: -22px; left: -2px; transform: translateX(-50%); font-size: 12px; font-weight: 800; color: var(--ink-soft); white-space: nowrap; background: var(--paper); padding: 0 4px; }
+  .ratefacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 820px; margin-top: 18px; }
+  .ratefacts div { border-top: 3px solid var(--coral); padding-top: 10px; }
+  .ratefacts b { display: block; font-family: var(--display); font-weight: 400; font-size: 34px; line-height: 1; text-transform: uppercase; color: var(--coral-ink); }
+  .ratefacts span { font-size: 15px; color: var(--ink-soft); }
+  @media (max-width: 560px) {
+    .ratecard { --lab: 128px; --val: 52px; --px: 12px; padding: 14px var(--px) 34px; }
+    .r { font-size: 13.5px; }
+    .r.me { font-size: 15px; }
+    .ratefacts { grid-template-columns: minmax(0, 1fr); }
+  }
   @media (max-width: 860px) {
     .mast .wrap, .signup, .donate { grid-template-columns: minmax(0, 1fr); }
     .ballot { justify-self: start; transform: rotate(1deg); }
@@ -236,6 +267,7 @@
     <div><strong>Vote yes · Tue, Nov 3.</strong> <span id="countdown">Early voting opens Oct 20.</span></div>
     <nav aria-label="Sections">
       <a href="#facts">Facts</a>
+      <a href="#rate">Tax rate</a>
       <a href="#help">Help</a>
       <a href="#vote">Vote</a>
       <a href="#faq">FAQ</a>
@@ -326,6 +358,38 @@
     </div>
 
     <p class="note"><strong>Why are we voting again?</strong> Wisconsin caps what each district can collect. Since 2009 that cap has grown far slower than costs, and general state aid is flat in the current state budget. Only voters can approve going above the cap. MCPASD voters said yes in 2018 (69%) and 2022 (63%). <strong>What will it cost me?</strong> Nothing more in year one. For later years, check your own home with the district's tax calculator on the <a href="https://www.mcpasd.k12.wi.us/article/3071354/" rel="noopener">district's referendum page</a>.</p>
+  </div>
+</section>
+
+<section class="panel" id="rate">
+  <div class="wrap">
+    <p class="eyebrow">School tax rate · Dane County</p>
+    <h2>One of the lowest <span class="c">school tax rates around.</span></h2>
+    <p class="lede">MCPASD's school tax rate is <strong>$8.62 per $1,000</strong> of property value: 4th lowest of 13 Dane County districts, well below the $9.26 average, and $2.04 below Verona.</p>
+    <div class="ratecard" role="img" aria-label="School tax rates per $1,000 of property value for 13 Dane County districts, 2025-26, lowest first. Stoughton 7.97, Mount Horeb 8.46, Waunakee 8.60, MCPASD 8.62, then McFarland 8.89 up to Verona 10.66. The average is 9.26.">
+      <div class="rhead"><span>Lowest first</span><span>Per $1,000 of value</span></div>
+      <ol class="rates">
+      <li class="r" title="Stoughton: $7.97 per $1,000 of property value, 2025-26"><span class="rk">1</span><span class="nm">Stoughton</span><span class="tr"><span class="br" style="width:72.45%"></span></span><span class="v">$7.97</span></li>
+      <li class="r" title="Mount Horeb: $8.46 per $1,000 of property value, 2025-26"><span class="rk">2</span><span class="nm">Mount Horeb</span><span class="tr"><span class="br" style="width:76.91%"></span></span><span class="v">$8.46</span></li>
+      <li class="r" title="Waunakee: $8.60 per $1,000 of property value, 2025-26"><span class="rk">3</span><span class="nm">Waunakee</span><span class="tr"><span class="br" style="width:78.18%"></span></span><span class="v">$8.60</span></li>
+      <li class="r me" title="MCPASD: $8.62 per $1,000 of property value, 2025-26"><span class="rk">4</span><span class="nm">MCPASD</span><span class="tr"><span class="br" style="width:78.36%"></span></span><span class="v">$8.62</span></li>
+      <li class="r" title="McFarland: $8.89 per $1,000 of property value, 2025-26"><span class="rk">5</span><span class="nm">McFarland</span><span class="tr"><span class="br" style="width:80.82%"></span></span><span class="v">$8.89</span></li>
+      <li class="r" title="DeForest: $9.00 per $1,000 of property value, 2025-26"><span class="rk">6</span><span class="nm">DeForest</span><span class="tr"><span class="br" style="width:81.82%"></span></span><span class="v">$9.00</span></li>
+      <li class="r" title="Belleville: $9.06 per $1,000 of property value, 2025-26"><span class="rk">7</span><span class="nm">Belleville</span><span class="tr"><span class="br" style="width:82.36%"></span></span><span class="v">$9.06</span></li>
+      <li class="r" title="Oregon: $9.29 per $1,000 of property value, 2025-26"><span class="rk">8</span><span class="nm">Oregon</span><span class="tr"><span class="br" style="width:84.45%"></span></span><span class="v">$9.29</span></li>
+      <li class="r" title="Wisconsin Heights: $9.38 per $1,000 of property value, 2025-26"><span class="rk">9</span><span class="nm">Wisconsin Heights</span><span class="tr"><span class="br" style="width:85.27%"></span></span><span class="v">$9.38</span></li>
+      <li class="r" title="Madison: $10.14 per $1,000 of property value, 2025-26"><span class="rk">10</span><span class="nm">Madison</span><span class="tr"><span class="br" style="width:92.18%"></span></span><span class="v">$10.14</span></li>
+      <li class="r" title="Monona Grove: $10.15 per $1,000 of property value, 2025-26"><span class="rk">11</span><span class="nm">Monona Grove</span><span class="tr"><span class="br" style="width:92.27%"></span></span><span class="v">$10.15</span></li>
+      <li class="r" title="Sun Prairie: $10.21 per $1,000 of property value, 2025-26"><span class="rk">12</span><span class="nm">Sun Prairie</span><span class="tr"><span class="br" style="width:92.82%"></span></span><span class="v">$10.21</span></li>
+      <li class="r" title="Verona: $10.66 per $1,000 of property value, 2025-26"><span class="rk">13</span><span class="nm">Verona</span><span class="tr"><span class="br" style="width:96.91%"></span></span><span class="v">$10.66</span></li>
+      </ol>
+      <div class="avgline" style="left:calc(var(--px) + var(--lab) + (100% - 2 * var(--px) - var(--lab) - var(--val)) * 0.8422)"><span>Avg $9.26</span></div>
+    </div>
+    <div class="ratefacts">
+      <div><b>$816 less</b><span>school tax a year on a $400,000 home than the same home in Verona</span></div>
+      <div><b>$256 less</b><span>than the 13-district average on that same $400,000 home</span></div>
+    </div>
+    <p class="note">Source: Wisconsin DPI, 2025-26 equalized school tax rates (the same measure for every district, so it's apples to apples). Your actual bill depends on your assessment and state credits.</p>
   </div>
 </section>
 
