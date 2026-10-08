@@ -5,6 +5,7 @@ A one-page static site for the Nov. 3, 2026 MCPASD operating referendum. It has 
 ```
 renew/
   ACTION_PLAN.md   ← the campaign plan (NOT deployed)
+  ADS_PLAYBOOK.md  ← Google Ads build, copy-paste ready (NOT deployed)
   README.md        ← this file (NOT deployed)
   site/            ← the only folder that gets deployed
     index.html  og-image.png  favicon.svg  robots.txt  sitemap.xml  _headers  _redirects
@@ -36,7 +37,7 @@ Then go to **Pages → voteyesmcpasd → Custom domains** and add the domain.
 - [ ] **Delete the `noindex` line** near the top of `site/index.html`. It's marked `DRAFT`. If you skip this, Google will never show the page.
 - [ ] Find and replace the placeholders if you change them:
   - `voteyesmcpasd.org` → your domain (in `index.html`, `robots.txt`, `sitemap.xml`)
-  - `Vote YES to Renew MCPASD` → the committee's exact registered name (the "Paid for by" line in the footer)
+  - `Vote Yes to Renew MCPASD` → the committee's exact registered name (the "Paid for by" line in the footer)
   - `hello@voteyesmcpasd.org` → your real inbox
 - [ ] Work through **§8 "Verify before you print"** in `ACTION_PLAN.md`
 - [ ] Pages → **Web Analytics** → enable (free, cookieless)

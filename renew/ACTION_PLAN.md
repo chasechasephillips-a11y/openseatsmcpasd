@@ -18,9 +18,9 @@
 
 | # | Do this | Why |
 |---|---------|-----|
-| 1 | **Pick the name and domain.** Name: **"Vote YES to Renew MCPASD."** Domain: **`voteyesmcpasd.org`** (see options below). Check it's available, then buy it on Cloudflare Registrar (about $10). | Keep it **separate from Open Seats**. That was a no-PAC civic-process campaign, and some of its 605 signers will vote no. Don't email that list about this. |
+| 1 | **Pick the name and domain.** Name: **"Vote Yes to Renew MCPASD"** (title case for the legal name, since Google can reject all-caps "YES" in ads; the logo can still say YES). Domain: **`voteyesmcpasd.org`** (see options below). Check it's available, then buy it on Cloudflare Registrar (about $10). | Keep it **separate from Open Seats**. That was a no-PAC civic-process campaign, and some of its 605 signers will vote no. Don't email that list about this. |
 | 2 | **Set up the money side.** Open a separate bank account and track every dollar. If you'll raise or spend **more than $10,000** in 2026, register as a referendum committee with the **MCPASD school district clerk (Form CF-1)** *before* you cross it. Questions: WI Ethics Commission, (608) 266-8123. | WI law. |
-| 3 | **Put "Paid for by Vote YES to Renew MCPASD" on everything:** site, signs, door hangers, ads. The name must match the registration exactly. | Required by WI law on referendum materials since 2023. |
+| 3 | **Put "Paid for by Vote Yes to Renew MCPASD" on everything:** site, signs, door hangers, ads. The name must match the registration exactly. | Required by WI law on referendum materials since 2023. |
 | 4 | **Guardrails for insiders.** District staff, board members and PTO officers act **only as individuals**: personal time, personal email, no district or PTO resources. A PTO shouldn't take a position until it has checked its bylaws and tax status. | Districts can share facts, not advocate. One slip becomes the No side's headline. |
 | 5 | **Verify the numbers** (see §8) against the district's referendum FAQ and your MyVote sample ballot. | My environment couldn't reach the district site directly. Every figure is sourced, but check before you print. |
 | 6 | **Start ad-account approvals now.** Meta requires "social issues, elections or politics" authorization (an ID check that takes days). Set up Google Ads and finish any verification it asks for. | These are the slowest steps. Don't let them eat Week 1. |
@@ -71,11 +71,13 @@ Searches spike at three moments. Put about 70% of the ad budget into them:
 Google usually pauses election ads after polls close, so don't hold any budget back for later.
 
 ### Google Search ads (the only way to show up first by Oct. 20)
+> **Full build, with every keyword, ad and setting: `ADS_PLAYBOOK.md`.** The summary is below.
+
 - **Geo:** ZIPs 53562 (Middleton) and 53528 (Cross Plains), plus a pin or radius covering the district's west Madison and town areas. Check against the district boundary map and **exclude** neighboring districts where you can.
 - **Keywords** (phrase match): `how should i vote in november`, `how to vote november 3`, `what's on my ballot`, `sample ballot`, `middleton referendum`, `mcpasd referendum`, `middleton cross plains referendum`, `middleton school referendum 2026`, `cross plains school referendum`, `middleton property taxes`, `middleton school taxes`.
 - **Ad copy** (fits Google's limits):
   - Headlines: `How Should I Vote on Nov. 3?` · `MCPASD Referendum Explained` · `Year One Costs $0 More` · `Property Tax Myths, Busted`
-  - Descriptions: `The school question at the end of your ballot renews funding that expires this year.` · `Real tax numbers for your home + how to vote early. Paid for by Vote YES to Renew MCPASD.`
+  - Descriptions: `The school question at the end of your ballot renews funding that expires this year.` · `Real tax numbers for your home + how to vote early. Paid for by Vote Yes to Renew MCPASD.`
 - **Final URL:** `voteyesmcpasd.org/ad`
 - **Budget:** $20–40/day. Local searches are cheap and low-volume, so you may not even spend it all.
 - **Also bid on your own name** (`vote yes mcpasd`) so news stories and any No group can't take the top spot.
