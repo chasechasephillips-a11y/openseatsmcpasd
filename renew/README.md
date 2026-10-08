@@ -1,4 +1,4 @@
-# Renew MCPASD: site + deploy
+# Vote YES to Renew MCPASD: site + deploy
 
 A one-page static site for the Nov. 3, 2026 MCPASD operating referendum. It has no build step, no database and no forms, and the page works with JavaScript off (JS only powers the tax calculator and the copy-link button).
 
@@ -36,7 +36,7 @@ Then go to **Pages → renewmcpasd → Custom domains** and add the domain.
 - [ ] **Delete the `noindex` line** near the top of `site/index.html`. It's marked `DRAFT`. If you skip this, Google will never show the page.
 - [ ] Find and replace the placeholders if you change them:
   - `renewmcpasd.org` → your domain (in `index.html`, `robots.txt`, `sitemap.xml`)
-  - `Renew MCPASD` → the committee's exact registered name (the "Paid for by" line in the footer)
+  - `Vote YES to Renew MCPASD` → the committee's exact registered name (the "Paid for by" line in the footer)
   - `hello@renewmcpasd.org` → your real inbox
 - [ ] Work through **§8 "Verify before you print"** in `ACTION_PLAN.md`
 - [ ] Pages → **Web Analytics** → enable (free, cookieless)
