@@ -27,3 +27,8 @@
 /fb-emily     /?ref=fb-emily      302
 /fb-tabitha   /?ref=fb-tabitha    302
 /s-chase      /?ref=share-chase   302
+
+# The Renew MCPASD referendum site lives in /renew and deploys as its own
+# Cloudflare Pages project. Never serve it (or its campaign plan) here.
+/renew      /    302
+/renew/*    /    302

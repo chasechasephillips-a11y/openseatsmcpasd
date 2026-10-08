@@ -1,0 +1,11 @@
+# Short links for print, signs and ads. ?ref= tags the source in Cloudflare Web Analytics.
+/sign     /#help            302
+/yard     /?ref=yardsign     302
+/door     /?ref=doorhanger   302
+/card     /?ref=card         302
+/ad       /?ref=google-ad    302
+/fb       /?ref=facebook     302
+/nd       /?ref=nextdoor     302
+/myths    /#myths            302
+/cost     /#cost             302
+/vote     /#vote             302
