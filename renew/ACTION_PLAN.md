@@ -1,5 +1,7 @@
 # Vote YES to Renew MCPASD: 26-Day Action Plan
 
+> **Day-by-day to-dos, who to email and email scripts: `RUN_OF_SHOW.md`.**
+
 **Goal:** When an MCPASD voter asks Google (or their phone, or an AI) "how should I vote in November?", they land on a clear, honest reason to vote **YES** on the school question.
 
 **Election:** Tue, Nov. 3, 2026 · **Today:** Thu, Oct. 8 · **Early voting opens:** Tue, Oct. 20
@@ -36,6 +38,7 @@
 | `yesformcpasd.org` | The classic "Yes for ___" referendum format. | "for" or "4"? Gets garbled when spoken. |
 | `voteyestorenewmcpasd.org` | Exact committee name. | 24 characters. Too long for a yard sign, and typo city. |
 | `yesmiddletonschools.org` | No acronym, and good for "Middleton schools" searches. | Leaves out Cross Plains, and there are Middletons in other states. |
+| `mcpasdyes.org` | **The 2022 Yes committee's old domain.** It has lapsed but is still in Google's index, which is an instant SEO head start. | Talk to the 2022 organizers first (see `RUN_OF_SHOW.md` #1). Grabbing it without asking would start things off badly. |
 | `keepmcpasdstrong.org` | Warm, and doesn't sound like a tax. | Never actually says "vote yes." |
 
 **Recommendation:** buy `voteyesmcpasd.org` as the main site. Also buy `voteyesmcpasd.com` and `renewmcpasd.org` (about $10 each) and redirect them, so people who type ".com" or the old name still land on it. **Avoid** anything like `mcpasdreferendum.org` that looks official. It would rank well, but it would read as the district's site, and the No side would call it deceptive.

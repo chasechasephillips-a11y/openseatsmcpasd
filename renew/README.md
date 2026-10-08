@@ -6,6 +6,7 @@ A one-page static site for the Nov. 3, 2026 MCPASD operating referendum. It has 
 renew/
   ACTION_PLAN.md   ← the campaign plan (NOT deployed)
   ADS_PLAYBOOK.md  ← Google Ads build, copy-paste ready (NOT deployed)
+  RUN_OF_SHOW.md   ← who to email, what to do, and when (NOT deployed)
   README.md        ← this file (NOT deployed)
   site/            ← the only folder that gets deployed
     index.html  og-image.png  favicon.svg  robots.txt  sitemap.xml  _headers  _redirects
