@@ -25,19 +25,19 @@ npx wrangler pages dev renew/site
 Keep it separate from Open Seats: a different project and a different domain.
 
 ```
-wrangler pages project create renewmcpasd --production-branch=main
-wrangler pages deploy renew/site --project-name=renewmcpasd --branch=main
+wrangler pages project create voteyesmcpasd --production-branch=main
+wrangler pages deploy renew/site --project-name=voteyesmcpasd --branch=main
 ```
 
-Then go to **Pages → renewmcpasd → Custom domains** and add the domain.
+Then go to **Pages → voteyesmcpasd → Custom domains** and add the domain.
 
 ## Launch checklist
 
 - [ ] **Delete the `noindex` line** near the top of `site/index.html`. It's marked `DRAFT`. If you skip this, Google will never show the page.
 - [ ] Find and replace the placeholders if you change them:
-  - `renewmcpasd.org` → your domain (in `index.html`, `robots.txt`, `sitemap.xml`)
+  - `voteyesmcpasd.org` → your domain (in `index.html`, `robots.txt`, `sitemap.xml`)
   - `Vote YES to Renew MCPASD` → the committee's exact registered name (the "Paid for by" line in the footer)
-  - `hello@renewmcpasd.org` → your real inbox
+  - `hello@voteyesmcpasd.org` → your real inbox
 - [ ] Work through **§8 "Verify before you print"** in `ACTION_PLAN.md`
 - [ ] Pages → **Web Analytics** → enable (free, cookieless)
 - [ ] Google Search Console: add the domain, submit `/sitemap.xml`, and use **Request indexing** on `/`

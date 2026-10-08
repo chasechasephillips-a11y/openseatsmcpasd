@@ -18,7 +18,7 @@
 
 | # | Do this | Why |
 |---|---------|-----|
-| 1 | **Pick the name and domain.** Name: **"Vote YES to Renew MCPASD."** Working domain is `renewmcpasd.org` (or `voteyesmcpasd.org`). Check it's available, then buy it on Cloudflare Registrar (about $10). | Keep it **separate from Open Seats**. That was a no-PAC civic-process campaign, and some of its 605 signers will vote no. Don't email that list about this. |
+| 1 | **Pick the name and domain.** Name: **"Vote YES to Renew MCPASD."** Domain: **`voteyesmcpasd.org`** (see options below). Check it's available, then buy it on Cloudflare Registrar (about $10). | Keep it **separate from Open Seats**. That was a no-PAC civic-process campaign, and some of its 605 signers will vote no. Don't email that list about this. |
 | 2 | **Set up the money side.** Open a separate bank account and track every dollar. If you'll raise or spend **more than $10,000** in 2026, register as a referendum committee with the **MCPASD school district clerk (Form CF-1)** *before* you cross it. Questions: WI Ethics Commission, (608) 266-8123. | WI law. |
 | 3 | **Put "Paid for by Vote YES to Renew MCPASD" on everything:** site, signs, door hangers, ads. The name must match the registration exactly. | Required by WI law on referendum materials since 2023. |
 | 4 | **Guardrails for insiders.** District staff, board members and PTO officers act **only as individuals**: personal time, personal email, no district or PTO resources. A PTO shouldn't take a position until it has checked its bylaws and tax status. | Districts can share facts, not advocate. One slip becomes the No side's headline. |
@@ -42,26 +42,54 @@
 
 ---
 
-## 3. Owning the Google search
+## 3. Being the first stop
 
-### Paid: Google Search ads (the only way to show up first by Oct. 20)
+People get to "how should I vote" through four doors. Be at all four.
+
+| Door | How voters use it | How you win it |
+|------|-------------------|----------------|
+| **1. Asking people they trust** (the biggest one) | "Anyone know about the school referendum?" in a Facebook group, on Nextdoor, or in a group text | A **rapid-response squad** (below) |
+| **2. Google** | "how should I vote," "Middleton referendum" | Ads now, organic search by mid-Oct. (below) |
+| **3. AI answers** | Google's AI Overview, ChatGPT, Siri | Plain Q&A with sources, Bing indexing, a Reddit thread (below) |
+| **4. What they walk past** | Yard signs, door hangers, the school pickup line | **`voteyesmcpasd.org` printed BIG** on every sign and hanger. That's 200 billboards. |
+
+### Rapid-response squad (do this first; it costs nothing)
+- **5 people**, each assigned to watch 2–3 local Facebook groups or Nextdoor (Middleton and Cross Plains community groups, parent groups, neighborhood groups). Join the groups **now**, as residents. Some groups need days to approve new members.
+- When anyone asks about the referendum, **reply within the hour** with a one-sentence answer and the link. The first good answer gets the likes, and the thread pins itself to the top.
+- **Reply scripts** (save these to your phone):
+  - *"What is it?"* → "It renews the 2022 school funding that runs out this year. Year one is $0 more on your bill. Two-minute version with the real numbers: voteyesmcpasd.org"
+  - *"My taxes are already too high"* → "Totally fair. Here's what it actually costs per $100K, plus what a No vote would save. They show both: voteyesmcpasd.org/cost"
+  - *"I heard it's a new tax"* → "It's a renewal. It replaces the 2022 one, it doesn't add to it. Myths vs. facts: voteyesmcpasd.org/myths"
+- **Be kind, be brief, and never argue twice.** You're writing for the 50 people reading quietly, not for the one commenter.
+
+### Spend on the spikes
+Searches spike at three moments. Put about 70% of the ad budget into them:
+1. **Oct. 20–21:** early voting opens
+2. **Oct. 31–Nov. 1:** the last early-voting weekend
+3. **Nov. 2–3:** the night before, and Election Day morning ("what's on my ballot")
+
+Google usually pauses election ads after polls close, so don't hold any budget back for later.
+
+### Google Search ads (the only way to show up first by Oct. 20)
 - **Geo:** ZIPs 53562 (Middleton) and 53528 (Cross Plains), plus a pin or radius covering the district's west Madison and town areas. Check against the district boundary map and **exclude** neighboring districts where you can.
 - **Keywords** (phrase match): `how should i vote in november`, `how to vote november 3`, `what's on my ballot`, `sample ballot`, `middleton referendum`, `mcpasd referendum`, `middleton cross plains referendum`, `middleton school referendum 2026`, `cross plains school referendum`, `middleton property taxes`, `middleton school taxes`.
 - **Ad copy** (fits Google's limits):
   - Headlines: `How Should I Vote on Nov. 3?` · `MCPASD Referendum Explained` · `Year One Costs $0 More` · `Property Tax Myths, Busted`
   - Descriptions: `The school question at the end of your ballot renews funding that expires this year.` · `Real tax numbers for your home + how to vote early. Paid for by Vote YES to Renew MCPASD.`
-- **Final URL:** `renewmcpasd.org/?ref=google-ad`
+- **Final URL:** `voteyesmcpasd.org/ad`
 - **Budget:** $20–40/day. Local searches are cheap and low-volume, so you may not even spend it all.
-- **Heads-up:** Google usually pauses election ads after polls close. Front-load the spend.
+- **Also bid on your own name** (`vote yes mcpasd`) so news stories and any No group can't take the top spot.
 
-### Organic: own the local searches
+### Organic search: own the local results
 - The page is already built for this: the title and H1 match "How should I vote on Nov. 3?", it has an FAQ with structured data, it's fast, and it works without JavaScript.
 - **Get 8–10 local links** in Week 1: PTO newsletters and Facebook pages (from members, as individuals), neighborhood associations, local business pages, a letter to the editor in the *Middleton Times-Tribune* (check their election-letter cutoff now).
 - **Post an explainer on r/madisonwi** and say up front that you're with the Yes side. Reddit threads rank fast on Google for local "how should I vote" questions.
 - **Make a 60-second video** ("The school question in 60 seconds") for YouTube, Facebook and Instagram. YouTube results show up in Google, too.
 
 ### AI answers (Google AI Overviews, ChatGPT, Perplexity)
-- They favor pages with plain Q&A and cited sources. The site has both. Keep the numbers consistent everywhere so the AI doesn't find conflicting figures.
+- They favor pages with plain Q&A and cited sources, and the site has both. AI tools also lean heavily on Reddit, so the r/madisonwi thread does double duty.
+- Keep the numbers identical everywhere (site, posts, letters) so the AI doesn't find conflicting figures and hedge.
+- **Test it weekly:** ask ChatGPT and Google "how should I vote on the Middleton school referendum" and see what comes back.
 
 ---
 

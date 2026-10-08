@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://renewmcpasd.org/sitemap.xml
+Sitemap: https://voteyesmcpasd.org/sitemap.xml
