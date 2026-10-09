@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Yes MCPASD</title>
-<meta name="description" content="Vote yes Nov 3 to renew the Middleton-Cross Plains school operating referendum. It replaces the 2022 measure, $0 more in year one. Facts, answers, and a toolkit of ways to help.">
+<title>Vote Yes MCPASD | Middleton-Cross Plains School Referendum, Nov 3, 2026</title>
+<meta name="description" content="The Middleton-Cross Plains Area School District (MCPASD) referendum on the Nov 3, 2026 ballot renews the 2022 operating referendum with $0 more in year one. Facts, tax impact, FAQ, how to vote, and ways to help.">
+<link rel="canonical" href="https://openseatsmcpasd.org/yes/">
+<meta property="og:image" content="https://openseatsmcpasd.org/yes/og-yes.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://openseatsmcpasd.org/yes/og-yes.png">
+<link rel="icon" href="/yes/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Vote Yes MCPASD · Tue, Nov 3">
 <meta property="og:description" content="It replaces, it doesn't stack. Renew the 2022 school funding with $0 more in year one. Pick a way to help in 15 minutes or less.">
 <meta property="og:type" content="website">
@@ -13,252 +20,53 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<style>
-  /* Layout: door-hanger language on the web. A maroon halftone masthead,
-     then cream "panels" separated by scalloped edges; one column of reading
-     width with a wider toolkit grid. Brand matches the printed hangers. */
-  :root {
-    --maroon: #6E1F2B;
-    --maroon-deep: #4A121B;
-    --coral: #F2957F;
-    --coral-ink: #A63A2E;
-    --cream: #F6EEE2;
-    --paper: #FFF9F1;
-    --ink: #2B1418;
-    --ink-soft: #5A4246;
-    --rule: #E3D3C2;
-    --on-maroon: #FFF9F1;
-    --bar: #D9C6BC;
-    --hi: #6E1F2B;
-    --ok: #2F6B45;
-    --display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
-    --body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
-    --hand: 'Caveat', 'Comic Sans MS', cursive;
-    --wrap: 1080px;
-    --read: 68ch;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --cream: #1E1214; --paper: #2A191C; --ink: #F6EEE2; --ink-soft: #CDB9B4;
-      --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; --bar: #5A4246; --hi: #F2957F; color-scheme: dark;
+<link rel="stylesheet" href="/yes/yes.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://openseatsmcpasd.org/yes/#org",
+   "name": "MCPASD Yes Committee",
+   "url": "https://openseatsmcpasd.org/yes/",
+   "email": "mcpasdyescommittee@gmail.com",
+   "description": "Volunteer committee supporting a yes vote on the Middleton-Cross Plains Area School District operating referendum, Nov 3, 2026."
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://openseatsmcpasd.org/yes/#site",
+   "name": "Vote Yes MCPASD",
+   "url": "https://openseatsmcpasd.org/yes/",
+   "publisher": {
+    "@id": "https://openseatsmcpasd.org/yes/#org"
+   }
+  },
+  {
+   "@type": "Event",
+   "name": "Nov 3, 2026 election: MCPASD school referendum",
+   "startDate": "2026-11-03T07:00:00-06:00",
+   "endDate": "2026-11-03T20:00:00-06:00",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "eventStatus": "https://schema.org/EventScheduled",
+   "location": {
+    "@type": "Place",
+    "name": "Your polling place in the Middleton-Cross Plains Area School District",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Middleton",
+     "addressRegion": "WI",
+     "addressCountry": "US"
     }
+   },
+   "description": "Vote on the Middleton-Cross Plains Area School District operating referendum. Polls open 7am to 8pm.",
+   "organizer": {
+    "@id": "https://openseatsmcpasd.org/yes/#org"
+   }
   }
-  :root[data-theme="dark"] {
-    --cream: #1E1214; --paper: #2A191C; --ink: #F6EEE2; --ink-soft: #CDB9B4;
-    --rule: #4A3236; --coral-ink: #F2957F; --ok: #7CC596; --bar: #5A4246; --hi: #F2957F; color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
-  a { color: var(--coral-ink); text-underline-offset: 3px; }
-  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
-  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 20px; }
-  h1, h2, h3 { text-wrap: balance; }
-  h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(34px, 5.5vw, 54px); line-height: 1; letter-spacing: 0.01em; margin: 0 0 14px; }
-  h2 .c { color: var(--coral-ink); }
-  h3 { font-size: 19px; margin: 0 0 6px; line-height: 1.25; }
-  .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral-ink); margin: 0 0 10px; }
-  .lede { font-size: 19px; color: var(--ink-soft); max-width: var(--read); margin: 0 0 28px; }
-  .hand { font-family: var(--hand); font-weight: 700; }
-
-  /* Top strip */
-  .strip { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--maroon-deep); color: var(--on-maroon); font-size: 14px; }
-  .strip .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 18px; padding-block: 9px; }
-  .strip strong { color: var(--coral); }
-  .strip nav { display: flex; flex-wrap: wrap; gap: 4px 16px; }
-  .strip nav a { color: var(--on-maroon); text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
-  .strip nav a:hover { color: var(--coral); }
-
-  /* Masthead */
-  .mast { position: relative; overflow: hidden; background-color: var(--maroon); background-image: radial-gradient(rgba(255,255,255,0.07) 1.2px, transparent 1.3px); background-size: 9px 9px; color: var(--on-maroon); }
-  .mast::after { content: "YES"; position: absolute; right: -2vw; bottom: -6vw; font-family: var(--display); font-size: 34vw; line-height: 1; color: rgba(255,255,255,0.05); pointer-events: none; }
-  .mast .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr); gap: 40px; align-items: center; padding-block: 48px 64px; }
-  .stamp { display: inline-flex; align-items: center; gap: 8px; border: 2.5px solid var(--coral); color: var(--coral); padding: 5px 12px; font-family: var(--display); font-size: 18px; letter-spacing: 0.12em; transform: rotate(-4deg); margin-bottom: 22px; }
-  .mast h1 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(64px, 12vw, 132px); line-height: 0.9; margin: 0 0 18px; letter-spacing: 0.005em; }
-  .mast h1 span { display: block; color: var(--coral); }
-  .mast .sub { font-size: 21px; max-width: 34ch; margin: 0 0 26px; color: #F3E4DA; }
-  .mast .sub strong { color: #fff; }
-  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-  .btn { display: inline-block; font-family: var(--body); font-weight: 800; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 14px 20px; border-radius: 4px; border: 2px solid transparent; cursor: pointer; }
-  .btn.primary { background: var(--coral); color: var(--maroon-deep); }
-  .btn.primary:hover { background: #F7AE9C; }
-  .btn.ghost { border-color: rgba(255,249,241,0.6); color: var(--on-maroon); }
-  .btn.ghost:hover { border-color: var(--on-maroon); }
-
-  /* Ballot card */
-  .ballot { background: #FFF9F1; color: #2B1418; border-radius: 6px; padding: 22px 22px 18px; box-shadow: 0 18px 40px rgba(0,0,0,0.28); transform: rotate(1.5deg); max-width: 400px; justify-self: end; width: 100%; }
-  .ballot .bt { font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: #6E1F2B; border-bottom: 2px solid #2B1418; padding-bottom: 6px; margin-bottom: 12px; display: flex; justify-content: space-between; gap: 8px; }
-  .ballot p { font-size: 13.5px; line-height: 1.45; margin: 0 0 14px; color: #5A4246; }
-  .ballot .opt { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 17px; padding: 6px 0; }
-  .oval { width: 34px; height: 18px; border: 2px solid #2B1418; border-radius: 50%; flex: none; }
-  .oval.on { background: #2B1418; }
-  .ballot .this { font-family: var(--hand); font-size: 26px; color: #A63A2E; font-weight: 700; margin-left: 4px; }
-  .ballot .flip { margin-top: 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #6E1F2B; }
-
-  /* Scallop divider */
-  .scallop { height: 18px; background: radial-gradient(circle at 12px 0, var(--maroon) 12px, transparent 12.5px) repeat-x; background-size: 24px 18px; background-color: var(--cream); }
-
-  section.panel { padding-block: 64px; }
-  section.panel + section.panel { border-top: 1px solid var(--rule); }
-
-  /* No overlap timeline */
-  .overlap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; margin: 8px 0 26px; max-width: 760px; }
-  .seg { padding: 16px 18px; border-radius: 4px; }
-  .seg .y { font-family: var(--display); font-size: 28px; line-height: 1; }
-  .seg .l { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px; }
-  .seg.old { background: var(--paper); border: 2px dashed var(--rule); color: var(--ink-soft); }
-  .seg.new { background: var(--maroon); color: var(--on-maroon); }
-  .seg.new .l { color: var(--coral); }
-  .seam { display: flex; align-items: center; padding: 0 12px; font-family: var(--hand); font-size: 26px; color: var(--coral-ink); }
-  .pill { display: inline-block; background: var(--coral); color: var(--maroon-deep); font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; }
-
-  /* Amounts table */
-  .amounts { width: 100%; max-width: 760px; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-bottom: 30px; }
-  .amounts th { text-align: left; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); padding: 8px 10px; }
-  .amounts td { padding: 11px 10px; border-bottom: 1px solid var(--rule); }
-  .amounts td.n { font-weight: 800; text-align: right; white-space: nowrap; }
-  .amounts th.n { text-align: right; }
-  .amounts tr.hi td { background: var(--paper); }
-  .tablewrap { overflow-x: auto; }
-
-  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-  .fact h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 24px; letter-spacing: 0.01em; }
-  .fact ul { margin: 0; padding-left: 18px; color: var(--ink-soft); }
-  .fact li { margin-bottom: 6px; }
-  .fact li strong { color: var(--ink); }
-  .note { font-size: 14px; color: var(--ink-soft); max-width: var(--read); margin-top: 26px; }
-
-  /* Toolkit */
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
-  .chip { font-family: var(--body); font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 99px; border: 2px solid var(--maroon); background: transparent; color: var(--ink); cursor: pointer; }
-  :root[data-theme="dark"] .chip { border-color: var(--coral); }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chip { border-color: var(--coral); } }
-  .chip[aria-pressed="true"] { background: var(--maroon); color: var(--on-maroon); border-color: var(--maroon); }
-  .tasks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
-  .task { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-  .task .meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-  .tag { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
-  .tag.t15 { background: #E4EFE6; color: #2F6B45; }
-  .tag.t60 { background: #FBE6D6; color: #8A4A12; }
-  .tag.t120 { background: #F6D9DD; color: #6E1F2B; }
-  .task p { margin: 0; font-size: 15px; color: var(--ink-soft); }
-  .task .how { font-size: 14px; color: var(--ink-soft); border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: auto; }
-  .task .how strong { color: var(--ink); }
-
-  .scripts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 40px; }
-  .script { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 18px; min-width: 0; }
-  .script blockquote { margin: 8px 0 12px; font-size: 15px; line-height: 1.5; padding-left: 12px; border-left: 3px solid var(--coral); white-space: pre-line; }
-  .copy { font-family: var(--body); font-weight: 800; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--maroon); color: var(--on-maroon); border: 0; padding: 8px 12px; border-radius: 3px; cursor: pointer; }
-  .copy.done { background: var(--ok); }
-
-  .rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; margin: 0; padding: 0; list-style: none; }
-  .rules li { padding-left: 30px; position: relative; font-size: 15.5px; }
-  .rules li::before { content: "✓"; position: absolute; left: 0; top: 0; font-weight: 800; color: var(--ok); }
-  .rules li.no::before { content: "✕"; color: var(--coral-ink); }
-
-  .outlets { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .outlets th { text-align: left; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 2px solid var(--ink); padding: 6px 10px; }
-  .outlets td { padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-  .outlets td:nth-child(2) { font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .sel { user-select: all; font-weight: 600; word-break: break-all; }
-
-  /* Sign-up form */
-  .signup { background: var(--maroon); color: var(--on-maroon); border-radius: 8px; padding: 32px; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 32px; }
-  .signup h2 { color: var(--on-maroon); }
-  .signup h2 .c { color: var(--coral); }
-  .signup p { color: #F3E4DA; }
-  form .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  label { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 4px; }
-  input[type=text], input[type=email], input[type=tel], select, textarea { width: 100%; font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 4px; border: 1px solid #C79A8F; background: #FFF9F1; color: #2B1418; }
-  textarea { min-height: 70px; resize: vertical; }
-  fieldset { border: 0; padding: 0; margin: 14px 0; }
-  legend { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
-  .checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
-  .checks label { display: flex; gap: 8px; align-items: flex-start; font-weight: 500; font-size: 14.5px; letter-spacing: 0; margin: 0; }
-  .checks input { margin-top: 4px; accent-color: var(--coral); }
-  .field { margin-bottom: 12px; }
-  .formmsg { margin-top: 12px; font-weight: 700; }
-  .formmsg.ok { color: #BFE8CB; }
-  .formmsg.err { color: #FFD3C8; }
-
-  /* Vote plan */
-  .dates { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: 780px; }
-  .dates li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
-  .dates .d { font-family: var(--display); font-size: 22px; line-height: 1.1; color: var(--coral-ink); text-transform: uppercase; }
-  .dates .d small { display: block; font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: var(--ink-soft); }
-  .dates li.big .d { color: var(--maroon); }
-  :root[data-theme="dark"] .dates li.big .d { color: var(--coral); }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .dates li.big .d { color: var(--coral); } }
-  .dates li.past { opacity: 0.55; }
-  .dates b { display: block; }
-
-  /* FAQ */
-  .faq { max-width: 820px; }
-  .faq details { border-bottom: 1px solid var(--rule); }
-  .faq summary { cursor: pointer; list-style: none; padding: 16px 36px 16px 0; font-weight: 800; font-size: 18px; position: relative; }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-family: var(--display); font-size: 26px; color: var(--coral-ink); }
-  .faq details[open] summary::after { content: "–"; }
-  .faq .a { padding: 0 0 18px; color: var(--ink-soft); max-width: var(--read); }
-  .faq .a p { margin: 0 0 8px; }
-  .faq .say { font-family: var(--hand); font-size: 22px; color: var(--coral-ink); line-height: 1.2; }
-
-  .donate { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
-  .card { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; }
-  .card p { margin: 0 0 10px; }
-
-  footer { background: var(--maroon-deep); color: #E9D6CF; font-size: 14px; }
-  footer .wrap { padding-block: 34px; display: grid; gap: 10px; }
-  footer .paid { border: 2px solid #E9D6CF; display: inline-block; padding: 6px 12px; font-weight: 800; letter-spacing: 0.06em; color: #fff; justify-self: start; }
-  footer a { color: var(--coral); }
-
-
-  /* Tax-rate ranking */
-  .ratecard { --lab: 190px; --val: 64px; --px: 20px; position: relative; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 18px var(--px) 34px; max-width: 820px; }
-  .rhead { display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); padding-bottom: 8px; border-bottom: 2px solid var(--ink); margin-bottom: 6px; }
-  .rates { list-style: none; margin: 0; padding: 0; position: relative; }
-  .r { display: grid; grid-template-columns: 28px calc(var(--lab) - 28px) minmax(0, 1fr) var(--val); align-items: center; height: 30px; font-size: 15px; color: var(--ink-soft); }
-  .r .rk { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink-soft); }
-  .r .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px; }
-  .r .tr { position: relative; height: 16px; }
-  .r .br { position: absolute; left: 0; top: 0; bottom: 0; background: var(--bar); border-radius: 0 4px 4px 0; }
-  .r .v { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
-  .r:hover .br { filter: brightness(0.92); }
-  .r.me { height: 40px; color: var(--ink); font-weight: 800; font-size: 17px; }
-  .r.me .rk { color: var(--coral-ink); font-weight: 800; }
-  .r.me .tr { height: 26px; }
-  .r.me .br { background: var(--hi); }
-  .r.me .v { font-size: 19px; color: var(--coral-ink); }
-  .avgline { position: absolute; top: 40px; bottom: 28px; border-left: 2px dashed var(--ink-soft); pointer-events: none; }
-  .avgline span { position: absolute; bottom: -22px; left: -2px; transform: translateX(-50%); font-size: 12px; font-weight: 800; color: var(--ink-soft); white-space: nowrap; background: var(--paper); padding: 0 4px; }
-  .ratefacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 820px; margin-top: 18px; }
-  .ratefacts div { border-top: 3px solid var(--coral); padding-top: 10px; }
-  .ratefacts b { display: block; font-family: var(--display); font-weight: 400; font-size: 34px; line-height: 1; text-transform: uppercase; color: var(--coral-ink); }
-  .ratefacts span { font-size: 15px; color: var(--ink-soft); }
-  @media (max-width: 560px) {
-    .ratecard { --lab: 128px; --val: 52px; --px: 12px; padding: 14px var(--px) 34px; }
-    .r { font-size: 13.5px; }
-    .r.me { font-size: 15px; }
-    .ratefacts { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 860px) {
-    .mast .wrap, .signup, .donate { grid-template-columns: minmax(0, 1fr); }
-    .ballot { justify-self: start; transform: rotate(1deg); }
-    .facts, .scripts, .rules { grid-template-columns: minmax(0, 1fr); }
-  }
-  @media (max-width: 560px) {
-    body { font-size: 16px; }
-    .strip nav { display: none; }
-    .overlap { grid-template-columns: minmax(0, 1fr); }
-    .seam { padding: 4px 0; justify-content: center; }
-    form .row, .checks { grid-template-columns: minmax(0, 1fr); }
-    .dates li { grid-template-columns: 90px minmax(0, 1fr); gap: 12px; }
-    .signup { padding: 22px 18px; }
-    section.panel { padding-block: 48px; }
-  }
-</style>
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -272,6 +80,7 @@
       <a href="#vote">Vote</a>
       <a href="#faq">FAQ</a>
       <a href="#donate">Donate</a>
+      <a href="/yes/faq/">All FAQs</a>
     </nav>
   </div>
 </div>
@@ -280,6 +89,7 @@
   <div class="wrap">
     <div>
       <div class="stamp">★ VOTE ★ YES ★</div>
+      <p class="eyebrow" style="color:var(--coral)">Middleton-Cross Plains Area School District referendum</p>
       <h1>Vote yes<span>Nov 3</span></h1>
       <p class="sub">Renew the school funding voters approved in 2022. <strong>It replaces, it doesn't stack.</strong> And it's <strong>$0 more in year one.</strong></p>
       <div class="ctas">
@@ -320,8 +130,8 @@
         <thead><tr><th>School year</th><th class="n">Above the state cap</th><th>What it means</th></tr></thead>
         <tbody>
           <tr class="hi"><td>2027-28</td><td class="n">$24.9M</td><td>Same as today. $0 more in year one.</td></tr>
-          <tr><td>2028-29</td><td class="n">set amount</td><td>Steps up to keep pace with inflation</td></tr>
-          <tr><td>2029-30</td><td class="n">set amount</td><td>Steps up to keep pace with inflation</td></tr>
+          <tr><td>2028-29</td><td class="n">$27.9M</td><td>Steps up to keep pace with inflation</td></tr>
+          <tr><td>2029-30</td><td class="n">$31.1M</td><td>Steps up to keep pace with inflation</td></tr>
           <tr class="hi"><td>2030-31</td><td class="n">$34.6M</td><td>Final year. Then it ends and voters decide again.</td></tr>
         </tbody>
       </table>
@@ -357,7 +167,7 @@
       </div>
     </div>
 
-    <p class="note"><strong>Why are we voting again?</strong> Wisconsin caps what each district can collect. Since 2009 that cap has grown far slower than costs, and general state aid is flat in the current state budget. Only voters can approve going above the cap. MCPASD voters said yes in 2018 (69%) and 2022 (63%). <strong>What will it cost me?</strong> Nothing more in year one. For later years, check your own home with the district's tax calculator on the <a href="https://www.mcpasd.k12.wi.us/article/3071354/" rel="noopener">district's referendum page</a>.</p>
+    <p class="note"><strong>Why are we voting again?</strong> Wisconsin caps what each district can collect. Since 2009 that cap has grown far slower than costs, and general state aid is flat in the current state budget. Only voters can approve going above the cap. MCPASD voters said yes in 2018 (69%) and 2022 (63%). <strong>What will it cost me?</strong> Nothing more in year one. By year four, the district estimates about $64 a year per $100,000 of home value. <a href="/yes/tax-impact/">Find your home's number</a> or read <a href="/yes/why/">why we're voting again</a>.</p>
   </div>
 </section>
 
@@ -554,7 +364,7 @@
     <h2>Straight <span class="c">answers.</span></h2>
     <div class="faq">
       <details open><summary>Isn't this a new tax on top of the old one?</summary><div class="a"><p>No. The 2022 referendum ends after 2026-27. This one starts the next year and takes its place. They never overlap.</p><p class="say">It replaces, it doesn't stack.</p></div></details>
-      <details open><summary>Will my taxes go up?</summary><div class="a"><p>Not in year one: it holds the same $24.9M already in place. After that, set amounts step up each year to $34.6M in 2030-31, then it ends. The district's tax calculator shows the amount for your home.</p></div></details>
+      <details open><summary>Will my taxes go up?</summary><div class="a"><p>Not in year one: it holds the same $24.9M already in place. After that the amounts step up each year to $34.6M in 2030-31, then it ends. The district estimates the added cost reaches about $64 a year per $100,000 of home value by year four. <a href="/yes/tax-impact/">Find your number</a>.</p></div></details>
       <details><summary>What happens if it fails?</summary><div class="a"><p>Cuts of nearly 20% of the operating budget. As many as 250 positions could go, and closing a school has been discussed. That means bigger classes and a harder time keeping great teachers.</p><p class="say">It's not a raise. It's keeping what we have.</p></div></details>
       <details><summary>Didn't we just vote on this?</summary><div class="a"><p>Yes, in 2022, when 63% said yes. It was always a four-year approval. This renews it.</p></div></details>
       <details><summary>I don't have kids in school. Why should I care?</summary><div class="a"><p>Strong schools hold up every home's value on the block. MCPASD earned the state's top rating, Significantly Exceeds Expectations, with its best score ever (84.4).</p></div></details>
@@ -567,6 +377,7 @@
       <details><summary>I'm on a fixed income. Is there help?</summary><div class="a"><p>Year one adds $0. Wisconsin's Homestead Credit and the lottery credit lower property taxes for many homeowners. Ask your clerk or a tax preparer.</p></div></details>
       <details><summary>Who's behind this site?</summary><div class="a"><p>Volunteers: parents, retirees, and neighbors in the MCPASD Yes Committee. The school district can share facts, but it can't ask you to vote yes. That's our job.</p></div></details>
     </div>
+    <p class="note"><a href="/yes/faq/">See all 22 questions and answers</a></p>
   </div>
 </section>
 
@@ -589,6 +400,9 @@
 
 <footer>
   <div class="wrap">
+    <nav class="footnav" aria-label="All pages">
+      <a href="/yes/">Vote Yes MCPASD</a> · <a href="/yes/tax-impact/">Referendum tax impact</a> · <a href="/yes/why/">Why we're voting again</a> · <a href="/yes/faq/">Referendum FAQ</a> · <a href="/yes/how-to-vote/">How to vote Nov 3</a> · <a href="#help">Volunteer</a> · <a href="#donate">Donate</a>
+    </nav>
     <span class="paid">Paid for by the MCPASD Yes Committee</span>
     <span>Questions: <span class="sel">mcpasdyescommittee@gmail.com</span> · #VoteYesMCPASD</span>
     <span>Made by volunteers. Not produced or paid for by the Middleton-Cross Plains Area School District. Official facts and the tax calculator are on the <a href="https://www.mcpasd.k12.wi.us/article/3071354/" rel="noopener">district's referendum page</a>.</span>

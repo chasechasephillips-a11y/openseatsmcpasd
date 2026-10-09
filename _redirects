@@ -33,3 +33,9 @@
 /voteyes    /yes/               301
 /yes/help   /yes/#help          302
 /yes/signup /yes/#signup        302
+/referendum       /yes/              301
+/tax-impact       /yes/tax-impact/   301
+/how-to-vote      /yes/how-to-vote/  301
+/yes-faq          /yes/faq/          301
+/yes/fb           /yes/?ref=facebook 302
+/yes/dh           /yes/?ref=doorhanger 302
