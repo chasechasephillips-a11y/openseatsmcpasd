@@ -99,3 +99,17 @@ Search `index.html` for these and replace:
 - [ ] Check all share buttons
 
 The counter shows online supporters, not verified paper signatures — those are two different things. The legal threshold is 500 paper signatures with circulator certifications; the online number is your momentum/turnout proxy.
+
+---
+
+## Yes MCPASD site (`/yes/`)
+
+The Nov 3, 2026 referendum site lives in `yes/` and is served at `openseatsmcpasd.org/yes/`. All internal links are relative, so the same files also work at the root of its own domain.
+
+**Sign-ups:** run `wrangler d1 execute openseats --file=./schema-yes.sql --remote` once. Export with `/api/export?token=…&type=yes-volunteers`.
+
+**Moving it to yesmcpasd.org:**
+1. Buy the domain (Cloudflare Registrar) and add `yesmcpasd.org` and `www.yesmcpasd.org` under Pages → Custom domains.
+2. Run `scripts/yes-domain-switch.sh`, commit, push to main.
+3. Pages → Settings → Variables: add `YES_DOMAIN_LIVE` = `1`, redeploy. Old `/yes/` links now 301 to the new domain (see `functions/_middleware.js`).
+4. Google Search Console: add `yesmcpasd.org`, submit `https://yesmcpasd.org/sitemap.xml`.
