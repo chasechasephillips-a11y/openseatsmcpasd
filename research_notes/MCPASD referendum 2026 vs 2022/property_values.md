@@ -109,7 +109,7 @@ Through 2025, three municipalities had drifted well below market. The City of Mi
 ## Q3. Typical/median home value change
 
 ### Takeaway
-Typical home values rose about **23–26% from January 2022 to January 2026** across the district's ZIPs and places, by Zillow's mid-tier index. The City of Middleton went from about $485K to $610K (+25.8%) and the Village of Cross Plains from $410K to $504K (+23.0%). Growth has been slow since January 2025 (+2–3%). DOR's municipal residential "economic change" estimates (2023 to 2026) separate the towns more sharply. They range from +14.5% (Westport) and +15.5% (Berry) to +28.1% in the **Village of Cross Plains, the fastest-appreciating unit**. The City of Middleton, at +17.8%, was the slowest of the four large units.
+Typical home values rose about **23–26% from January 2022 to January 2026** across the district's ZIPs and places, by Zillow's mid-tier index. The City of Middleton went from about $485K to $610K (+25.8%) and the Village of Cross Plains from $410K to $504K (+23.0%). Growth has been slow since January 2025 (+2–4%). DOR's municipal residential "economic change" estimates (2023 to 2026) separate the towns more sharply. They range from +14.5% (Westport) and +15.5% (Berry) to +28.1% in the **Village of Cross Plains, the fastest-appreciating unit**. The City of Middleton, at +17.8%, was the slowest of the four large units.
 
 ### Cited Findings
 - **Zillow Home Value Index (mid-tier single-family and condo, smoothed, seasonally adjusted), January values [primary]:**
