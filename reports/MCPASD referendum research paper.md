@@ -577,6 +577,55 @@ The 2026 vote changes how MCPASD's referendum risk should be understood. The dan
 
 The comparison with Waunakee adds urgency. A district can keep passing operating questions while its margin erodes cycle after cycle, until a fourth ask passes by 673 votes. MCPASD's 2030 question will be its third straight four-year renewal and will start from a $34.6M ceiling. The analyst's most valuable work is not the 2030 field plan but the four years before it: archiving data that will otherwise disappear, finding out from individual voters what the ward data can only bound, and putting the receipts, the tax table and the state's budget choices in front of Middleton's skeptical Democrats long before anyone prints a yard sign.
 
+## Appendix A. Counterfactual: the referendum without a blue wave
+
+**Question.** Would the 2026 question have done better, worse or about the same in a midterm without a national Democratic wave?
+
+**Short answer.** About the same, and possibly better. Under every scenario modeled here the question still passes. The partisan tide moves MCPASD's result by only one to three points. The variable that could sink a future question is the share of Democratic-leaning voters who vote Yes, not the partisan mix of the electorate.
+
+### A.1 What the wave did inside MCPASD
+
+The 2026 wave showed up in MCPASD mainly as extra turnout, not as a more Democratic electorate. The district-wide Democratic two-party share for governor rose only from 76.6% (Evers, 2022) to 77.3% (Crowley, 2026) [7][8]. In reporting units fully inside the district, 1,492 more ballots were cast than in 2022 [5][6]. Crowley ran 1,265 votes ahead of Evers there, but the referendum gained only 175 Yes votes against 801 No votes, and 516 more ballots left the question blank [4][13]. These are net changes. They cannot show whether the new voters themselves voted No, or whether returning 2022 voters switched while the newcomers split evenly. Either way, the extra turnout produced few new Yes votes.
+
+### A.2 Method
+
+The scenarios use a simple two-group ecological model (Goodman regression). Each reporting unit's Yes share is modeled as a weighted mix of a Democratic Yes rate and a Republican Yes rate, with the unit's Democratic two-party governor share as the weight. The model is fitted across reporting units with at least 20 referendum votes, weighted by referendum votes, using the ward tables in Sections 4 and 6 [4][7][8]. Two fits bracket the estimates:
+
+| Fit (2026) | Units | Democratic Yes rate | Republican Yes rate | Predicted district Yes |
+|---|---|---|---|---|
+| All units | 24 | 0.76 | 0.07 | 60.3% (actual 60.1%) |
+| Units fully inside MCPASD | 10 | 0.73 | 0.22 | 61.4% (recentered to 60.1%) |
+
+The same fits for 2022 give a Democratic Yes rate of 0.79–0.82. The decline to 0.73–0.76 in 2026 is the defection described in Section 6. Every scenario below holds the 2026 rates fixed and changes only the electorate, except the last, which also lowers the Democratic Yes rate. Margins assume about 23,720 votes on the question, as in 2026. The caveats in Section 2 apply in full. These are ward aggregates with few units, the Republican rate is poorly identified, and results are directional, not forecasts.
+
+### A.3 Scenarios
+
+| Scenario | Electorate assumption | Estimated Yes | Estimated margin |
+|---|---|---|---|
+| Actual 2026 (blue wave) | Democratic share 77.3% | 60.1% | +4,806 |
+| Neutral year, composition only | Democratic share back to 2022's 76.6% | ~59.8% | ~+4,650 |
+| Neutral year, turnout effect | 2022-like turnout; the extra 2026 voters absent | up to ~62.9% (upper bound) | up to ~+6,130 |
+| Red-leaning midterm | Democratic share 4 points lower (~73%) | ~57.6–58.1% | ~+3,600 to +3,850 |
+| Red-leaning midterm with sharper tax revolt | ~73% Democratic, and the Democratic Yes rate falls to 0.70 | ~53–56% | ~+1,500 to +2,800 |
+
+The "neutral year" result is a range because of the ambiguity in A.1. If the 2026 slip came from returning voters changing their minds, removing the wave's extra voters changes almost nothing (about 59.8%). If it came from the extra voters themselves, a 2022-sized electorate would have produced something close to 2022's 62.9%. The true effect probably lies between, so a reasonable central guess is that the wave cost the referendum zero to two points. That fits Section 5's finding that high turnout in 2026 did not mean a more school-supportive electorate. It also qualifies the general pattern that larger, younger, presidential-year electorates help school measures [84]. Higher turnout helps when the added voters are parents and school-connected households, not when they are low-engagement voters drawn out by a nationalized race.
+
+### A.4 Break-even points
+
+Holding the other parameter at its 2026 value, the question falls below 50% if either:
+
+- the district's Democratic two-party share drops to about **57–62%** (from 77%), roughly Waunakee's electorate (66.5%) minus several more points [16], or
+- the Democratic Yes rate drops to about **0.60–0.63** (from 0.73–0.76), meaning roughly two in five Democratic-voting referendum voters choose No.
+
+The first is implausible for MCPASD in any foreseeable midterm. The second is a continuation of the trend already measured: the Democratic Yes rate fell about five to six points from 2022 to 2026, and another two drops of that size would put the district at the edge.
+
+### A.5 Implications
+
+1. **Plan for a neutral or red-leaning 2030 midterm, but don't fear it most.** A hostile national climate costs perhaps two to three points. That hurts, but it does not decide the result.
+2. **Treat Democratic defection as the main risk.** The model's most sensitive input is how Democratic-leaning homeowners vote, which is why Sections 6, 7 and 12 focus on the City of Middleton, the Madison wards and the Village of Cross Plains.
+3. **Don't treat high turnout as a strategy.** Turnout programs should target school-connected households. Raising general turnout in a nationalized year brought in voters who skipped the question or voted No.
+4. **Re-run this appendix after the Nov. 17 canvass** and, if possible, with voter-file turnout data that separates new voters from repeat voters. That would resolve the A.1 ambiguity.
+
 ## References
 
 *Access notes: "secondhand" marks sources known only from a search-engine summary or a page that later failed to load. Dane County 2026 results are unofficial as of Nov. 5, 2026.*
