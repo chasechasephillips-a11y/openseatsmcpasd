@@ -1,0 +1,11 @@
+group,year,ballots_cast,gov_votes,gov_dem_2party_pct,gov_rolloff_pct,sen_rolloff_pct,r1_rolloff_pct,r2_rolloff_pct,r3_rolloff_pct,cmid_rolloff_pct,mc_rolloff_pct
+C Middleton fully-in-district units,2022,9146,9092,84.0,0.6,0.6,1.6,,1.9,5.1,5.0
+C Middleton fully-in-district units,2026,9720,9655,84.9,0.7,,3.7,3.1,3.4,,8.6
+V Cross Plains Wds 1-6,2022,2252,2244,71.1,0.4,0.9,1.1,,2.2,,6.5
+V Cross Plains Wds 1-6,2026,2340,2333,70.9,0.3,,3.0,2.9,3.1,,3.2
+C Madison Wds 118-119,2022,2361,2350,77.2,0.5,0.3,1.3,,1.5,,4.9
+C Madison Wds 118-119,2026,2762,2750,77.4,0.4,,3.0,2.5,3.0,,3.5
+T Middleton (all; ~1% non-district),2022,3823,3813,68.3,0.3,0.5,1.0,,1.6,,3.6
+T Middleton (all; ~1% non-district),2026,4363,4338,68.8,0.6,,3.1,2.5,3.0,,8.1
+C Middleton (all incl. partly-out 14-18),2022,12180,12109,83.0,0.6,0.6,1.5,,1.9,5.1,8.3
+C Middleton (all incl. partly-out 14-18),2026,12674,12597,84.2,0.6,,3.5,3.1,3.4,,12.1

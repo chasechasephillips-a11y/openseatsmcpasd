@@ -1,0 +1,29 @@
+year,precinct_code,municipality,wards,reporting_unit,yes,no,ref_votes,yes_pct,ballots_cast_unit,ballots_cast_minus_ref_votes,unit_fully_in_district,rolloff_est,rolloff_pct_est,comparison_unit
+2022,0163,City of Madison,095,C Madison Wd 095,28,12,40,70.0,549,509,no,,,C Madison Wd 095
+2022,0168,City of Madison,100,C Madison Wd 100,44,11,55,80.0,335,280,no,,,C Madison Wd 100
+2022,0169,City of Madison,101,C Madison Wd 101,197,112,309,63.8,1002,693,no,,,C Madison Wd 101
+2022,0170,City of Madison,102,C Madison Wd 102,147,64,211,69.7,1037,826,no,,,C Madison Wd 102
+2022,0177,City of Madison,109,C Madison Wd 109,227,99,326,69.6,881,555,no,,,C Madison Wd 109
+2022,0181,City of Madison,113,C Madison Wd 113,0,0,0,,2239,2239,no MCPASD voters,,,C Madison Wds 113/139/140/141 (2022) & 120/134/135 (2026)
+2022,0182,City of Madison,114,C Madison Wd 114,284,103,387,73.4,2202,1815,no,,,C Madison Wd 114
+2022,0183,City of Madison,115,C Madison Wd 115,33,7,40,82.5,1589,1549,no,,,C Madison Wd 115
+2022,0185,City of Madison,117,C Madison Wd 117,112,31,143,78.3,1445,1302,no,,,C Madison Wd 117
+2022,0186,City of Madison,118,C Madison Wd 118,533,210,743,71.7,798,55,yes (same-geography unit fully in district in 2026),55,6.9,C Madison Wd 118
+2022,0187,City of Madison,119,C Madison Wd 119,993,510,1503,66.1,1563,60,yes (same-geography unit fully in district in 2026),60,3.8,C Madison Wd 119
+2022,0205,City of Madison,137,C Madison Wd 137,0,0,0,,0,0,no MCPASD voters,,,C Madison Wd 137
+2022,0207,City of Madison,139,C Madison Wd 139,54,8,62,87.1,66,4,likely (ballots ~= ref votes),4,6.1,C Madison Wds 113/139/140/141 (2022) & 120/134/135 (2026)
+2022,0208,City of Madison,140,C Madison Wd 140,136,67,203,67.0,204,1,likely (ballots ~= ref votes),1,0.5,C Madison Wds 113/139/140/141 (2022) & 120/134/135 (2026)
+2022,0209,City of Madison,141,C Madison Wd 141,1,0,1,100.0,1,0,likely (ballots ~= ref votes),0,0.0,C Madison Wds 113/139/140/141 (2022) & 120/134/135 (2026)
+2022,0228,City of Middleton,21,C Middleton Wd 21,96,32,128,75.0,141,13,yes (same-geography unit fully in district in 2026),13,9.2,C Middleton Wds 5-8 (+21)
+2022,0229,City of Middleton,22,C Middleton Wd 22,77,18,95,81.1,103,8,yes (same-geography unit fully in district in 2026),8,7.8,"C Middleton Wds 9-13,19 (+22,24)"
+2022,0223,City of Middleton,1-4,C Middleton Wds 1-4,2154,966,3120,69.0,3261,141,yes (same-geography unit fully in district in 2026),141,4.3,C Middleton Wds 1-4
+2022,0226,City of Middleton,14-18,C Middleton Wds 14-18,1592,880,2472,64.4,3034,562,no,,,C Middleton Wds 14-18
+2022,0227,City of Middleton,"20, 23","C Middleton Wds 20, 23",0,0,0,,0,0,no MCPASD voters,,,"C Middleton Wds 20, 23"
+2022,0224,City of Middleton,5-8,C Middleton Wds 5-8,1625,810,2435,66.7,2605,170,yes (same-geography unit fully in district in 2026),170,6.5,C Middleton Wds 5-8 (+21)
+2022,0225,City of Middleton,"9-13, 19","C Middleton Wds 9-13, 19",1936,978,2914,66.4,3036,122,yes (same-geography unit fully in district in 2026),122,4.0,"C Middleton Wds 9-13,19 (+22,24)"
+2022,0002,Town of Berry,1-2,T Berry Wds 1-2,126,240,366,34.4,742,376,no,,,T Berry Wds 1-2
+2022,0011,Town of Cross Plains,1-2,T Cross Plains Wds 1-2,218,213,431,50.6,1002,571,no,,,T Cross Plains Wds 1-2
+2022,0018,Town of Middleton,1-8,T Middleton Wds 1-8,2134,1552,3686,57.9,3823,137,mostly (2026 subunit Wds 5-8 had 43 ballots without the question),137,3.6,T Middleton (all wards)
+2022,0027,Town of Springfield,1-4,T Springfield Wds 1-4,544,643,1187,45.8,1648,461,no,,,T Springfield Wds 1-4
+2022,0032,Town of Westport,1-5,T Westport Wds 1-5,128,113,241,53.1,2831,2590,no,,,T Westport Wds 1-5
+2022,0040,Village of Cross Plains,1-6,V Cross Plains Wds 1-6,1177,929,2106,55.9,2252,146,yes (same-geography unit fully in district in 2026),146,6.5,V Cross Plains Wds 1-6

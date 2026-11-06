@@ -1,0 +1,9 @@
+precinct,unit,unit_ballots,waunQ1_valid,waunQ1_rolloff,waunQ1_ballots_with_q,waunQ1_rolloff_pct,waunQ2_valid,waunQ2_rolloff,waunQ2_ballots_with_q,waunQ2_rolloff_pct,stQ1_partialveto_valid,stQ1_partialveto_rolloff,stQ1_partialveto_ballots_with_q,stQ1_partialveto_rolloff_pct,stQ2_worship_valid,stQ2_worship_rolloff,stQ2_worship_ballots_with_q,stQ2_worship_rolloff_pct,stQ3_antidiscrim_valid,stQ3_antidiscrim_rolloff,stQ3_antidiscrim_ballots_with_q,stQ3_antidiscrim_rolloff_pct,governor_valid,governor_rolloff,governor_ballots_with_q,governor_rolloff_pct,waun_share_of_unit_ballots
+0014,T Dane Wd 1,520,75,3,78,3.8,74,4,78,5.1,487,33,520,6.3,492,28,520,5.4,484,36,520,6.9,515,5,520,1.0,15.0
+0032,T Springfield Wds 1-4,1552,358,14,372,3.8,355,17,372,4.6,1503,49,1552,3.2,1496,56,1552,3.6,1491,61,1552,3.9,1544,8,1552,0.5,24.0
+0036,T Vienna Wds 1-2,847,503,9,512,1.8,498,14,512,2.7,813,34,847,4.0,820,27,847,3.2,812,35,847,4.1,842,5,847,0.6,60.4
+0037,T Westport Wds 1-5,2931,2492,182,2674,6.8,2488,186,2674,7.0,2826,105,2931,3.6,2848,83,2931,2.8,2831,100,2931,3.4,2913,18,2931,0.6,91.2
+0069,V Waunakee Wds 1-5,4674,4526,148,4674,3.2,4520,154,4674,3.3,4516,158,4674,3.4,4547,127,4674,2.7,4523,151,4674,3.2,4646,28,4674,0.6,100.0
+0070,V Waunakee Wds 6-16,4275,4146,129,4275,3.0,4139,136,4275,3.2,4110,165,4275,3.9,4136,139,4275,3.3,4118,157,4275,3.7,4257,18,4275,0.4,100.0
+0134,C Madison Wd 035,1239,391,24,415,5.8,388,27,415,6.5,1213,26,1239,2.1,1216,23,1239,1.9,1211,28,1239,2.3,1231,8,1239,0.6,33.5
+0240,C Middleton Wds 14-18,2954,410,29,439,6.6,404,35,439,8.0,2865,89,2954,3.0,2865,89,2954,3.0,2855,99,2954,3.4,2942,12,2954,0.4,14.9
