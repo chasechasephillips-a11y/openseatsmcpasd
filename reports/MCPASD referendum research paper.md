@@ -55,7 +55,7 @@ The main limitation is split units. The governor count covers the whole reportin
 
 ### 2.5 Ecological inference: what ward data can and cannot say
 
-Every partisan finding here relates ward aggregates to ward aggregates. None of it observes an individual ballot. Two tools translate aggregates into statements about voters, and both carry assumptions. The **method of bounds** asks what the aggregates require in the most favorable case. If every Republican voted No, all Yes votes came from Democrats, and the shortfall between the Yes share and the Democratic share becomes a *minimum* Democratic No rate. **Goodman ecological regression** fits Yes share against Democratic share across units and reads the fitted values at 0% and 100% Democratic as party-specific Yes rates. It assumes those rates are constant across wards, an assumption that fails if, for example, City Democrats and Town Democrats behave differently. With 10 to 24 units, Goodman estimates are illustrative only. Neither tool can separate 2022 Yes voters who switched to No from new voters who voted No or from 2022 Yes voters who skipped the question in 2026. The defection figures in this paper are bounds and model estimates, not observations.
+Every partisan finding here relates ward aggregates to ward aggregates. None of it observes an individual ballot. Two tools translate aggregates into statements about voters, and both carry assumptions. The **method of bounds** asks what the aggregates require in the most favorable case. If every Republican voted No, all Yes votes came from Democrats, and the shortfall between the Yes share and the Democratic share becomes a *minimum* Democratic No rate. **Goodman ecological regression** fits Yes share against Democratic share across units and reads the fitted values at 0% and 100% Democratic as party-specific Yes rates. It assumes those rates are constant across wards, an assumption that fails if, for example, City Democrats and Town Democrats behave differently. With 10 to 24 units, Goodman estimates are illustrative only. Neither tool can separate 2022 Yes voters who switched to No from new voters who voted No or from 2022 Yes voters who skipped the question in 2026. The defection figures in this paper are bounds and model estimates, not observations. Appendix B spells out what "Democrat" and "Republican" mean in this paper and tests how ticket-splitting voters would change the defection figures.
 
 ### 2.6 Derived calculations
 
@@ -204,7 +204,7 @@ The Democratic wave raised turnout without raising Yes. In the clean geography, 
 
 Source: computed from [Dane County governor 2022 [7]](https://elections.countyofdane.com/Precincts-Result/145/0004) and [2026 [8]](https://elections.countyofdane.com/Precincts-Result/197/0004) and the referendum tables.
 
-Yes votes fell from **79.2% of the Democratic governor vote to 73.7%** in that geography, a crude measure that includes roll-off. Because Yes never exceeded the Democratic share in any sizable unit, the data require *zero* Republican crossover. The method of bounds then sets a floor on Democratic defection. If every Republican-voting participant voted No, at least **17.9% of Democratic-voting participants voted No in 2022 and at least 22.3% in 2026**; in City Wards 5–8/21 the 2026 floor is 27.9%. A more realistic scenario, in which 15% of Republicans voted Yes, puts the Democratic No rate at about **27%**. A Goodman fit on non-split units points the same way, with Democratic Yes falling from about 79% to about 73%, while Republican Yes may have risen from about 11% to about 22%; with ten units, that second estimate is not reliable.
+Yes votes fell from **79.2% of the Democratic governor vote to 73.7%** in that geography, a crude measure that includes roll-off. Because Yes never exceeded the Democratic share in any sizable unit, the data require *zero* Republican crossover. The method of bounds then sets a floor on Democratic defection. If every Republican-voting participant voted No, at least **17.9% of Democratic-voting participants voted No in 2022 and at least 22.3% in 2026**; in City Wards 5–8/21 the 2026 floor is 27.9%. These floors describe Crowley voters, not party members. Republicans or independents who voted for Crowley and then voted No would lower the share of loyal Democrats voting No, but they would not erase its rise since 2022 (Appendix B). A more realistic scenario, in which 15% of Republicans voted Yes, puts the Democratic No rate at about **27%**. A Goodman fit on non-split units points the same way, with Democratic Yes falling from about 79% to about 73%, while Republican Yes may have risen from about 11% to about 22%; with ten units, that second estimate is not reliable.
 
 Cross-pressure is visible elsewhere on the 2026 ballot. The three Republican-sponsored constitutional amendments drew **28–39% Yes** in MCPASD's non-split units, well above Tiffany's roughly 21.6%. One of them limits the governor's partial veto from creating or raising taxes, a response to Evers's "400-year" school-revenue veto; it took 32.5% Yes in those units and was ratified statewide ([Dane County State Question 1 [11]](https://elections.countyofdane.com/Precincts-Result/197/0034); [Wikipedia, 2026 Wisconsin elections [94]](https://en.wikipedia.org/wiki/2026_Wisconsin_elections)).
 
@@ -625,6 +625,68 @@ The first is implausible for MCPASD in any foreseeable midterm. The second is a 
 2. **Treat Democratic defection as the main risk.** The model's most sensitive input is how Democratic-leaning homeowners vote, which is why Sections 6, 7 and 12 focus on the City of Middleton, the Madison wards and the Village of Cross Plains.
 3. **Don't treat high turnout as a strategy.** Turnout programs should target school-connected households. Raising general turnout in a nationalized year brought in voters who skipped the question or voted No.
 4. **Re-run this appendix after the Nov. 17 canvass** and, if possible, with voter-file turnout data that separates new voters from repeat voters. That would resolve the A.1 ambiguity.
+
+## Appendix B. Who counts as a Democrat? Assumptions and crossover voters
+
+Wisconsin voters do not register by party, and ballots are secret, so this paper never observes a single Democrat or Republican. Every partisan figure is built from how each reporting unit voted for governor. This appendix states those assumptions plainly and tests the one most likely to mislead: voters who split their ticket.
+
+### B.1 What the labels mean
+
+| Label in this paper | What it actually measures | What it does not mean |
+|---|---|---|
+| "Democrat," "Democratic-voting participant" | A referendum voter in the Democratic column for governor: Evers in 2022, Crowley in 2026 | A registered or self-identified Democrat |
+| "Republican," "Republican-voting participant" | A referendum voter in the Republican column for governor: Michels in 2022, Tiffany in 2026 | A registered or self-identified Republican |
+| "Democratic share" | Democratic votes ÷ (Democratic + Republican votes) for governor, averaged across units by referendum votes | The share of party members |
+
+Four assumptions sit under every partisan number:
+
+1. **Referendum voters split for governor the way their whole unit did.** Third-party votes and skipped governor races are dropped.
+2. **A unit's governor split applies to its MCPASD voters.** This fails in split units, where the governor count includes voters outside the district (Section 2.4).
+3. **Party Yes rates are the same in every ward** (Goodman fits only). A City Democrat and a Town Democrat are assumed to vote Yes at the same rate.
+4. **The governor column is the party.** A Republican or independent who voted for Crowley counts as a Democrat. Sections B.2 and B.3 test this one.
+
+### B.2 Two kinds of crossover voters push in opposite directions
+
+- **Republicans who vote Yes** stay in the Republican column but support the schools. Each one supplies a Yes vote that would otherwise be credited to Democrats, so *more* Democrats must have voted No to land at 60.1%. The 22% floor in Section 6.3 assumes there are none.
+- **Republicans and independents who vote for the Democratic governor**, then vote No, sit in the Democratic column. They inflate the "Democrats voting No" figure, so the more of them there are, the *fewer* loyal Democrats voted No.
+
+Table B.1 shows how the 2026 figure moves under both. Rows set crossovers (voted for Crowley but lean Republican) as a share of all referendum voters. Columns set the Yes rate among Tiffany voters. Crossovers are assumed to vote Yes at the same rate as other Republicans.
+
+**Table B.1. Share of loyal Democrats who voted No in 2026 (%)**
+
+| Crossovers, share of referendum voters | Tiffany voters 0% Yes | 7% Yes | 15% Yes | 22% Yes |
+|---|---|---|---|---|
+| None | 22.2 | 24.3 | 26.6 | 28.7 |
+| 3% | 19.1 | 21.5 | 24.3 | 26.7 |
+| 5% | 16.8 | 19.5 | 22.6 | 25.3 |
+| 10% | 10.7 | 14.1 | 17.9 | 21.3 |
+| 15% | 3.5 | 7.7 | 12.6 | 16.8 |
+
+Source: computed from the district totals, Yes at 60.1% of 23,720 referendum votes and a Crowley two-party share of 77.3% weighted by referendum votes ([Dane County governor 2026 [8]](https://elections.countyofdane.com/Precincts-Result/197/0004); [Dane County referendum 2026 [4]](https://elections.countyofdane.com/Precincts-Result/197/0040)). The 7% and 22% columns are the two Goodman estimates for Republicans in Appendix A.2; 15% is the "more realistic" case in Section 6.3. The top-left cell is the Section 6.3 floor (22.3% there; the difference is rounding). If crossovers voted Yes at 30%, between the two parties, the crossover rows move up to about 4 points higher.
+
+### B.3 What crossovers can and cannot explain
+
+**They can lower the level.** If one referendum voter in ten was a crossover who voted like a Republican, the share of loyal Democrats voting No falls to roughly 11–21%, depending on how many Tiffany voters said Yes. "At least one in five Crowley voters voted No" stays true. Whether one in five *loyal Democrats* did depends on assumptions ward data cannot settle.
+
+**They cannot explain the Democratic No vote away.** For every Crowley voter who voted No to be a crossover, crossovers would have to make up about 17% of all referendum voters district-wide, and 24% in City Wards 5–8/21, every one of them voting No. That would mean about two in five MCPASD voters lean Republican, in a district where the Republican candidate for governor won 23%.
+
+**They cannot explain the rise since 2022.** Holding the crossover share the same in both years, the share of loyal Democrats voting No still rises by about 4 to 5 points under every assumption tested:
+
+| Assumption | 2022 | 2026 | Change |
+|---|---|---|---|
+| No crossovers, no Republican Yes | 17.9 | 22.2 | +4.3 |
+| No crossovers, 15% Republican Yes | 22.5 | 26.6 | +4.1 |
+| 5% crossovers, no Republican Yes | 12.1 | 16.8 | +4.7 |
+| 5% crossovers, 15% Republican Yes | 18.1 | 22.6 | +4.5 |
+| 10% crossovers, 15% Republican Yes | 13.1 | 17.9 | +4.8 |
+
+Source: computed as in Table B.1, with the 2022 district totals (Yes 62.9% of 23,204 votes; Evers 76.6%) ([Dane County governor 2022 [7]](https://elections.countyofdane.com/Precincts-Result/145/0004)).
+
+**New crossovers explain at most part of the widening gap.** If the wave added crossovers who voted No, the Democratic share would have grown by about as much as the gap widened. On the governor measure the Democratic share grew 0.7 points while the gap widened 3.4, so new crossovers explain at most about a fifth of it. On the attorney-general measure the share grew 3.2 points against a 6.0-point widening, at most about half. This assumes few 2022 crossovers returned to the Republican column while new ones arrived; heavy churn of that kind would leave the bound loose. On either measure, at least half the widening came from voters in the Democratic column voting No more often than in 2022.
+
+### B.4 Bottom line
+
+The defensible sentence is: **at least one in five people who voted for the Democratic candidate for governor voted No on the referendum, up from at least 18% in 2022.** Ticket-splitting on the scale of one voter in ten could bring the share of loyal Democrats voting No down to about one in ten, but it cannot account for the increase. Telling lifelong Democrats from ticket-splitters requires individual data, such as a post-election survey that asks party identification alongside the vote.
 
 ## References
 
