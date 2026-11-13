@@ -1,0 +1,54 @@
+year,question,precinct,unit,municipality,yes,no,ref_votes,yes_pct,unit_ballots,ref_share_of_ballots,dem_label,dem_2party_pct,yes_minus_dem,ag_kaul_2party_pct,yes_minus_ag,split_unit
+2020,Operating (rev limit),0013,T Dane Wd 1,Town of Dane,45,53,98,45.9,594,16.5,Biden,42.3,3.6,,,yes
+2020,Operating (rev limit),0030,T Springfield Wds 1-3,Town of Springfield,224,227,451,49.7,1954,23.1,Biden,57.0,-7.3,,,yes
+2020,Operating (rev limit),0035,T Vienna Wds 1-2,Town of Vienna,348,250,598,58.2,1022,58.5,Biden,49.9,8.3,,,yes
+2020,Operating (rev limit),0036,T Westport Wds 1-5,Town of Westport,1543,1051,2594,59.5,3091,83.9,Biden,63.3,-3.9,,,yes
+2020,Operating (rev limit),0068,V Waunakee Wds 1-5,Village of Waunakee,2829,1646,4475,63.2,4684,95.5,Biden,64.2,-1.0,,,no
+2020,Operating (rev limit),0069,V Waunakee Wds 6-12,Village of Waunakee,2968,1542,4510,65.8,4778,94.4,Biden,64.2,1.6,,,no
+2020,Operating (rev limit),0118,C Madison Wd 038,City of Madison,248,152,400,62.0,2613,15.3,Biden,79.3,-17.3,,,yes
+2020,Operating (rev limit),0215,C Madison Wd 135,City of Madison,4,0,4,100.0,4,100.0,Biden,25.0,75.0,,,no
+2020,Operating (rev limit),0237,"C Middleton Wds 14-18, 21",City of Middleton,282,156,438,64.4,3180,13.8,Biden,77.4,-13.0,,,yes
+2022,Q1 bonds $175M,0012,T Dane Wd 1,Town of Dane,32,57,89,36.0,517,17.2,Evers,41.4,-5.4,42.8,-6.8,yes
+2022,Q1 bonds $175M,0027,T Springfield Wds 1-4,Town of Springfield,151,248,399,37.8,1648,24.2,Evers,56.5,-18.7,54.9,-17.0,yes
+2022,Q1 bonds $175M,0031,T Vienna Wds 1-2,Town of Vienna,242,283,525,46.1,879,59.7,Evers,54.1,-8.0,51.7,-5.6,yes
+2022,Q1 bonds $175M,0032,T Westport Wds 1-5,Town of Westport,1245,1061,2306,54.0,2831,81.5,Evers,65.6,-11.6,63.0,-9.0,yes
+2022,Q1 bonds $175M,0058,V Waunakee Wds 1-5,Village of Waunakee,2147,2000,4147,51.8,4244,97.7,Evers,66.8,-15.0,63.5,-11.7,no
+2022,Q1 bonds $175M,0059,V Waunakee Wds 6-12,Village of Waunakee,2193,1967,4160,52.7,4263,97.6,Evers,65.5,-12.8,62.5,-9.8,no
+2022,Q1 bonds $175M,0102,C Madison Wd 034,City of Madison,6,0,6,100.0,1071,0.6,Evers,85.2,14.8,83.6,16.4,yes
+2022,Q1 bonds $175M,0103,C Madison Wd 035,City of Madison,218,119,337,64.7,1270,26.5,Evers,79.7,-15.0,77.3,-12.6,yes
+2022,Q1 bonds $175M,0226,C Middleton Wds 14-18,City of Middleton,286,131,417,68.6,3034,13.7,Evers,80.0,-11.5,77.7,-9.1,yes
+2022,Q2 operating (rev limit),0012,T Dane Wd 1,Town of Dane,38,51,89,42.7,517,17.2,Evers,41.4,1.3,42.8,-0.1,yes
+2022,Q2 operating (rev limit),0027,T Springfield Wds 1-4,Town of Springfield,176,223,399,44.1,1648,24.2,Evers,56.5,-12.4,54.9,-10.8,yes
+2022,Q2 operating (rev limit),0031,T Vienna Wds 1-2,Town of Vienna,282,242,524,53.8,879,59.6,Evers,54.1,-0.3,51.7,2.1,yes
+2022,Q2 operating (rev limit),0032,T Westport Wds 1-5,Town of Westport,1350,963,2313,58.4,2831,81.7,Evers,65.6,-7.2,63.0,-4.6,yes
+2022,Q2 operating (rev limit),0058,V Waunakee Wds 1-5,Village of Waunakee,2522,1625,4147,60.8,4244,97.7,Evers,66.8,-6.0,63.5,-2.7,no
+2022,Q2 operating (rev limit),0059,V Waunakee Wds 6-12,Village of Waunakee,2590,1568,4158,62.3,4263,97.5,Evers,65.5,-3.2,62.5,-0.2,no
+2022,Q2 operating (rev limit),0102,C Madison Wd 034,City of Madison,6,0,6,100.0,1071,0.6,Evers,85.2,14.8,83.6,16.4,yes
+2022,Q2 operating (rev limit),0103,C Madison Wd 035,City of Madison,222,118,340,65.3,1270,26.8,Evers,79.7,-14.4,77.3,-12.0,yes
+2022,Q2 operating (rev limit),0226,C Middleton Wds 14-18,City of Middleton,285,133,418,68.2,3034,13.8,Evers,80.0,-11.9,77.7,-9.5,yes
+2024,Operating (rev limit),0014,T Dane Wd 1,Town of Dane,30,61,91,33.0,628,14.5,Harris,39.6,-6.7,,,yes
+2024,Operating (rev limit),0032,T Springfield Wds 1-4,Town of Springfield,189,256,445,42.5,1949,22.8,Harris,55.6,-13.2,,,yes
+2024,Operating (rev limit),0036,T Vienna Wds 1-2,Town of Vienna,279,331,610,45.7,1059,57.6,Harris,49.5,-3.7,,,yes
+2024,Operating (rev limit),0037,T Westport Wds 1-5,Town of Westport,1502,1383,2885,52.1,3334,86.5,Harris,64.2,-12.1,,,no
+2024,Operating (rev limit),0068,V Waunakee Wds 1-5,Village of Waunakee,2835,2211,5046,56.2,5276,95.6,Harris,63.6,-7.4,,,no
+2024,Operating (rev limit),0069,V Waunakee Wds 6-13,Village of Waunakee,2778,2099,4877,57.0,5080,96.0,Harris,63.4,-6.4,,,no
+2024,Operating (rev limit),0115,C Madison Wd 035,City of Madison,187,214,401,46.6,1340,29.9,Harris,79.8,-33.2,,,yes
+2024,Operating (rev limit),0219,C Middleton Wds 14-18,City of Middleton,341,177,518,65.8,3527,14.7,Harris,79.0,-13.2,,,yes
+2026,Q1 operating (rev limit),0014,T Dane Wd 1,Town of Dane,20,55,75,26.7,520,14.4,Crowley,42.7,-16.1,43.3,-16.6,yes
+2026,Q1 operating (rev limit),0032,T Springfield Wds 1-4,Town of Springfield,132,226,358,36.9,1552,23.1,Crowley,56.7,-19.8,58.1,-21.3,yes
+2026,Q1 operating (rev limit),0036,T Vienna Wds 1-2,Town of Vienna,236,267,503,46.9,847,59.4,Crowley,54.3,-7.4,54.7,-7.7,yes
+2026,Q1 operating (rev limit),0037,T Westport Wds 1-5,Town of Westport,1236,1256,2492,49.6,2931,85.0,Crowley,65.4,-15.8,66.4,-16.8,no
+2026,Q1 operating (rev limit),0069,V Waunakee Wds 1-5,Village of Waunakee,2449,2077,4526,54.1,4674,96.8,Crowley,66.8,-12.7,67.2,-13.1,no
+2026,Q1 operating (rev limit),0070,V Waunakee Wds 6-16,Village of Waunakee,2280,1866,4146,55.0,4275,97.0,Crowley,66.7,-11.7,67.7,-12.7,no
+2026,Q1 operating (rev limit),0071,V Waunakee Wd 17,Village of Waunakee,0,0,0,,0,,Crowley,,,,,
+2026,Q1 operating (rev limit),0134,C Madison Wd 035,City of Madison,167,224,391,42.7,1239,31.6,Crowley,80.7,-38.0,80.8,-38.1,yes
+2026,Q1 operating (rev limit),0240,C Middleton Wds 14-18,City of Middleton,267,143,410,65.1,2954,13.9,Crowley,82.2,-17.1,81.7,-16.6,yes
+2026,Q2 bonds $97.5M,0014,T Dane Wd 1,Town of Dane,23,51,74,31.1,520,14.2,Crowley,42.7,-11.7,43.3,-12.2,yes
+2026,Q2 bonds $97.5M,0032,T Springfield Wds 1-4,Town of Springfield,117,238,355,33.0,1552,22.9,Crowley,56.7,-23.7,58.1,-25.2,yes
+2026,Q2 bonds $97.5M,0036,T Vienna Wds 1-2,Town of Vienna,223,275,498,44.8,847,58.8,Crowley,54.3,-9.6,54.7,-9.9,yes
+2026,Q2 bonds $97.5M,0037,T Westport Wds 1-5,Town of Westport,1300,1188,2488,52.3,2931,84.9,Crowley,65.4,-13.2,66.4,-14.1,yes
+2026,Q2 bonds $97.5M,0069,V Waunakee Wds 1-5,Village of Waunakee,2268,2252,4520,50.2,4674,96.7,Crowley,66.8,-16.6,67.2,-17.0,no
+2026,Q2 bonds $97.5M,0070,V Waunakee Wds 6-16,Village of Waunakee,2262,1877,4139,54.7,4275,96.8,Crowley,66.7,-12.1,67.7,-13.0,no
+2026,Q2 bonds $97.5M,0071,V Waunakee Wd 17,Village of Waunakee,0,0,0,,0,,Crowley,,,,,
+2026,Q2 bonds $97.5M,0134,C Madison Wd 035,City of Madison,181,207,388,46.6,1239,31.3,Crowley,80.7,-34.1,80.8,-34.2,yes
+2026,Q2 bonds $97.5M,0240,C Middleton Wds 14-18,City of Middleton,273,131,404,67.6,2954,13.7,Crowley,82.2,-14.6,81.7,-14.2,yes

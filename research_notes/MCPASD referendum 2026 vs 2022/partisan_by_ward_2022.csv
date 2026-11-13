@@ -1,0 +1,26 @@
+year,unit,reporting_unit,area,ref_yes,ref_no,ref_total,ballots_cast,ref_share_of_ballots,split_unit,yes_pct,gov_dem,gov_rep,gov_total,gov_dem_2party_pct,ag_dem_2party_pct,tre_dem_2party_pct,sen_dem_2party_pct,dane_abortion_adv_yes_pct,gap_yes_minus_govdem,ref_rolloff_vs_gov_pct
+2022,0002,T Berry Wds 1-2,Town of Berry,126,240,366,742,0.493,yes,34.4,436,295,740,59.6,56.3,55.8,55.7,74.5,-25.2,
+2022,0011,T Cross Plains Wds 1-2,Town of Cross Plains,218,213,431,1002,0.43,yes,50.6,589,405,1000,59.3,57.5,56.5,57.3,74.7,-8.7,
+2022,0018,T Middleton Wds 1-8,Town of Middleton,2134,1552,3686,3823,0.964,no,57.9,2595,1206,3813,68.3,66.2,64.4,65.8,80.7,-10.4,3.3
+2022,0027,T Springfield Wds 1-4,Town of Springfield,544,643,1187,1648,0.72,yes,45.8,916,704,1644,56.5,54.9,52.7,53.5,72.8,-10.7,
+2022,0032,T Westport Wds 1-5,Town of Westport,128,113,241,2831,0.085,yes,53.1,1842,966,2820,65.6,63.0,61.8,62.1,79.4,-12.5,
+2022,0040,V Cross Plains Wds 1-6,Village of Cross Plains,1177,929,2106,2252,0.935,no,55.9,1583,642,2244,71.1,68.3,67.0,67.5,81.4,-15.2,6.1
+2022,0163,C Madison Wd 095,City of Madison (MCPASD part),28,12,40,549,0.073,yes,70.0,472,71,548,86.9,85.1,85.9,84.8,86.1,-16.9,
+2022,0168,C Madison Wd 100,City of Madison (MCPASD part),44,11,55,335,0.164,yes,80.0,296,31,332,90.5,88.8,86.9,89.4,83.6,-10.5,
+2022,0169,C Madison Wd 101,City of Madison (MCPASD part),197,112,309,1002,0.308,yes,63.8,836,151,994,84.7,81.8,80.8,81.8,89.3,-20.9,
+2022,0170,C Madison Wd 102,City of Madison (MCPASD part),147,64,211,1037,0.203,yes,69.7,861,166,1035,83.8,80.8,81.6,82.2,87.2,-14.1,
+2022,0177,C Madison Wd 109,City of Madison (MCPASD part),227,99,326,881,0.37,yes,69.6,653,216,873,75.1,74.1,71.9,72.8,77.2,-5.5,
+2022,0182,C Madison Wd 114,City of Madison (MCPASD part),284,103,387,2202,0.176,yes,73.4,1789,396,2197,81.9,79.5,78.7,79.9,88.4,-8.5,
+2022,0183,C Madison Wd 115,City of Madison (MCPASD part),33,7,40,1589,0.025,yes,82.5,1386,180,1576,88.5,87.3,87.2,87.5,87.7,-6.0,
+2022,0185,C Madison Wd 117,City of Madison (MCPASD part),112,31,143,1445,0.099,yes,78.3,1152,275,1440,80.7,77.9,77.1,79.1,86.9,-2.4,
+2022,0186,C Madison Wd 118,City of Madison (MCPASD part),533,210,743,798,0.931,no,71.7,621,166,791,78.9,75.7,75.0,76.0,85.9,-7.2,6.1
+2022,0187,C Madison Wd 119,City of Madison (MCPASD part),993,510,1503,1563,0.962,no,66.1,1186,368,1559,76.3,72.7,71.6,73.5,85.3,-10.2,3.6
+2022,0207,C Madison Wd 139,City of Madison (MCPASD part),54,8,62,66,0.939,no,87.1,60,6,66,90.9,83.3,87.5,86.4,87.9,-3.8,6.1
+2022,0208,C Madison Wd 140,City of Madison (MCPASD part),136,67,203,204,0.995,no,67.0,147,56,204,72.4,71.3,70.1,71.9,85.6,-5.4,0.5
+2022,0209,C Madison Wd 141,City of Madison (MCPASD part),1,0,1,1,1.0,no,100.0,1,0,1,100.0,100.0,100.0,100.0,100.0,0.0,0.0
+2022,0223,C Middleton Wds 1-4,City of Middleton,2154,966,3120,3261,0.957,no,69.0,2672,559,3247,82.7,81.0,79.9,80.8,87.5,-13.7,3.9
+2022,0224,C Middleton Wds 5-8,City of Middleton,1625,810,2435,2605,0.935,no,66.7,2200,364,2589,85.8,83.9,84.2,84.2,88.0,-19.1,5.9
+2022,0225,"C Middleton Wds 9-13, 19",City of Middleton,1936,978,2914,3036,0.96,no,66.4,2508,484,3014,83.8,81.6,81.5,82.0,86.9,-17.4,3.3
+2022,0226,C Middleton Wds 14-18,City of Middleton,1592,880,2472,3034,0.815,yes,64.4,2398,598,3017,80.0,77.7,76.7,78.0,86.4,-15.6,
+2022,0228,C Middleton Wd 21,City of Middleton,96,32,128,141,0.908,no,75.0,119,18,139,86.9,86.1,87.1,87.1,90.6,-11.9,7.9
+2022,0229,C Middleton Wd 22,City of Middleton,77,18,95,103,0.922,no,81.1,88,15,103,85.4,83.2,82.7,83.3,86.7,-4.3,7.8

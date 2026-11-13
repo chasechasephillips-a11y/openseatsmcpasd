@@ -1,0 +1,14 @@
+area,part,ref_votes,yes_pct,dem_gov_pct,yes_vs_partisan_expectation,dem_ticket_no_floor_2022,dem_ticket_no_floor_2026,housing_units_2020,households_2020,apartment_units_est,apartment_share_pct,renter_households_est_bg,renter_share_pct_bg,rolloff_pct_2026,ballots_per_household,school_share_homeowner_bill_pct,school_share_rental_bill_pct,school_tax_increase_2022_2025_pct
+City of Middleton,Wards 1–4,3107,67.7,83.7,3.0,16.5,19.1,2811,2701,1522,54.0,1169,43,8.3,1.26,50,49,17.7
+City of Middleton,"Wards 5–8, 21",2596,62.5,86.7,-4.3,21.8,27.9,2668,2553,1267,47.0,1433,56,8.2,1.11,51,49,17.7
+City of Middleton,"Wards 9–13, 19, 22, 24",3180,64.7,84.5,-0.6,20.2,23.4,2298,2233,787,34.0,602,27,9.2,1.57,50,49,17.7
+City of Middleton,Wards 14–18,2262,62.6,82.2,-1.2,19.5,23.9,2379,2296,1125,47.0,1149,50,10.1,1.1,51,49,17.7
+Town of Middleton,"Wards 1, 3–4",1486,55.8,71.0,-0.2,,21.4,906,872,9,1.0,316,36,6.8,1.83,61,59,20.6
+Town of Middleton,"Wards 2, 4A",391,56.8,73.1,-0.7,,22.3,241,240,2,1.0,71,29,5.6,1.73,61,59,20.6
+Town of Middleton,Wards 5–8,2134,59.5,66.6,6.5,,10.7,1165,1141,14,1.0,278,24,7.7,2.03,61,59,14.9
+Village of Cross Plains,Wards 1–6,2266,51.8,70.9,-4.2,21.4,27.0,1815,1777,505,28.0,559,31,3.2,1.32,46,44,25.9
+Madison,MCPASD wards,4113,63.7,79.7,1.7,12.1,20.1,4008,3839,2212,55.0,2082,54,5.2,1.13,,,
+Town of Springfield,MCPASD part,1108,43.0,56.7,-3.2,18.9,24.2,897,863,132,15.0,134,16,5.0,1.35,64,62,32.5
+Town of Cross Plains,MCPASD part,397,46.6,59.6,-1.5,14.7,21.8,163,151,16,10.0,26,17,7.5,2.84,60,58,35.3
+Town of Berry,MCPASD part,349,28.9,57.6,-17.8,42.2,49.8,216,216,6,3.0,41,19,3.3,1.67,54,52,37.9
+Town of Westport,MCPASD part,224,54.0,65.4,1.9,19.0,17.4,159,152,38,24.0,52,34,12.8,1.69,57,56,16.7
