@@ -174,3 +174,23 @@ The numbers are in `drivers_by_ward.csv` (19 reporting units with 100+ votes) an
   - City ward groups: 21–31%.
   - Senior and apartment wards are lowest: Madison 114 and 117 (7–8%).
   - The district can compute exact households with an enrolled student by ward from its own address records.
+
+## Addendum, Nov. 13 (night): the biggest levers for Yes
+
+Each lever is sized as the change in Yes-minus-No margin it would have produced in 2026, holding everything else fixed. For scale, the 2026 margin was **+4,806** (14,263 to 9,457). Rates come from the ward results; the estimates are rough and the levers overlap.
+
+| Rank | Lever | How it's sized | Margin gain |
+|---|---|---|---|
+| 1 | Win back Democratic-ticket No voters to 2022's level | Each unit's Democratic-ticket No floor returned to its 2022 value; about **820** voters switch No to Yes, mostly the City, Madison and the Village | **+1,636** |
+| 2 | 1,000 more voters from apartment-heavy wards | Those wards voted about 64% Yes; renters turn out less | +283 |
+| 3 | 1,000 more voters from family-heavy wards | Town of Middleton, Madison Wards 101 and 118 | +232 |
+| 4 | Cut skipping to Waunakee's 4% | About **850** more answers on the question, at each unit's Yes rate; mostly the City and Town of Middleton, where seniors drive skipping | +208 |
+| 5 | +3 points in City Wards 5–8 | The City's biggest slide from 2022 | +156 |
+| 6 | +3 points in the Village core | Fastest real bill growth among the larger areas | +136 |
+| 7 | +3 points in the four rural towns | Real bills up 16–43% since 2022 | +125 |
+| 8 | Door hangers as a turnout nudge alone | 849 unclaimed doors at +1–2 points of turnout | about +6 |
+
+- **Takeaway.** Persuasion of Democratic-leaning homeowners is worth more than the rest of the list combined (+1,636 vs. about +1,150). Turnout and skipping levers are real but smaller, about +200 to +300 each.
+- **What it means for 2030.** Lead with real-dollar bills, not mill rates, in the City, the Village and Madison; target apartment and family wards for turnout; put "vote both sides of the ballot" in front of senior-heavy wards.
+- **Door hangers.** Their value is the conversation at the door, not the hanger. As a pure turnout nudge they barely move the margin.
+- **Caveats.** The Democratic share is the governor vote, which includes some crossover voters (Appendix B of the research paper). The "+1,000 voters" levers assume new voters vote like their ward. The levers aren't additive; the plausible combined gain is about +2,000 to +2,500.
