@@ -46,7 +46,7 @@ The data file is `property_tax_by_ward.csv`. 90% intervals for the median notice
 ## Method
 
 - **Homes and wards.** All 18,076 parcels in the MCPASD school district came from Dane County's tax-parcel GIS layer. Each was placed in its 2026 voting ward using Dane County's ward boundary layer, then grouped into the county's reporting units.
-- **Sample.** Up to 50 likely homes per reporting unit were drawn at random (seed 20261112; improvements of at least $60,000, total value under $2.5M). Only parcels AccessDane classifies as residential (G1) were kept: 464 homes. Madison homes came from the City of Madison assessor's open data instead, all 2,432 residential parcels in the district, because AccessDane doesn't carry Madison assessments.
+- **Sample.** Up to 50 likely homes per reporting unit were drawn at random (seed 20261112; improvements of at least $60,000, total value under $2.5M). Only parcels AccessDane classifies as residential (G1) were kept: 464 homes. Madison homes came from the City of Madison assessor's open data instead, all 2,431 residential parcels in the district, because AccessDane doesn't carry Madison assessments.
 - **What was read for each home** (AccessDane parcel pages):
   - assessed value for 2022–2026,
   - DOR's estimated fair market value for 2025,
