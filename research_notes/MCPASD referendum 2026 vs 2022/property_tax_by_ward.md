@@ -142,3 +142,22 @@ The numbers are in `renters_school_by_ward.csv`; the scripts are in `property_ta
   - Madison: 20%, up from 12% in 2022, the biggest jump.
   - Berry: **50%**.
   It tracks the school tax increase across 13 areas (weighted r ≈ +0.55) but not its change since 2022 (r ≈ −0.12).
+
+## Addendum, Nov. 13 (evening): what predicts the vote, and where the kids live
+
+The numbers are in `drivers_by_ward.csv` (19 reporting units with 100+ votes) and `school_age_children_by_ward.csv`; the scripts are `property_tax_scripts/deep.py` and `corr.py`. All correlations are weighted by referendum votes.
+
+- **Party first.** The Democratic governor share alone explains about **64%** of the variation in Yes across the 19 units, at about +0.7 Yes points per Democratic point.
+- **Then real bills.** Adding the median Dec. 2022 to Dec. 2025 bill increase raises the explained share to **93%** across the 12 areas with bill data: about −0.75 Yes points per point of bill growth. Without Berry it's 90% (−0.71). The school tax increase gives the same result (91%, −0.81). Partial correlations with Yes, holding party constant: bill increase **−0.85**, school tax increase −0.81.
+- **Home value runs the other way.** Holding party constant, higher median home value goes with *more* Yes: about **+1.6 points per $100,000** (R² 0.64 → 0.76; partial r +0.57). The No pressure came from lower-value areas with fast bill growth, not from expensive neighborhoods.
+- **The 2026 notice jump** has a partial r of −0.44, and it adds little once home value is in the model.
+- **Turnout.** More ballots per household goes with more Yes than party predicts (partial r +0.49).
+- **Families.** School-age children per household has a partial r of +0.28. It's small: about +0.25 Yes points per point of under-18 share. Kid-heavy units have fewer Democratic-ticket No votes (r −0.31) and skip the question less (r −0.39).
+- **Seniors and skipping.** The share of residents 65+ is the strongest predictor of skipping the question (r +0.62; 0.75 in units fully inside the district), at about +0.3 roll-off points per point of seniors. Seniors' link to Yes after party is small (−0.17).
+- **Apartments** show no independent link to Yes (partial r −0.10).
+- **Units fully inside the district (n = 9)** point the same way: home value partial +0.68, notice −0.65, bill −0.82.
+- **Where the school-age kids live (2020 Census).** Children under 18 come from block counts (total population minus 18+). They're split to ages 5–17 using each block group's age mix and assigned to 2026 wards: about **8,070** in all, and 10,350 under 18.
+  - Largest counts: City Wards 9–13, 19, 22, 24 (~1,110); City Wards 5–8, 21 (~850); Village Wards 1–6 (~830); City Wards 1–4 (~820); Town of Middleton Wards 5–8 (~790); City Wards 14–18 (~740); Madison Ward 119 (~650).
+  - Highest per household: Town of Middleton (60–74 per 100 households), Madison Ward 101 (73), Madison Wards 118–119 (55–57).
+  - For current numbers, the district could share student counts by ward or attendance area.
+- **Caveats.** The analysis covers only 12–19 areas, and the factors overlap: the rural towns have low Democratic shares and fast bill growth. Partisan shares in split units cover the whole unit. The demographics are from 2020.
