@@ -194,3 +194,26 @@ Each lever is sized as the change in Yes-minus-No margin it would have produced 
 - **What it means for 2030.** Lead with real-dollar bills, not mill rates, in the City, the Village and Madison; target apartment and family wards for turnout; put "vote both sides of the ballot" in front of senior-heavy wards.
 - **Door hangers.** Their value is the conversation at the door, not the hanger. As a pure turnout nudge they barely move the margin.
 - **Caveats.** The Democratic share is the governor vote, which includes some crossover voters (Appendix B of the research paper). The "+1,000 voters" levers assume new voters vote like their ward. The levers aren't additive; the plausible combined gain is about +2,000 to +2,500.
+
+## Addendum, Nov. 13 (late night): what went with a Yes vote, straight up and at the same party lean
+
+Built with `property_tax_scripts/yes_drivers.py`; data in `yes_drivers_by_ward.csv`. Weighted by referendum votes across the 19 reporting units with 100+ votes (12 with bill history; Madison has none). "Same party lean" is the partial correlation holding the Democratic governor share constant.
+
+| Factor | All areas | Same party lean | Yes, top third vs. bottom third |
+|---|---|---|---|
+| Tax bill growth since 2022, % (n = 12) | −0.87 | −0.85 | 47% vs. 64% |
+| Democratic vote share | +0.80 | (held) | 65% vs. 51% |
+| Tax bill growth since 2022, $ (n = 12) | −0.73 | −0.44 | 43% vs. 61% |
+| Homes that are apartments | +0.57 | −0.10 | 66% vs. 53% |
+| Households with kids | −0.19 | +0.29 | 60% vs. 64% |
+| Turnout (ballots per household) | −0.19 | +0.49 | 59% vs. 62% |
+| Referendum 4-year cost, median home | −0.06 | +0.59 | 56% vs. 59% |
+| 2025 tax bill, median home (n = 12) | −0.02 | +0.58 | 55% vs. 58% |
+| 2026 assessment notice jump | −0.02 | −0.44 | 62% vs. 54% |
+| Residents 65+ | 0.00 | −0.17 | 63% vs. 61% |
+
+- **The size of the bill didn't matter; its growth did.** At the same party lean, bigger bills and a pricier referendum went with *more* Yes. Fast growth since 2022 went with less.
+- **Kids and turnout flip sign once party is held.** The areas with the fewest kids are Democratic Madison apartment wards, which drags the raw link negative.
+- **The apartment link is party.** It vanishes at the same party lean.
+- **Highest cost, still Yes:** Westport (bill $15,660; referendum about $12,600 over four years; 54% Yes, +1.9 vs. party lean) and Town of Middleton Wards 5–8 (about $8,900; 59.5% Yes, +6.5). **Fastest growth, No:** Berry (+$2,880, 43%; 29% Yes, −17.8).
+- Referendum cost per unit is the median home's 2026 market value share of $118.5M; Madison wards use each ward's median 2026 assessment scaled by the sample's value-to-assessment ratio. With 12–19 areas, treat these as patterns, not proof; the factors overlap.
