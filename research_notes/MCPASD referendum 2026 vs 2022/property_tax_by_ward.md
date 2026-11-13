@@ -161,3 +161,16 @@ The numbers are in `drivers_by_ward.csv` (19 reporting units with 100+ votes) an
   - Highest per household: Town of Middleton (60–74 per 100 households), Madison Ward 101 (73), Madison Wards 118–119 (55–57).
   - For current numbers, the district could share student counts by ward or attendance area.
 - **Caveats.** The analysis covers only 12–19 areas, and the factors overlap: the rural towns have low Democratic shares and fast bill growth. Partisan shares in split units cover the whole unit. The demographics are from 2020.
+
+## Addendum, Nov. 13 (late): does "30% of residents have a kid in the district" hold up?
+
+- **2020 Census, MCPASD as a school-district geography** (DHC via Esri Living Atlas, "USA 2020 Census Housing Characteristics – School Geographies"):
+  - Households: **18,697**. Households with children under 18: **5,533 (29.6%)**.
+  - Owner households with children: 4,032 of 10,747 (37.5%). Renter households with children: 1,501 of 7,950 (18.9%).
+  - Population: 43,581. Under 18: 10,088 (23%). Ages 5–17: about 7,900. Age 65+: 7,550 (17%).
+- **Verdict.** The district's "about 30%" matches the share of households with any child under 18. A child *enrolled in MCPASD* is narrower: it leaves out households whose kids are all under 5, in private or home school, or open-enrolled elsewhere. Enrollment is about 7,100–7,250 (4K–12, including nonresident open-enrollment students), against about 7,900 resident 5–17-year-olds. That puts households with an enrolled student at roughly **21–24%** (estimate), and lower in 2026 as apartment households have grown. Among adults, about 31% live with a child under 18, and roughly 22–25% with an enrolled student. That's consistent with "parents are about 1 in 4 voters."
+- **By ward** (`households_with_kids_by_ward.csv`). Estimated from block counts of children divided by each block group's children per household with kids; the ward estimates add up to 29.4% of households, which checks against the Census's 29.6%.
+  - Highest shares: Town of Middleton (38–47%), Madison Wards 118, 101 and 119 (38–46%), Village core (33%), Springfield (32%).
+  - City ward groups: 21–31%.
+  - Senior and apartment wards are lowest: Madison 114 and 117 (7–8%).
+  - The district can compute exact households with an enrolled student by ward from its own address records.
