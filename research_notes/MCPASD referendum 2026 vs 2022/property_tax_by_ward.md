@@ -105,6 +105,40 @@ The numbers are in `property_tax_costs_by_ward.csv`; the script is `property_tax
   - Madison part of the district: **34 apartment buildings with 1,963 units**, median 56 units each (City of Madison assessor data, property use "Apartments").
   - City of Middleton: about 210 parcels worth $2.5M or more. That group mixes apartments and businesses, because county data doesn't separate them.
   - Village of Cross Plains: 12 parcels worth $2.5M or more.
-- **The revaluation shifted tax share from big buildings to homes.** In the City of Middleton, assessed values rose 33.6% for homes but only 23.7% for parcels worth $2.5M or more (2025 values from the county assessor layer, 2026 from the tax-parcel layer). Homes' share of the City's assessed base went from 63.0% to 64.8%, and large buildings' share from 35.6% to 33.9%. At about $40M of City school levy, that moves roughly **$0.7M a year of school tax from large buildings onto homes** (estimate). The Village shows the same pattern: homes up 66%, large buildings up 34%.
+- **The revaluation shifted tax share from big buildings to homes (corrected Nov. 13: from commercial buildings, not apartments; see the next addendum).** In the City of Middleton, assessed values rose 33.6% for homes but only 23.7% for parcels worth $2.5M or more (2025 values from the county assessor layer, 2026 from the tax-parcel layer). Homes' share of the City's assessed base went from 63.0% to 64.8%, and large buildings' share from 35.6% to 33.9%. At about $40M of City school levy, that moves roughly **$0.7M a year of school tax from large buildings onto homes** (estimate). The Village shows the same pattern: homes up 66%, large buildings up 34%.
 - **What renters pay through rent.** Madison-part apartments paid a median **$2,943 per unit** in property tax for 2025, about $245 a month. About half of that is school tax, roughly $125 a month (estimate). If fully passed through to rent, the 2026 referendum costs a typical unit about **$1,600 over four years** (about $33 a month), of which about $250 is new money (about $5 a month).
 - **State credit.** Renters can claim Wisconsin's school property tax credit: 20% of rent (25% if heat isn't included) counts as property tax, for a credit of up to $300 a year.
+
+## Addendum, Nov. 13 (later): renters by ward, school share and the Democratic-ticket No vote
+
+The numbers are in `renters_school_by_ward.csv`; the scripts are in `property_tax_scripts/`.
+
+- **Renters, from the 2020 Census.** The district had about **19,700 housing units, 19,000 households and 7,900 renter households (42%)**. This uses DHC block-group tenure applied to each block's households, with blocks assigned to voting wards; wards are built from census blocks, so the match is clean. Apartment units, counted as each block's housing units minus its house and condo parcels, total about **7,600**.
+- **Apartment share of housing:**
+  - City ward groups: 34–54%.
+  - Madison wards: 55%.
+  - Village core: 28%.
+  - Springfield: 15%.
+  - Town of Middleton: about 1%.
+  Block-group renter rates overstate renters in the Town of Middleton, where its block groups mix in apartments outside the town; the apartment-unit count is the better measure there. Apartments built since 2020 aren't counted.
+- **Apartments vs. homes in the revaluation, a correction.** The named apartment complexes checked (14 in the City and Village, by owner name, AccessDane) were reassessed up a median **33%** for 2026, about the same as homes (+34%). Their Dec. 2022 to Dec. 2025 bills rose a median **12%**, also matching homes, and about **49%** of their bill is school tax (44% in the Village). So the 24% average for City parcels worth $2.5M or more reflects commercial property rising less, not apartments. The shift in tax share was from commercial buildings onto homes and apartments alike.
+- **Renters vote less, not differently.**
+  - Apartment-heavy areas vote Yes more often (weighted r ≈ +0.64), but apartment share doesn't predict Yes once partisanship is counted (r ≈ 0.03).
+  - It doesn't predict the Democratic-ticket No share either (r ≈ 0.12), and it barely relates to skipping the question (r ≈ 0.15).
+  - Apartment-heavy areas cast far fewer ballots per household: **about 1.1 in City Wards 5–8 and 14–18 and in Madison, against 1.7–2.0 in the Town of Middleton** (r ≈ −0.82). Smaller households explain part of that; lower turnout likely explains the rest.
+- **School share of the bill, Dec. 2025.** It's about **50–51% in the City, 46% in the Village and 54–64% in the towns**. Rental buildings pay the same school rate, and their share is 1–2 points lower only because they don't get the lottery and first-dollar credits.
+- **School tax increase, Dec. 2022 to Dec. 2025.**
+  - City: **+17.7%** for every home, because the City didn't revalue in those years.
+  - Town of Middleton: +15–21%.
+  - Village: +26%.
+  - Westport: +17%.
+  - Springfield: +33%.
+  - Town of Cross Plains: +35%.
+  - Berry: +38%.
+- **Democratic-ticket No share** (minimum share of Crowley/Evers voters who voted No, assuming every Republican-ticket voter voted No), 2026:
+  - Town of Middleton Wards 5–8: 11%.
+  - City: 19–28%.
+  - Village: 27%.
+  - Madison: 20%, up from 12% in 2022, the biggest jump.
+  - Berry: **50%**.
+  It tracks the school tax increase across 13 areas (weighted r ≈ +0.55) but not its change since 2022 (r ≈ −0.12).
