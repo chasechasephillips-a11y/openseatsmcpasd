@@ -82,3 +82,18 @@ The data file is `property_tax_by_ward.csv`. 90% intervals for the median notice
 - DOR 2026 school district equalized values: https://www.revenue.wi.gov/SLFReportsschoolspec/2026sche.pdf
 - DPI equalized mill rates (2025-26 levy and base): https://sfs.dpi.wi.gov/safr_ro/all_mill_rate.asp?year=2026
 - Vote data: `partisan_by_ward_2026.csv` and `ward_change.csv` in this folder (Dane County Clerk).
+
+## Addendum, Nov. 13: what the median home pays, and the four-year referendum cost
+
+The numbers are in `property_tax_costs_by_ward.csv`; the script is `property_tax_scripts/costs.py`.
+
+- **Homes in the district.** About **13,000 homes** (houses and condos) sit on the district's 18,076 parcels. That count is the likely-home parcels in each area multiplied by the share of sampled parcels that are residential (80–98%), plus Madison's 2,509 residential parcels. An apartment building counts once, so households outnumber homes.
+- **Assessed value.** The median home's 2026 assessment rose about **$118K–$159K** in the City of Middleton, **$177K** in the Village core and **$235K** in Berry. It didn't change in the Town of Middleton, the Town of Cross Plains, Springfield or Westport, and rose about $23K in Madison.
+- **The school share of the bill.** In Dec. 2025 the school line, after the state credit, was about **half of the bill in the City (50–51%)** and the Village (46%). It was **54–64% in the towns**, where municipal taxes are lower. The school tax alone rose an estimated $600–$780 in the City and $1,000–$1,600 in the towns from Dec. 2022 to Dec. 2025.
+- **Four-year cost of the 2026 referendum for the median home**, Dec. 2027 to Dec. 2030 bills:
+  - City of Middleton: about **$4,300–$5,400** in all, of which **$690–$860** is new money above today's $24.9M.
+  - Village core: about $3,500 ($550 new).
+  - Town of Middleton: about $7,700 ($1,230 new).
+  - Westport: about $12,600 ($2,000 new).
+  The estimate is the home's share of district market value times $24.9M, $27.9M, $31.1M and $34.6M, holding that share constant; it equals about $907 per $100,000 of value in all and $145 per $100,000 new. The district's own new-money figure was $120 per $100,000. The same median City homes paid about **$2,550–$3,190** toward the 2022 referendum on the Dec. 2023 to Dec. 2026 bills.
+- **All homes together.** Counting every home, total property tax bills rose about **$5.2M a year** in the City of Middleton since 2022. The Town of Middleton is up about $2.5M, the Village about $1M and the four rural towns about $2.7M. These totals multiply the average home's increase by the number of homes and cover the whole bill, not only the school part.
